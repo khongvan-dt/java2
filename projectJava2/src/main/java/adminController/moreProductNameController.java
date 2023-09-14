@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import db.connect;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -17,11 +18,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import main.Main;
 
 public class moreProductNameController {
-
     @FXML
-    private TextField productNameField; // Note the lowercase "p"
+    private TextField productNameField;
 
     @FXML
     public void addProductName() {
@@ -106,24 +107,24 @@ public class moreProductNameController {
         alert.showAndWait();
     }
 
-    // các hàm gọi giao diện
-    public void getFromAddcategory() {
-        callLink link = new callLink();
-        link.getFormAddCategory();
+    public void getFromAddcategory() throws IOException {
+        Main.setRoot("/admin/addCategory.fxml");
+
     }
 
-    public void getFromAddProduct() {
-        callLink link = new callLink();
-        link.getFormAddProduct();
+    public void getFromAddProduct() throws IOException {
+        Main.setRoot("/admin/addProduct.fxml");
+
     }
 
-    public void getFromfromAddSupplier() {
-        callLink link = new callLink();
-        link.getFormfromAddSupplier();
+    public void getFromfromAddSupplier() throws IOException {
+        Main.setRoot("/admin/addSupplier.fxml");
+
     }
 
-    public void getFromfromMoreProductName() {
-        callLink link = new callLink();
-        link.getProductName();
+    public void getFromfromMoreProductName() throws IOException {
+        Main.setRoot("/admin/addProductName.fxml");
+
     }
+
 }

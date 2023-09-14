@@ -2,7 +2,6 @@ adminController\moreProductNameController.class
 db\connect.class
 adminController\callLink.class
 main\Main.class
-adminController\linkA.class
 adminController\addSupplierController.class
 adminController\RegistrationController.class
 adminController\addCategoryController.class

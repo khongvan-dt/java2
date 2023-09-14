@@ -5,85 +5,90 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import db.connect;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
+import main.Main;
 
 public class addSupplierController {
 
-	@FXML
-	private TextField SupplierNameField;
 
-	public void moreSupplier() {
-		String SupplierName = SupplierNameField.getText();
+    @FXML
+    private TextField SupplierNameField;
 
-		if (SupplierName.isEmpty()) {
-			showAlert("Please fill in all fields.");
-			return;
-		}
+    public void moreSupplier() {
+        String SupplierName = SupplierNameField.getText();
 
-		String insertSQL = "INSERT INTO supplier (supplierName) VALUES (?)";
-		try (Connection connection = connect.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+        if (SupplierName.isEmpty()) {
+            showAlert("Please fill in all fields.");
+            return;
+        }
 
-			preparedStatement.setString(1, SupplierName);
+        String insertSQL = "INSERT INTO supplier (supplierName) VALUES (?)";
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
-			int rowsAffected = preparedStatement.executeUpdate();
-			if (rowsAffected > 0) {
-				System.out.println(" add category successfully!");
+            preparedStatement.setString(1, SupplierName);
 
-				// Thành công: Hiển thị thông báo thành công
-				showSuccessAlert("Supplier added successfully!");
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println(" add category successfully!");
 
-				// Xóa nội dung trên trường nhập liệu sau khi thêm thành công
-				SupplierNameField.clear();
-			} else {
-				showAlert("Failed to add category.");
-			}
+                // Thành công: Hiển thị thông báo thành công
+                showSuccessAlert("Supplier added successfully!");
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+                // Xóa nội dung trên trường nhập liệu sau khi thêm thành công
+                SupplierNameField.clear();
+            } else {
+                showAlert("Failed to add category.");
+            }
 
-	}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-	// insert thành công sẽ hiện
-	private void showSuccessAlert(String message) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Success");
-		alert.setHeaderText(null);
-		alert.setContentText(message);
-		alert.showAndWait();
-	}
+    }
 
-	private void showAlert(String message) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Validation Error");
-		alert.setHeaderText(null);
-		alert.setContentText(message);
-		alert.showAndWait();
-	}
+    // insert thành công sẽ hiện
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
-	// các hàm gọi giao diện
-	public void getFromAddcategory() {
-		callLink link = new callLink();
-		link.getFormAddCategory();
-	}
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
-	public void getFromAddProduct() {
-		callLink link = new callLink();
-		link.getFormAddProduct();
-	}
+    // các hàm gọi giao diện
+    public void getFromAddcategory() throws IOException {
+//        linka.openScene("/admin/addCategory.fxml");
+        Main.setRoot("/admin/addCategory.fxml");
 
-	public void getFromfromAddSupplier() {
-		callLink link = new callLink();
-		link.getFormfromAddSupplier();
-	}
+    }
 
-	public void getFromfromMoreProductName() {
-		callLink link = new callLink();
-		link.getProductName();
-	}
+    public void getFromAddProduct() throws IOException {
+//        linka.openScene("/admin/addProduct.fxml");
+        Main.setRoot("/admin/addProduct.fxml");
+
+    }
+
+    public void getFromfromAddSupplier() throws IOException {
+//        linka.openScene("/admin/addSupplier.fxml");
+        Main.setRoot("/admin/addSupplier.fxml");
+
+    }
+
+    public void getFromfromMoreProductName() throws IOException {
+//        linka.openScene("/admin/addProductName.fxml");
+        Main.setRoot("/admin/addProductName.fxml");
+
+    }
 }
