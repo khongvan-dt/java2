@@ -128,7 +128,7 @@ public class linkA {
 
             // Đóng cửa sổ hiện tại
             closeCurrentStage(home);
-        } catch (IOException e) {
+        } catch (IOException e) {      
             e.printStackTrace();
         }
     }
