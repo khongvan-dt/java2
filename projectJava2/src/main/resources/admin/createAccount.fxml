@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-           fx:controller="adminController.RegistrationController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.RegistrationController">
 	<children>
 		<AnchorPane>
 			<children>
 				<AnchorPane layoutX="8.0" layoutY="-3.0" prefHeight="600.0" prefWidth="400.0" styleClass="myLays" stylesheets="@loginCss.css">
 					<children>
-						<Button layoutX="72.0" layoutY="463.0" mnemonicParsing="false" onAction="#showRegistrationForm" prefHeight="40.0" prefWidth="265.0" styleClass="Lays" text="You want to login?">
+						<Button layoutX="72.0" layoutY="463.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="265.0" styleClass="Lays" text="You want to login?">
 							<font>
 								<Font name="AdobeSongStd-Light" size="15.0" />
 							</font>

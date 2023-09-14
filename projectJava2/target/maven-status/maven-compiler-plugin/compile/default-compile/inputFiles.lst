@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\adminController\addCategoryController.java
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\adminController\loginController.java
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\adminController\callLink.java
@@ -9,3 +10,15 @@ C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\j
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\adminController\addSupplierController.java
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\adminController\RegistrationController.java
 C:\Users\dungn\OneDrive\Documents\NetBeansProjects\java2\projectJava2\src\main\java\db\CreateTable.java
+=======
+C:\java2\projectJava2\src\main\java\adminController\addProductController.java
+C:\java2\projectJava2\src\main\java\adminController\addCategoryController.java
+C:\java2\projectJava2\src\main\java\adminController\callLink.java
+C:\java2\projectJava2\src\main\java\main\Main.java
+C:\java2\projectJava2\src\main\java\adminController\loginController.java
+C:\java2\projectJava2\src\main\java\adminController\addSupplierController.java
+C:\java2\projectJava2\src\main\java\db\CreateTable.java
+C:\java2\projectJava2\src\main\java\db\connect.java
+C:\java2\projectJava2\src\main\java\adminController\moreProductNameController.java
+C:\java2\projectJava2\src\main\java\adminController\RegistrationController.java
+>>>>>>> f6d0c35ed912a26b86729878f187c17ccf74e386
