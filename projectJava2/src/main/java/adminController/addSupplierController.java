@@ -33,15 +33,15 @@ public class addSupplierController {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println(" add category successfully!");
+                System.out.println(" add  successfully!");
 
                 // Thành công: Hiển thị thông báo thành công
-                showSuccessAlert("Supplier added successfully!");
+                showSuccessAlert(" added successfully!");
 
                 // Xóa nội dung trên trường nhập liệu sau khi thêm thành công
                 SupplierNameField.clear();
             } else {
-                showAlert("Failed to add category.");
+                showAlert("Failed to add .");
             }
 
         } catch (SQLException e) {

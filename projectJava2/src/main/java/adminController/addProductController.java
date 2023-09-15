@@ -37,53 +37,32 @@ public class addProductController extends Application {
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
-            // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
+            // Lấy danh sách danh mục sản phẩm từ cơ sở dữ liệu
             String selectCategory = "SELECT categoryId, categoryName FROM category";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
             PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
-
-            // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên danh mục sản phẩm
             ObservableList<String> categoryNames = FXCollections.observableArrayList();
-
-            // Duyệt qua kết quả truy vấn và thêm tên danh mục vào danh sách
             while (resultSet.next()) {
                 int categoryId = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("categoryName");
                 categoryNames.add(categoryName);
             }
-
-            // Đặt danh sách tên danh mục vào ComboBox để hiển thị trong giao diện người dùng
             fieldViewProductCategoryId.setItems(categoryNames);
 
-            // Tạo một truy vấn SQL để lấy dữ liệu tên sản phẩm từ cơ sở dữ liệu
+            // Lấy danh sách tên sản phẩm từ cơ sở dữ liệu
             String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
             PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-
-            // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet2 = preparedStatement2.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên sản phẩm
             ObservableList<String> productNames = FXCollections.observableArrayList();
-
-            // Duyệt qua kết quả truy vấn và thêm tên sản phẩm vào danh sách
             while (resultSet2.next()) {
                 int productNameId = resultSet2.getInt("ProductNameId");
                 String productsName = resultSet2.getString("ProductName");
                 productNames.add(productsName);
             }
-
-            // Đặt danh sách tên sản phẩm vào ComboBox để hiển thị trong giao diện người dùng
             fieldViewProductName.setItems(productNames);
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Xử lý lỗi kết nối hoặc truy vấn
         }
     }
 
@@ -95,38 +74,42 @@ public class addProductController extends Application {
 
     // Phương thức để thêm sản phẩm
     public void moreProduct(Stage primaryStage) {
+        
+        String selectedCategoryName = fieldViewProductCategoryId.getValue();
+        String selectedProductName = fieldViewProductName.getValue();
 
-        String ProductPrice = fieldViewProductPrice.getText();
-        String Description = fieldViewProductDescriptions.getText();
+        if (selectedCategoryName != null && selectedProductName != null) {
+            String ProductPrice = fieldViewProductPrice.getText();
+            String Description = fieldViewProductDescriptions.getText();
 
-        // Kiểm tra xem các trường nhập liệu có rỗng hay không
+            // Kiểm tra xem các trường nhập liệu có rỗng hay không
 //        if (ProductName.isEmpty()) {
 //            showAlert("Vui lòng nhập đủ tên sản phẩm.");
 //            return;
 //        }
-        if (ProductPrice.isEmpty()) {
-            showAlert("Vui lòng nhập đủ giá sản phẩm.");
-            return;
-        }
+            if (ProductPrice.isEmpty()) {
+                showAlert("Vui lòng nhập đủ giá sản phẩm.");
+                return;
+            }
 
-        if (Description.isEmpty()) {
-            showAlert("Vui lòng nhập đủ mô tả sản phẩm.");
-            return;
-        }
+            if (Description.isEmpty()) {
+                showAlert("Vui lòng nhập đủ mô tả sản phẩm.");
+                return;
+            }
 
-        // Chuẩn bị câu lệnh SQL để thêm sản phẩm vào cơ sở dữ liệu
-        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, productImportPrice, price, img, Description) VALUES (?,?,?,?,?,?)";
+            // Chuẩn bị câu lệnh SQL để thêm sản phẩm vào cơ sở dữ liệu
+            String insertSQL = "INSERT INTO product (categoryId, ProductNameId, productImportPrice, price, img, Description) VALUES (?,?,?,?,?,?)";
 
-        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+            try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
-            // Đặt các tham số cho câu lệnh SQL
+                // Đặt các tham số cho câu lệnh SQL
 //            preparedStatement.setInt(1, fieldViewProductCategoryId.getValue().getCategoryId());
 //            preparedStatement.setString(2, ProductName);
-            preparedStatement.setString(3, ProductPrice);
-            // Đặt các tham số khác ở đây
+                preparedStatement.setString(3, ProductPrice);
+                // Đặt các tham số khác ở đây
 
-            // Thực thi câu lệnh SQL
-            int rowsAffected = preparedStatement.executeUpdate();
+                // Thực thi câu lệnh SQL
+                int rowsAffected = preparedStatement.executeUpdate();
 
 //            if (rowsAffected > 0) {
 //                System.out.println("Thêm sản phẩm thành công!");
@@ -135,8 +118,11 @@ public class addProductController extends Application {
 //            } else {
 //                showAlert("Thêm sản phẩm không thành công.");
 //            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Xử lý khi không có giá trị được chọn
         }
     }
 
