@@ -21,6 +21,7 @@ import javafx.event.EventHandler;
 import main.Main;
 
 public class moreProductNameController {
+
     @FXML
     private TextField productNameField;
 
@@ -56,39 +57,6 @@ public class moreProductNameController {
         }
     }
 
-//	 public void addImg(Stage primaryStage) {
-//		primaryStage.setTitle("Image Uploader");
-//
-//		// Tạo một ImageView để hiển thị ảnh đã chọn
-//		ImageView imageView = new ImageView();
-//		imageView.setFitWidth(300); // Điều chỉnh kích thước ảnh
-//		imageView.setFitHeight(300);
-//
-//		// Tạo nút để chọn ảnh
-//		Button uploadButton = new Button("Chọn ảnh");
-//		uploadButton.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent event) {
-//				FileChooser fileChooser = new FileChooser();
-//				fileChooser.getExtensionFilters()
-//						.addAll(new FileChooser.ExtensionFilter("Hình ảnh", "*.jpg", "*.jpeg", "*.png"));
-//				File selectedFile = fileChooser.showOpenDialog(primaryStage);
-//
-//				if (selectedFile != null) {
-//					// Hiển thị ảnh đã chọn lên ImageView
-//					Image image = new Image(selectedFile.toURI().toString());
-//					imageView.setImage(image);
-//				}
-//			}
-//		});
-//
-//		// Tạo layout
-//		VBox vbox = new VBox(uploadButton, imageView);
-//		Scene scene = new Scene(vbox, 400, 400);
-//		primaryStage.setScene(scene);
-//
-//		primaryStage.show();
-//	}
     // insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -125,6 +93,12 @@ public class moreProductNameController {
     public void getFromfromMoreProductName() throws IOException {
         Main.setRoot("/admin/addProductName.fxml");
 
+    }
+
+    public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
     }
 
 }

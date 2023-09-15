@@ -58,7 +58,7 @@ public class CreateTable {
 			String createExportTableSQL = "CREATE TABLE IF NOT EXISTS productDelivery ("
 					+ "productDeliveryID INT PRIMARY KEY AUTO_INCREMENT," + "ProductNameId INT NOT NULL,"
 					+ "dayShipping DATE NOT NULL," + "shipmentQuantity INT NOT NULL,"
-					+ "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId))";
+					+ "FOREIGN KEY (ProductNameId) REFERENCES importgoods(ProductNameId))";
 			statement.executeUpdate(createExportTableSQL);
 
 			// Create "Tồn kho" table

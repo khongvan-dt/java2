@@ -1,4 +1,5 @@
 main\Main.class
+adminController\importGoodsController.class
 adminController\addSupplierController.class
 adminController\loginController.class
 db\CreateTable.class
