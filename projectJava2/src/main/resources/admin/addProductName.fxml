@@ -37,7 +37,7 @@
                 </DropShadow>
             </effect>
         </AnchorPane>
-        <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false" text="Log Out" />
+        <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" onAction="#handleLogout"  layoutY="14.0" mnemonicParsing="false" text="Log Out" />
         <BorderPane layoutX="184.0" layoutY="20.0">
             <top>
                 <Text fx:id="viewProductName" strokeType="OUTSIDE" strokeWidth="0.0" text="More Product Name" wrappingWidth="244.26953125" BorderPane.alignment="CENTER_LEFT">

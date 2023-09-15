@@ -1,41 +1,5 @@
 package adminController;
-//
-//import javafx.stage.Stage;
-//
-//public class callLink {
-////	Stage loginStage = new Stage();
-//
-//    linkA linka = new linkA();
-//    
-//    public void getFormAddCategory() {
-//        linka.addCategory();
-//    }
-//    
-//    public void getFormAddProduct() {
-//        linka.addProduct();
-//    }
-//    
-//    public void getFormfromAddSupplier() {
-//        linka.fromSupplier();
-//    }
-//    
-//    public void getProductName() {
-//        linka.getMoreProductName();
-//    }
-//    
-//    public void getHome() {
-//        linka.openHomePage(loginStage);
-//    }
-//    
-//    public void getLogin() {
-//        linka.openHomePage(loginStage);
-//    }
-//
-//    public void getCreateAccount() {
-//        linka.redirectToLoginForm();
-//    }
-//    
-//}
+
 
 
 public class callLink {

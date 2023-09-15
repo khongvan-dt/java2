@@ -82,7 +82,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false" text="Log Out" onAction="#handleLogout" />
          </children>
       </AnchorPane>
    </children>

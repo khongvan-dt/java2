@@ -26,7 +26,9 @@
                   <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
                   <Button fx:id="btnCustomers" contentDisplay="TOP" layoutY="230.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="127.0" text="Customers" />
                   <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="157.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
-                  <Button fx:id="btnSettings" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
+                  <Button fx:id="btnProduct" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
+                  <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="63.0" prefWidth="127.0" text="Import Goods" />
+
                </children>
             </AnchorPane>
          </children>
@@ -59,7 +61,7 @@
             
          </children>
       </AnchorPane>
-      <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false"  text="Log Out" />
+      <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false"  text="Log Out"  onAction="#handleLogout"/>
       <BorderPane layoutX="184.0" layoutY="20.0">
          <top>
             <Text fx:id="viewProductName" strokeType="OUTSIDE" strokeWidth="0.0" text="More Supplier" wrappingWidth="181.26953125" BorderPane.alignment="CENTER_LEFT">

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import db.connect;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -13,7 +14,6 @@ import javafx.scene.control.Alert.AlertType;
 import main.Main;
 
 public class addSupplierController {
-
 
     @FXML
     private TextField SupplierNameField;
@@ -69,26 +69,31 @@ public class addSupplierController {
 
     // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
-//        linka.openScene("/admin/addCategory.fxml");
         Main.setRoot("/admin/addCategory.fxml");
 
     }
 
     public void getFromAddProduct() throws IOException {
-//        linka.openScene("/admin/addProduct.fxml");
         Main.setRoot("/admin/addProduct.fxml");
 
     }
 
     public void getFromfromAddSupplier() throws IOException {
-//        linka.openScene("/admin/addSupplier.fxml");
         Main.setRoot("/admin/addSupplier.fxml");
 
     }
 
     public void getFromfromMoreProductName() throws IOException {
-//        linka.openScene("/admin/addProductName.fxml");
         Main.setRoot("/admin/addProductName.fxml");
 
+    }
+    public void getFromImportGoods() throws IOException {
+        Main.setRoot("/admin/importGoods.fxml");
+    }
+
+    public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
     }
 }
