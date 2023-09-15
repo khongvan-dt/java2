@@ -38,33 +38,19 @@
                             </rowConstraints>
                             <children>
                                 <Label text="Product Name" GridPane.rowIndex="1" />
-                                <Label prefHeight="17.0" prefWidth="78.0" text="Import date" GridPane.columnIndex="3" />
-                                <TextField fx:id="ExchangeNumber" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                <Label text="Supplier" />
-                                <ComboBox fx:id="SupplierId" GridPane.columnIndex="1">
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="1" />
-                                            <String fx:value="2" />
-                                            <String fx:value="3" />
-                                        </FXCollections>
-                                    </items>
-                                </ComboBox>
-                                <Label text="Number of returned goods" GridPane.rowIndex="2" />
-                                <Button mnemonicParsing="false" text="Add Products" GridPane.rowIndex="3" />
-                                <ComboBox fx:id="fieldViewProductName" layoutX="114.0" layoutY="164.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="1" />
-                                            <String fx:value="2" />
-                                            <String fx:value="3" />
-                                        </FXCollections>
-                                    </items>
-                                </ComboBox>
-                                <Label layoutX="447.0" layoutY="43.0" text="Exchange number" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                <TextField fx:id="importDate" layoutX="550.0" layoutY="39.0" prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="4" />
                                 <Label layoutX="10.0" layoutY="126.0" text="Import quantity" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                 <TextField fx:id="importQuantity" layoutX="550.0" layoutY="39.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <Label text="Supplier" />
+                                <ComboBox fx:id="SupplierId" GridPane.columnIndex="1">
+                                   
+                                </ComboBox>
+                                
+                                <Label text="Exchange number" GridPane.rowIndex="2" />
+                                <Button mnemonicParsing="false" text="Add Products" GridPane.rowIndex="3" />
+                                <ComboBox fx:id="fieldViewProductName" layoutX="114.0" layoutY="164.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                   
+                                </ComboBox>
+                                
                                 <TextField fx:id="lie" layoutX="642.0" layoutY="44.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
@@ -92,7 +78,6 @@
                     </children>
                 </AnchorPane>
                 <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false"  text="Log Out"  onAction="#handleLogout"/>
-                <Button fx:id="btnCustomers1" contentDisplay="TOP" layoutX="10.0" layoutY="406.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="127.0" text="Import Goods" />
             </children>
         </AnchorPane>
     </children>
