@@ -48,7 +48,7 @@ public class CreateTable {
 					+ "supplier_id INT NOT NULL," 
 					+ "import_date DATE NOT NULL," 
 					+ "quantity_imported INT NOT NULL,"
-					+ "quantity_damaged INT NOT NULL," 
+					+ "quantity_returned INT NOT NULL," 
 					+ "total_quantity_received INT NOT NULL,"
 					+ "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId),"
 					+ "FOREIGN KEY (supplier_id) REFERENCES supplier(supplierId))";
