@@ -42,7 +42,7 @@
                               <Label text="Supplier" />
                               <ComboBox fx:id="SupplierId" GridPane.columnIndex="1" />
                               <Label text="Exchange number" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" text="Add Products" GridPane.rowIndex="3" onAction="#insertImportgoods" />
+                              <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Products" GridPane.rowIndex="3" />
                               <ComboBox fx:id="fieldViewProductName" layoutX="114.0" layoutY="164.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="total_quantity_received" layoutX="642.0" layoutY="44.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                               <TextField fx:id="exchangeNumber" layoutX="565.0" layoutY="134.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
@@ -60,7 +60,7 @@
                   </BorderPane>
                   <AnchorPane fx:id="acDashBord" layoutX="10.0">
                      <children>
-                        <AnchorPane layoutY="32.0" prefWidth="127.0">
+                        <AnchorPane prefWidth="127.0">
                            <children>
                               <Button fx:id="btnHome" contentDisplay="TOP" layoutY="13.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
                               <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />

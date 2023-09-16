@@ -49,7 +49,7 @@ public class importGoodsController {
 
     // Tạo một Map để lưu trữ tương ứng giữa tên và ID của ProductsName
     private Map<String, Integer> productNameIdMap = new HashMap<>();
-
+ 
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
