@@ -4,8 +4,18 @@
  */
 package adminController;
 
+/**
+ *
+ * @author Administrator
+ */
 import db.connect;
 import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,19 +23,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import main.Main;
 
-/**
- *
- * @author Administrator
- */
 public class importGoodsController {
 
     @FXML
@@ -48,7 +49,7 @@ public class importGoodsController {
 
     // Tạo một Map để lưu trữ tương ứng giữa tên và ID của ProductsName
     private Map<String, Integer> productNameIdMap = new HashMap<>();
-
+ 
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
@@ -160,15 +161,6 @@ public class importGoodsController {
         }
     }
 
-    //hàm thôn báo 
-    private void showSuccessAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
     // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
@@ -198,6 +190,15 @@ public class importGoodsController {
         // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
+    }
+
+    // insert thành công sẽ hiện
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void showAlert(String message) {

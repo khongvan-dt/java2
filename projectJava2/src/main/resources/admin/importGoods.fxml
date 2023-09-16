@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.importGoodsController">
    <children>
-      <ScrollPane prefHeight="695.0" prefWidth="1300.0">
+      <ScrollPane prefHeight="695.0" prefWidth="1306.0">
          <content>
-            <AnchorPane prefHeight="702.0" prefWidth="1251.0">
+            <AnchorPane prefHeight="709.0" prefWidth="1285.0">
                <children>
                   <BorderPane layoutX="260.0" layoutY="55.0">
                      <center>
@@ -25,8 +25,8 @@
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="168.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="174.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="57.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="157.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="44.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="170.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="195.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -42,11 +42,11 @@
                               <Label text="Supplier" />
                               <ComboBox fx:id="SupplierId" GridPane.columnIndex="1" />
                               <Label text="Exchange number" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Button fx:id="add" mnemonicParsing="false" text="Add Products" GridPane.rowIndex="3" onAction="#insertImportgoods" />
+                              <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Products" GridPane.rowIndex="3" />
                               <ComboBox fx:id="fieldViewProductName" layoutX="114.0" layoutY="164.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="exchangeNumber" layoutX="642.0" layoutY="44.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <TextField fx:id="total_quantity_received" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                              <Label prefHeight="16.0" prefWidth="124.0" text="Total quantity received" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <TextField fx:id="total_quantity_received" layoutX="642.0" layoutY="44.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <TextField fx:id="exchangeNumber" layoutX="565.0" layoutY="134.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Label layoutX="462.0" layoutY="138.0" text="Total quantity received" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </center>
@@ -60,7 +60,7 @@
                   </BorderPane>
                   <AnchorPane fx:id="acDashBord" layoutX="10.0">
                      <children>
-                        <AnchorPane layoutY="32.0" prefWidth="127.0">
+                        <AnchorPane prefWidth="127.0">
                            <children>
                               <Button fx:id="btnHome" contentDisplay="TOP" layoutY="13.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
                               <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
