@@ -1,0 +1,25 @@
+
+.login:hover{
+    -fx-background-color: linear-gradient(to bottom right, #f8babd ,#fcf0f1);
+}
+.login{
+	 -fx-background-color:#f8babd;
+}
+
+.myLays{
+	 -fx-background-color:#fcf0f1;
+}
+.Lays{
+	 -fx-background-color:#f8babd;
+}
+.Lays:hover{
+	 -fx-background-color:linear-gradient(to bottom right, #f8babd ,#fcf0f1);
+}
+.user{
+ -fx-border-color: linear-gradient(to bottom right, #fcf0f1, #fcf0f1);
+    -fx-border-width: 2px;
+}
+.password{
+ -fx-border-color: linear-gradient(to bottom right, #fcf0f1, #fcf0f1);
+    -fx-border-width: 2px;
+}

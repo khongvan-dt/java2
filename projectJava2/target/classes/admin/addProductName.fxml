@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.moreProductNameController">
+    <children>
+        <StackPane fx:id="dashContent" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" />
+        <AnchorPane fx:id="acDashBord" layoutX="10.0">
+            <children>
+                <AnchorPane prefWidth="127.0">
+                    <children>
+                        <Button fx:id="btnHome" contentDisplay="TOP" layoutY="13.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
+                        <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
+                        <Button fx:id="btnCustomers" contentDisplay="TOP" layoutY="230.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="127.0" text="Customers" />
+                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="157.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
+                        <Button fx:id="btnSettings" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Add Products" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="dashHead" layoutX="159.0" layoutY="14.0" prefHeight="42.0" prefWidth="260.0">
+            <effect>
+                <DropShadow height="50.0" radius="12.0" spread="0.15" width="0.0">
+                    <!--               <color>
+                         <Color fx:value="0.7368420958518982, 0.7368420958518982, 0.7368420958518982" />
+                    </color>-->
+                </DropShadow>
+            </effect>
+        </AnchorPane>
+        <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" text="Log Out" />
+        <BorderPane layoutX="184.0" layoutY="20.0">
+            <top>
+                <Text fx:id="viewProductName" strokeType="OUTSIDE" strokeWidth="0.0" text="More Product Name" wrappingWidth="244.26953125" BorderPane.alignment="CENTER_LEFT">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+            </top>
+        </BorderPane>
+        <Label layoutX="220.0" layoutY="77.0" prefHeight="17.0" prefWidth="86.0" text="Product Name" />
+        <TextField fx:id="productNameField" layoutX="340.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" />
+        <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#addProductName" prefHeight="30.0" prefWidth="38.0" text="Add" />
+        <ScrollPane layoutX="210.0" layoutY="142.0" prefHeight="175.0" prefWidth="451.0">
+         <content>
+                <TableView fx:id="productNameTable" prefHeight="174.0" prefWidth="440.0">
+                    <columns>
+                        <TableColumn fx:id="productNameColumn" prefWidth="440.0" text="Tên sản phẩm" />
+                    </columns>
+                </TableView>
+         </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
