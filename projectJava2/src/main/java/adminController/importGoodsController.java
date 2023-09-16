@@ -114,6 +114,7 @@ public class importGoodsController {
 
     private Map<String, Integer> supplierIdMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
+    
 
     @FXML
     private void initialize() {
@@ -143,9 +144,10 @@ public class importGoodsController {
                 productNames.add(productsName);
                 productNameIdMap.put(productsName, productNameId);
             }
-
             fieldViewProductName.setItems(productNames);
 
+            
+            
             // Load danh sách Nhập hàng vào TableView
             ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
             importIdColumn.setCellValueFactory(new PropertyValueFactory<>("importId"));
