@@ -35,13 +35,12 @@ import javafx.util.Callback;
 import main.Main;
 
 public class moreProductNameController {
-    
 
     @FXML
     private TextField productNameField;
 
     @FXML
-    public void addProductName() {
+    public void addProductName() throws IOException {
         String productName = productNameField.getText();
 
         if (productName.isEmpty()) {
@@ -62,6 +61,7 @@ public class moreProductNameController {
 
                 // Clear the input field after successful addition
                 productNameField.clear();
+                getFromfromMoreProductName();
             } else {
                 showAlert("Failed to add product name.");
             }
