@@ -6,6 +6,7 @@ db\CreateTable.class
 adminController\moreProductNameController.class
 db\connect.class
 adminController\callLink.class
+adminController\moreProductNameController$ProductName.class
 adminController\RegistrationController.class
 adminController\addCategoryController.class
 adminController\addProductController.class
