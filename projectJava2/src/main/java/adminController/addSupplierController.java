@@ -90,7 +90,6 @@ public class addSupplierController {
 
     public void initialize() {
         supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));// tên cột trong db
-
         ObservableList<Supplier> suppliers = FXCollections.observableArrayList(fetchDataFromDatabase());
         supplierTable.setItems(suppliers);
     }
