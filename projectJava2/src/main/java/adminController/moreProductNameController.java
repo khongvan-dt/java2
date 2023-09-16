@@ -71,6 +71,7 @@ public class moreProductNameController {
             e.printStackTrace();
         }
     }
+    
     //in dữ liệu ra bảng 
 
     public class ProductName {
