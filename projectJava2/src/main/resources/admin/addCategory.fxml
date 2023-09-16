@@ -28,7 +28,8 @@
                         <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
                         <Button fx:id="btnCustomers" contentDisplay="TOP" layoutY="230.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="127.0" text="Customers" />
                         <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="157.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
-                        <Button fx:id="btnSettings" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
+                        <Button fx:id="btnProduct" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
+                        <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="63.0" prefWidth="127.0" text="Import Goods" />
                     </children>
                 </AnchorPane>
             </children>
@@ -74,10 +75,10 @@
         <Label layoutX="220.0" layoutY="77.0" text="Category Name" />
         <TextField fx:id="categoryNameField" layoutX="340.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" />
         <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#moreCategory" prefHeight="30.0" prefWidth="38.0" text="Add" />
-      <TableView fx:id="categoryTable" layoutX="240.0" layoutY="202.0" prefHeight="187.0" prefWidth="313.0">
-         <columns>
-            <TableColumn fx:id="categoryNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
-         </columns>
-      </TableView>
+        <TableView fx:id="categoryTable" layoutX="240.0" layoutY="202.0" prefHeight="187.0" prefWidth="313.0">
+            <columns>
+                <TableColumn fx:id="categoryNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
+            </columns>
+        </TableView>
     </children>
 </AnchorPane>

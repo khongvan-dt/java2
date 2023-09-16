@@ -1,31 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package adminController;
 
-/**
- *
- * @author Administrator
- */
 import db.connect;
 import java.io.IOException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-
+import static java.lang.Math.E;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import javafx.event.ActionEvent;
+import javafx.beans.Observable;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.event.ActionEvent;
+import javafx.util.Callback;
 import main.Main;
+import scala.Product;
 
 public class importGoodsController {
 
@@ -44,68 +46,47 @@ public class importGoodsController {
     @FXML
     private TextField total_quantity_received;
 
-    // Tạo một Map để lưu trữ tương ứng giữa tên và ID của Supplier
     private Map<String, Integer> supplierIdMap = new HashMap<>();
-
-    // Tạo một Map để lưu trữ tương ứng giữa tên và ID của ProductsName
     private Map<String, Integer> productNameIdMap = new HashMap<>();
- 
+
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
-            // Tạo một truy vấn SQL để lấy dữ liệu từ cơ sở dữ liệu cho Supplier
+
             String selectSupplier = "SELECT supplierId, supplierName FROM supplier";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
             PreparedStatement preparedStatement = connection.prepareStatement(selectSupplier);
-
-            // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên Supplier
             ObservableList<String> suppliers = FXCollections.observableArrayList();
 
-            // Duyệt qua kết quả truy vấn và thêm tên Supplier vào danh sách và Map tương ứng
             while (resultSet.next()) {
                 int supplierID = resultSet.getInt("supplierId");
                 String supplierName = resultSet.getString("supplierName");
                 suppliers.add(supplierName);
-                supplierIdMap.put(supplierName, supplierID); // Lưu tên và ID vào Map
+                supplierIdMap.put(supplierName, supplierID);
             }
 
-            // Đặt danh sách tên Supplier vào ComboBox để hiển thị trong giao diện người dùng
             SupplierId.setItems(suppliers);
 
-            // Tạo một truy vấn SQL để lấy dữ liệu tên sản phẩm từ cơ sở dữ liệu cho ProductsName
             String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
             PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-
-            // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet2 = preparedStatement2.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên ProductsName
             ObservableList<String> productNames = FXCollections.observableArrayList();
 
-            // Duyệt qua kết quả truy vấn và thêm tên ProductsName vào danh sách và Map tương ứng
             while (resultSet2.next()) {
                 int productNameId = resultSet2.getInt("ProductNameId");
                 String productsName = resultSet2.getString("ProductName");
                 productNames.add(productsName);
-                productNameIdMap.put(productsName, productNameId); // Lưu tên và ID vào Map
+                productNameIdMap.put(productsName, productNameId);
             }
-
-            // Đặt danh sách tên ProductsName vào ComboBox để hiển thị trong giao diện người dùng
             fieldViewProductName.setItems(productNames);
 
+            printData();
         } catch (SQLException e) {
             e.printStackTrace();
-            // Xử lý lỗi kết nối hoặc truy vấn
         }
     }
 
-    public void insertImportgoods() {
+    public void insertImportgoods() throws IOException {
         String Quantity = importQuantity.getText();
         String exchange = exchangeNumber.getText();
         String totalQuantity = total_quantity_received.getText();
@@ -121,10 +102,7 @@ public class importGoodsController {
         int supplierId = supplierIdMap.get(selectedSupplierName);
         int productNameId = productNameIdMap.get(selectedProductName);
 
-        // Lấy ngày hiện tại
         java.util.Date currentDate = new java.util.Date();
-
-        // Chuyển đổi thành java.sql.Date (loại bỏ thông tin về giờ)
         Date dateNew = new Date(currentDate.getTime());
 
         String insertSQL = "INSERT INTO importgoods (ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received) "
@@ -142,16 +120,15 @@ public class importGoodsController {
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Add successfully!");
-
-                // Thành công: Hiển thị thông báo thành công
                 showSuccessAlert("Added successfully!");
-
-                // Xóa nội dung trên trường nhập liệu sau khi thêm thành công
                 importQuantity.clear();
                 exchangeNumber.clear();
                 total_quantity_received.clear();
                 SupplierId.getSelectionModel().clearSelection();
                 fieldViewProductName.getSelectionModel().clearSelection();
+                // Sau khi thêm dữ liệu mới, cập nhật lại TableView
+                importTable.getItems().clear();
+                getFromImportGoods();
             } else {
                 showAlert("Failed to add.");
             }
@@ -159,6 +136,121 @@ public class importGoodsController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+// in ra bảng 
+    public class Import {
+
+        private int importId;
+        private String productId;
+        private String supplierId;
+        private Date importDate;
+        private int quantity;
+        private int exchanged;
+        private int totalReceived;
+
+        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged, int totalReceived) {
+            this.importId = importId;
+            this.productId = productName;
+            this.supplierId = supplierName;
+            this.importDate = importDate;
+            this.quantity = quantity;
+            this.exchanged = exchanged;
+            this.totalReceived = totalReceived;
+        }
+
+        public int getImportId() {
+            return importId;
+        }
+
+        public String getProductId() {
+            return productId;
+        }
+
+        public String getSupplierId() {
+            return supplierId;
+        }
+
+        public Date getImportDate() {
+            return importDate;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public int getExchanged() {
+            return exchanged;
+        }
+
+        public int getTotalReceived() {
+            return totalReceived;
+        }
+    }
+    @FXML
+    private TableView<Import> importTable;
+
+    @FXML
+    private TableColumn<Import, String> productNameColumn;
+
+    @FXML
+    private TableColumn<Import, String> supplierNameColumn;
+
+    @FXML
+    private TableColumn<Import, Date> importDateColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> quantityColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> exchangedColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> totalReceivedColumn;
+
+    private List<Import> fetchDataFromDatabase() {
+        List<Import> importDataList = new ArrayList<>();
+
+        try (Connection connection = connect.getConnection()) {
+            String query = "SELECT importGoods.import_id, ProductsName.ProductName, "
+                    + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, "
+                    + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
+                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Import importData = new Import(
+                        resultSet.getInt("importGoods.import_id"),
+                        resultSet.getString("ProductsName.ProductName"),
+                        resultSet.getString("supplier.supplierName"),
+                        resultSet.getDate("importGoods.import_date"),
+                        resultSet.getInt("importGoods.quantity_imported"),
+                        resultSet.getInt("importGoods.quantity_returned"),
+                        resultSet.getInt("importGoods.total_quantity_received")
+                );
+
+                importDataList.add(importData);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return importDataList;
+    }
+
+    public void printData() {
+        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));
+        supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        exchangedColumn.setCellValueFactory(new PropertyValueFactory<>("exchanged"));
+        totalReceivedColumn.setCellValueFactory(new PropertyValueFactory<>("totalReceived"));
+
+        ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
+        importTable.getItems().setAll(imports);
     }
 
     // các hàm gọi giao diện

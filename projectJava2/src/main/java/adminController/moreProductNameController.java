@@ -71,9 +71,8 @@ public class moreProductNameController {
             e.printStackTrace();
         }
     }
-    
-    //in dữ liệu ra bảng 
 
+    //in dữ liệu ra bảng 
     public class ProductName {
 
         private int productId;
@@ -164,6 +163,10 @@ public class moreProductNameController {
     public void getFromfromAddSupplier() throws IOException {
         Main.setRoot("/admin/addSupplier.fxml");
 
+    }
+
+    public void getFromImportGoods() throws IOException {
+        Main.setRoot("/admin/importGoods.fxml");
     }
 
     public void getFromfromMoreProductName() throws IOException {

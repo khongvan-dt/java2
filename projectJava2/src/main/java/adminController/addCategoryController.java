@@ -155,9 +155,12 @@ public class addCategoryController {
     }
 
     public void getFromfromMoreProductName() throws IOException {
-//        linka.openScene("/admin/addProductName.fxml");
         Main.setRoot("/admin/addProductName.fxml");
 
+    }
+
+    public void getFromImportGoods() throws IOException {
+        Main.setRoot("/admin/importGoods.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
