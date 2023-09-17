@@ -7,6 +7,12 @@ import java.sql.SQLException;
 
 import db.connect;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -18,14 +24,25 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import main.Main;
 
 public class moreProductNameController {
+
     @FXML
     private TextField productNameField;
 
     @FXML
-    public void addProductName() {
+    public void addProductName() throws IOException {
         String productName = productNameField.getText();
 
         if (productName.isEmpty()) {
@@ -46,6 +63,7 @@ public class moreProductNameController {
 
                 // Clear the input field after successful addition
                 productNameField.clear();
+                getFromfromMoreProductName();
             } else {
                 showAlert("Failed to add product name.");
             }
@@ -56,39 +74,98 @@ public class moreProductNameController {
         }
     }
 
-//	 public void addImg(Stage primaryStage) {
-//		primaryStage.setTitle("Image Uploader");
-//
-//		// Tạo một ImageView để hiển thị ảnh đã chọn
-//		ImageView imageView = new ImageView();
-//		imageView.setFitWidth(300); // Điều chỉnh kích thước ảnh
-//		imageView.setFitHeight(300);
-//
-//		// Tạo nút để chọn ảnh
-//		Button uploadButton = new Button("Chọn ảnh");
-//		uploadButton.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent event) {
-//				FileChooser fileChooser = new FileChooser();
-//				fileChooser.getExtensionFilters()
-//						.addAll(new FileChooser.ExtensionFilter("Hình ảnh", "*.jpg", "*.jpeg", "*.png"));
-//				File selectedFile = fileChooser.showOpenDialog(primaryStage);
-//
-//				if (selectedFile != null) {
-//					// Hiển thị ảnh đã chọn lên ImageView
-//					Image image = new Image(selectedFile.toURI().toString());
-//					imageView.setImage(image);
-//				}
-//			}
-//		});
-//
-//		// Tạo layout
-//		VBox vbox = new VBox(uploadButton, imageView);
-//		Scene scene = new Scene(vbox, 400, 400);
-//		primaryStage.setScene(scene);
-//
-//		primaryStage.show();
-//	}
+    //in dữ liệu ra bảng 
+    public class ProductName {
+
+        private int productId;
+        private String productName;
+
+        public ProductName(int productId, String productName) {
+            this.productId = productId;
+            this.productName = productName;
+        }
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public String getProductName() {
+            return productName;
+        }
+
+        public void setProductName(String productName) {
+            this.productName = productName;
+        }
+    }
+
+    private List<ProductName> fetchDataFromDatabase() {
+        List<ProductName> productNames = new ArrayList<>();
+
+        try {
+            Connection connection = connect.getConnection();
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM ProductsName";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int productNameId = resultSet.getInt("ProductNameId");
+                String productName = resultSet.getString("ProductName");
+                ProductName product = new ProductName(productNameId, productName);
+                productNames.add(product);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return productNames;
+    }
+    @FXML
+    private TableView<ProductName> productNameTable; //id bảng
+
+    @FXML
+    private TableColumn<ProductName, String> productNameColumn; //id cột 
+
+    public void initialize() {
+        // Khởi tạo các cột để hiển thị dữ liệu từ lớp ProductName
+        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));// tên cột trong db
+
+        // Truy vấn dữ liệu từ cơ sở dữ liệu và điền vào TableView
+        ObservableList<ProductName> productNames = FXCollections.observableArrayList(fetchDataFromDatabase());
+        productNameTable.setItems(productNames);
+    }
+
+    //edit Supplier
+    @FXML
+    private void showeditProductName(ActionEvent event) throws IOException {
+        // Lấy hàng đã chọn từ TableView
+        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProductName != null) {
+            // Tải cảnh "Sửa nhà cung cấp" và chuyển dữ liệu nhà cung cấp đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editProductName.fxml"));
+            Parent root = loader.load();
+
+            // để trỏ đến controller của editSupplierController giống như liên kết 
+            editProductNameController editController = loader.getController();
+
+            // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editSupplierController, initData là hàm trong editSupplierController
+            //selectedSupplier là giá trị đã được chọn ở trong table
+            editController.initData(selectedProductName);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            showAlert("Please select the information you want to edit!");
+        }
+    }
+
     // insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -122,9 +199,19 @@ public class moreProductNameController {
 
     }
 
+    public void getFromImportGoods() throws IOException {
+        Main.setRoot("/admin/importGoods.fxml");
+    }
+
     public void getFromfromMoreProductName() throws IOException {
         Main.setRoot("/admin/addProductName.fxml");
 
+    }
+
+    public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
     }
 
 }
