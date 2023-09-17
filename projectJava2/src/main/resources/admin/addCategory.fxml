@@ -80,5 +80,7 @@
                 <TableColumn fx:id="categoryNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
             </columns>
         </TableView>
+        <Button layoutX="240.0" layoutY="398.0" mnemonicParsing="false" onAction="#showEditCategory" text="Sửa" />
+
     </children>
 </AnchorPane>

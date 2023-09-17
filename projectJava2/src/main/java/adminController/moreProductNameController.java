@@ -24,6 +24,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
@@ -90,6 +92,10 @@ public class moreProductNameController {
         public String getProductName() {
             return productName;
         }
+
+        public void setProductName(String productName) {
+            this.productName = productName;
+        }
     }
 
     private List<ProductName> fetchDataFromDatabase() {
@@ -130,6 +136,34 @@ public class moreProductNameController {
         // Truy vấn dữ liệu từ cơ sở dữ liệu và điền vào TableView
         ObservableList<ProductName> productNames = FXCollections.observableArrayList(fetchDataFromDatabase());
         productNameTable.setItems(productNames);
+    }
+
+    //edit Supplier
+    @FXML
+    private void showeditProductName(ActionEvent event) throws IOException {
+        // Lấy hàng đã chọn từ TableView
+        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProductName != null) {
+            // Tải cảnh "Sửa nhà cung cấp" và chuyển dữ liệu nhà cung cấp đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editProductName.fxml"));
+            Parent root = loader.load();
+
+            // để trỏ đến controller của editSupplierController giống như liên kết 
+            editProductNameController editController = loader.getController();
+
+            // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editSupplierController, initData là hàm trong editSupplierController
+            //selectedSupplier là giá trị đã được chọn ở trong table
+            editController.initData(selectedProductName);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            showAlert("Please select the information you want to edit!");
+        }
     }
 
     // insert thành công sẽ hiện
