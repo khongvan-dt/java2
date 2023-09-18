@@ -71,7 +71,6 @@ public class editCategoryController {
             }
         }
     }
-
     // insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

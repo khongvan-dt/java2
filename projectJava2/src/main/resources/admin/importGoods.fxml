@@ -73,7 +73,7 @@
                     </children>
                 </AnchorPane>
                 <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1213.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" text="Log Out" />
-                <TableView fx:id="importTable" layoutX="306.0" layoutY="442.0" prefHeight="200.0" prefWidth="730.0">
+                <TableView fx:id="importTable" layoutX="306.0" layoutY="442.0" prefHeight="200.0" prefWidth="630.0">
                     <columns>
                         <TableColumn fx:id="productNameColumn" prefWidth="93.0" text="Product" />
                         <TableColumn fx:id="supplierNameColumn" prefWidth="94.0" text="Supplier" />
@@ -81,7 +81,7 @@
                         <TableColumn fx:id="quantityColumn" prefWidth="105.0" text="Quantity" />
                         <TableColumn fx:id="exchangedColumn" prefWidth="114.0" text="Exchanged" />
                         <TableColumn fx:id="totalReceivedColumn" prefWidth="115.199951171875" text="Total Received" />
-                        <TableColumn fx:id="StateColumn" prefWidth="102.39984130859375" text="State" />
+                      
                     </columns>
                 </TableView>
 

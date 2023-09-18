@@ -81,6 +81,9 @@
             </columns>
         </TableView>
         <Button layoutX="240.0" layoutY="398.0" mnemonicParsing="false" onAction="#showEditCategory" text="Sửa" />
+<Button layoutX="330.0" layoutY="398.0" mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
+
+
 
     </children>
 </AnchorPane>

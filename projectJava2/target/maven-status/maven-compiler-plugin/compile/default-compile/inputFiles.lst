@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\addSupplierController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editCategoryController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\loginController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\addProductController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\callLink.java
@@ -7,22 +7,8 @@ D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\RegistrationControll
 D:\JAVAPJ2\java2\projectJava2\src\main\java\db\connect.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\importGoodsController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\db\CreateTable.java
-D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\moreProductNameController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editProductNameController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\main\Main.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\addCategoryController.java
-=======
-C:\java2\projectJava2\src\main\java\adminController\editCategoryController.java
-C:\java2\projectJava2\src\main\java\adminController\importGoodsController.java
-C:\java2\projectJava2\src\main\java\adminController\editSupplierController.java
-C:\java2\projectJava2\src\main\java\adminController\moreProductNameController.java
-C:\java2\projectJava2\src\main\java\adminController\RegistrationController.java
-C:\java2\projectJava2\src\main\java\adminController\addProductController.java
-C:\java2\projectJava2\src\main\java\adminController\addCategoryController.java
-C:\java2\projectJava2\src\main\java\adminController\callLink.java
-C:\java2\projectJava2\src\main\java\main\Main.java
-C:\java2\projectJava2\src\main\java\adminController\loginController.java
-C:\java2\projectJava2\src\main\java\adminController\addSupplierController.java
-C:\java2\projectJava2\src\main\java\db\CreateTable.java
-C:\java2\projectJava2\src\main\java\adminController\editProductNameController.java
-C:\java2\projectJava2\src\main\java\db\connect.java
->>>>>>> main
+D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editSupplierController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\moreProductNameController.java
