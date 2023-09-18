@@ -180,7 +180,7 @@ public class addProductController extends Application {
     }
 
     public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/importGoods.fxml");
+        Main.setRoot("/admin/productDelivery.fxml");
     }
 
     public void getFromInventory() throws IOException {

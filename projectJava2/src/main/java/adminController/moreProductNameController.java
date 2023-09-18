@@ -209,7 +209,7 @@ public class moreProductNameController {
     }
 
     public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/importGoods.fxml");
+        Main.setRoot("/admin/productDelivery.fxml");
     }
 
     public void getFromInventory() throws IOException {

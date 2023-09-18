@@ -1,19 +1,88 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package adminController;
 
+import com.mysql.cj.conf.StringProperty;
+import db.connect;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Font;
 import main.Main;
 
-/**
- *
- * @author Administrator
- */
 public class productDeliveryController {
+
+    @FXML
+    private TableView<ProductDelivery> exportTable;
+
+    @FXML
+    private TableColumn<ProductDelivery, String> supplierNameColumn;
+
+    @FXML
+    private TableColumn<ProductDelivery, String> productNameColumn;
+
+    public void initialize() {
+        String query = "SELECT supplier.supplierName, ProductsName.ProductName "
+                + "FROM importGoods "
+                + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
+                + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            ObservableList<ProductDelivery> productDeliveries = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                String supplierName = resultSet.getString("supplierName");
+                String productName = resultSet.getString("ProductName");
+
+                // Tạo một đối tượng ProductDelivery và thêm vào danh sách
+                productDeliveries.add(new ProductDelivery(supplierName, productName));
+            }
+
+            // Đặt cột dữ liệu cho exportTable
+            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+
+            // Đưa danh sách vào exportTable
+            exportTable.setItems(productDeliveries);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public class ProductDelivery {
+
+        private SimpleStringProperty supplierName;
+        private SimpleStringProperty productName;
+
+        public ProductDelivery(String supplierName, String productName) {
+            this.supplierName = new SimpleStringProperty(supplierName);
+            this.productName = new SimpleStringProperty(productName);
+        }
+
+        public String getSupplierName() {
+            return supplierName.get();
+        }
+
+        public String getProductName() {
+            return productName.get();
+        }
+    }
 
     // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
@@ -41,7 +110,7 @@ public class productDeliveryController {
     }
 
     public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/importGoods.fxml");
+        Main.setRoot("/admin/productDelivery.fxml");
     }
 
     public void getFromInventory() throws IOException {
