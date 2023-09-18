@@ -37,7 +37,7 @@ public class productDeliveryController {
     private TableColumn<ProductDelivery, String> productNameColumn;
 
     public void initialize() {
-        String query = "SELECT supplier.supplierName, ProductsName.ProductName "
+        String query = "SELECT supplier.supplierId,supplier.supplierName, ProductsName.ProductName,ProductsName.ProductNameId "
                 + "FROM importGoods "
                 + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
                 + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId";
@@ -47,11 +47,13 @@ public class productDeliveryController {
             ObservableList<ProductDelivery> productDeliveries = FXCollections.observableArrayList();
 
             while (resultSet.next()) {
+                int productNameId = resultSet.getInt("ProductNameId");
+                int supplierId = resultSet.getInt("supplierId");
                 String supplierName = resultSet.getString("supplierName");
                 String productName = resultSet.getString("ProductName");
 
                 // Tạo một đối tượng ProductDelivery và thêm vào danh sách
-                productDeliveries.add(new ProductDelivery(supplierName, productName));
+                productDeliveries.add(new ProductDelivery(supplierName, productName, productNameId, supplierId));
             }
 
             // Đặt cột dữ liệu cho exportTable
@@ -69,10 +71,14 @@ public class productDeliveryController {
 
         private SimpleStringProperty supplierName;
         private SimpleStringProperty productName;
+        private int supplierId;
+        private int productNameId;
 
-        public ProductDelivery(String supplierName, String productName) {
+        public ProductDelivery(String supplierName, String productName, int supplierId, int productNameId) {
             this.supplierName = new SimpleStringProperty(supplierName);
             this.productName = new SimpleStringProperty(productName);
+            this.supplierId = supplierId;
+            this.productNameId = productNameId;
         }
 
         public String getSupplierName() {
@@ -81,6 +87,14 @@ public class productDeliveryController {
 
         public String getProductName() {
             return productName.get();
+        }
+
+        public int getSupplierId() {
+            return supplierId;
+        }
+
+        public int getProductNameId() {
+            return productNameId;
         }
     }
 
