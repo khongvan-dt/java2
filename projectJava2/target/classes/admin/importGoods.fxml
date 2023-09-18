@@ -83,6 +83,7 @@
                         <TableColumn fx:id="totalReceivedColumn" prefWidth="161.0" text="Total Received" />
                     </columns>
                 </TableView>
+                <Button layoutX="306.0" layoutY="650.0" mnemonicParsing="false" onAction="#showEdit" text="Sửa" />
 
             </children>
         </AnchorPane>
