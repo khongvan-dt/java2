@@ -14,12 +14,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import main.Main;
 
 public class addCategoryController {
@@ -77,8 +81,11 @@ public class addCategoryController {
         public String getCategoryName() {
             return categoryName;
         }
+        public void setCategoryName(String categoryName) {
+            this.categoryName = categoryName;
+        }
     }
-    // in ra bảng 
+
     @FXML
     private TableView<Category> categoryTable;//id bảng
 
@@ -118,7 +125,35 @@ public class addCategoryController {
         return Categorys;
     }
 
+    //edit Supplier
+   @FXML
+    private void showEditCategory(ActionEvent event) throws IOException {
+        // Lấy hàng đã chọn từ TableView
+        Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
+
+        if (selectedCategory != null) {
+            // Tải cảnh "Sửa nhà cung cấp" và chuyển dữ liệu nhà cung cấp đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editCategory.fxml"));
+            Parent root = loader.load();
+
+            // để trỏ đến controller của editCategoryController giống như liên kết 
+            editCategoryController editCategory = loader.getController();
+
+            // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editCategoryController, initData là hàm trong editCategoryController
+            //selectedCategory là giá trị đã được chọn ở trong table
+            editCategory.initData(selectedCategory);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            
+        } else {
+            showAlert("Please select the information you want to edit!");
+        }
+    }
 //insert thành công sẽ hiện 
+
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Success");

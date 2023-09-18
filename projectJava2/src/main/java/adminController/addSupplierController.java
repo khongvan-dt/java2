@@ -14,12 +14,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import main.Main;
 
 public class addSupplierController {
@@ -79,6 +83,10 @@ public class addSupplierController {
         public String getSupplierName() {
             return supplierName;
         }
+
+        public void setSupplierName(String supplierName) {
+            this.supplierName = supplierName;
+        }
     }
 
     // in ra bảng 
@@ -119,6 +127,35 @@ public class addSupplierController {
         }
 
         return suppliers;
+    }
+    
+    //edit Supplier
+
+    @FXML
+    private void showEditSupplier(ActionEvent event) throws IOException {
+        // Lấy hàng đã chọn từ TableView
+        Supplier selectedSupplier = supplierTable.getSelectionModel().getSelectedItem();
+
+        if (selectedSupplier != null) {
+            // Tải cảnh "Sửa nhà cung cấp" và chuyển dữ liệu nhà cung cấp đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editSupplier.fxml"));
+            Parent root = loader.load();
+
+            // để trỏ đến controller của editSupplierController giống như liên kết 
+            editSupplierController editController = loader.getController();
+
+            // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editSupplierController, initData là hàm trong editSupplierController
+            //selectedSupplier là giá trị đã được chọn ở trong table
+            editController.initData(selectedSupplier);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            
+        } else {
+            showAlert("Please select the information you want to edit!");
+        }
     }
 
     // insert thành công sẽ hiện
