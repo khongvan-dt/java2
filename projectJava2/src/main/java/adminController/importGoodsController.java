@@ -350,6 +350,14 @@ public class importGoodsController {
         Main.setRoot("/admin/importGoods.fxml");
     }
 
+    public void getFromProductDelivery() throws IOException {
+        Main.setRoot("/admin/importGoods.fxml");
+    }
+
+    public void getFromInventory() throws IOException {
+        Main.setRoot("/admin/inventory.fxml");
+    }
+
     public void handleLogout(ActionEvent event) throws IOException {
         // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
         loginController logoutHandler = new loginController();

@@ -19,12 +19,13 @@
             <children>
                 <AnchorPane prefWidth="127.0">
                     <children>
-                        <Button fx:id="btnHome" contentDisplay="TOP" layoutY="13.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
-                        <Button fx:id="btnCategory" contentDisplay="TOP" layoutY="84.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
-                        <Button fx:id="btnCustomers" contentDisplay="TOP" layoutY="230.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="127.0" text="Customers" />
-                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="157.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
-                        <Button fx:id="btnProduct" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
-                        <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutY="301.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="63.0" prefWidth="127.0" text="Import Goods" />
+                        <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
+                  <Button fx:id="btnCategory" contentDisplay="TOP" layoutX="1.0" layoutY="74.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
+                  <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="152.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
+                  <Button fx:id="btnProduct" contentDisplay="TOP" layoutY="224.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
+                  <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutX="1.0" layoutY="297.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="63.0" prefWidth="127.0" text="Import Goods" />
+                  <Button fx:id="btnProductDelivery" contentDisplay="TOP" layoutX="1.0" layoutY="369.0" mnemonicParsing="false" onAction="#getFromProductDelivery" prefHeight="63.0" prefWidth="127.0" text="Product Delivery" />
+                  <Button fx:id="btnInventory" contentDisplay="TOP" layoutY="440.0" mnemonicParsing="false" onAction="#getFromInventory" prefHeight="63.0" prefWidth="127.0" text="Inventory" />
                     </children>
                 </AnchorPane>
             </children>
