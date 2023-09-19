@@ -57,7 +57,8 @@
                 <TableColumn fx:id="productNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
             </columns>
         </TableView>
-        <Button layoutX="230.0" onAction="#showeditProductName" layoutY="396.0" mnemonicParsing="false" text="Sửa" />
+        <Button layoutX="230.0" layoutY="396.0" mnemonicParsing="false" onAction="#showeditProductName" text="Sửa" />
+      <Button layoutX="289.0" layoutY="396.0" mnemonicParsing="false" onAction="#DeleteProductName" text="Delete" />
 
     </children>
 </AnchorPane>
