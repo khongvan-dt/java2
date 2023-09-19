@@ -87,4 +87,8 @@ public class editCategoryController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    void initData(addSupplierController.Supplier selectedSupplier) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
