@@ -160,7 +160,7 @@ public class addSupplierController {
         }
     }
 
-
+// xoa
     @FXML
     private void DeleteSupplier(ActionEvent event) throws IOException {
         Supplier selectedSupplier = supplierTable.getSelectionModel().getSelectedItem();
