@@ -82,7 +82,6 @@ public class addCategoryController {
         public String getCategoryName() {
             return categoryName;
         }
-
         public void setCategoryName(String categoryName) {
             this.categoryName = categoryName;
         }
@@ -128,7 +127,7 @@ public class addCategoryController {
     }
 
     //edit Supplier
-    @FXML
+   @FXML
     private void showEditCategory(ActionEvent event) throws IOException {
         // Lấy hàng đã chọn từ TableView
         Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
@@ -144,18 +143,19 @@ public class addCategoryController {
             // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editCategoryController, initData là hàm trong editCategoryController
             //selectedCategory là giá trị đã được chọn ở trong table
             editCategory.initData(selectedCategory);
-
+            
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
+            
         } else {
             showAlert("Please select the information you want to edit!");
         }
     }
 //insert thành công sẽ hiện 
 @FXML
+
     private void ShowDeleteBTN(ActionEvent event) throws IOException {
         // Lấy hàng đã chọn từ TableView
         Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
@@ -249,16 +249,19 @@ private boolean deleteCategoryFromDatabase(int categoryId) {
     }
 
     public void getFromAddcategory() throws IOException {
+//        linka.openScene("/admin/addCategory.fxml");
         Main.setRoot("/admin/addCategory.fxml");
 
     }
 
     public void getFromAddProduct() throws IOException {
+//        linka.openScene("/admin/addProduct.fxml");
         Main.setRoot("/admin/addProduct.fxml");
 
     }
 
     public void getFromfromAddSupplier() throws IOException {
+//        linka.openScene("/admin/addSupplier.fxml");
         Main.setRoot("/admin/addSupplier.fxml");
 
     }
@@ -270,14 +273,6 @@ private boolean deleteCategoryFromDatabase(int categoryId) {
 
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
-    }
-
-    public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/productDelivery.fxml");
-    }
-
-    public void getFromInventory() throws IOException {
-        Main.setRoot("/admin/inventory.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

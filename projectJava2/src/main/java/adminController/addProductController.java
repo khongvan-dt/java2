@@ -179,14 +179,6 @@ public class addProductController extends Application {
         Main.setRoot("/admin/importGoods.fxml");
     }
 
-    public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/productDelivery.fxml");
-    }
-
-    public void getFromInventory() throws IOException {
-        Main.setRoot("/admin/inventory.fxml");
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");

@@ -1,9 +1,6 @@
-adminController\productDeliveryController.class
 main\Main.class
-adminController\productDeliveryController$ProductDelivery.class
 adminController\importGoodsController$Import.class
 db\connect.class
-adminController\editImportController.class
 adminController\RegistrationController.class
 adminController\addSupplierController$Supplier.class
 adminController\editCategoryController.class

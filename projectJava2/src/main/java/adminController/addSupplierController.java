@@ -128,8 +128,9 @@ public class addSupplierController {
 
         return suppliers;
     }
-
+    
     //edit Supplier
+
     @FXML
     private void showEditSupplier(ActionEvent event) throws IOException {
         // Lấy hàng đã chọn từ TableView
@@ -146,12 +147,12 @@ public class addSupplierController {
             // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editSupplierController, initData là hàm trong editSupplierController
             //selectedSupplier là giá trị đã được chọn ở trong table
             editController.initData(selectedSupplier);
-
+            
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
+            
         } else {
             showAlert("Please select the information you want to edit!");
         }
@@ -197,14 +198,6 @@ public class addSupplierController {
 
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
-    }
-
-    public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/productDelivery.fxml");
-    }
-
-    public void getFromInventory() throws IOException {
-        Main.setRoot("/admin/inventory.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

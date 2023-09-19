@@ -4,7 +4,6 @@
  */
 package adminController;
 
-import adminController.moreProductNameController.ProductName;
 import db.connect;
 import java.io.IOException;
 import java.sql.Connection;
@@ -34,7 +33,7 @@ public class editProductNameController {
     @FXML
     private Button saveButton;
 
-    private ProductName selectedProductName;
+    private moreProductNameController.ProductName selectedProductName;
 
     public void initData(moreProductNameController.ProductName productName) {
         selectedProductName = productName;

@@ -25,10 +25,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.Main;
 import scala.Product;
@@ -149,11 +145,11 @@ public class importGoodsController {
         private String productId;
         private String supplierId;
         private Date importDate;
-        private String quantity;
-        private String exchanged;
-        private String totalReceived;
+        private int quantity;
+        private int exchanged;
+        private int totalReceived;
 
-        public Import(int importId, String productName, String supplierName, Date importDate, String quantity, String exchanged, String totalReceived) {
+        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged, int totalReceived) {
             this.importId = importId;
             this.productId = productName;
             this.supplierId = supplierName;
@@ -179,53 +175,17 @@ public class importGoodsController {
             return importDate;
         }
 
-        public String getQuantity() {
+        public int getQuantity() {
             return quantity;
         }
 
-        public String getExchanged() {
+        public int getExchanged() {
             return exchanged;
         }
 
-        public String getTotalReceived() {
+        public int getTotalReceived() {
             return totalReceived;
         }
-
-        // Phương thức set cho importId
-        public void setImportId(int importId) {
-            this.importId = importId;
-        }
-
-        // Phương thức set cho productId
-        public void setProductId(String productId) {
-            this.productId = productId;
-        }
-
-        // Phương thức set cho supplierId
-        public void setSupplierId(String supplierId) {
-            this.supplierId = supplierId;
-        }
-
-        // Phương thức set cho importDate
-        public void setImportDate(Date importDate) {
-            this.importDate = importDate;
-        }
-
-        // Phương thức set cho quantity
-        public void setQuantity(String quantity) {
-            this.quantity = quantity;
-        }
-
-        // Phương thức set cho exchanged
-        public void setExchanged(String exchanged) {
-            this.exchanged = exchanged;
-        }
-
-        // Phương thức set cho totalReceived
-        public void setTotalReceived(String totalReceived) {
-            this.totalReceived = totalReceived;
-        }
-
     }
     @FXML
     private TableView<Import> importTable;
@@ -266,9 +226,9 @@ public class importGoodsController {
                         resultSet.getString("ProductsName.ProductName"),
                         resultSet.getString("supplier.supplierName"),
                         resultSet.getDate("importGoods.import_date"),
-                        resultSet.getString("importGoods.quantity_imported"),
-                        resultSet.getString("importGoods.quantity_returned"),
-                        resultSet.getString("importGoods.total_quantity_received")
+                        resultSet.getInt("importGoods.quantity_imported"),
+                        resultSet.getInt("importGoods.quantity_returned"),
+                        resultSet.getInt("importGoods.total_quantity_received")
                 );
 
                 importDataList.add(importData);
@@ -291,38 +251,6 @@ public class importGoodsController {
 
         ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
         importTable.getItems().setAll(imports);
-    }
-
-//edit 
-    @FXML
-    private void showEdit(ActionEvent event) throws IOException {
-        // Lấy hàng đã chọn từ TableView
-        Import selectImportTable = importTable.getSelectionModel().getSelectedItem();
-
-        if (selectImportTable != null) {
-            // Tải cảnh "Sửa nhập hàng" và chuyển dữ liệu hàng đã chọn
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editImport.fxml"));
-            Parent root = loader.load();
-
-            // để trỏ đến controller của editImportController
-            editImportController editImport = loader.getController();
-
-            // Truyền dữ liệu hàng đã chọn cho controller của editImportController
-            editImport.initData(selectImportTable);
-
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-            // Add a listener to refresh the table when the edit dialog is closed
-            stage.setOnHidden(e -> {
-                importTable.getItems().clear();
-                printData(); // Reload the table data
-            });
-        } else {
-            showAlert("Please select the information you want to edit!");
-        }
     }
 
     // các hàm gọi giao diện
@@ -348,14 +276,6 @@ public class importGoodsController {
 
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
-    }
-
-    public void getFromProductDelivery() throws IOException {
-        Main.setRoot("/admin/productDelivery.fxml");
-    }
-
-    public void getFromInventory() throws IOException {
-        Main.setRoot("/admin/inventory.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
