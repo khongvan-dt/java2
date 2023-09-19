@@ -1,4 +1,6 @@
+adminController\productDeliveryController.class
 main\Main.class
+adminController\productDeliveryController$ProductDelivery.class
 adminController\importGoodsController$Import.class
 db\connect.class
 adminController\RegistrationController.class
