@@ -66,6 +66,7 @@ public class addSupplierController {
 
     }
 
+
     //in dữ liệu ra bảng 
     public class Supplier {
 
@@ -89,7 +90,6 @@ public class addSupplierController {
             this.supplierName = supplierName;
         }
 
-       
     }
 
     // in ra bảng 
@@ -131,9 +131,8 @@ public class addSupplierController {
 
         return suppliers;
     }
-    
-    //edit Supplier
 
+    //edit Supplier
     @FXML
     private void showEditSupplier(ActionEvent event) throws IOException {
         // Lấy hàng đã chọn từ TableView
@@ -150,66 +149,85 @@ public class addSupplierController {
             // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editSupplierController, initData là hàm trong editSupplierController
             //selectedSupplier là giá trị đã được chọn ở trong table
             editController.initData(selectedSupplier);
-            
+
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            
+
         } else {
             showAlert("Please select the information you want to edit!");
         }
     }
-    
-      @FXML
-private void DeleteSupplier(ActionEvent event) throws IOException {
-    // Get the selected category from the TableView
-      Supplier selectedSupplier = supplierTable.getSelectionModel().getSelectedItem();
 
+// xoa
+    @FXML
+    private void DeleteSupplier(ActionEvent event) throws IOException {
+        Supplier selectedSupplier = supplierTable.getSelectionModel().getSelectedItem();
 
-    if (selectedSupplier != null) {
-        // Show a confirmation dialog to confirm the deletion
-        Alert confirmation = new Alert(AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirm Delete");
-        confirmation.setHeaderText("Are you sure you want to delete this category?");
-        confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-
-        ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
-
-        if (result == ButtonType.YES) {
-            if (deleteSupplerFromDatabase(selectedSupplier.getSupplierId())) {
-                // Remove the deleted category from the TableView
-                supplierTable.getItems().remove(selectedSupplier);
-                showSuccessAlert("Category deleted successfully!");
+        if (selectedSupplier != null) {
+            if (isSupplierUsed(selectedSupplier.getSupplierId())) {
+                // Hiển thị thông báo rằng nhà cung cấp không thể bị xóa do được sử dụng ở nơi khác
+                showAlert("This supplier cannot be deleted as it is used in other tables.");
             } else {
-                showAlert("Failed to delete category.");
+                Alert confirmation = new Alert(AlertType.CONFIRMATION);
+                confirmation.setTitle("Confirm Delete");
+                confirmation.setHeaderText("Are you sure you want to delete this supplier?");
+                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+                if (result == ButtonType.YES) {
+                    if (deleteSupplierFromDatabase(selectedSupplier.getSupplierId())) {
+                        supplierTable.getItems().remove(selectedSupplier);
+                        showSuccessAlert("Supplier deleted successfully!");
+                    } else {
+                        showAlert("Failed to delete supplier.");
+                    }
+                }
             }
+        } else {
+            showAlert("Please select the supplier you want to delete!");
         }
-    } else {
-        showAlert("Please select the category you want to delete!");
     }
-}
 
-private boolean deleteSupplerFromDatabase(int supplierId) {
-    // Implement the logic to delete the category from the database
-    String deleteSQL = "DELETE FROM supplier WHERE supplierId = ?";
-    
-    try (Connection connection = connect.getConnection(); 
-         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
-        
-        preparedStatement.setInt(1, supplierId);
-        int rowsAffected = preparedStatement.executeUpdate();
+    // ... (other methods and code)
+    private boolean isSupplierUsed(int supplierId) {
+        String checkSQL = "SELECT COUNT(*) FROM importgoods WHERE supplier_id = ?";
 
-        return rowsAffected > 0;
-    } catch (SQLException e) {
-        e.printStackTrace();
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(checkSQL)) {
+
+            preparedStatement.setInt(1, supplierId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
-   
 
-}
+    private boolean deleteSupplierFromDatabase(int supplierId) {
+        // Implement the logic to delete the supplier from the database
+        String deleteSQL = "DELETE FROM supplier WHERE supplierId = ?";
 
-    // insert thành công sẽ hiện
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+
+            preparedStatement.setInt(1, supplierId);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+// insert thành công sẽ hiện
+
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -249,6 +267,14 @@ private boolean deleteSupplerFromDatabase(int supplierId) {
 
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
+    }
+
+    public void getFromProductDelivery() throws IOException {
+        Main.setRoot("/admin/productDelivery.fxml");
+    }
+
+    public void getFromInventory() throws IOException {
+        Main.setRoot("/admin/inventory.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

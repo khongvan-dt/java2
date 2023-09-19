@@ -75,6 +75,10 @@ public class moreProductNameController {
         }
     }
 
+    private boolean deleteProductNameFromDatabase(int productId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     //in dữ liệu ra bảng 
     public class ProductName {
 
@@ -170,9 +174,134 @@ public class moreProductNameController {
             showAlert("Please select the information you want to edit!");
         }
     }
-    
+    //xóa
 
-    // insert thành công sẽ hiện
+//    @FXML
+//    private void DeleteProductName(ActionEvent event) throws IOException {
+//        // Get the selected product name from the TableView
+//        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
+//
+//        if (selectedProductName != null) {
+//            if (isProductNameUsed(selectedProductName.getProductId())) {
+//                // Show a warning message that the product name cannot be deleted
+//                showWarningAlert("This product name is used in other tables and cannot be deleted.");
+//            } else {
+//                // Show a confirmation dialog to confirm the deletion
+//                Alert confirmation = new Alert(AlertType.CONFIRMATION);
+//                confirmation.setTitle("Confirm Delete");
+//                confirmation.setHeaderText("Are you sure you want to delete this ProductName?");
+//                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+//
+//                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+//
+//                if (result == ButtonType.YES) {
+//                    if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
+//                        // Remove the deleted product name from the TableView
+//                        productNameTable.getItems().remove(selectedProductName);
+//                        showSuccessAlert("ProductName deleted successfully!");
+//                    } else {
+//                        showAlert("Failed to delete ProductName.");
+//                    }
+//                }
+//            }
+//        } else {
+//            showAlert("Please select the ProductName you want to delete!");
+//        }
+//    }
+    @FXML
+    private void DeleteProductName(ActionEvent event) throws IOException {
+        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProductName != null) {
+            if (isSupplierUsed(selectedProductName.getProductId())) {
+                // Hiển thị thông báo rằng nhà cung cấp không thể bị xóa do được sử dụng ở nơi khác
+                showAlert("This Product Name cannot be deleted as it is used in other tables.");
+            } else {
+                Alert confirmation = new Alert(AlertType.CONFIRMATION);
+                confirmation.setTitle("Confirm Delete");
+                confirmation.setHeaderText("Are you sure you want to delete this Product Name?");
+                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+                if (result == ButtonType.YES) {
+                    if (deleteSupplierFromDatabase(selectedProductName.getProductId())) {
+                        productNameTable.getItems().remove(selectedProductName);
+                        showSuccessAlert("Supplier deleted successfully!");
+                    } else {
+                        showAlert("Failed to delete Product Name.");
+                    }
+                }
+            }
+        } else {
+            showAlert("Please select the supplier you want to delete!");
+        }
+    }
+
+    // ... (other methods and code)
+    private boolean isSupplierUsed(int supplierId) {
+        String checkSQL = "SELECT COUNT(*) FROM importgoods WHERE ProductNameId = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(checkSQL)) {
+
+            preparedStatement.setInt(1, supplierId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private boolean deleteSupplierFromDatabase(int ProductNameId) {
+        // Implement the logic to delete the supplier from the database
+        String deleteSQL = "DELETE FROM ProductsName WHERE ProductNameId = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+
+            preparedStatement.setInt(1, ProductNameId);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean isProductNameUsed(int productId) {
+        String checkSQL = "SELECT COUNT(*) FROM productsname WHERE ProductNameId = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(checkSQL)) {
+
+            preparedStatement.setInt(1, productId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private void showWarningAlert(String message) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+// insert thành công sẽ hiện
+
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -190,6 +319,7 @@ public class moreProductNameController {
         alert.showAndWait();
     }
 
+    // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
 
@@ -205,13 +335,21 @@ public class moreProductNameController {
 
     }
 
+    public void getFromfromMoreProductName() throws IOException {
+        Main.setRoot("/admin/addProductName.fxml");
+
+    }
+
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
     }
 
-    public void getFromfromMoreProductName() throws IOException {
-        Main.setRoot("/admin/addProductName.fxml");
+    public void getFromProductDelivery() throws IOException {
+        Main.setRoot("/admin/productDelivery.fxml");
+    }
 
+    public void getFromInventory() throws IOException {
+        Main.setRoot("/admin/inventory.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
@@ -219,49 +357,5 @@ public class moreProductNameController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
-     @FXML
-private void DeleteProductName(ActionEvent event) throws IOException {
-    // Get the selected category from the TableView
-    ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
 
-    if (selectedProductName != null) {
-        // Show a confirmation dialog to confirm the deletion
-        Alert confirmation = new Alert(AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirm Delete");
-        confirmation.setHeaderText("Are you sure you want to delete this category?");
-        confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-
-        ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
-
-        if (result == ButtonType.YES) {
-            if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
-                // Remove the deleted category from the TableView
-                productNameTable.getItems().remove(selectedProductName);
-                showSuccessAlert("Category deleted successfully!");
-            } else {
-                showAlert("Failed to delete category.");
-            }
-        }
-    } else {
-        showAlert("Please select the category you want to delete!");
-    }
-}
-
-private boolean deleteProductNameFromDatabase(int productId) {
-    // Implement the logic to delete the category from the database
-    String deleteSQL = "DELETE FROM product WHERE productId = ?";
-    
-    try (Connection connection = connect.getConnection(); 
-         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
-        
-        preparedStatement.setInt(1, productId);
-        int rowsAffected = preparedStatement.executeUpdate();
-
-        return rowsAffected > 0;
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
-    }
-}
-    
 }

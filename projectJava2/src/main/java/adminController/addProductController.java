@@ -158,25 +158,37 @@ public class addProductController extends Application {
         alert.showAndWait();
     }
 
-    // Các phương thức để chuyển đổi giao diện
+    // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
+
     }
 
     public void getFromAddProduct() throws IOException {
         Main.setRoot("/admin/addProduct.fxml");
+
     }
 
     public void getFromfromAddSupplier() throws IOException {
         Main.setRoot("/admin/addSupplier.fxml");
+
     }
 
     public void getFromfromMoreProductName() throws IOException {
         Main.setRoot("/admin/addProductName.fxml");
+
     }
 
     public void getFromImportGoods() throws IOException {
         Main.setRoot("/admin/importGoods.fxml");
+    }
+
+    public void getFromProductDelivery() throws IOException {
+        Main.setRoot("/admin/productDelivery.fxml");
+    }
+
+    public void getFromInventory() throws IOException {
+        Main.setRoot("/admin/inventory.fxml");
     }
 
     @Override
