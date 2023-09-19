@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -154,7 +155,82 @@ public class addCategoryController {
         }
     }
 //insert thành công sẽ hiện 
+@FXML
+    private void ShowDeleteBTN(ActionEvent event) throws IOException {
+        // Lấy hàng đã chọn từ TableView
+        Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
 
+        if (selectedCategory != null) {
+            // Tải cảnh "Sửa nhà cung cấp" và chuyển dữ liệu nhà cung cấp đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editCategory.fxml"));
+            Parent root = loader.load();
+
+            // để trỏ đến controller của editCategoryController giống như liên kết 
+            editCategoryController editCategory = loader.getController();
+
+            // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editCategoryController, initData là hàm trong editCategoryController
+            //selectedCategory là giá trị đã được chọn ở trong table
+            editCategory.initData(selectedCategory);
+            
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            
+        } else {
+            showAlert("Please select the information you want to edit!");
+        }
+    }
+    
+    
+    @FXML
+private void deleteCategory(ActionEvent event) throws IOException {
+    // Get the selected category from the TableView
+    Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
+
+    if (selectedCategory != null) {
+        // Show a confirmation dialog to confirm the deletion
+        Alert confirmation = new Alert(AlertType.CONFIRMATION);
+        confirmation.setTitle("Confirm Delete");
+        confirmation.setHeaderText("Are you sure you want to delete this category?");
+        confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+        if (result == ButtonType.YES) {
+            if (deleteCategoryFromDatabase(selectedCategory.getCategoryId())) {
+                // Remove the deleted category from the TableView
+                categoryTable.getItems().remove(selectedCategory);
+                showSuccessAlert("Category deleted successfully!");
+            } else {
+                showAlert("Failed to delete category.");
+            }
+        }
+    } else {
+        showAlert("Please select the category you want to delete!");
+    }
+}
+
+private boolean deleteCategoryFromDatabase(int categoryId) {
+    // Implement the logic to delete the category from the database
+    String deleteSQL = "DELETE FROM category WHERE categoryId = ?";
+    
+    try (Connection connection = connect.getConnection(); 
+         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+        
+        preparedStatement.setInt(1, categoryId);
+        int rowsAffected = preparedStatement.executeUpdate();
+
+        return rowsAffected > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
+    
+    
+    
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Success");
