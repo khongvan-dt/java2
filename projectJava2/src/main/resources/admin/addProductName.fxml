@@ -19,7 +19,7 @@
             <children>
                 <AnchorPane prefWidth="127.0">
                     <children>
-                         <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
+                        <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
                         <Button fx:id="btnCategory" contentDisplay="TOP" layoutX="1.0" layoutY="74.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
                         <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="152.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="63.0" prefWidth="127.0" text="Add Supplier" />
                         <Button fx:id="btnProduct" contentDisplay="TOP" layoutY="224.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="63.0" prefWidth="127.0" text="Products" />
@@ -57,8 +57,7 @@
                 <TableColumn fx:id="productNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
             </columns>
         </TableView>
-        <Button layoutX="230.0" layoutY="396.0" mnemonicParsing="false" onAction="#showeditProductName" text="Sửa" />
-      <Button layoutX="289.0" layoutY="396.0" mnemonicParsing="false" onAction="#DeleteProductName" text="Delete" />
+        <Button layoutX="230.0" onAction="#showeditProductName" layoutY="396.0" mnemonicParsing="false" text="Sửa" />
 
     </children>
 </AnchorPane>
