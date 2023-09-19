@@ -9,12 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="695.0" prefWidth="1306.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="adminController.productDeliveryController">
+<ScrollPane prefHeight="695.0" prefWidth="1306.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.productDeliveryController">
     <content>
         <AnchorPane prefHeight="689.0" prefWidth="1304.0">
             <children>
-                <AnchorPane fx:id="acDashBord" layoutX="6.0" layoutY="14.0" prefHeight="505.0" prefWidth="128.0">
+                <AnchorPane fx:id="acDashBord" layoutX="14.0" prefHeight="505.0" prefWidth="128.0">
                     <children>
                         <Button fx:id="btnMoreProductName" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="63.0" prefWidth="127.0" text="Add Product Name" />
                         <Button fx:id="btnCategory" contentDisplay="TOP" layoutX="1.0" layoutY="74.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="63.0" prefWidth="127.0" text="Add Category" />
@@ -34,7 +33,7 @@
                         <TableColumn fx:id="quantityColumn" prefWidth="105.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Button layoutX="482.0" layoutY="539.0" mnemonicParsing="false"  text="Sửa" />
+                <Button layoutX="482.0" layoutY="539.0" mnemonicParsing="false" text="Sửa" />
                 <Label layoutX="441.0" layoutY="127.0" text="Import quantity">
                     <font>
                         <Font name="Arial" size="12.0" />
