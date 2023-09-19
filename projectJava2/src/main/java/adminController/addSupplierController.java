@@ -175,7 +175,7 @@ public class addSupplierController {
         alert.showAndWait();
     }
 
-    // các hàm gọi giao diện
+  // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
 
@@ -200,6 +200,13 @@ public class addSupplierController {
         Main.setRoot("/admin/importGoods.fxml");
     }
 
+    public void getFromProductDelivery() throws IOException {
+        Main.setRoot("/admin/productDelivery.fxml");
+    }
+
+    public void getFromInventory() throws IOException {
+        Main.setRoot("/admin/inventory.fxml");
+    }
     public void handleLogout(ActionEvent event) throws IOException {
         // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
         loginController logoutHandler = new loginController();

@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="276.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="adminController.editProductNameController">
+<AnchorPane prefHeight="276.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.editProductNameController">
     <children>
-        <Label layoutX="131.0" layoutY="14.0" prefHeight="59.0" prefWidth="129.0" text="Edit Product Name">
+        <Label layoutX="107.0" layoutY="14.0" prefHeight="59.0" prefWidth="177.0" text="Edit Product Name">
             <font>
                 <Font name="Bodoni MT Poster Compressed" size="39.0" />
             </font>
