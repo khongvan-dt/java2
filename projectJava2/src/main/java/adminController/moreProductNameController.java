@@ -180,7 +180,7 @@ public class moreProductNameController {
             // Show a confirmation dialog to confirm the deletion
             Alert confirmation = new Alert(AlertType.CONFIRMATION);
             confirmation.setTitle("Confirm Delete");
-            confirmation.setHeaderText("Are you sure you want to delete this category?");
+            confirmation.setHeaderText("Are you sure you want to delete this ProductName?");
             confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
 
             ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
@@ -189,19 +189,19 @@ public class moreProductNameController {
                 if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
                     // Remove the deleted category from the TableView
                     productNameTable.getItems().remove(selectedProductName);
-                    showSuccessAlert("Category deleted successfully!");
+                    showSuccessAlert("ProductName deleted successfully!");
                 } else {
-                    showAlert("Failed to delete category.");
+                    showAlert("Failed to delete ProductName.");
                 }
             }
         } else {
-            showAlert("Please select the category you want to delete!");
+            showAlert("Please select the ProductName you want to delete!");
         }
     }
 
     private boolean deleteProductNameFromDatabase(int productId) {
         // Implement the logic to delete the category from the database
-        String deleteSQL = "DELETE FROM product WHERE productId = ?";
+        String deleteSQL = "DELETE FROM productsname WHERE ProductNameId = ?";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
 

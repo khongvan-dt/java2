@@ -47,7 +47,7 @@ public class addSupplierController {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println(" add category successfully!");
+                System.out.println(" add supplier successfully!");
 
                 // Thành công: Hiển thị thông báo thành công
                 showSuccessAlert("Supplier added successfully!");
@@ -57,7 +57,7 @@ public class addSupplierController {
                 getFromfromAddSupplier();
 
             } else {
-                showAlert("Failed to add category.");
+                showAlert("Failed to add supplier.");
             }
 
         } catch (SQLException e) {
@@ -171,26 +171,26 @@ private void DeleteSupplier(ActionEvent event) throws IOException {
         // Show a confirmation dialog to confirm the deletion
         Alert confirmation = new Alert(AlertType.CONFIRMATION);
         confirmation.setTitle("Confirm Delete");
-        confirmation.setHeaderText("Are you sure you want to delete this category?");
+        confirmation.setHeaderText("Are you sure you want to delete this supplier?");
         confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
 
         ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
 
         if (result == ButtonType.YES) {
-            if (deleteSupplerFromDatabase(selectedSupplier.getSupplierId())) {
+            if (deleteSupplierFromDatabase(selectedSupplier.getSupplierId())) {
                 // Remove the deleted category from the TableView
                 supplierTable.getItems().remove(selectedSupplier);
-                showSuccessAlert("Category deleted successfully!");
+                showSuccessAlert("supplier deleted successfully!");
             } else {
-                showAlert("Failed to delete category.");
+                showAlert("Failed to delete supplier.");
             }
         }
     } else {
-        showAlert("Please select the category you want to delete!");
+        showAlert("Please select the supplier you want to delete!");
     }
 }
 
-private boolean deleteSupplerFromDatabase(int supplierId) {
+private boolean deleteSupplierFromDatabase(int supplierId) {
     // Implement the logic to delete the category from the database
     String deleteSQL = "DELETE FROM supplier WHERE supplierId = ?";
     
