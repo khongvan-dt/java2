@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -87,6 +88,8 @@ public class addSupplierController {
         public void setSupplierName(String supplierName) {
             this.supplierName = supplierName;
         }
+
+       
     }
 
     // in ra bảng 
@@ -157,6 +160,54 @@ public class addSupplierController {
             showAlert("Please select the information you want to edit!");
         }
     }
+    
+      @FXML
+private void DeleteSupplier(ActionEvent event) throws IOException {
+    // Get the selected category from the TableView
+      Supplier selectedSupplier = supplierTable.getSelectionModel().getSelectedItem();
+
+
+    if (selectedSupplier != null) {
+        // Show a confirmation dialog to confirm the deletion
+        Alert confirmation = new Alert(AlertType.CONFIRMATION);
+        confirmation.setTitle("Confirm Delete");
+        confirmation.setHeaderText("Are you sure you want to delete this category?");
+        confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+        if (result == ButtonType.YES) {
+            if (deleteSupplerFromDatabase(selectedSupplier.getSupplierId())) {
+                // Remove the deleted category from the TableView
+                supplierTable.getItems().remove(selectedSupplier);
+                showSuccessAlert("Category deleted successfully!");
+            } else {
+                showAlert("Failed to delete category.");
+            }
+        }
+    } else {
+        showAlert("Please select the category you want to delete!");
+    }
+}
+
+private boolean deleteSupplerFromDatabase(int supplierId) {
+    // Implement the logic to delete the category from the database
+    String deleteSQL = "DELETE FROM supplier WHERE supplierId = ?";
+    
+    try (Connection connection = connect.getConnection(); 
+         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+        
+        preparedStatement.setInt(1, supplierId);
+        int rowsAffected = preparedStatement.executeUpdate();
+
+        return rowsAffected > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+   
+
+}
 
     // insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
