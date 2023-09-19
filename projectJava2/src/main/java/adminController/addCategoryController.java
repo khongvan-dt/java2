@@ -155,6 +155,7 @@ public class addCategoryController {
     }
 //insert thành công sẽ hiện 
 @FXML
+
     private void ShowDeleteBTN(ActionEvent event) throws IOException {
         // Lấy hàng đã chọn từ TableView
         Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();

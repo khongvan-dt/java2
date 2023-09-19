@@ -28,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -95,6 +96,10 @@ public class moreProductNameController {
 
         public void setProductName(String productName) {
             this.productName = productName;
+        }
+
+        private Object getItems() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 
@@ -165,6 +170,7 @@ public class moreProductNameController {
             showAlert("Please select the information you want to edit!");
         }
     }
+    
 
     // insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
@@ -213,5 +219,49 @@ public class moreProductNameController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
+     @FXML
+private void DeleteProductName(ActionEvent event) throws IOException {
+    // Get the selected category from the TableView
+    ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
 
+    if (selectedProductName != null) {
+        // Show a confirmation dialog to confirm the deletion
+        Alert confirmation = new Alert(AlertType.CONFIRMATION);
+        confirmation.setTitle("Confirm Delete");
+        confirmation.setHeaderText("Are you sure you want to delete this category?");
+        confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+        if (result == ButtonType.YES) {
+            if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
+                // Remove the deleted category from the TableView
+                productNameTable.getItems().remove(selectedProductName);
+                showSuccessAlert("Category deleted successfully!");
+            } else {
+                showAlert("Failed to delete category.");
+            }
+        }
+    } else {
+        showAlert("Please select the category you want to delete!");
+    }
+}
+
+private boolean deleteProductNameFromDatabase(int productId) {
+    // Implement the logic to delete the category from the database
+    String deleteSQL = "DELETE FROM product WHERE productId = ?";
+    
+    try (Connection connection = connect.getConnection(); 
+         PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+        
+        preparedStatement.setInt(1, productId);
+        int rowsAffected = preparedStatement.executeUpdate();
+
+        return rowsAffected > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
 }
