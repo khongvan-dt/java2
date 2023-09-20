@@ -79,8 +79,8 @@
                      </font>
                   </Text>
                   <Text layoutX="289.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" wrappingWidth="103.7366943359375" />
-                  <Text layoutX="458.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội." wrappingWidth="136.53668212890625" />
-                  <Text layoutX="464.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt-Hà Nội." wrappingWidth="160.53668212890625" />
+                  <Text layoutX="458.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội." wrappingWidth="136.53668212890625" />
+                  <Text layoutX="458.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt-Hà Nội." wrappingWidth="160.53668212890625" />
                   <Text layoutX="462.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 1: 42B Phan Bội Châu-Hoàn Kiếm-Hà Nội" wrappingWidth="129.33660888671875" />
                   <Text layoutX="289.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="150.13665771484375" />
                   <Text layoutX="289.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả" wrappingWidth="150.13665771484375" />
