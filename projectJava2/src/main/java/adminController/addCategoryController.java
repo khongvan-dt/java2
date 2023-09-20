@@ -283,4 +283,7 @@ public class addCategoryController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
+
+   
+
 }

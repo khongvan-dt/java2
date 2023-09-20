@@ -17,9 +17,10 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" >
-    <children>
-        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="695.0" prefWidth="1280.0">
+<AnchorPane  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1
+>
+    <children  fx:controller="adminController.importGoodsController" >
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="695.0" prefWidth="1280.0" >
             <children>
                 <BorderPane layoutX="260.0" layoutY="55.0">
                     <center>

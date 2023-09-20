@@ -12,70 +12,94 @@
 
 <AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.addCategoryController">
     <children>
-        <AnchorPane layoutX="6.0" layoutY="80.0" prefHeight="596.0" prefWidth="163.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+        <AnchorPane layoutX="6.0" layoutY="80.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
                 <AnchorPane layoutX="4.0" prefHeight="306.0" prefWidth="20.0">
                     <children>
-                        <ImageView fx:id="iconAddCategory" fitHeight="24.0" fitWidth="24.0" layoutY="16.0" onAction="#getFromAddcategory" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlue.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="iconAddProductName" fitHeight="24.0" fitWidth="36.0" layoutY="46.0" onAction="#getFromfromMoreProductName" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlack.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="iconSupplier" fitHeight="42.0" fitWidth="24.0" layoutY="77.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlack.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="iconAddProduct" fitHeight="42.0" fitWidth="24.0" layoutY="109.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlack.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="iconImportGoods" fitHeight="24.0" fitWidth="24.0" layoutY="141.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlack.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fx:id="iconProductDelivery" fitHeight="24.0" fitWidth="24.0" layoutY="172.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/choiseBlack.png" />
-                            </image>
-                        </ImageView>
+                  <Button layoutX="1.0" layoutY="135.0" mnemonicParsing="false" prefHeight="25.0" onAction="#getFromAddProduct"  prefWidth="35.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconImportGoods" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlack.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="2.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" onAction="#getFromAddcategory"  prefWidth="35.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconAddCategory" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlue.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="2.0" onAction="#getFromfromMoreProductName" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconAddProductName" fitHeight="24.0" fitWidth="19.0"  pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlack.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1.0" onAction="#getFromfromAddSupplier" layoutY="71.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconSupplier" fitHeight="24.0" fitWidth="19.0"  pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlack.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1.0" onAction="#getFromAddProduct" layoutY="103.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconAddProduct" fitHeight="24.0" fitWidth="19.0"  pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlack.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1.0" onAction="#getFromAddProduct" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;">
+                     <graphic>
+                              <ImageView fx:id="iconProductDelivery" fitHeight="24.0" fitWidth="19.0"  pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/choiseBlack.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="28.0" prefHeight="306.0" prefWidth="111.0">
+                <AnchorPane layoutX="44.0" prefHeight="317.0" prefWidth="126.0">
                     <children>
                         <Button fx:id="btnCategory" contentDisplay="TOP" layoutX="-4.0" layoutY="14.0" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: white;" text="Add Category" textFill="#81d4fa">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnHome" contentDisplay="TOP" layoutX="-4.0" layoutY="48.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="21.0" prefWidth="121.0" style="-fx-background-color: white;" text="Add Product Name">
+                        <Button fx:id="btnHome" contentDisplay="TOP" layoutX="-7.0" layoutY="45.0" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="21.0" prefWidth="126.0" style="-fx-background-color: white;" text="Add Product Name">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutX="-4.0" layoutY="77.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: white;" text="Add Supplier">
+                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutX="-7.0" layoutY="76.0" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: white;" text="Add Supplier">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnProduct" contentDisplay="TOP" layoutX="-4.0" layoutY="109.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: white;" text="Products">
+                        <Button fx:id="btnProduct" contentDisplay="TOP" layoutX="-7.0" layoutY="108.0" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: white;" text="Products">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutX="-4.0" layoutY="141.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: WHILE;" text="Import Goods">
+                        <Button fx:id="btnImportGoods" contentDisplay="TOP" layoutX="-4.0" layoutY="136.0" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: WHILE;" text="Import Goods">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnProductDelivery" contentDisplay="TOP" layoutX="-4.0" layoutY="172.0" mnemonicParsing="false" onAction="#getFromProductDelivery" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: white;" text="Product Delivery">
+                        <Button fx:id="btnProductDelivery" contentDisplay="TOP" layoutX="-4.0" layoutY="161.0" mnemonicParsing="false" onAction="#getFromProductDelivery" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: white;" text="Product Delivery">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
@@ -95,9 +119,9 @@
         </AnchorPane>
         <AnchorPane layoutX="186.0" layoutY="12.0" prefHeight="60.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <Button fx:id="lblLogOut" contentDisplay="TOP" layoutX="1002.0" layoutY="6.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="73.0" style="-fx-background-color: white;">
+                <Button fx:id="lblLogOut" onAction="#handleLogout" contentDisplay="TOP" layoutX="1002.0" layoutY="6.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="73.0" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fx:id="iconSupplier1" fitHeight="20.0" fitWidth="20.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iconSupplier1" fitHeight="20.0" fitWidth="20.0"  pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icon/out.png" />
                             </image>
@@ -120,7 +144,7 @@
                 </TableView>
                 <Button layoutX="343.0" layoutY="387.0" mnemonicParsing="false" onAction="#deleteCategory" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" onAction="#getFromAddcategory" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0"  pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icon/untitled%20(1).png" />
                             </image>
@@ -129,7 +153,7 @@
                 </Button>
                 <Button layoutX="297.0" layoutY="387.0" mnemonicParsing="false" onAction="#showEditCategory" style="-fx-background-color: white;">
                     <graphic>
-                        <ImageView fx:id="iconSupplier2" fitHeight="30.0" fitWidth="45.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iconSupplier2" fitHeight="30.0" fitWidth="45.0"  pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icon/edit1.png" />
                             </image>
