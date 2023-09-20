@@ -15,6 +15,5 @@ adminController\addCategoryController$Category.class
 adminController\editSupplierController.class
 db\CreateTable.class
 adminController\moreProductNameController.class
-adminController\callLink.class
 adminController\addCategoryController.class
 adminController\editProductNameController.class

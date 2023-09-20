@@ -64,7 +64,7 @@ public class loginController {
                         Main.setRoot("/web/home.fxml");
 
                     } else if ("admin".equals(role)) {
-                        Main.setRoot("/admin/addProductName.fxml");
+                        Main.setRoot("/admin/addCategory.fxml");
 
                     }
                 } else {
