@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1204.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane prefHeight="1300.0" prefWidth="868.0">
+         <children>
+            <Pane layoutX="1.0" prefHeight="120.0" prefWidth="866.0" style="-fx-background-color: pink;">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="319.0" layoutX="274.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../img/shop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutY="131.0" prefHeight="753.0" prefWidth="850.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="267.0" layoutY="14.0" prefHeight="61.0" prefWidth="316.0" text="CONTACT" textFill="#d44790">
+                     <font>
+                        <Font name="Bodoni MT Black" size="36.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink alignment="CENTER" layoutX="338.0" layoutY="68.0" prefHeight="10.0" prefWidth="94.0" text="Trang Home" textFill="#c44b29">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink alignment="CENTER" layoutX="432.0" layoutY="68.0" prefHeight="26.0" prefWidth="74.0" text="Liên hệ" textFill="#29c288">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="346.0" fitWidth="518.0" layoutX="14.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../img/bando.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="425.0" layoutY="134.0" prefHeight="345.0" prefWidth="424.0" style="-fx-border-color: YELLOW;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="86.0" layoutY="14.0" prefHeight="24.0" prefWidth="253.0" text="GỬI PHẢN HỒI CHO CHÚNG TÔI">
+                           <font>
+                              <Font name="Bodoni MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="37.0" layoutY="55.0" prefHeight="25.0" prefWidth="351.0" promptText="HỌ VÀ TÊN" style="-fx-border-color: PINK;" />
+                        <TextField layoutX="37.0" layoutY="98.0" prefHeight="25.0" prefWidth="351.0" promptText="ĐỊA CHỈ" style="-fx-border-color: PINK;" />
+                        <TextField layoutX="37.0" layoutY="146.0" prefHeight="25.0" prefWidth="351.0" promptText="EMAIL" style="-fx-border-color: PINK;" />
+                        <TextField alignment="TOP_LEFT" layoutX="37.0" layoutY="190.0" prefHeight="91.0" prefWidth="351.0" promptText="NỘI DUNG " style="-fx-border-color: PINK;" />
+                        <Button layoutX="308.0" layoutY="298.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: PINK; -fx-background-radius: 2CM;" text="GỬI" textFill="#1aa337">
+                           <font>
+                              <Font name="Bell MT Bold" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Label alignment="CENTER" layoutX="23.0" layoutY="490.0" prefHeight="27.0" prefWidth="114.0" text="Liên hệ" textFill="#e41d1d">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="51.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trang mua sắm luôn đề cao mục tiêu tạo những trải nghiệm tốt nhất cho người dùng.Mọi thắc mắc xi hãy liên hệ với chúng tôi thông qua những thông tin sau:" wrappingWidth="465.81011962890625">
+                     <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="51.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 1: 42B Phan Bội Châu-Hoàn Kiếm-Hà Nội.">
+                     <font>
+                        <Font name="Calibri Light" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="51.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội.">
+                     <font>
+                        <Font name="Calibri Light" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="51.0" layoutY="638.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 48A Lý Thường Kiệt-Hà Nội.">
+                     <font>
+                        <Font name="Calibri Light" size="13.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink layoutX="51.0" layoutY="654.0" prefHeight="23.0" prefWidth="139.0" text="Facebook: adnec." />
+                  <Hyperlink layoutX="51.0" layoutY="683.0" prefHeight="23.0" prefWidth="139.0" text="Zalo: 0123456789." />
+                  <Hyperlink layoutX="51.0" layoutY="706.0" prefHeight="23.0" prefWidth="139.0" text="Hotline: 098765432." />
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="885.0" prefHeight="391.0" prefWidth="853.0">
+               <children>
+                  <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="7.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../img/117.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="251.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../img/fbb.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="295.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../img/in.jpg" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="361.0" layoutY="27.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng kí nhận email." style="-fx-border-color: pink;" />
+                  <Button layoutX="703.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
+                  <Text layoutX="285.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÍNH SÁCH" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả." wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="474.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="474.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 1: 42B Phan Bội Châu-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="474.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="474.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 3: 48A Lý Thường Kiệt-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="659.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIÊN HỆ" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="657.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec." />
+                  <Text layoutX="659.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789." />
+                  <Text layoutX="659.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 098765432." />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

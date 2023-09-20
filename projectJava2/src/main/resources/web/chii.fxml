@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefHeight="1500.0" prefWidth="852.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1518.0" prefWidth="870.0">
+               <children>
+                  <Pane prefHeight="1034.0" prefWidth="852.0">
+                     <children>
+                        <Pane prefHeight="126.0" prefWidth="852.0" style="-fx-background-color: pink;">
+                           <children>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="34.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/gach.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="115.0" fitWidth="437.0" layoutX="193.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/shop.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="677.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/timkiem.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="730.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/giỏ.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="126.0" prefHeight="49.0" prefWidth="838.0" style="-fx-border-color: yellow;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="23.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" text="Trang Chủ ">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <MenuButton layoutX="113.0" layoutY="14.0" mnemonicParsing="false" style="-fx-border-color: pink;" text="Quần áo cho bé " textFill="#a63f3f">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </MenuButton>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="183.0" prefHeight="104.0" prefWidth="837.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="20.0" layoutY="14.0" prefHeight="40.0" prefWidth="186.0" text="QUẦN ÁO CHO BÉ " textFill="#bf3636">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="18.0" />
+                                 </font>
+                              </Label>
+                              <MenuButton layoutX="26.0" layoutY="61.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="773.0" style="-fx-border-color: pink;" text="Tùy chọn" textFill="#181818">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                 </items>
+                              </MenuButton>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="300.0" prefHeight="394.0" prefWidth="836.0">
+                           <children>
+                              <Pane layoutX="41.0" layoutY="22.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                                 <children>
+                                    <ImageView fitHeight="191.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../img/10.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy cộc tay cho bé Mijoo-cổ bèo " textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                       <font>
+                                          <Font name="Arial Narrow" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="209.000 đ" textFill="#d42a2a">
+                                       <font>
+                                          <Font name="Bodoni MT Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                                    <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/giỏ.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="327.0" layoutY="22.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                                 <children>
+                                    <ImageView fitHeight="185.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../img/11.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy hai dây cho vé ren nhún Mijoo" textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                       <font>
+                                          <Font name="Arial Narrow" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="219.000 đ" textFill="#d42a2a">
+                                       <font>
+                                          <Font name="Bodoni MT Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                                    <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/giỏ.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="620.0" layoutY="22.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                                 <children>
+                                    <ImageView fitHeight="189.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../img/12.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy bé tay cộc cách điệu Mijoo" textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                       <font>
+                                          <Font name="Arial Narrow" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="239.000 đ" textFill="#d42a2a">
+                                       <font>
+                                          <Font name="Bodoni MT Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                                    <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/giỏ.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="40.0" layoutY="694.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                           <children>
+                              <ImageView fitHeight="261.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/13.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy cộc tay cho bé Mijoo-cổ bèo " textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                 <font>
+                                    <Font name="Arial Narrow" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="209.000 đ" textFill="#d42a2a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/giỏ.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="327.0" layoutY="694.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                           <children>
+                              <ImageView fitHeight="261.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/10.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy cộc tay cho bé Mijoo-cổ bèo " textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                 <font>
+                                    <Font name="Arial Narrow" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="209.000 đ" textFill="#d42a2a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/giỏ.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="623.0" layoutY="694.0" prefHeight="318.0" prefWidth="182.0" style="-fx-border-color: pink;">
+                           <children>
+                              <ImageView fitHeight="261.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../img/12.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="23.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Váy cộc tay cho bé Mijoo-cổ bèo " textAlignment="CENTER" wrappingWidth="134.93670272827148">
+                                 <font>
+                                    <Font name="Arial Narrow" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" layoutX="28.0" layoutY="240.0" prefHeight="27.0" prefWidth="125.0" text="209.000 đ" textFill="#d42a2a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: pink;" text="Button" />
+                              <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/giỏ.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="24.0" layoutY="1064.0" prefHeight="418.0" prefWidth="314.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
