@@ -122,7 +122,7 @@
                     <graphic>
                         <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" onAction="#getFromAddcategory" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/delete.png" />
+                                <Image url="@../../../../icon/untitled%20(1).png" />
                             </image>
                         </ImageView>
                     </graphic>
