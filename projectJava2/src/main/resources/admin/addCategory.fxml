@@ -18,32 +18,32 @@
                     <children>
                         <ImageView fx:id="iconAddCategory" fitHeight="24.0" fitWidth="24.0" layoutY="16.0" onAction="#getFromAddcategory" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlue.png" />
+                                <Image url="@../icon/choiseBlue.png" />
                             </image>
                         </ImageView>
                         <ImageView fx:id="iconAddProductName" fitHeight="24.0" fitWidth="36.0" layoutY="46.0" onAction="#getFromfromMoreProductName" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlack.png" />
+                                <Image url="@../icon/choiseBlack.png" />
                             </image>
                         </ImageView>
                         <ImageView fx:id="iconSupplier" fitHeight="42.0" fitWidth="24.0" layoutY="77.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlack.png" />
+                                <Image url="@../icon/choiseBlack.png" />
                             </image>
                         </ImageView>
                         <ImageView fx:id="iconAddProduct" fitHeight="42.0" fitWidth="24.0" layoutY="109.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlack.png" />
+                                <Image url="@../icon/choiseBlack.png" />
                             </image>
                         </ImageView>
                         <ImageView fx:id="iconImportGoods" fitHeight="24.0" fitWidth="24.0" layoutY="141.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlack.png" />
+                                <Image url="@../icon/choiseBlack.png" />
                             </image>
                         </ImageView>
                         <ImageView fx:id="iconProductDelivery" fitHeight="24.0" fitWidth="24.0" layoutY="172.0" onAction="#getFromAddProduct" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/choiseBlack.png" />
+                                <Image url="@../icon/choiseBlack.png" />
                             </image>
                         </ImageView>
                     </children>
@@ -99,7 +99,7 @@
                     <graphic>
                         <ImageView fx:id="iconSupplier1" fitHeight="20.0" fitWidth="20.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/out.png" />
+                                <Image url="@../icon/out.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -122,7 +122,7 @@
                     <graphic>
                         <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" onAction="#getFromAddcategory" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/untitled%20(1).png" />
+                                <Image url="@../icon/untitled%20(1).png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -131,7 +131,7 @@
                     <graphic>
                         <ImageView fx:id="iconSupplier2" fitHeight="30.0" fitWidth="45.0" onAction="#getFromfromAddSupplier" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../icon/edit1.png" />
+                                <Image url="@../icon/edit1.png" />
                             </image>
                         </ImageView>
                     </graphic>
