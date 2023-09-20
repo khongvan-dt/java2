@@ -83,7 +83,7 @@ public class RegistrationController  {
 
     @FXML
     private void getLogin() throws IOException {
-       Main.setRoot("/web/home.fxml");
+       Main.setRoot("/admin/login.fxml");
     }
 
     private void showRegistrationForm() throws IOException {

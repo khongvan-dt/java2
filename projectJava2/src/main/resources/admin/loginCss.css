@@ -3,14 +3,14 @@
     -fx-background-color: linear-gradient(to bottom right, #f8babd ,#fcf0f1);
 }
 .login{
-	 -fx-background-color:#f8babd;
+	 -fx-background-color:#FCE4EC;
 }
 
 .myLays{
 	 -fx-background-color:#fcf0f1;
 }
 .Lays{
-	 -fx-background-color:#f8babd;
+	 -fx-background-color:#FCE4EC;
 }
 .Lays:hover{
 	 -fx-background-color:linear-gradient(to bottom right, #f8babd ,#fcf0f1);

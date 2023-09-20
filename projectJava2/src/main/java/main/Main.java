@@ -28,8 +28,8 @@ public class Main extends Application {
             scene.getStylesheets().add(getClass().getResource("/admin/loginCss.css").toExternalForm());
 
             // Đặt độ rộng và độ dài tối thiểu của cửa sổ
-            primaryStage.setMinWidth(800); // Độ rộng tối thiểu
-            primaryStage.setMinHeight(600); // Độ dài tối thiểu
+            primaryStage.setMinWidth(1000); // Độ rộng tối thiểu
+            primaryStage.setMinHeight(800); // Độ dài tối thiểu
 
             primaryStage.setScene(scene);
             primaryStage.show();
