@@ -109,12 +109,12 @@ public class addProductController extends Application {
         String selectedProductName = fieldViewProductName.getValue();
 
         if (productPrice.isEmpty()) {
-            showAlert("Vui lòng nhập đủ giá sản phẩm.");
+            showAlert("Please enter the full product price.");
             return;
         }
 
         if (description.isEmpty()) {
-            showAlert("Vui lòng nhập đủ mô tả sản phẩm.");
+            showAlert("Please enter complete product description.");
             return;
         }
         if (description.length()
@@ -125,7 +125,7 @@ public class addProductController extends Application {
 
         // Check if an image was selected
         if (selectedImageFile == null) {
-            showAlert("Vui lòng chọn ảnh sản phẩm.");
+            showAlert("Please select product photo.");
             return;
         }
 
@@ -145,14 +145,14 @@ public class addProductController extends Application {
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("Thêm sản phẩm thành công!");
-                showSuccessAlert("Thêm sản phẩm thành công!");
+                System.out.println("Add product successfully!");
+                showSuccessAlert("Add product successfully!");
                 fieldViewProductPrice.clear();
                 fieldViewProductDescriptions.clear();
                 // Clear the selected image file
                 selectedImageFile = null;
             } else {
-                showAlert("Thêm sản phẩm không thành công.");
+                showAlert("Add product successfully!");
             }
         } catch (SQLException e) {
             e.printStackTrace();

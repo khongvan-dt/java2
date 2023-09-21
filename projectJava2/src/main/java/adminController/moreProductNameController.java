@@ -51,7 +51,7 @@ public class moreProductNameController {
             return;
         }
           if (productName.length()
-                > 600) {
+                > 800) {
             showAlert("Product Name cannot be longer than 600 characters.");
             return;
         }
