@@ -37,10 +37,16 @@ public class productDeliveryController {
     private TableColumn<ProductDelivery, String> productNameColumn;
 
     public void initialize() {
-        String query = "SELECT supplier.supplierId,supplier.supplierName, ProductsName.ProductName,ProductsName.ProductNameId "
-                + "FROM importGoods "
-                + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
-                + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId";
+        String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, \n"
+                + "       MAX(supplier.supplierName) as supplierName,\n"
+                + "       MAX(ProductsName.ProductName) as ProductName,\n"
+                + "       SUM(quantity_imported) as total_quantity_imported,\n"
+                + "       SUM(quantity_returned) as total_quantity_returned,\n"
+                + "       SUM(total_quantity_received) as total_total_quantity_received\n"
+                + "FROM importGoods \n"
+                + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId \n"
+                + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId \n"
+                + "GROUP BY ProductsName.ProductNameId, supplier.supplierId;"; // Thêm GROUP BY để lấy mỗi giá trị duy nhất của ProductNameId
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
 
