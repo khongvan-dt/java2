@@ -50,6 +50,14 @@ public class moreProductNameController {
             showAlert("Please fill in all fields.");
             return;
         }
+
+        // Kiểm tra độ dài của tên sản phẩm
+        int maxProductNameLength = 500;
+        if (productName.length() > maxProductNameLength) {
+            showAlert("Product name is too long. Maximum length is " + maxProductNameLength + " characters.");
+            return;
+        }
+
         String insertSQL = "INSERT INTO productsname (ProductName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
@@ -176,38 +184,6 @@ public class moreProductNameController {
     }
     //xóa
 
-//    @FXML
-//    private void DeleteProductName(ActionEvent event) throws IOException {
-//        // Get the selected product name from the TableView
-//        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedProductName != null) {
-//            if (isProductNameUsed(selectedProductName.getProductId())) {
-//                // Show a warning message that the product name cannot be deleted
-//                showWarningAlert("This product name is used in other tables and cannot be deleted.");
-//            } else {
-//                // Show a confirmation dialog to confirm the deletion
-//                Alert confirmation = new Alert(AlertType.CONFIRMATION);
-//                confirmation.setTitle("Confirm Delete");
-//                confirmation.setHeaderText("Are you sure you want to delete this ProductName?");
-//                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-//
-//                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
-//
-//                if (result == ButtonType.YES) {
-//                    if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
-//                        // Remove the deleted product name from the TableView
-//                        productNameTable.getItems().remove(selectedProductName);
-//                        showSuccessAlert("ProductName deleted successfully!");
-//                    } else {
-//                        showAlert("Failed to delete ProductName.");
-//                    }
-//                }
-//            }
-//        } else {
-//            showAlert("Please select the ProductName you want to delete!");
-//        }
-//    }
     @FXML
     private void DeleteProductName(ActionEvent event) throws IOException {
         ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();

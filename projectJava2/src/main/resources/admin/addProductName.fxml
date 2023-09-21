@@ -142,9 +142,9 @@
             <Label layoutX="220.0" layoutY="77.0" prefHeight="17.0" prefWidth="86.0" text="Product Name" />
             <TextField fx:id="productNameField" layoutX="340.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" />
             <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#addProductName" prefHeight="30.0" prefWidth="38.0" text="Add" />
-            <TableView fx:id="productNameTable" layoutX="220.0" layoutY="182.0" prefHeight="187.0" prefWidth="313.0">
+            <TableView fx:id="productNameTable" layoutX="220.0" layoutY="182.0" prefHeight="187.0" prefWidth="519.0">
                <columns>
-                  <TableColumn fx:id="productNameColumn" prefWidth="300.0" text="Tên sản phẩm" />
+                  <TableColumn fx:id="productNameColumn" prefWidth="512.0" text="Tên sản phẩm" />
                </columns>
             </TableView>
             <Button layoutX="263.0" layoutY="378.0" mnemonicParsing="false" onAction="#DeleteProductName" style="-fx-background-color: white;">

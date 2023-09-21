@@ -39,7 +39,12 @@ public class addSupplierController {
             showAlert("Please fill in all fields.");
             return;
         }
-
+  // Kiểm tra độ dài của tên sản phẩm
+        int maxSupplierNameLength = 100;
+        if (SupplierName.length() > maxSupplierNameLength) {
+            showAlert("Supplier Name is too long. Maximum length is " + maxSupplierNameLength + " characters.");
+            return;
+        }
         String insertSQL = "INSERT INTO supplier (supplierName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 

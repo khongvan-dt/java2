@@ -39,6 +39,12 @@ public class addCategoryController {
             showAlert("Please fill in all fields.");
             return;
         }
+        // Kiểm tra độ dài 
+        int maxCategoryNameLength = 100;
+        if (CategoryName.length() > maxCategoryNameLength) {
+            showAlert("Category Name is too long. Maximum length is " + maxCategoryNameLength + " characters.");
+            return;
+        }
         String insertSQL = "INSERT INTO category (categoryName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
@@ -283,7 +289,5 @@ public class addCategoryController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
-
-   
 
 }
