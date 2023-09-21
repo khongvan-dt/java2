@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <AnchorPane prefHeight="796.0" prefWidth="866.0">
@@ -20,7 +19,7 @@
                <children>
                   <ImageView fitHeight="132.0" fitWidth="319.0" layoutX="258.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/shop.png" />
+                        <Image url="@../../../img/shop.png" />
                      </image>
                   </ImageView>
                </children>
@@ -29,7 +28,7 @@
                <children>
                   <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="391.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/tich.png" />
+                        <Image url="@../../../img/tich.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="250.0" layoutY="102.0" prefHeight="37.0" prefWidth="333.0" text="BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG !" textFill="#cc2323">
@@ -58,17 +57,17 @@
                <children>
                   <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="7.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/117.png" />
+                        <Image url="@../../../img/117.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="255.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/fbb.jpg" />
+                        <Image url="@../../../img/fbb.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="301.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/in.jpg" />
+                        <Image url="@../../../img/in.jpg" />
                      </image>
                   </ImageView>
                   <TextField layoutX="385.0" layoutY="31.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng í nhận email" style="-fx-border-color: pink;" />

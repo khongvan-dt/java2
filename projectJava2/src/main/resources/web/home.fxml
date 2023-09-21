@@ -16,7 +16,7 @@
    <content>
       <Pane prefHeight="2834.0" prefWidth="866.0">
          <children>
-            <Pane layoutX="104.0" layoutY="435.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
+            <Pane layoutX="76.0" layoutY="433.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
                <children>
                   <Label alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Phương Thức Thanh Toán">
                      <font>
@@ -52,22 +52,22 @@
             </Label>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="63.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/1.png" />
+                  <Image url="@../../../img/1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="268.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/2.png" />
+                  <Image url="@../../../img/2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="475.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/3.png" />
+                  <Image url="@../../../img/2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="668.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/1.png" />
+                  <Image url="@../../../img/3.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="68.0" layoutY="809.0" prefHeight="25.0" prefWidth="117.0" text=" Xe đẩy playkid..." />
@@ -106,22 +106,22 @@
             </Label>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="63.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/4.png" />
+                  <Image url="@../../../img/4.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="259.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/5.png" />
+                  <Image url="@../../../img/5.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="474.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/6.png" />
+                  <Image url="@../../../img/6.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="667.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/7.png" />
+                  <Image url="@../../../img/7.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="67.0" layoutY="1138.0" prefHeight="25.0" prefWidth="117.0" text="Bỉm Merries Nhật" />
@@ -151,12 +151,12 @@
             </Label>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="67.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/10.png" />
+                  <Image url="@../../../img/10.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="259.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/11.png" />
+                  <Image url="@../../../img/11.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="280.0" layoutY="1163.0" prefHeight="25.0" prefWidth="83.0" text="275.000 đ" textFill="#d90a26db">
@@ -182,12 +182,12 @@
             </Label>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="472.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/12.png" />
+                  <Image url="@../../../img/13.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="668.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/13.png" />
+                  <Image url="@../../../img/12.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="56.0" layoutY="1443.0" prefHeight="25.0" prefWidth="139.0" text="Váy hoa tay cộc Mijoo cổ bèo" />
@@ -240,7 +240,7 @@
             </Pane>
             <ImageView fitHeight="334.0" fitWidth="404.0" layoutX="423.0" layoutY="1599.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/112.png" />
+                  <Image url="@../../../img/112.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="53.0" layoutY="2019.0" prefHeight="35.0" prefWidth="233.0" style="-fx-background-color: PINK;" text="THƯ VIỆN ẢNH " textFill="#ec2626">
@@ -250,33 +250,33 @@
             </Label>
             <ImageView fitHeight="338.0" fitWidth="213.0" layoutX="26.0" layoutY="2085.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/113.png" />
+                  <Image url="@../../../img/113.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="338.0" fitWidth="213.0" layoutX="237.0" layoutY="2085.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/114.png" />
+                  <Image url="@../../../img/114.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="338.0" fitWidth="213.0" layoutX="439.0" layoutY="2085.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/115.png" />
+                  <Image url="@../../../img/115.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="338.0" fitWidth="213.0" layoutX="649.0" layoutY="2085.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/116.png" />
+                  <Image url="@../../../img/116.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="40.0" layoutY="2562.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/117.png" />
+                  <Image url="@../../../img/117.png" />
                </image>
             </ImageView>
             <Separator layoutX="10.0" layoutY="2509.0" prefHeight="0.0" prefWidth="824.0" />
-            <ImageView fitHeight="46.0" fitWidth="47.0" layoutX="292.0" layoutY="2524.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="251.0" layoutY="2531.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/fbb.jpg" />
+                  <Image url="@../../../img/fbb.jpg" />
                </image>
             </ImageView>
             <Pane layoutX="-5.0" layoutY="3.0" prefHeight="95.0" prefWidth="870.0" style="-fx-background-color: pink;">
@@ -298,23 +298,23 @@
                   </ImageView>
                   <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="292.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/shop.png" />
+                        <Image url="@../../../img/shop.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <ImageView fx:id="scoll" fitHeight="294.0" fitWidth="885.0" layoutX="73.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="scoll" fitHeight="294.0" fitWidth="809.0" layoutX="37.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/chinh.jpg" />
+                  <Image url="@../../../img/chinh.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="46.0" fitWidth="47.0" layoutX="356.0" layoutY="2524.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="303.0" layoutY="2531.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../img/in.jpg" />
+                  <Image url="@../../../img/in.jpg" />
                </image>
             </ImageView>
-            <TextField layoutX="435.0" layoutY="2533.0" prefHeight="29.0" prefWidth="311.0" promptText="Đăng kí gửi email" style="-fx-border-color: pink;" />
-            <Button layoutX="763.0" layoutY="2535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: pink;" text="Sent" />
+            <TextField layoutX="367.0" layoutY="2534.0" prefHeight="29.0" prefWidth="311.0" promptText="Đăng kí gửi email" style="-fx-border-color: pink;" />
+            <Button layoutX="697.0" layoutY="2536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: pink;" text="Sent" />
             <Text layoutX="347.0" layoutY="2603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách" wrappingWidth="108.53677368164062">
                <font>
                   <Font name="Arial Black" size="14.0" />
@@ -365,6 +365,9 @@
             <Text layoutX="561.0" layoutY="2741.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt-Hà Nội." wrappingWidth="127.7366943359375" />
             <Text layoutX="347.0" layoutY="2707.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="126.13671875" />
             <Text layoutX="349.0" layoutY="2758.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="146.13671875" />
+            <Text layoutX="735.0" layoutY="2630.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec." />
+            <Text layoutX="735.0" layoutY="2672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789." />
+            <Text layoutX="735.0" layoutY="2714.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline:098765432." />
          </children>
       </Pane>
    </content>

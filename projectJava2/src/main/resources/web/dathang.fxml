@@ -23,7 +23,7 @@
                <children>
                   <ImageView fitHeight="101.0" fitWidth="427.0" layoutX="242.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/shop.png" />
+                        <Image url="@../../../img/shop.png" />
                      </image>
                   </ImageView>
                </children>
@@ -52,7 +52,7 @@
                <children>
                   <ImageView fitHeight="82.0" fitWidth="87.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/7.png" />
+                        <Image url="@../../../img/7.png" />
                      </image>
                   </ImageView>
                   <Text layoutX="140.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bú ti giả cho bé Mooji " wrappingWidth="182.13673400878906">
@@ -154,17 +154,17 @@
                <children>
                   <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="29.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/117.png" />
+                        <Image url="@../../../img/117.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="263.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/fbb.jpg" />
+                        <Image url="@../../../img/fbb.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="313.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../img/in.jpg" />
+                        <Image url="@../../../img/in.jpg" />
                      </image>
                   </ImageView>
                   <TextField layoutX="399.0" layoutY="30.0" prefHeight="25.0" prefWidth="296.0" promptText="Đăng kí nhận email" style="-fx-border-color: pink;" />

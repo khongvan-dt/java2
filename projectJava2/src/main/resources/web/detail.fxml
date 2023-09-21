@@ -29,7 +29,7 @@
                         </ImageView>
                         <ImageView fitHeight="102.0" fitWidth="330.0" layoutX="262.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/shop.png" />
+                              <Image url="@../../../img/shop.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="39.0" fitWidth="31.0" layoutX="679.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
@@ -69,12 +69,12 @@
                      <children>
                         <ImageView fitHeight="397.0" fitWidth="388.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/milk.png" />
+                              <Image url="@../../../img/milk.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="389.0" fitWidth="399.0" layoutX="439.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/s1.jpg" />
+                              <Image url="@../../../img/s1.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -83,17 +83,17 @@
                      <children>
                         <ImageView fitHeight="276.0" fitWidth="266.0" layoutX="551.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/s4.jpg" />
+                              <Image url="@../../../img/s4.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="282.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/s4%20-%20Copy.jpg" />
+                              <Image url="@../../../img/s4%20-%20Copy.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="277.0" fitWidth="266.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/s3.jpg" />
+                              <Image url="@../../../img/s3.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -245,7 +245,7 @@
                            <children>
                               <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../img/Screenshot%202023-09-19%20112109.png" />
+                                    <Image url="@../../../img/Screenshot%202023-09-19%20112109.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -270,7 +270,7 @@
                            <children>
                               <ImageView fitHeight="209.0" fitWidth="210.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../img/MIL1.png" />
+                                    <Image url="@../../../img/MIL1.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="26.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa INFATRINI" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -295,7 +295,7 @@
                            <children>
                               <ImageView fitHeight="209.0" fitWidth="208.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../img/Screenshot%202023-09-19%20112150.png" />
+                                    <Image url="@../../../img/Screenshot%202023-09-19%20112150.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="27.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa RESOURCE JUNNIOL" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -323,17 +323,17 @@
                      <children>
                         <ImageView fitHeight="192.0" fitWidth="193.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/117.png" />
+                              <Image url="@../../../img/117.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/fbb.jpg" />
+                              <Image url="@../../../img/fbb.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../img/in.jpg" />
+                              <Image url="@../../../img/in.jpg" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
