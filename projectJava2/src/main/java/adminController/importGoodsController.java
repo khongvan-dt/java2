@@ -85,6 +85,7 @@ public class importGoodsController {
             e.printStackTrace();
         }
     }
+// insert db 
 
     public void insertImportgoods() throws IOException {
         String Quantity = importQuantity.getText();
@@ -253,7 +254,7 @@ public class importGoodsController {
         importTable.getItems().setAll(imports);
     }
 
-  // các hàm gọi giao diện
+    // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
 
