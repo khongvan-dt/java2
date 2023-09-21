@@ -35,58 +35,7 @@ import main.Main;
 
 public class addProductController extends Application {
 
-//    private Map<Integer, String> categoryMap = new HashMap<>();
-//    private Map<Integer, String> productNameMap = new HashMap<>();
-//
-//    @FXML
-//    private void initialize() {
-//        try (Connection connection = connect.getConnection()) {
-//            // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
-//            String selectCategory = "SELECT categoryId, categoryName FROM category";
-//
-//            // Tạo một PreparedStatement để thực thi truy vấn SQL
-//            PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
-//
-//            // Thực thi truy vấn và lấy kết quả
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            ObservableList<String> categoryNames = FXCollections.observableArrayList();
-//
-//            // Duyệt qua kết quả truy vấn và thêm tên danh mục vào danh sách và HashMap
-//            while (resultSet.next()) {
-//                int categoryId = resultSet.getInt("categoryId");
-//                String categoryName = resultSet.getString("categoryName");
-//                categoryNames.add(categoryName);
-//                categoryMap.put(categoryId, categoryName); // Thêm vào HashMap
-//            }
-//
-//            // Đặt danh sách tên danh mục vào ComboBox để hiển thị trong giao diện người dùng
-//            fieldViewProductCategoryId.setItems(categoryNames);
-//
-//            // Tạo một truy vấn SQL để lấy dữ liệu tên sản phẩm từ cơ sở dữ liệu
-//            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-//
-//            // Tạo một PreparedStatement để thực thi truy vấn SQL
-//            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-//
-//            // Thực thi truy vấn và lấy kết quả
-//            ResultSet resultSet2 = preparedStatement2.executeQuery();
-//            ObservableList<String> productNames = FXCollections.observableArrayList();
-//
-//            // Duyệt qua kết quả truy vấn và thêm tên sản phẩm vào danh sách và HashMap
-//            while (resultSet2.next()) {
-//                int productNameId = resultSet2.getInt("ProductNameId");
-//                String productsName = resultSet2.getString("ProductName");
-//                productNames.add(productsName);
-//                productNameMap.put(productNameId, productsName); // Thêm vào HashMap
-//            }
-//
-//            // Đặt danh sách tên sản phẩm vào ComboBox để hiển thị trong giao diện người dùng
-//            fieldViewProductName.setItems(productNames);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
@@ -169,7 +118,7 @@ public class addProductController extends Application {
             return;
         }
         if (description.length()
-                > 200) {
+                > 1000) {
             showAlert("Product descriptions cannot be longer than 1000 characters.");
             return;
         }
