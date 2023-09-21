@@ -50,7 +50,6 @@ public class importGoodsController {
 
     private Map<String, Integer> supplierIdMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
-    
 
     @FXML
     private void initialize() {
@@ -259,31 +258,72 @@ public class importGoodsController {
         ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
         importTable.getItems().setAll(imports);
     }
-  @FXML
-    private void delete(ActionEvent event) throws IOException {
-        // Get the selected category from the TableView
-        importGoodsController.Import selectedCategory = importTable.getSelectionModel().getSelectedItem();
 
-        if (selectedCategory != null) {
-            // Show a confirmation dialog to confirm the deletion
-            Alert confirmation = new Alert(AlertType.CONFIRMATION);
-            confirmation.setTitle("Confirm Delete");
-            confirmation.setHeaderText("Are you sure you want to delete this import?");
-            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+//    // Xóa một hóa đơn nhập hàng
+//    @FXML
+//    private void delete(ActionEvent event) {
+//
+//        // Lấy hóa đơn nhập hàng được chọn từ TableView
+//        Import selectedImport = importTable.getSelectionModel().getSelectedItem();
+//
+//        if (selectedImport != null) {
+//            // Hiển thị hộp thoại xác nhận xóa
+//            Alert confirmation = new Alert(AlertType.CONFIRMATION);
+//            confirmation.setTitle("Confirm Delete");
+//            confirmation.setHeaderText("Are you sure you want to delete this import?");
+//            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+//
+//            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+//
+//            if (result == ButtonType.YES) {
+//                if (deleteImportFromDatabase(selectedImport.getImportId())) {
+//                    // Xóa hóa đơn nhập hàng khỏi TableView
+//                    importTable.getItems().remove(selectedImport);
+//                    showSuccessAlert("Import deleted successfully!");
+//                } else {
+//                    // Hiển thị thông báo không cho phép xóa
+//                    showAlert("Deletion is not allowed due to related records.");
+//                }
+//            }
+//        } else {
+//            showAlert("Please select the import you want to delete!");
+//        }
+//
+//    }
+    @FXML
+    private void delete(ActionEvent event) throws IOException, SQLException {
+        try (Connection connection = connect.getConnection()) {
+            // Lấy hóa đơn nhập hàng được chọn từ TableView
+            Import selectedImport = importTable.getSelectionModel().getSelectedItem();
 
-            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+            if (selectedImport != null) {
+                // Hiển thị hộp thoại xác nhận xóa
+                Alert confirmation = new Alert(AlertType.CONFIRMATION);
+                confirmation.setTitle("Confirm Delete");
+                confirmation.setHeaderText("Are you sure you want to delete this import?");
+                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
 
-            if (result == ButtonType.YES) {
-                if (heh(selectedCategory.getImportId())) {
-                    // Remove the deleted category from the TableView
-                    importTable.getItems().remove(selectedCategory);
-                    showSuccessAlert("import deleted successfully!");
-                } else {
-                    showAlert("Failed to delete import.");
+                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+                if (result == ButtonType.YES) {
+                    if (deleteImportFromDatabase(selectedImport.getImportId())) {
+                        // Xóa hóa đơn nhập hàng khỏi TableView
+                        importTable.getItems().remove(selectedImport);
+                        showSuccessAlert("Import deleted successfully!");
+                    } else {
+                        // Hiển thị thông báo không cho phép xóa
+                        showAlert("Deletion is not allowed due to related records.");
+                    }
                 }
+            } else {
+                showAlert("Please select the import you want to delete!");
             }
-        } else {
-            showAlert("Please select the import you want to delete!");
+        } catch (SQLException e) {
+            // Xử lý lỗi SQL
+            showAlert("An error occurred while deleting the import: " + e.getMessage());
+        } catch (Exception e) {
+            // Xử lý các lỗi khác
+            showAlert("An unexpected error occurred: " + e.getMessage());
         }
     }
 
@@ -296,18 +336,27 @@ public class importGoodsController {
             preparedStatement.setInt(1, import_id);
             int rowsAffected = preparedStatement.executeUpdate();
 
-            return rowsAffected > 0;
+            if (rowsAffected > 0) {
+                // Xóa thành công, hiển thị thông báo thành công
+                showSuccessAlert("Import deleted successfully!");
+                return true;
+            } else {
+                // Hiển thị thông báo không cho phép xóa
+                showAlert("Deletion is not allowed due to related records.");
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
+
     @FXML
     private void edit(ActionEvent event) throws IOException {
-    
-    
+
     }
-  // các hàm gọi giao diện
+    // các hàm gọi giao diện
+
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
 
@@ -346,18 +395,18 @@ public class importGoodsController {
         logoutHandler.handleLogout();
     }
 
-    // insert thành công sẽ hiện
-    private void showSuccessAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
+//    // insert thành công sẽ hiện
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Validation Error");
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Success");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
