@@ -252,8 +252,8 @@ public class productDeliveryController {
         return importItems;
     }
 
-    @FXML
     public void printData() {
+        // Set up column mappings
         productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
         importDate.setCellValueFactory(new PropertyValueFactory<>("dayShipping"));

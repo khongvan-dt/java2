@@ -57,10 +57,10 @@ public class CreateTable {
 
             // Create "Xuất hàng" table
             String createExportTableSQL = "CREATE TABLE IF NOT EXISTS productDelivery ("
-                    + "productDeliveryID INT PRIMARY KEY AUTO_INCREMENT," 
+                    + "productDeliveryID INT PRIMARY KEY AUTO_INCREMENT,"
                     + "ProductNameId INT NOT NULL,"
                     + "supplier_id  INT NOT NULL,"
-                    + "dayShipping DATE NOT NULL," 
+                    + "dayShipping DATE NOT NULL,"
                     + "shipmentQuantity INT NOT NULL,"
                     + "FOREIGN KEY (supplier_id ) REFERENCES importgoods(ProductNameId))"
                     + "FOREIGN KEY (ProductNameId) REFERENCES importgoods(ProductNameId))";
@@ -83,7 +83,7 @@ public class CreateTable {
                     + "price DECIMAL(10, 2) NOT NULL,"
                     + "img  VARCHAR(200) NOT NULL,"
                     + "FOREIGN KEY (categoryId) REFERENCES category(categoryId),"
-                    + "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId))";
+                    + "FOREIGN KEY (ProductNameId) REFERENCES importgoods(ProductNameId))";
             statement.executeUpdate(createProductTableSQL);
 
             // Create "Đơn hàng" table
