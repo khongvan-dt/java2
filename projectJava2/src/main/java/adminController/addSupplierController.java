@@ -39,6 +39,11 @@ public class addSupplierController {
             showAlert("Please fill in all fields.");
             return;
         }
+         if (SupplierName.length()
+                > 100) {
+            showAlert(" CategoryName cannot be longer than 100 characters.");
+            return;
+        }
 
         String insertSQL = "INSERT INTO supplier (supplierName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {

@@ -39,6 +39,11 @@ public class addCategoryController {
             showAlert("Please fill in all fields.");
             return;
         }
+        if (CategoryName.length()
+                > 100) {
+            showAlert(" CategoryName cannot be longer than 100 characters.");
+            return;
+        }
         String insertSQL = "INSERT INTO category (categoryName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
@@ -283,7 +288,5 @@ public class addCategoryController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
-
-   
 
 }

@@ -100,6 +100,7 @@ public class importGoodsController {
             showAlert("Please fill in all fields and select a supplier and product.");
             return;
         }
+        
 
         int supplierId = supplierIdMap.get(selectedSupplierName);
         int productNameId = productNameIdMap.get(selectedProductName);

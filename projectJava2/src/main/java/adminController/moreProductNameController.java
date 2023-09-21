@@ -50,6 +50,11 @@ public class moreProductNameController {
             showAlert("Please fill in all fields.");
             return;
         }
+          if (productName.length()
+                > 600) {
+            showAlert("Product Name cannot be longer than 600 characters.");
+            return;
+        }
         String insertSQL = "INSERT INTO productsname (ProductName) VALUES (?)";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 

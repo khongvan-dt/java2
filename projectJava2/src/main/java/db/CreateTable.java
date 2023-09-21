@@ -33,7 +33,7 @@ public class CreateTable {
             // Create "tên Sản phẩm" table
             String createProductNameTableSQL = "CREATE TABLE IF NOT EXISTS ProductsName ("
                     + "ProductNameId INT PRIMARY KEY AUTO_INCREMENT,"
-                    + "ProductName VARCHAR(100) NOT NULL)";
+                    + "ProductName VARCHAR(600) NOT NULL)";
             statement.executeUpdate(createProductNameTableSQL);
 
             // Create "users" table
@@ -78,7 +78,7 @@ public class CreateTable {
                     + "categoryId INT NOT NULL,"
                     + "ProductNameId INT NOT NULL,"
                     + "productImportPrice DECIMAL(10, 2) NOT NULL,"
-                    + "Description VARCHAR(200) NOT NULL,"
+                    + "Description VARCHAR(1000) NOT NULL,"
                     + "price DECIMAL(10, 2) NOT NULL,"
                     + "img  VARCHAR(200) NOT NULL,"
                     + "FOREIGN KEY (categoryId) REFERENCES category(categoryId),"

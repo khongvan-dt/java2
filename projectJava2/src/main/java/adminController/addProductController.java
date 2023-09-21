@@ -7,10 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javafx.util.StringConverter;
 import db.connect;
+import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -18,22 +21,72 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jdk.jfr.Category;
 import main.Main;
 
 public class addProductController extends Application {
 
-    @FXML
-    private ComboBox<String> fieldViewProductCategoryId;
-
-    @FXML
-    private ComboBox<String> fieldViewProductName;
-
+//    private Map<Integer, String> categoryMap = new HashMap<>();
+//    private Map<Integer, String> productNameMap = new HashMap<>();
+//
+//    @FXML
+//    private void initialize() {
+//        try (Connection connection = connect.getConnection()) {
+//            // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
+//            String selectCategory = "SELECT categoryId, categoryName FROM category";
+//
+//            // Tạo một PreparedStatement để thực thi truy vấn SQL
+//            PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
+//
+//            // Thực thi truy vấn và lấy kết quả
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            ObservableList<String> categoryNames = FXCollections.observableArrayList();
+//
+//            // Duyệt qua kết quả truy vấn và thêm tên danh mục vào danh sách và HashMap
+//            while (resultSet.next()) {
+//                int categoryId = resultSet.getInt("categoryId");
+//                String categoryName = resultSet.getString("categoryName");
+//                categoryNames.add(categoryName);
+//                categoryMap.put(categoryId, categoryName); // Thêm vào HashMap
+//            }
+//
+//            // Đặt danh sách tên danh mục vào ComboBox để hiển thị trong giao diện người dùng
+//            fieldViewProductCategoryId.setItems(categoryNames);
+//
+//            // Tạo một truy vấn SQL để lấy dữ liệu tên sản phẩm từ cơ sở dữ liệu
+//            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
+//
+//            // Tạo một PreparedStatement để thực thi truy vấn SQL
+//            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
+//
+//            // Thực thi truy vấn và lấy kết quả
+//            ResultSet resultSet2 = preparedStatement2.executeQuery();
+//            ObservableList<String> productNames = FXCollections.observableArrayList();
+//
+//            // Duyệt qua kết quả truy vấn và thêm tên sản phẩm vào danh sách và HashMap
+//            while (resultSet2.next()) {
+//                int productNameId = resultSet2.getInt("ProductNameId");
+//                String productsName = resultSet2.getString("ProductName");
+//                productNames.add(productsName);
+//                productNameMap.put(productNameId, productsName); // Thêm vào HashMap
+//            }
+//
+//            // Đặt danh sách tên sản phẩm vào ComboBox để hiển thị trong giao diện người dùng
+//            fieldViewProductName.setItems(productNames);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
     @FXML
     private void initialize() {
         try (Connection connection = connect.getConnection()) {
@@ -45,13 +98,10 @@ public class addProductController extends Application {
 
             // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên danh mục sản phẩm
             ObservableList<String> categoryNames = FXCollections.observableArrayList();
 
             // Duyệt qua kết quả truy vấn và thêm tên danh mục vào danh sách
             while (resultSet.next()) {
-                int categoryId = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("categoryName");
                 categoryNames.add(categoryName);
             }
@@ -67,13 +117,10 @@ public class addProductController extends Application {
 
             // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet2 = preparedStatement2.executeQuery();
-
-            // Tạo một danh sách (ObservableList) để lưu trữ tên sản phẩm
             ObservableList<String> productNames = FXCollections.observableArrayList();
 
             // Duyệt qua kết quả truy vấn và thêm tên sản phẩm vào danh sách
             while (resultSet2.next()) {
-                int productNameId = resultSet2.getInt("ProductNameId");
                 String productsName = resultSet2.getString("ProductName");
                 productNames.add(productsName);
             }
@@ -83,9 +130,15 @@ public class addProductController extends Application {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Xử lý lỗi kết nối hoặc truy vấn
         }
     }
+
+//insert 
+    @FXML
+    private ComboBox<String> fieldViewProductCategoryId;
+
+    @FXML
+    private ComboBox<String> fieldViewProductName;
 
     @FXML
     private TextField fieldViewProductPrice;
@@ -93,51 +146,88 @@ public class addProductController extends Application {
     @FXML
     private TextField fieldViewProductDescriptions;
 
-    // Phương thức để thêm sản phẩm
-    public void moreProduct(Stage primaryStage) {
+    @FXML
+    private TextField ImportPrice;
 
-        String ProductPrice = fieldViewProductPrice.getText();
-        String Description = fieldViewProductDescriptions.getText();
+    private File selectedImageFile;
 
-        // Kiểm tra xem các trường nhập liệu có rỗng hay không
-//        if (ProductName.isEmpty()) {
-//            showAlert("Vui lòng nhập đủ tên sản phẩm.");
-//            return;
-//        }
-        if (ProductPrice.isEmpty()) {
+    @FXML
+    public void moreProduct() {
+        String productPrice = fieldViewProductPrice.getText();
+        String description = fieldViewProductDescriptions.getText();
+        String importPrice = ImportPrice.getText();
+        String selectedCategory = fieldViewProductCategoryId.getValue();
+        String selectedProductName = fieldViewProductName.getValue();
+
+        if (productPrice.isEmpty()) {
             showAlert("Vui lòng nhập đủ giá sản phẩm.");
             return;
         }
 
-        if (Description.isEmpty()) {
+        if (description.isEmpty()) {
             showAlert("Vui lòng nhập đủ mô tả sản phẩm.");
             return;
         }
+        if (description.length()
+                > 200) {
+            showAlert("Product descriptions cannot be longer than 1000 characters.");
+            return;
+        }
 
-        // Chuẩn bị câu lệnh SQL để thêm sản phẩm vào cơ sở dữ liệu
+        // Check if an image was selected
+        if (selectedImageFile == null) {
+            showAlert("Vui lòng chọn ảnh sản phẩm.");
+            return;
+        }
+
+        // Prepare the SQL statement to insert the product into the database
         String insertSQL = "INSERT INTO product (categoryId, ProductNameId, productImportPrice, price, img, Description) VALUES (?,?,?,?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+            // Set parameters for the SQL statement
+            preparedStatement.setInt(1, Integer.parseInt(selectedCategory));
+            preparedStatement.setInt(2, Integer.parseInt(selectedProductName));
+            preparedStatement.setDouble(3, Double.parseDouble(importPrice));
+            preparedStatement.setDouble(4, Double.parseDouble(productPrice));
+            preparedStatement.setString(5, selectedImageFile.getAbsolutePath());
+            preparedStatement.setString(6, description);
 
-            // Đặt các tham số cho câu lệnh SQL
-//            preparedStatement.setInt(1, fieldViewProductCategoryId.getValue().getCategoryId());
-//            preparedStatement.setString(2, ProductName);
-            preparedStatement.setString(3, ProductPrice);
-            // Đặt các tham số khác ở đây
-
-            // Thực thi câu lệnh SQL
+            // Execute the SQL statement
             int rowsAffected = preparedStatement.executeUpdate();
 
-//            if (rowsAffected > 0) {
-//                System.out.println("Thêm sản phẩm thành công!");
-//                showSuccessAlert("Thêm sản phẩm thành công!");
-//                fieldViewProductName.clear();
-//            } else {
-//                showAlert("Thêm sản phẩm không thành công.");
-//            }
+            if (rowsAffected > 0) {
+                System.out.println("Thêm sản phẩm thành công!");
+                showSuccessAlert("Thêm sản phẩm thành công!");
+                fieldViewProductPrice.clear();
+                fieldViewProductDescriptions.clear();
+                // Clear the selected image file
+                selectedImageFile = null;
+            } else {
+                showAlert("Thêm sản phẩm không thành công.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+// Modify the eventImg method to set the selectedImageFile
+    @FXML
+    public void eventImg(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Image File Chooser Example");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg", "*.gif")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        if (selectedFile != null) {
+            selectedImageFile = selectedFile;
+        }
+        primaryStage.close();
+        System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
+
     }
 
     // Hiển thị thông báo thành công
