@@ -57,7 +57,7 @@ public class moreProductNameController {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Add category successfully!");
+                System.out.println("Add productsname successfully!");
 
                 // Success: Show a success message
                 showSuccessAlert("Product name added successfully!");
