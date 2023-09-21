@@ -27,6 +27,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -36,53 +38,8 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 public class addProductController extends Application {
 
-    @FXML
-    private void initialize() {
-        try (Connection connection = connect.getConnection()) {
-            // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
-            String selectCategory = "SELECT categoryId, categoryName FROM category";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
-            PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
-
-            // Thực thi truy vấn và lấy kết quả
-            ResultSet resultSet = preparedStatement.executeQuery();
-            ObservableList<String> categoryNames = FXCollections.observableArrayList();
-
-            // Duyệt qua kết quả truy vấn và thêm tên danh mục vào danh sách
-            while (resultSet.next()) {
-                String categoryName = resultSet.getString("categoryName");
-                categoryNames.add(categoryName);
-            }
-
-            // Đặt danh sách tên danh mục vào ComboBox để hiển thị trong giao diện người dùng
-            fieldViewProductCategoryId.setItems(categoryNames);
-
-            // Tạo một truy vấn SQL để lấy dữ liệu tên sản phẩm từ cơ sở dữ liệu
-            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-
-            // Tạo một PreparedStatement để thực thi truy vấn SQL
-            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-
-            // Thực thi truy vấn và lấy kết quả
-            ResultSet resultSet2 = preparedStatement2.executeQuery();
-            ObservableList<String> productNames = FXCollections.observableArrayList();
-
-            // Duyệt qua kết quả truy vấn và thêm tên sản phẩm vào danh sách
-            while (resultSet2.next()) {
-                String productsName = resultSet2.getString("ProductName");
-                productNames.add(productsName);
-            }
-
-            // Đặt danh sách tên sản phẩm vào ComboBox để hiển thị trong giao diện người dùng
-            fieldViewProductName.setItems(productNames);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-//insert 
+    private Map<String, Integer> categoryNameidMap = new HashMap<>();
+    private Map<String, Integer> productNameIdMap = new HashMap<>();
     @FXML
     private ComboBox<String> fieldViewProductCategoryId;
 
@@ -93,15 +50,56 @@ public class addProductController extends Application {
     private TextField fieldViewProductPrice;
 
     @FXML
-    private TextField fieldViewProductDescriptions;
-
+    private TextArea fieldViewProductDescriptions;
     @FXML
     private TextField ImportPrice;
 
     private File selectedImageFile;
 
     @FXML
-    public void moreProduct() {
+    private void initialize() {
+        // Tạo một HashMap để lưu dữ liệu danh mục sản phẩm
+
+        try (Connection connection = connect.getConnection()) {
+            // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
+            String selectCategory = "SELECT categoryId,categoryName FROM category";
+
+            // Tạo một PreparedStatement để thực thi truy vấn SQL
+            PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
+
+            // Thực thi truy vấn và lấy kết quả
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ObservableList<String> category = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                int categoryId = resultSet.getInt("categoryId");
+                String categoryName = resultSet.getString("categoryName");
+                category.add(categoryName);
+                categoryNameidMap.put(categoryName, categoryId);
+            }
+            fieldViewProductCategoryId.setItems(category);
+
+            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
+            ResultSet resultSet2 = preparedStatement2.executeQuery();
+            ObservableList<String> productNames = FXCollections.observableArrayList();
+
+            while (resultSet2.next()) {
+                int productNameId = resultSet2.getInt("ProductNameId");
+                String productsName = resultSet2.getString("ProductName");
+                productNames.add(productsName);
+                productNameIdMap.put(productsName, productNameId);
+            }
+            fieldViewProductName.setItems(productNames);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+//insert 
+    @FXML
+    public void insertProduct() {
         String productPrice = fieldViewProductPrice.getText();
         String description = fieldViewProductDescriptions.getText();
         String importPrice = ImportPrice.getText();
@@ -117,8 +115,7 @@ public class addProductController extends Application {
             showAlert("Please enter complete product description.");
             return;
         }
-        if (description.length()
-                > 1000) {
+        if (description.length() > 1000) {
             showAlert("Product descriptions cannot be longer than 1000 characters.");
             return;
         }
@@ -133,13 +130,23 @@ public class addProductController extends Application {
             return;
         }
 
+        // Get the category and product IDs from the maps
+        Integer categoryId = categoryNameidMap.get(selectedCategory);
+        Integer productNameId = productNameIdMap.get(selectedProductName);
+        System.out.println(productNameId + "productNameId");
+
+        if (categoryId == null || productNameId == null) {
+            showAlert("Invalid category or product name.");
+            return;
+        }
+
         // Prepare the SQL statement to insert the product into the database
         String insertSQL = "INSERT INTO product (categoryId, ProductNameId, productImportPrice, price, img, Description) VALUES (?,?,?,?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             // Set parameters for the SQL statement
-            preparedStatement.setInt(1, Integer.parseInt(selectedCategory));
-            preparedStatement.setInt(2, Integer.parseInt(selectedProductName));
+            preparedStatement.setInt(1, categoryId);
+            preparedStatement.setInt(2, productNameId);
             preparedStatement.setDouble(3, Double.parseDouble(importPrice));
             preparedStatement.setDouble(4, Double.parseDouble(productPrice));
             preparedStatement.setString(5, selectedImageFile.getAbsolutePath());
@@ -153,10 +160,11 @@ public class addProductController extends Application {
                 showSuccessAlert("Add product successfully!");
                 fieldViewProductPrice.clear();
                 fieldViewProductDescriptions.clear();
-                // Clear the selected image file
+                ImportPrice.clear();
+
                 selectedImageFile = null;
             } else {
-                showAlert("Add product successfully!");
+                showAlert("Failed to add product.");
             }
         } catch (SQLException e) {
             e.printStackTrace();

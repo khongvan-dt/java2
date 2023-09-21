@@ -77,9 +77,9 @@ public class CreateTable {
                     + "productId INT PRIMARY KEY AUTO_INCREMENT,"
                     + "categoryId INT NOT NULL,"
                     + "ProductNameId INT NOT NULL,"
-                    + "productImportPrice DECIMAL(10, 2) NOT NULL,"
+                    + "productImportPrice float NOT NULL,"
                     + "Description VARCHAR(1000) NOT NULL,"
-                    + "price DECIMAL(10, 2) NOT NULL,"
+                    + "price float NOT NULL,"
                     + "img  VARCHAR(200) NOT NULL,"
                     + "FOREIGN KEY (categoryId) REFERENCES category(categoryId),"
                     + "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId))";
