@@ -16,30 +16,30 @@
 
 <ScrollPane prefHeight="3170.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <AnchorPane prefHeight="3535.0" prefWidth="904.0">
+      <AnchorPane prefHeight="3535.0" prefWidth="1315.0">
          <children>
             <Pane prefHeight="3190.0" prefWidth="904.0">
                <children>
-                  <Pane prefHeight="104.0" prefWidth="866.0" style="-fx-background-color: pink;">
+                  <Pane layoutY="-3.0" prefHeight="107.0" prefWidth="866.0" style="-fx-background-color: pink;">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="26.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/gach.png" />
+                              <Image url="@../Desktop/trangcommit/java2/projectJava2/img/gach.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="102.0" fitWidth="330.0" layoutX="262.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/shop.png" />
+                              <Image url="@../img/shop.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="39.0" fitWidth="31.0" layoutX="679.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/timkiem.jpg" />
+                              <Image url="@../Desktop/trangcommit/java2/projectJava2/img/timkiem.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="31.0" fitWidth="33.0" layoutX="737.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/giỏ.jpg" />
+                              <Image url="@../Desktop/trangcommit/java2/projectJava2/img/giỏ.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -69,31 +69,31 @@
                      <children>
                         <ImageView fitHeight="397.0" fitWidth="388.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/milk.png" />
+                              <Image url="@../img/milk.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="389.0" fitWidth="399.0" layoutX="439.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/sua.png" />
+                              <Image url="@../img/s1.jpg" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane layoutX="9.0" layoutY="603.0" prefHeight="285.0" prefWidth="835.0">
                      <children>
-                        <ImageView fitHeight="393.0" fitWidth="266.0" layoutX="551.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="276.0" fitWidth="266.0" layoutX="551.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/s4.jpg" />
+                              <Image url="@../img/s4.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="282.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/s1.jpg" />
+                              <Image url="@../img/s4.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="393.0" fitWidth="266.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="277.0" fitWidth="266.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/s3.jpg" />
+                              <Image url="@../img/s3.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -234,7 +234,7 @@
                         <Text layoutX="37.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
                      </children>
                   </Pane>
-                  <Pane layoutY="2352.0" prefHeight="443.0" prefWidth="855.0">
+                  <Pane layoutX="-2.0" layoutY="2352.0" prefHeight="443.0" prefWidth="855.0">
                      <children>
                         <Label alignment="CENTER" layoutX="24.0" layoutY="14.0" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: PINK; -fx-background-radius: 3CM;" text="SẢN PHẨM LIÊN QUAN" textFill="#a41b1b">
                            <font>
@@ -243,9 +243,9 @@
                         </Label>
                         <Pane layoutX="34.0" layoutY="66.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
                            <children>
-                              <ImageView fitHeight="209.0" fitWidth="312.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/MIL.png" />
+                                    <Image url="@../img/Screenshot%202023-09-19%20112109.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -261,16 +261,16 @@
                               </Button>
                               <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/giỏ.jpg" />
+                                    <Image url="@../Desktop/trangcommit/java2/projectJava2/img/giỏ.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </Pane>
                         <Pane layoutX="315.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
                            <children>
-                              <ImageView fitHeight="209.0" fitWidth="312.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="209.0" fitWidth="210.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/MIL1.png" />
+                                    <Image url="@../img/MIL1.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="26.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa INFATRINI" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -286,16 +286,16 @@
                               </Button>
                               <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="166.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/giỏ.jpg" />
+                                    <Image url="@../Desktop/trangcommit/java2/projectJava2/img/giỏ.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </Pane>
                         <Pane layoutX="600.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
                            <children>
-                              <ImageView fitHeight="209.0" fitWidth="312.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="209.0" fitWidth="208.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/MIL2.png" />
+                                    <Image url="@../img/Screenshot%202023-09-19%20112150.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="27.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa RESOURCE JUNNIOL" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -311,7 +311,7 @@
                               </Button>
                               <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="167.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../img/giỏ.jpg" />
+                                    <Image url="@../Desktop/trangcommit/java2/projectJava2/img/giỏ.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -323,17 +323,17 @@
                      <children>
                         <ImageView fitHeight="192.0" fitWidth="193.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/117.png" />
+                              <Image url="@../img/117.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/fbook.jpg" />
+                              <Image url="@../img/fbb.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/inta.jpg" />
+                              <Image url="@../img/in.jpg" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
@@ -364,7 +364,8 @@
                         <Text layoutX="677.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec" wrappingWidth="118.9366455078125" />
                         <Text layoutX="677.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789" wrappingWidth="118.9366455078125" />
                         <Text layoutX="677.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0987654321" wrappingWidth="118.9366455078125" />
-                        <TextField layoutX="381.0" layoutY="19.0" prefHeight="25.0" prefWidth="331.0" style="-fx-border-color: pink;" />
+                        <TextField layoutX="381.0" layoutY="19.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng khí nhận email" style="-fx-border-color: pink;" />
+                        <Button layoutX="720.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
                      </children>
                   </Pane>
                </children>
