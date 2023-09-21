@@ -161,8 +161,8 @@ public class productDeliveryController {
             showAlert("Error occurred while inserting product delivery.");
         }
     }
-// in ra bảng 
 
+// in ra bảng 
     public class ImportItem {
 
         private String productName;
@@ -225,16 +225,17 @@ public class productDeliveryController {
     @FXML
     private TableColumn<ImportItem, Integer> quantityColumn;
 
-    public void populateImportTable() {
-        String query = "SELECT ProductsName.ProductName, "
-                + "supplier.supplierName,"
-                + "productdelivery.dayShipping, productdelivery.shipmentQuantity FROM productdelivery "
-                + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
-                + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+    public List<ImportItem> populateImportTable() {
+        List<ImportItem> importItems = new ArrayList<>();
 
-        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
+        try (Connection connection = connect.getConnection()) {
+            String query = "SELECT ProductsName.ProductName, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+                    + "FROM productdelivery "
+                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
 
-            ObservableList<ImportItem> importItems = FXCollections.observableArrayList();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 ImportItem importItem = new ImportItem(
@@ -243,25 +244,23 @@ public class productDeliveryController {
                         resultSet.getDate("dayShipping"),
                         resultSet.getInt("shipmentQuantity")
                 );
-
                 importItems.add(importItem);
             }
-
-            ProductDeliveryTable.setItems(importItems);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return importItems;
     }
 
     @FXML
-    public void initialize2() {
+    public void printData() {
         productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
         importDate.setCellValueFactory(new PropertyValueFactory<>("dayShipping"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("shipmentQuantity"));
 
-        populateImportTable();
+        ObservableList<ImportItem> productdelivery = FXCollections.observableArrayList(populateImportTable());
+        ProductDeliveryTable.setItems(productdelivery);
     }
 
     // các hàm gọi giao diện
