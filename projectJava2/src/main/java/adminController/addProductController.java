@@ -32,9 +32,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jdk.jfr.Category;
 import main.Main;
+import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 public class addProductController extends Application {
-
 
     @FXML
     private void initialize() {
@@ -120,6 +120,10 @@ public class addProductController extends Application {
         if (description.length()
                 > 1000) {
             showAlert("Product descriptions cannot be longer than 1000 characters.");
+            return;
+        }
+        if (!isNumeric(productPrice) || !isNumeric(importPrice)) {
+            showAlert("All three values (productPrice, importPrice) must be numeric.");
             return;
         }
 

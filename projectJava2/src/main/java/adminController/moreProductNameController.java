@@ -52,7 +52,7 @@ public class moreProductNameController {
         }
           if (productName.length()
                 > 800) {
-            showAlert("Product Name cannot be longer than 600 characters.");
+            showAlert("Product Name cannot be longer than 800 characters.");
             return;
         }
         String insertSQL = "INSERT INTO productsname (ProductName) VALUES (?)";

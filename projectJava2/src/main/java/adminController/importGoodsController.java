@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Main;
+import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 public class importGoodsController {
 
@@ -100,7 +101,10 @@ public class importGoodsController {
             showAlert("Please fill in all fields and select a supplier and product.");
             return;
         }
-        
+        if (!isNumeric(totalQuantity) || !isNumeric(Quantity) || !isNumeric(exchange)) {
+            showAlert("All three values (totalQuantity, Quantity, and exchange) must be numeric.");
+            return;
+        }
 
         int supplierId = supplierIdMap.get(selectedSupplierName);
         int productNameId = productNameIdMap.get(selectedProductName);
