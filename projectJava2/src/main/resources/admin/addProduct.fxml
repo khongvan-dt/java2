@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="adminController.addProductController">
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.addProductController">
     <children>
         <AnchorPane layoutX="6.0" layoutY="80.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
@@ -165,8 +164,8 @@
                                 <Label text="Category" />
                                 <ComboBox fx:id="fieldViewProductCategoryId" GridPane.columnIndex="1" />
                                 <Label text="Description" GridPane.rowIndex="2" />
-                                <TextArea prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Button mnemonicParsing="false" text="Add Products" GridPane.rowIndex="3" />
+                                <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="3" />
                                 <ComboBox fx:id="fieldViewProductName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <Label layoutX="447.0" layoutY="43.0" text="Product Price" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                 <TextField fx:id="ImportPrice" layoutX="550.0" layoutY="39.0" GridPane.columnIndex="4" />

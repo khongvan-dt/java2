@@ -265,36 +265,7 @@ public class importGoodsController {
     }
 
 //    // Xóa một hóa đơn nhập hàng
-//    @FXML
-//    private void delete(ActionEvent event) {
-//
-//        // Lấy hóa đơn nhập hàng được chọn từ TableView
-//        Import selectedImport = importTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedImport != null) {
-//            // Hiển thị hộp thoại xác nhận xóa
-//            Alert confirmation = new Alert(AlertType.CONFIRMATION);
-//            confirmation.setTitle("Confirm Delete");
-//            confirmation.setHeaderText("Are you sure you want to delete this import?");
-//            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-//
-//            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
-//
-//            if (result == ButtonType.YES) {
-//                if (deleteImportFromDatabase(selectedImport.getImportId())) {
-//                    // Xóa hóa đơn nhập hàng khỏi TableView
-//                    importTable.getItems().remove(selectedImport);
-//                    showSuccessAlert("Import deleted successfully!");
-//                } else {
-//                    // Hiển thị thông báo không cho phép xóa
-//                    showAlert("Deletion is not allowed due to related records.");
-//                }
-//            }
-//        } else {
-//            showAlert("Please select the import you want to delete!");
-//        }
-//
-//    }
+
     @FXML
     private void delete(ActionEvent event) throws IOException, SQLException {
         try (Connection connection = connect.getConnection()) {
