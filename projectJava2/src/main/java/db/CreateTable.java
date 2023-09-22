@@ -77,12 +77,15 @@ public class CreateTable {
             // Create "Sản phẩm" table
             String createProductTableSQL = "CREATE TABLE IF NOT EXISTS product ("
                     + "productId INT PRIMARY KEY AUTO_INCREMENT,"
+                    + "supplier_id INT NOT NULL,"
                     + "categoryId INT NOT NULL,"
                     + "ProductNameId INT NOT NULL,"
                     + "Description VARCHAR(1000) NOT NULL,"
                     + "img  VARCHAR(200) NOT NULL,"
                     + "FOREIGN KEY (categoryId) REFERENCES category(categoryId),"
-                    + "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId))";
+                    + "FOREIGN KEY (ProductNameId) REFERENCES importGoods(ProductNameId))"
+                    + "FOREIGN KEY (supplier_id) REFERENCES importGoods(supplier_id))";
+
             statement.executeUpdate(createProductTableSQL);
 
             // Create "Đơn hàng" table

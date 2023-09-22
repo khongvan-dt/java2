@@ -40,6 +40,7 @@ public class addProductController extends Application {
 
     private Map<String, Integer> categoryNameidMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
+    private Map<String, Integer> supplierNamesMap = new HashMap<>();
 
     @FXML
     private ComboBox<String> fieldViewProductCategoryId;
@@ -48,7 +49,11 @@ public class addProductController extends Application {
     private ComboBox<String> fieldViewProductName;
 
     @FXML
+    private ComboBox<String> supplierId;
+
+    @FXML
     private TextArea fieldViewProductDescriptions;
+
     private File selectedImageFile;
 
     @FXML
@@ -57,15 +62,12 @@ public class addProductController extends Application {
 
         try (Connection connection = connect.getConnection()) {
             // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
-            String selectCategory = "SELECT categoryId,categoryName FROM category";
-
+            String selectCategory = "SELECT categoryId,categoryName FROM category ";
             // Tạo một PreparedStatement để thực thi truy vấn SQL
             PreparedStatement preparedStatement = connection.prepareStatement(selectCategory);
-
             // Thực thi truy vấn và lấy kết quả
             ResultSet resultSet = preparedStatement.executeQuery();
             ObservableList<String> category = FXCollections.observableArrayList();
-
             while (resultSet.next()) {
                 int categoryId = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("categoryName");
@@ -74,31 +76,81 @@ public class addProductController extends Application {
             }
             fieldViewProductCategoryId.setItems(category);
 
-            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
+            String selectProduct = "SELECT importGoods.ProductNameId, ProductsName.ProductName FROM importGoods "
+                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
+                    + "GROUP BY importGoods.supplier_id, importGoods.ProductNameId";
             PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
             ObservableList<String> productNames = FXCollections.observableArrayList();
-
             while (resultSet2.next()) {
-                int productNameId = resultSet2.getInt("ProductNameId");
-                String productsName = resultSet2.getString("ProductName");
+                int productNameId = resultSet2.getInt("importGoods.ProductNameId");
+                String productsName = resultSet2.getString("ProductsName.ProductName");
                 productNames.add(productsName);
                 productNameIdMap.put(productsName, productNameId);
             }
             fieldViewProductName.setItems(productNames);
+
+            String selectSupplier = "SELECT importGoods.supplier_id, supplier.supplierName FROM importGoods "
+                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
+                    + "GROUP BY importGoods.supplier_id";
+            PreparedStatement preparedStatement3 = connection.prepareStatement(selectSupplier);
+            ResultSet resultSet3 = preparedStatement3.executeQuery();
+            ObservableList<String> suppliers = FXCollections.observableArrayList();
+            while (resultSet3.next()) {
+                int supplierId = resultSet3.getInt("importGoods.supplier_id");
+                String supplierNames = resultSet3.getString("supplier.supplierName");
+                suppliers.add(supplierNames);
+                supplierNamesMap.put(supplierNames, supplierId);
+            }
+            supplierId.setItems(suppliers);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    @FXML
+    public void eventImg(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Image File Chooser Example");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg", "*.gif")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        if (selectedFile != null) {
+            selectedImageFile = selectedFile;
+        }
+        primaryStage.close();
+        System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
+    }
+// check
+
+    private boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
+        String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ? AND ProductNameId = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(selectSQL)) {
+            preparedStatement.setInt(1, supplierId);
+            preparedStatement.setInt(2, productNameId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next(); // If a row is found, the combination exists
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // Error occurred, treat as non-existence
+        }
+    }
 //insert 
+
     @FXML
     public void insertProduct() {
 
         String selectedCategory = fieldViewProductCategoryId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
         String description = fieldViewProductDescriptions.getText();
+        String selectedSupplierid = supplierId.getValue();
 
         if (description.isEmpty()) {
             showAlert("Please enter complete product description.");
@@ -118,27 +170,32 @@ public class addProductController extends Application {
         // Get the category and product IDs from the maps
         Integer categoryId = categoryNameidMap.get(selectedCategory);
         Integer productNameId = productNameIdMap.get(selectedProductName);
-        System.out.println(productNameId + "productNameId");
+        Integer supplierNameId = supplierNamesMap.get(selectedSupplierid);
 
+//        System.out.println(productNameId + "productNameId");
         if (categoryId == null || productNameId == null) {
             showAlert("Invalid category or product name.");
             return;
         }
 
-        // Prepare the SQL statement to insert the product into the database
-        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, img, Description) VALUES (?,?,?,?,?,?)";
+        // Check if the combination of supplier_id and ProductNameId exists in importGoods
+        if (!isCombinationExistsInImportGoods(supplierNameId, productNameId)) {
+            showAlert("Supplier and Product combination does not exist in importGoods.");
+            return;
+        }
+
+        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, img, Description, supplier_id) VALUES (?,?,?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             // Set parameters for the SQL statement
             preparedStatement.setInt(1, categoryId);
             preparedStatement.setInt(2, productNameId);
-
             preparedStatement.setString(3, selectedImageFile.getAbsolutePath());
             preparedStatement.setString(4, description);
+            preparedStatement.setInt(5, supplierNameId);
 
             // Execute the SQL statement
             int rowsAffected = preparedStatement.executeUpdate();
-
             if (rowsAffected > 0) {
                 System.out.println("Add product successfully!");
                 showSuccessAlert("Add product successfully!");
@@ -152,26 +209,6 @@ public class addProductController extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-// Modify the eventImg method to set the selectedImageFile
-    @FXML
-    public void eventImg(ActionEvent event) {
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Image File Chooser Example");
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg", "*.gif")
-        );
-
-        File selectedFile = fileChooser.showOpenDialog(primaryStage);
-        if (selectedFile != null) {
-            selectedImageFile = selectedFile;
-        }
-        primaryStage.close();
-        System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
-
     }
 
     // Hiển thị thông báo thành công

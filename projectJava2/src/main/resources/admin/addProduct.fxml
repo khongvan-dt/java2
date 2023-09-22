@@ -158,13 +158,15 @@
                             <children>
                                 <Label text="Product Name" GridPane.rowIndex="1" />
                                 <Label text="Category" />
-                                <ComboBox fx:id="fieldViewProductCategoryId" GridPane.columnIndex="1" />
+                                <ComboBox fx:id="fieldViewProductCategoryId" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" />
                                 <Label text="Description" GridPane.columnIndex="2" />
                                 <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="3" />
-                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="2" />
-                                <ComboBox fx:id="fieldViewProductName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="3" />
+                                <ComboBox fx:id="fieldViewProductName" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                 <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="supplierId" layoutX="155.0" layoutY="39.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="43.0" text="Supplier" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
                     </center>
