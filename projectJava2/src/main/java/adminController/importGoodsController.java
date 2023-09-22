@@ -31,6 +31,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Main;
 import static org.apache.commons.lang3.StringUtils.isNumeric;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class importGoodsController {
 
@@ -51,6 +57,10 @@ public class importGoodsController {
 
     private Map<String, Integer> supplierIdMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
+    @FXML
+    private TextField fieldViewProductPrice;
+    @FXML
+    private TextField ImportPrice;
 
     @FXML
     private void initialize() {
@@ -96,6 +106,8 @@ public class importGoodsController {
 
         String selectedSupplierName = SupplierId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
+        String productPrice = fieldViewProductPrice.getText();
+        String importPrice = ImportPrice.getText();
 
         if (Quantity.isEmpty() || exchange.isEmpty() || totalQuantity.isEmpty() || selectedSupplierName == null || selectedProductName == null) {
             showAlert("Please fill in all fields and select a supplier and product.");
@@ -105,15 +117,23 @@ public class importGoodsController {
             showAlert("All three values (totalQuantity, Quantity, and exchange) must be numeric.");
             return;
         }
-
+        if (!isNumeric(productPrice) || !isNumeric(importPrice)) {
+            showAlert("All three values (productPrice, importPrice) must be numeric.");
+            return;
+        }
+        if (productPrice.isEmpty()) {
+            showAlert("Please enter the full product price.");
+            return;
+        }
         int supplierId = supplierIdMap.get(selectedSupplierName);
         int productNameId = productNameIdMap.get(selectedProductName);
 
         java.util.Date currentDate = new java.util.Date();
         Date dateNew = new Date(currentDate.getTime());
 
-        String insertSQL = "INSERT INTO importgoods (ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO importgoods "
+                + "(ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received,price,productImportPrice)"
+                + "VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
@@ -123,7 +143,8 @@ public class importGoodsController {
             preparedStatement.setString(4, Quantity);
             preparedStatement.setString(5, exchange);
             preparedStatement.setString(6, totalQuantity);
-
+            preparedStatement.setFloat(7, Float.parseFloat(importPrice));
+            preparedStatement.setDouble(8, Float.parseFloat(productPrice));
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Add successfully!");
@@ -133,8 +154,11 @@ public class importGoodsController {
                 total_quantity_received.clear();
                 SupplierId.getSelectionModel().clearSelection();
                 fieldViewProductName.getSelectionModel().clearSelection();
+                fieldViewProductPrice.clear();
+                ImportPrice.clear();
                 // Sau khi thêm dữ liệu mới, cập nhật lại TableView
                 importTable.getItems().clear();
+
                 getFromImportGoods();
             } else {
                 showAlert("Failed to add.");
@@ -143,10 +167,6 @@ public class importGoodsController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    private boolean deleteImportFromDatabase(int importId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 // in ra bảng 
@@ -159,8 +179,11 @@ public class importGoodsController {
         private int quantity;
         private int exchanged;
         private int totalReceived;
+        private float price;
+        private float productImportPrice;
 
-        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged, int totalReceived) {
+        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged,
+                int totalReceived, float price, float productImportPrice) {
             this.importId = importId;
             this.productId = productName;
             this.supplierId = supplierName;
@@ -168,6 +191,8 @@ public class importGoodsController {
             this.quantity = quantity;
             this.exchanged = exchanged;
             this.totalReceived = totalReceived;
+            this.price = price;
+            this.productImportPrice = productImportPrice;
         }
 
         public int getImportId() {
@@ -197,6 +222,14 @@ public class importGoodsController {
         public int getTotalReceived() {
             return totalReceived;
         }
+
+        public Float getPrice() {
+            return price;
+        }
+
+        public float getProductImportPrice() {
+            return productImportPrice;
+        }
     }
     @FXML
     private TableView<Import> importTable;
@@ -219,12 +252,18 @@ public class importGoodsController {
     @FXML
     private TableColumn<Import, Integer> totalReceivedColumn;
 
+    @FXML
+    private TableColumn<Import, Float> price;
+
+    @FXML
+    private TableColumn<Import, Float> ImportPriceColumn;
+
     private List<Import> fetchDataFromDatabase() {
         List<Import> importDataList = new ArrayList<>();
 
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT importGoods.import_id, ProductsName.ProductName, "
-                    + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, "
+                    + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, importGoods.price, importGoods.productImportPrice, "
                     + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
                     + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
@@ -239,7 +278,9 @@ public class importGoodsController {
                         resultSet.getDate("importGoods.import_date"),
                         resultSet.getInt("importGoods.quantity_imported"),
                         resultSet.getInt("importGoods.quantity_returned"),
-                        resultSet.getInt("importGoods.total_quantity_received")
+                        resultSet.getInt("importGoods.total_quantity_received"),
+                        resultSet.getFloat("importGoods.price"),
+                        resultSet.getFloat("importGoods.productImportPrice")
                 );
 
                 importDataList.add(importData);
@@ -259,13 +300,13 @@ public class importGoodsController {
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         exchangedColumn.setCellValueFactory(new PropertyValueFactory<>("exchanged"));
         totalReceivedColumn.setCellValueFactory(new PropertyValueFactory<>("totalReceived"));
-
+        ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("productImportPrice"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
         ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
-        importTable.getItems().setAll(imports);
+        importTable.setItems(imports);
     }
 
-//    // Xóa một hóa đơn nhập hàng
-
+    // Xóa một hóa đơn nhập hàng
     @FXML
     private void delete(ActionEvent event) throws IOException, SQLException {
         try (Connection connection = connect.getConnection()) {
@@ -302,28 +343,55 @@ public class importGoodsController {
             showAlert("An unexpected error occurred: " + e.getMessage());
         }
     }
+   
 
-    private boolean heh(int import_id) {
-        // Implement the logic to delete the category from the database
+    private boolean canDeleteImport(int import_id) {
+        // Check if the import_id is used in the productDelivery table
+        String checkUsageSQL = "SELECT COUNT(*) FROM productDelivery WHERE ProductNameId = ? OR supplier_id = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(checkUsageSQL)) {
+            preparedStatement.setInt(1, import_id);  // Set ProductNameId
+            preparedStatement.setInt(2, import_id);  // Set supplier_id
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int usageCount = resultSet.getInt(1);
+                if (usageCount == 0) {
+                    // Không tìm thấy sử dụng trong bảng productDelivery, có thể xóa
+                    return true;
+                } else {
+                    // Có các tham chiếu trong bảng productDelivery, không thể xóa
+                    showAlert("Không thể xóa do có liên kết trong bảng productDelivery.");
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Mặc định không cho phép xóa trong trường hợp có lỗi
+    }
+
+    private boolean deleteImportFromDatabase(int import_id) {
+        // Implement the logic to delete the import from the database
         String deleteSQL = "DELETE FROM importgoods WHERE import_id = ?";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
-
             preparedStatement.setInt(1, import_id);
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                // Xóa thành công, hiển thị thông báo thành công
-                showSuccessAlert("Import deleted successfully!");
+                // Deletion was successful
                 return true;
             } else {
-                // Hiển thị thông báo không cho phép xóa
-                showAlert("Deletion is not allowed due to related records.");
+                // Deletion failed
+                showAlert("Failed to delete the import.");
                 return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return false; // Xử lý ngoại lệ và trả về false        }
         }
     }
 

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -132,7 +131,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label layoutX="4.0" layoutY="9.0" prefHeight="34.0" prefWidth="189.0" text="View product data">
+                <Label layoutX="4.0" layoutY="9.0" prefHeight="34.0" prefWidth="189.0" text="Add product ">
                     <font>
                         <Font size="23.0" />
                     </font>
@@ -146,10 +145,9 @@
                         <GridPane fx:id="formViewProductView" alignment="CENTER_RIGHT" prefHeight="332.0" prefWidth="712.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="148.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="279.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="140.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="146.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="215.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="205.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="97.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="272.0" />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -159,18 +157,14 @@
                             </rowConstraints>
                             <children>
                                 <Label text="Product Name" GridPane.rowIndex="1" />
-                                <Label text="Import Price" GridPane.columnIndex="3" />
-                                <TextField fx:id="fieldViewProductPrice" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                                 <Label text="Category" />
                                 <ComboBox fx:id="fieldViewProductCategoryId" GridPane.columnIndex="1" />
-                                <Label text="Description" GridPane.rowIndex="2" />
-                                <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="3" />
+                                <Label text="Description" GridPane.columnIndex="2" />
+                                <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="3" />
+                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="2" />
                                 <ComboBox fx:id="fieldViewProductName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label layoutX="447.0" layoutY="43.0" text="Product Price" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                <TextField fx:id="ImportPrice" layoutX="550.0" layoutY="39.0" GridPane.columnIndex="4" />
-                                <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                     </center>

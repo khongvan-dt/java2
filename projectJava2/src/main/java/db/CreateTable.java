@@ -48,6 +48,8 @@ public class CreateTable {
                     + "ProductNameId INT NOT NULL,"
                     + "supplier_id INT NOT NULL,"
                     + "import_date DATE NOT NULL,"
+                    + "price float NOT NULL,"
+                    + "productImportPrice float NOT NULL,"
                     + "quantity_imported INT NOT NULL,"
                     + "quantity_returned INT NOT NULL,"
                     + "total_quantity_received INT NOT NULL,"
@@ -77,9 +79,7 @@ public class CreateTable {
                     + "productId INT PRIMARY KEY AUTO_INCREMENT,"
                     + "categoryId INT NOT NULL,"
                     + "ProductNameId INT NOT NULL,"
-                    + "productImportPrice float NOT NULL,"
                     + "Description VARCHAR(1000) NOT NULL,"
-                    + "price float NOT NULL,"
                     + "img  VARCHAR(200) NOT NULL,"
                     + "FOREIGN KEY (categoryId) REFERENCES category(categoryId),"
                     + "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId))";
