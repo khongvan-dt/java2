@@ -188,7 +188,7 @@ public class addCategoryController {
             showAlert("Please select the information you want to edit!");
         }
     }
-
+//xóa
     @FXML
     private void deleteCategory(ActionEvent event) throws IOException {
         // Get the selected category from the TableView

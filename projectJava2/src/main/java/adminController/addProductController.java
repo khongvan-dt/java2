@@ -40,6 +40,7 @@ public class addProductController extends Application {
 
     private Map<String, Integer> categoryNameidMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
+
     @FXML
     private ComboBox<String> fieldViewProductCategoryId;
 
@@ -47,13 +48,7 @@ public class addProductController extends Application {
     private ComboBox<String> fieldViewProductName;
 
     @FXML
-    private TextField fieldViewProductPrice;
-
-    @FXML
     private TextArea fieldViewProductDescriptions;
-    @FXML
-    private TextField ImportPrice;
-
     private File selectedImageFile;
 
     @FXML
@@ -100,16 +95,10 @@ public class addProductController extends Application {
 //insert 
     @FXML
     public void insertProduct() {
-        String productPrice = fieldViewProductPrice.getText();
-        String description = fieldViewProductDescriptions.getText();
-        String importPrice = ImportPrice.getText();
+
         String selectedCategory = fieldViewProductCategoryId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
-
-        if (productPrice.isEmpty()) {
-            showAlert("Please enter the full product price.");
-            return;
-        }
+        String description = fieldViewProductDescriptions.getText();
 
         if (description.isEmpty()) {
             showAlert("Please enter complete product description.");
@@ -117,10 +106,6 @@ public class addProductController extends Application {
         }
         if (description.length() > 1000) {
             showAlert("Product descriptions cannot be longer than 1000 characters.");
-            return;
-        }
-        if (!isNumeric(productPrice) || !isNumeric(importPrice)) {
-            showAlert("All three values (productPrice, importPrice) must be numeric.");
             return;
         }
 
@@ -141,16 +126,15 @@ public class addProductController extends Application {
         }
 
         // Prepare the SQL statement to insert the product into the database
-        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, productImportPrice, price, img, Description) VALUES (?,?,?,?,?,?)";
+        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, img, Description) VALUES (?,?,?,?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             // Set parameters for the SQL statement
             preparedStatement.setInt(1, categoryId);
             preparedStatement.setInt(2, productNameId);
-            preparedStatement.setDouble(3, Double.parseDouble(importPrice));
-            preparedStatement.setDouble(4, Double.parseDouble(productPrice));
-            preparedStatement.setString(5, selectedImageFile.getAbsolutePath());
-            preparedStatement.setString(6, description);
+
+            preparedStatement.setString(3, selectedImageFile.getAbsolutePath());
+            preparedStatement.setString(4, description);
 
             // Execute the SQL statement
             int rowsAffected = preparedStatement.executeUpdate();
@@ -158,9 +142,8 @@ public class addProductController extends Application {
             if (rowsAffected > 0) {
                 System.out.println("Add product successfully!");
                 showSuccessAlert("Add product successfully!");
-                fieldViewProductPrice.clear();
+
                 fieldViewProductDescriptions.clear();
-                ImportPrice.clear();
 
                 selectedImageFile = null;
             } else {
