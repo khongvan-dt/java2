@@ -118,7 +118,7 @@ public class productDeliveryController {
     private TextField quantity;
 
     public void insertProductdelivery() throws IOException {
-        String shipQuantity = quantity.getText().trim(); 
+        String shipQuantity = quantity.getText().trim();
 
         // Check if shipQuantity is empty
         if (shipQuantity.isEmpty()) {
@@ -158,6 +158,8 @@ public class productDeliveryController {
 
             if (rowsAffected > 0) {
                 showSuccessAlert("Product delivery added successfully.");
+                quantity.clear();
+                exportTable.getItems().clear();
             } else {
                 showAlert("Failed to insert product delivery.");
             }
