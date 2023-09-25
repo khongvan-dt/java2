@@ -61,7 +61,7 @@ public class loginController {
                     System.out.println(loggedInUserId);
                     // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
                     if ("user".equals(role)) {
-                        Main.setRoot("/web/home.fxml");
+                                    Main.setRoot("/web/home.fxml");
 
                     } else if ("admin".equals(role)) {
                         Main.setRoot("/admin/addCategory.fxml");
