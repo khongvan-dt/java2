@@ -149,7 +149,7 @@ public class addProductController extends Application {
 
         String selectedCategory = fieldViewProductCategoryId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
-        String description = fieldViewProductDescriptions.getText();
+        String description = fieldViewProductDescriptions.getText().trim();
         String selectedSupplierid = supplierId.getValue();
 
         if (description.isEmpty()) {

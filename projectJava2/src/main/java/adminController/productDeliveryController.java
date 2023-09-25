@@ -118,7 +118,13 @@ public class productDeliveryController {
     private TextField quantity;
 
     public void insertProductdelivery() throws IOException {
-        String shipQuantity = quantity.getText();
+        String shipQuantity = quantity.getText().trim(); 
+
+        // Check if shipQuantity is empty
+        if (shipQuantity.isEmpty()) {
+            showAlert("Please enter a quantity.");
+            return;
+        }
 
         // Check if shipQuantity is a valid integer
         if (!isNumeric(shipQuantity)) {
@@ -137,7 +143,6 @@ public class productDeliveryController {
         int supplierId = selectedProduct.getSupplierId();
         int productNameId = selectedProduct.getProductNameId();
 
-        // Get the current date
         java.util.Date currentDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
 

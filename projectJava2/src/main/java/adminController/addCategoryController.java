@@ -33,7 +33,7 @@ public class addCategoryController {
     private TextField categoryNameField;
 
     public void moreCategory() throws IOException {
-        String CategoryName = categoryNameField.getText();
+        String CategoryName = categoryNameField.getText().trim();
 
         if (CategoryName.isEmpty()) {
             showAlert("Please fill in all fields.");
