@@ -116,10 +116,10 @@ public class addProductController extends Application {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg", "*.gif")
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.web", "*.png", "*.jpeg", "*.gif")
         );
 
-        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);//: Đoạn mã này hiển thị hộp thoại chọn tệp ảnh và chờ cho người dùng chọn một tệp. 
         if (selectedFile != null) {
             selectedImageFile = selectedFile;
         }

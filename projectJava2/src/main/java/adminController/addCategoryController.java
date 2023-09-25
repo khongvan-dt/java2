@@ -220,6 +220,7 @@ public class addCategoryController {
     private boolean deleteCategoryFromDatabase(int categoryId) {
         // Implement the logic to delete the category from the database
         String deleteSQL = "DELETE FROM category WHERE categoryId = ?";
+        //PreparedStatement dùng để truy vấn đến csdl bằng 1 câu lệnh sql
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
 
@@ -232,7 +233,7 @@ public class addCategoryController {
             return false;
         }
     }
-    // insert không thành công sẽ hiện  
+    //thông báo  
 
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
