@@ -137,11 +137,11 @@
       </AnchorPane>
       <AnchorPane layoutX="186.0" layoutY="80.0" prefHeight="596.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <TableView fx:id="importTable" layoutX="509.0" layoutY="278.0" prefHeight="200.0" prefWidth="399.0">
+            <TableView fx:id="ProductDeliveryTable" layoutX="509.0" layoutY="278.0" prefHeight="200.0" prefWidth="399.0">
                <columns>
-                  <TableColumn fx:id="productNameColumn" prefWidth="93.0" text="Product" />
-                  <TableColumn fx:id="supplierNameColumn" prefWidth="94.0" text="Supplier" />
-                  <TableColumn fx:id="importDateColumn" prefWidth="105.0" text="Import Date" />
+                  <TableColumn fx:id="productName" prefWidth="93.0" text="Product" />
+                  <TableColumn fx:id="supplierName" prefWidth="94.0" text="Supplier" />
+                  <TableColumn fx:id="importDate" prefWidth="105.0" text="Import Date" />
                   <TableColumn fx:id="quantityColumn" prefWidth="105.0" text="Quantity" />
                </columns>
             </TableView>

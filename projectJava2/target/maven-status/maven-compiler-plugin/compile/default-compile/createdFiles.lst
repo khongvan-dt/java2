@@ -5,7 +5,6 @@ adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\addSupplierController.class
 adminController\loginController.class
-adminController\productDeliveryController$ImportItem.class
 adminController\moreProductNameController$ProductName.class
 adminController\addProductController.class
 adminController\productDeliveryController$ProductDelivery.class
@@ -16,5 +15,6 @@ adminController\addCategoryController$Category.class
 adminController\editSupplierController.class
 db\CreateTable.class
 adminController\moreProductNameController.class
+adminController\productDeliveryController$Delivery.class
 adminController\addCategoryController.class
 adminController\editProductNameController.class

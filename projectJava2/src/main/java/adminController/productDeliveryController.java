@@ -163,21 +163,21 @@ public class productDeliveryController {
     }
 
 // in ra bảng 
-    public class ImportItem {
+    public class Delivery {
 
         private String productName;
         private String supplierName;
-        private Date dayShipping;
-        private int shipmentQuantity;
+        private Date importDate;
+        private int quantity;
 
-        public ImportItem(String productName, String supplierName, Date dayShipping, int shipmentQuantity) {
+        public Delivery(String productName, String supplierName, Date importDate, int quantity) {
             this.productName = productName;
             this.supplierName = supplierName;
-            this.dayShipping = dayShipping;
-            this.shipmentQuantity = shipmentQuantity;
+            this.importDate = importDate;
+            this.quantity = quantity;
         }
 
-        // Getters and setters
+        // Getter và setter cho productName
         public String getProductName() {
             return productName;
         }
@@ -186,6 +186,7 @@ public class productDeliveryController {
             this.productName = productName;
         }
 
+        // Getter và setter cho supplierName
         public String getSupplierName() {
             return supplierName;
         }
@@ -194,42 +195,45 @@ public class productDeliveryController {
             this.supplierName = supplierName;
         }
 
-        public Date getDayShipping() {
-            return dayShipping;
+        // Getter và setter cho importDate
+        public Date getImportDate() {
+            return importDate;
         }
 
-        public void setDayShipping(Date dayShipping) {
-            this.dayShipping = dayShipping;
+        public void setImportDate(Date importDate) {
+            this.importDate = importDate;
         }
 
-        public int getShipmentQuantity() {
-            return shipmentQuantity;
+        // Getter và setter cho quantity
+        public int getQuantity() {
+            return quantity;
         }
 
-        public void setShipmentQuantity(int shipmentQuantity) {
-            this.shipmentQuantity = shipmentQuantity;
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
         }
     }
     @FXML
-    private TableView<ImportItem> ProductDeliveryTable;
+    private TableView<Delivery> ProductDeliveryTable;
 
     @FXML
-    private TableColumn<ImportItem, String> productName;
+    private TableColumn<Delivery, String> productName;
 
     @FXML
-    private TableColumn<ImportItem, String> supplierName;
+    private TableColumn<Delivery, String> supplierName;
 
     @FXML
-    private TableColumn<ImportItem, Date> importDate;
+    private TableColumn<Delivery, Date> importDate;
 
     @FXML
-    private TableColumn<ImportItem, Integer> quantityColumn;
+    private TableColumn<Delivery, Integer> quantityColumn;
 
-    public List<ImportItem> populateImportTable() {
-        List<ImportItem> importItems = new ArrayList<>();
+    // Tạo danh sách sản phẩm
+    private ObservableList<Delivery> productList = FXCollections.observableArrayList();
 
+    public List<Delivery> populateImportTable() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductName, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+            String query = "SELECT ProductsName.ProductName,supplier.supplierName,productdelivery.dayShipping,productdelivery.shipmentQuantity "
                     + "FROM productdelivery "
                     + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
@@ -238,29 +242,32 @@ public class productDeliveryController {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                ImportItem importItem = new ImportItem(
+                Delivery productsDelivery = new Delivery(
                         resultSet.getString("ProductName"),
                         resultSet.getString("supplierName"),
                         resultSet.getDate("dayShipping"),
                         resultSet.getInt("shipmentQuantity")
                 );
-                importItems.add(importItem);
+
+                productList.add(productsDelivery);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return importItems;
+        // Trả về danh sách sản phẩm
+        return productList;
     }
 
     public void printData() {
-        // Set up column mappings
+        // Lấy danh sách sản phẩm bằng cách gọi phương thức populateImportTable()
+        productList = FXCollections.observableArrayList(populateImportTable());
         productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-        importDate.setCellValueFactory(new PropertyValueFactory<>("dayShipping"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("shipmentQuantity"));
+        importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        ObservableList<ImportItem> productdelivery = FXCollections.observableArrayList(populateImportTable());
-        ProductDeliveryTable.setItems(productdelivery);
+        ProductDeliveryTable.setItems(productList);
     }
 
     // các hàm gọi giao diện
