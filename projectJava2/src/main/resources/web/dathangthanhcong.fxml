@@ -15,15 +15,6 @@
    <content>
       <AnchorPane prefHeight="796.0" prefWidth="866.0">
          <children>
-            <Pane layoutX="1.0" layoutY="-3.0" prefHeight="127.0" prefWidth="850.0" style="-fx-background-color: pink;">
-               <children>
-                  <ImageView fitHeight="132.0" fitWidth="319.0" layoutX="258.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/shop.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
             <Pane layoutX="9.0" layoutY="137.0" prefHeight="322.0" prefWidth="832.0" style="-fx-border-color: gray;">
                <children>
                   <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="391.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
@@ -62,12 +53,12 @@
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="255.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/fbb.jpg" />
+                        <Image url="@../icon/ic_facebook.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="301.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/in.jpg" />
+                        <Image url="@../icon/ic_instagram.png" />
                      </image>
                   </ImageView>
                   <TextField layoutX="385.0" layoutY="31.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng í nhận email" style="-fx-border-color: pink;" />
@@ -100,6 +91,30 @@
                   <Text layoutX="660.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec." />
                   <Text layoutX="657.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789." />
                   <Text layoutX="655.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline:098765432." />
+               </children>
+            </Pane>
+            <Pane layoutX="5.0" layoutY="7.0" prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
