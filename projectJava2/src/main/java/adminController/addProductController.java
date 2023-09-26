@@ -183,8 +183,12 @@ public class addProductController extends Application {
             showAlert("Supplier and Product combination does not exist in importGoods.");
             return;
         }
+        
 
         String insertSQL = "INSERT INTO product (categoryId, ProductNameId, img, Description, supplier_id) VALUES (?,?,?,?,?)";
+        
+        String selectSQL = "SELECT * FROM product WHERE productId = ? AND ProductNameId = ?";
+        
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             // Set parameters for the SQL statement
