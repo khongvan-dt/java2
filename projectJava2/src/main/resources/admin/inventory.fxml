@@ -193,15 +193,46 @@
         </AnchorPane>
         <AnchorPane layoutX="186.0" layoutY="80.0" prefHeight="596.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <TableView fx:id="ProductDeliveryTable" layoutX="40.0" layoutY="21.0" prefHeight="289.0" prefWidth="990.0">
+                <TableView fx:id="ProductDeliveryTable" layoutX="560.0" layoutY="23.0" prefHeight="210.0" prefWidth="520.0">
                     <columns>
-                        <TableColumn fx:id="productName" prefWidth="603.0" text="Product" />
-                        <TableColumn fx:id="supplierName" prefWidth="141.0" text="Supplier" />
-                        <TableColumn fx:id="importDate" prefWidth="125.0" text="Import Date" />
-                        <TableColumn fx:id="quantityColumn" prefWidth="113.0" text="Quantity" />
+                        <TableColumn fx:id="productName" prefWidth="304.0" text="Product Name" />
+                        <TableColumn fx:id="supplierName" prefWidth="70.0" text="Supplier" />
+                        <TableColumn fx:id="importDate" prefWidth="75.0" text="Import Date" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="70.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Button layoutX="40.0" layoutY="550.0" mnemonicParsing="false" text="Sửa" />
+                <Button layoutX="14.0" layoutY="550.0" mnemonicParsing="false" text="Sửa" />
+            <TableView fx:id="Importgoods" layoutX="14.0" layoutY="23.0" prefHeight="210.0" prefWidth="520.0">
+               <columns>
+                  <TableColumn fx:id="productName1" prefWidth="304.0" text="Product Name" />
+                  <TableColumn fx:id="supplierName1" prefWidth="70.0" text="Supplier" />
+                  <TableColumn fx:id="importDate1" prefWidth="75.0" text="Import Date" />
+                  <TableColumn fx:id="quantityColumn1" prefWidth="70.0" text="Quantity" />
+               </columns>
+            </TableView>
+            <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="101.0" text="Importgoods">
+               <font>
+                  <Font name="AdobeGothicStd-Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="560.0" layoutY="6.0" prefHeight="17.0" prefWidth="122.0" text="Productdelivery">
+               <font>
+                  <Font name="AdobeGothicStd-Bold" size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="Inventory" layoutX="14.0" layoutY="264.0" prefHeight="274.0" prefWidth="1062.0">
+               <columns>
+                  <TableColumn fx:id="productName11" prefWidth="707.0" text="Product Name" />
+                  <TableColumn fx:id="supplierName11" prefWidth="118.0" text="Supplier" />
+                  <TableColumn fx:id="importDate11" prefWidth="104.0" text="Date" />
+                  <TableColumn fx:id="quantityColumn11" prefWidth="131.0" text="Inventory Number" />
+               </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="247.0" prefHeight="17.0" prefWidth="93.0" text="Inventory">
+               <font>
+                  <Font name="AdobeGothicStd-Bold" size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

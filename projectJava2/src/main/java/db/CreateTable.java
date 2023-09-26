@@ -78,6 +78,7 @@ public class CreateTable {
                     + "ProductNameId INT NOT NULL,"
                     + "supplierId INT NOT NULL,"
                     + "InventoryNumber INT NOT NULL,"
+                    + "date DATE NOT NULL,"
                     + "FOREIGN KEY (ProductNameId) REFERENCES importgoods(ProductNameId))"
                     + "FOREIGN KEY (supplierId) REFERENCES importgoods(supplier_id))";
             statement.executeUpdate(createInventoryTableSQL);
