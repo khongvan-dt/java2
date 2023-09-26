@@ -312,6 +312,14 @@ public class productDeliveryController {
         Main.setRoot("/admin/inventory.fxml");
     }
 
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
+    }
+
     public void handleLogout(ActionEvent event) throws IOException {
         // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
         loginController logoutHandler = new loginController();

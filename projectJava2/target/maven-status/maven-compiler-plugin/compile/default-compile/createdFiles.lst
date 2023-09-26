@@ -5,11 +5,14 @@ adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\addSupplierController.class
 adminController\loginController.class
+adminController\accountcontroller.class
 adminController\moreProductNameController$ProductName.class
 adminController\addProductController.class
+adminController\inventoryController.class
 adminController\productDeliveryController$ProductDelivery.class
 adminController\importGoodsController$Import.class
 adminController\addSupplierController$Supplier.class
+adminController\oderController.class
 adminController\importGoodsController.class
 adminController\addCategoryController$Category.class
 adminController\editSupplierController.class
