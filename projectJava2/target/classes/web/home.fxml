@@ -13,7 +13,7 @@
 
 <ScrollPane prefHeight="2836.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <Pane prefHeight="2834.0" prefWidth="866.0">
+      <Pane prefHeight="2824.0" prefWidth="866.0">
          <children>
             <Pane layoutX="76.0" layoutY="433.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
                <children>
@@ -267,30 +267,6 @@
                   <Image url="@../icon/ic_facebook.png" />
                </image>
             </ImageView>
-            <Pane layoutX="-5.0" layoutY="-3.0" prefHeight="111.0" prefWidth="866.0" style="-fx-background-color: pink;">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/ic_search.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/cart.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/shop.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/menu.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
             <ImageView fx:id="scoll" fitHeight="294.0" fitWidth="809.0" layoutX="37.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/chinh.jpg" />
@@ -390,6 +366,30 @@
                   <Font name="Arial" size="22.0" />
                </font>
             </Label>
+            <Pane prefHeight="111.0" prefWidth="866.0" style="-fx-background-color: pink;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </content>
