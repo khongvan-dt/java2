@@ -343,7 +343,6 @@ public class importGoodsController {
             showAlert("An unexpected error occurred: " + e.getMessage());
         }
     }
-   
 
     private boolean canDeleteImport(int import_id) {
         // Check if the import_id is used in the productDelivery table
@@ -431,6 +430,14 @@ public class importGoodsController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
