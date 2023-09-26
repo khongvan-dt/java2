@@ -40,7 +40,7 @@ public class editCategoryController {
 
     @FXML
     public void UpdateCategory(ActionEvent event) throws IOException {
-        String updatedSupplierName = CategoryNameField.getText();
+        String updatedSupplierName = CategoryNameField.getText().trim();
 
         // Cập nhật dữ liệu của nhà cung cấp đã chọn trong cơ sở dữ liệu
         if (selectedCategory != null) {

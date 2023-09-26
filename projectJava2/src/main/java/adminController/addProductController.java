@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -116,18 +118,44 @@ public class addProductController extends Application {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg", "*.gif")
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.web", "*.png", "*.jpeg", "*.gif")
         );
 
-        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);//: Đoạn mã này hiển thị hộp thoại chọn tệp ảnh và chờ cho người dùng chọn một tệp. 
         if (selectedFile != null) {
             selectedImageFile = selectedFile;
         }
         primaryStage.close();
         System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
     }
-// check
 
+    private String saveImageToUploads(File imageFile) {
+        String uploadsDirectoryPath = "src/uploads"; // Đây là đường dẫn tương đối
+        File uploadsDirectory = new File(uploadsDirectoryPath);
+
+        if (!uploadsDirectory.exists()) {
+            if (uploadsDirectory.mkdirs()) {
+                System.out.println("Created uploads directory");
+            } else {
+                System.out.println("Failed to create uploads directory");
+                return null;
+            }
+        }
+
+        String fileName = imageFile.getName();
+        String imagePathInUploads = uploadsDirectoryPath + File.separator + fileName;
+        File destFile = new File(imagePathInUploads);
+
+        try {
+            Files.copy(imageFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            return imagePathInUploads;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Return null in case of an error
+        }
+    }
+
+// check
     private boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
         String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ? AND ProductNameId = ?";
 
@@ -149,8 +177,9 @@ public class addProductController extends Application {
 
         String selectedCategory = fieldViewProductCategoryId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
-        String description = fieldViewProductDescriptions.getText();
+        String description = fieldViewProductDescriptions.getText().trim();
         String selectedSupplierid = supplierId.getValue();
+        String imagePathInUploads = saveImageToUploads(selectedImageFile);
 
         if (description.isEmpty()) {
             showAlert("Please enter complete product description.");
@@ -164,6 +193,10 @@ public class addProductController extends Application {
         // Check if an image was selected
         if (selectedImageFile == null) {
             showAlert("Please select product photo.");
+            return;
+        }
+        if (imagePathInUploads == null) {
+            showAlert("Failed to save product photo.");
             return;
         }
 
@@ -190,7 +223,7 @@ public class addProductController extends Application {
             // Set parameters for the SQL statement
             preparedStatement.setInt(1, categoryId);
             preparedStatement.setInt(2, productNameId);
-            preparedStatement.setString(3, selectedImageFile.getAbsolutePath());
+            preparedStatement.setString(3, imagePathInUploads);
             preparedStatement.setString(4, description);
             preparedStatement.setInt(5, supplierNameId);
 

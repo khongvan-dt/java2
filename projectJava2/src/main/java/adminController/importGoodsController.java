@@ -100,14 +100,14 @@ public class importGoodsController {
     }
 
     public void insertImportgoods() throws IOException {
-        String Quantity = importQuantity.getText();
-        String exchange = exchangeNumber.getText();
-        String totalQuantity = total_quantity_received.getText();
+        String Quantity = importQuantity.getText().trim();
+        String exchange = exchangeNumber.getText().trim();
+        String totalQuantity = total_quantity_received.getText().trim();
 
         String selectedSupplierName = SupplierId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
-        String productPrice = fieldViewProductPrice.getText();
-        String importPrice = ImportPrice.getText();
+        String productPrice = fieldViewProductPrice.getText().trim();
+        String importPrice = ImportPrice.getText().trim();
 
         if (Quantity.isEmpty() || exchange.isEmpty() || totalQuantity.isEmpty() || selectedSupplierName == null || selectedProductName == null) {
             showAlert("Please fill in all fields and select a supplier and product.");
