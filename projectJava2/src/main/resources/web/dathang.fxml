@@ -19,15 +19,6 @@
    <content>
       <AnchorPane prefHeight="1307.0" prefWidth="890.0">
          <children>
-            <Pane prefHeight="119.0" prefWidth="850.0" style="-fx-background-color: pink;">
-               <children>
-                  <ImageView fitHeight="101.0" fitWidth="427.0" layoutX="242.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/shop.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
             <Pane layoutX="-1.0" layoutY="119.0" prefHeight="74.0" prefWidth="848.0">
                <children>
                   <MenuButton layoutX="65.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Ẩn thông tin đơn hàng">
@@ -68,7 +59,7 @@
                   </Label>
                </children>
             </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="62.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
             <Pane layoutY="313.0" prefHeight="282.0" prefWidth="850.0">
                <children>
                   <TextField layoutX="45.0" layoutY="27.0" prefHeight="46.0" prefWidth="598.0" promptText="Mã giảm giá " style="-fx-border-color: pink;">
@@ -152,19 +143,19 @@
             </Pane>
             <Pane layoutY="1025.0" prefHeight="322.0" prefWidth="851.0">
                <children>
-                  <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="29.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="14.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/117.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="263.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/fbb.jpg" />
+                        <Image url="@../icon/ic_facebook.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="313.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/in.jpg" />
+                        <Image url="@../icon/ic_instagram.png" />
                      </image>
                   </ImageView>
                   <TextField layoutX="399.0" layoutY="30.0" prefHeight="25.0" prefWidth="296.0" promptText="Đăng kí nhận email" style="-fx-border-color: pink;" />
@@ -225,6 +216,30 @@
                   <Text layoutX="698.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec" wrappingWidth="110.9366455078125" />
                   <Text layoutX="698.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789" wrappingWidth="110.9366455078125" />
                   <Text layoutX="698.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline:098765432" wrappingWidth="110.9366455078125" />
+               </children>
+            </Pane>
+            <Pane layoutX="-1.0" prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
