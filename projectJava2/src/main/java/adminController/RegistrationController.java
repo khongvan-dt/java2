@@ -33,8 +33,8 @@ public class RegistrationController  {
 
     public void registerUser() throws IOException {
         String username = usernameField.getText().trim();
-        String password = passwordField.getText();
-        String email = emailField.getText();
+        String password = passwordField.getText().trim();
+        String email = emailField.getText().trim();
 
         if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             showAlert("Please fill in all fields.");

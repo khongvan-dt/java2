@@ -283,17 +283,17 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="21.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: pink;">
                      <image>
-                        <Image url="@../icon/menu.png" />
+                        <Image url="@../../../../img/gach.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="25.0" fitWidth="36.0" layoutX="660.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/ic_search.png" />
+                        <Image url="@../../../../img/timkiem.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="25.0" fitWidth="37.0" layoutX="740.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/cart.png" />
+                        <Image url="@../../../../img/giỏ.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="292.0" pickOnBounds="true" preserveRatio="true">

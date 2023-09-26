@@ -44,7 +44,7 @@ public class moreProductNameController {
 
     @FXML
     public void addProductName() throws IOException {
-        String productName = productNameField.getText();
+        String productName = productNameField.getText().trim();
 
         if (productName.isEmpty()) {
             showAlert("Please fill in all fields.");

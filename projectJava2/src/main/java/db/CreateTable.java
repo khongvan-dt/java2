@@ -38,8 +38,11 @@ public class CreateTable {
 
             // Create "users" table
             String createTableSQL = "CREATE TABLE IF NOT EXISTS users ("
-                    + "userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY," + "username VARCHAR(50) NOT NULL,"
-                    + "password VARCHAR(50) NOT NULL," + "email VARCHAR(100) NOT NULL," + "role VARCHAR(20) NOT NULL)";
+                    + "userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+                    "username VARCHAR(50) NOT NULL,"
+                    + "password VARCHAR(50) NOT NULL," 
+                    + "email VARCHAR(100) NOT NULL," 
+                    + "role VARCHAR(20) NOT NULL)";
             statement.executeUpdate(createTableSQL);
 
             // Create "Nhập hàng" table
@@ -59,9 +62,11 @@ public class CreateTable {
 
             // Create "Xuất hàng" table
             String createExportTableSQL = "CREATE TABLE IF NOT EXISTS productDelivery ("
-                    + "productDeliveryID INT PRIMARY KEY AUTO_INCREMENT," + "ProductNameId INT NOT NULL,"
+                    + "productDeliveryID INT PRIMARY KEY AUTO_INCREMENT," 
+                    + "ProductNameId INT NOT NULL,"
                     + "supplier_id INT NOT NULL,"
-                    + "dayShipping DATE NOT NULL," + "shipmentQuantity INT NOT NULL,"
+                    + "dayShipping DATE NOT NULL," 
+                    + "shipmentQuantity INT NOT NULL,"
                     + "FOREIGN KEY (ProductNameId) REFERENCES importgoods(ProductNameId))"
                     + "FOREIGN KEY (supplier_id) REFERENCES importgoods(supplier_id))";
 

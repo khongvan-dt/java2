@@ -39,7 +39,7 @@ public class editSupplierController {
 
     @FXML
     public void UpdateSupplier(ActionEvent event) throws IOException {
-        String updatedSupplierName = SupplierNameField.getText();
+        String updatedSupplierName = SupplierNameField.getText().trim();
 
         // Cập nhật dữ liệu của nhà cung cấp đã chọn trong cơ sở dữ liệu
         if (selectedSupplier != null) {

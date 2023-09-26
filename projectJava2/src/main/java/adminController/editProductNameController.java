@@ -42,7 +42,7 @@ public class editProductNameController {
 
     @FXML
     public void updatedProductName(ActionEvent event) throws IOException {
-        String updatedProductName = ProductNameField.getText();
+        String updatedProductName = ProductNameField.getText().trim();
 
         // Cập nhật dữ liệu của tên sản phẩm đã chọn trong cơ sở dữ liệu
         if (selectedProductName != null) {

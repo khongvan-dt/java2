@@ -33,7 +33,7 @@ public class addSupplierController {
     private TextField SupplierNameField;
 
     public void moreSupplier() throws IOException {
-        String SupplierName = SupplierNameField.getText();
+        String SupplierName = SupplierNameField.getText().trim();
 
         if (SupplierName.isEmpty()) {
             showAlert("Please fill in all fields.");

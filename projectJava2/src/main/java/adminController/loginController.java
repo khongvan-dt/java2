@@ -32,8 +32,8 @@ public class loginController {
     public String loggedInUsername;
 
     public void sqlLogin() throws IOException {
-        String userName = userNameField.getText();
-        String password = passwordField.getText();
+        String userName = userNameField.getText().trim();
+        String password = passwordField.getText().trim();
 
         // Kết nối đến cơ sở dữ liệu
         Connection connection = connect.getConnection();
