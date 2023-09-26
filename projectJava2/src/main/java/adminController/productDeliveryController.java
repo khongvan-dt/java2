@@ -88,7 +88,8 @@ public class productDeliveryController {
                 + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId \n"
                 + "GROUP BY ProductsName.ProductNameId, supplier.supplierId;";
 
-        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
+        try (Connection connection = connect.getConnection(); 
+                PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
 
             ObservableList<ProductDelivery> productDeliveries = FXCollections.observableArrayList();
 

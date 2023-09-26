@@ -4,6 +4,7 @@ db\connect.class
 adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\addSupplierController.class
+adminController\inventoryController$Delivery.class
 adminController\loginController.class
 adminController\accountcontroller.class
 adminController\moreProductNameController$ProductName.class
