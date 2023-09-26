@@ -108,6 +108,7 @@ public class productDeliveryController {
 
             // Đưa danh sách vào exportTable
             exportTable.setItems(productDeliveries);
+            printData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -160,6 +161,7 @@ public class productDeliveryController {
                 showSuccessAlert("Product delivery added successfully.");
                 quantity.clear();
                 exportTable.getItems().clear();
+                getFromProductDelivery();
             } else {
                 showAlert("Failed to insert product delivery.");
             }
