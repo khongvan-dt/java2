@@ -193,7 +193,7 @@
         </AnchorPane>
         <AnchorPane layoutX="186.0" layoutY="80.0" prefHeight="596.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <TableView fx:id="ProductDeliveryTable" layoutX="560.0" layoutY="23.0" prefHeight="210.0" prefWidth="520.0">
+                <TableView fx:id="ProductDeliveryTable" layoutX="554.0" layoutY="23.0" prefHeight="210.0" prefWidth="522.0">
                     <columns>
                         <TableColumn fx:id="productName" prefWidth="304.0" text="Product Name" />
                         <TableColumn fx:id="supplierName" prefWidth="70.0" text="Supplier" />
@@ -201,8 +201,7 @@
                         <TableColumn fx:id="quantityColumn" prefWidth="70.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Button layoutX="14.0" layoutY="550.0" mnemonicParsing="false" text="Sửa" />
-            <TableView fx:id="Importgoods" layoutX="14.0" layoutY="23.0" prefHeight="210.0" prefWidth="520.0">
+            <TableView fx:id="Importgoods" layoutX="14.0" layoutY="23.0" prefHeight="210.0" prefWidth="522.0">
                <columns>
                   <TableColumn fx:id="productName1" prefWidth="304.0" text="Product Name" />
                   <TableColumn fx:id="supplierName1" prefWidth="70.0" text="Supplier" />
@@ -215,7 +214,7 @@
                   <Font name="AdobeGothicStd-Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="560.0" layoutY="6.0" prefHeight="17.0" prefWidth="122.0" text="Productdelivery">
+            <Label layoutX="554.0" layoutY="6.0" prefHeight="17.0" prefWidth="122.0" text="Productdelivery">
                <font>
                   <Font name="AdobeGothicStd-Bold" size="15.0" />
                </font>
@@ -233,6 +232,16 @@
                   <Font name="AdobeGothicStd-Bold" size="15.0" />
                </font>
             </Label>
+<Button layoutX="89.0" layoutY="550.0" mnemonicParsing="false" onAction="#insertInventory" text="add" />
+            <Button layoutX="14.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteInventoryRecord" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
+               <graphic>
+                  <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/untitled%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
     </children>
