@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" 
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.addSupplierController">
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.addSupplierController">
    <children>
       <AnchorPane layoutX="6.0" layoutY="80.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
@@ -143,12 +142,12 @@
             <Label layoutX="220.0" layoutY="77.0" text="Supplier Name" />
             <TextField fx:id="SupplierNameField" layoutX="340.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" />
             <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#moreSupplier" prefHeight="30.0" prefWidth="38.0" text="Add" />
-            <TableView fx:id="supplierTable" layoutX="230.0" layoutY="192.0" prefHeight="187.0" prefWidth="313.0">
+            <TableView fx:id="supplierTable" layoutX="64.0" layoutY="192.0" prefHeight="343.0" prefWidth="932.0">
                <columns>
-                  <TableColumn fx:id="supplierNameColumn" prefWidth="308.0" text="Tên sản phẩm" />
+                  <TableColumn fx:id="supplierNameColumn" prefWidth="922.0" text="Supplier Name" />
                </columns>
             </TableView>
-            <Button layoutX="268.0" layoutY="379.0" mnemonicParsing="false" onAction="#DeleteSupplier" style="-fx-background-color: white;">
+            <Button layoutX="161.0" layoutY="544.0" mnemonicParsing="false" onAction="#DeleteSupplier" style="-fx-background-color: white;">
                <graphic>
                   <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -157,7 +156,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="230.0" layoutY="379.0" mnemonicParsing="false" onAction="#showEditSupplier" style="-fx-background-color: white;">
+            <Button layoutX="112.0" layoutY="544.0" mnemonicParsing="false" onAction="#showEditSupplier" style="-fx-background-color: white;">
                <graphic>
                   <ImageView fx:id="iconSupplier2" fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
