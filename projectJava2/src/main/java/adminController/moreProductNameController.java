@@ -50,7 +50,7 @@ public class moreProductNameController {
             showAlert("Please fill in all fields.");
             return;
         }
-          if (productName.length()
+        if (productName.length()
                 > 800) {
             showAlert("Product Name cannot be longer than 800 characters.");
             return;
@@ -179,40 +179,8 @@ public class moreProductNameController {
             showAlert("Please select the information you want to edit!");
         }
     }
-    //xóa
 
-//    @FXML
-//    private void DeleteProductName(ActionEvent event) throws IOException {
-//        // Get the selected product name from the TableView
-//        ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedProductName != null) {
-//            if (isProductNameUsed(selectedProductName.getProductId())) {
-//                // Show a warning message that the product name cannot be deleted
-//                showWarningAlert("This product name is used in other tables and cannot be deleted.");
-//            } else {
-//                // Show a confirmation dialog to confirm the deletion
-//                Alert confirmation = new Alert(AlertType.CONFIRMATION);
-//                confirmation.setTitle("Confirm Delete");
-//                confirmation.setHeaderText("Are you sure you want to delete this ProductName?");
-//                confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-//
-//                ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
-//
-//                if (result == ButtonType.YES) {
-//                    if (deleteProductNameFromDatabase(selectedProductName.getProductId())) {
-//                        // Remove the deleted product name from the TableView
-//                        productNameTable.getItems().remove(selectedProductName);
-//                        showSuccessAlert("ProductName deleted successfully!");
-//                    } else {
-//                        showAlert("Failed to delete ProductName.");
-//                    }
-//                }
-//            }
-//        } else {
-//            showAlert("Please select the ProductName you want to delete!");
-//        }
-//    }
+    //xóa
     @FXML
     private void DeleteProductName(ActionEvent event) throws IOException {
         ProductName selectedProductName = productNameTable.getSelectionModel().getSelectedItem();
@@ -355,6 +323,14 @@ public class moreProductNameController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

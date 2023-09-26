@@ -295,6 +295,14 @@ public class addProductController extends Application {
         Main.setRoot("/admin/inventory.fxml");
     }
 
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");

@@ -39,7 +39,7 @@ public class addSupplierController {
             showAlert("Please fill in all fields.");
             return;
         }
-         if (SupplierName.length()
+        if (SupplierName.length()
                 > 100) {
             showAlert(" CategoryName cannot be longer than 100 characters.");
             return;
@@ -70,7 +70,6 @@ public class addSupplierController {
         }
 
     }
-
 
     //in dữ liệu ra bảng 
     public class Supplier {
@@ -280,6 +279,14 @@ public class addSupplierController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

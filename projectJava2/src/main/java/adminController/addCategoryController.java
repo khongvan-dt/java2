@@ -189,6 +189,7 @@ public class addCategoryController {
         }
     }
 //xóa
+
     @FXML
     private void deleteCategory(ActionEvent event) throws IOException {
         // Get the selected category from the TableView
@@ -282,6 +283,14 @@ public class addCategoryController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
