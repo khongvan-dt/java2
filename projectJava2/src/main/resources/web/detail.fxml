@@ -14,363 +14,372 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane prefHeight="3170.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <AnchorPane prefHeight="3535.0" prefWidth="1315.0">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3226.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="118.0" prefWidth="866.0">
          <children>
-            <Pane prefHeight="3190.0" prefWidth="904.0">
+            <Pane prefHeight="111.0" prefWidth="877.0" style="-fx-background-color: pink;">
                <children>
-                  <Pane layoutY="-3.0" prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/menu.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/shop.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/ic_search.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/cart.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutY="111.0" prefHeight="48.0" prefWidth="852.0" style="-fx-border-color: pink;">
-                     <children>
-                        <Label alignment="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="28.0" prefWidth="112.0" text="Trang Chủ">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
-                        <MenuButton alignment="CENTER" layoutX="129.0" layoutY="12.0" mnemonicParsing="false" style="-fx-border-color: yellow;" text="Hàn mới về" textFill="#d73838">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                        </MenuButton>
-                        <MenuButton layoutX="237.0" layoutY="12.0" mnemonicParsing="false" style="-fx-border-color: yellow;" text="Sữa công thức hữu cơ" textFill="#d14f4f">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                        </MenuButton>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="7.0" layoutY="168.0" prefHeight="414.0" prefWidth="858.0">
-                     <children>
-                        <ImageView fitHeight="397.0" fitWidth="388.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/milk.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="389.0" fitWidth="399.0" layoutX="439.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/s1.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="9.0" layoutY="603.0" prefHeight="285.0" prefWidth="835.0">
-                     <children>
-                        <ImageView fitHeight="276.0" fitWidth="266.0" layoutX="551.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/s4.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="282.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/s4.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="277.0" fitWidth="266.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/s3.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="9.0" layoutY="875.0" prefHeight="119.0" prefWidth="866.0">
-                     <children>
-                        <Text layoutX="35.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa công thức hữa cơ Let'Co Đan Mạch" wrappingWidth="322.13670539855957">
-                           <font>
-                              <Font name="Arial Unicode MS" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="35.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thương hiệu :Xuất xứ: Đan Mạch    Loại: khác" wrappingWidth="284.53672790527344">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="35.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá: " wrappingWidth="34.13671112060547">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Text>
-                        <Label layoutX="69.0" layoutY="75.0" prefHeight="21.0" prefWidth="92.0" text="890.000 đ" textFill="#dc1d1d">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="11.0" layoutY="981.0" prefHeight="186.0" prefWidth="850.0">
-                     <children>
-                        <Text layoutX="30.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mang theo sứ mệnh “Mang tới cho bé yêu những điều tuyệt vời nhất” chỉ trong vòng 1 năm qua, Suri Store đã mang tiện ích mua sắm mẹ bé hàng đầu đến với Sài Gòn và hàng chục đại lý lớn trên toàn quốc.  Phát triển mạnh mẽ trong 5 năm trở lại đây với 3 cơ sở chính và đội ngũ hơn 80 nhân viên chuyên môn cao và tận tâm với nghề ... chúng tôi đáp ứng các tiêu chuẩn dịch vụ, chăm sóc khách hàng hoàn hảo với sự tư vấn tận tâm nhất. Suri Store tự hào là là điểm đến mà mẹ bỉm có thể mua sắm trọn gói các sản phẩm cao cấp nhất dành cho bé yêu. Đến Suri, mẹ sẽ thấy hội tụ các đủ các thương hiệu lớn với mức giá siêu hợp lí - đảm bảo cạnh tranh nhất thị trường !!!" wrappingWidth="805.3367462158203">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane layoutY="1167.0" prefHeight="281.0" prefWidth="850.0">
-                     <children>
-                        <Text layoutX="39.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số" wrappingWidth="29.33673095703125">
-                           <font>
-                              <Font name="Arial Unicode MS" size="16.0" />
-                           </font>
-                        </Text>
-                        <Label layoutX="82.0" layoutY="15.0" prefHeight="33.0" prefWidth="99.0" style="-fx-border-color: red;" text="Số 1 (0-6M)">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="192.0" layoutY="15.0" prefHeight="33.0" prefWidth="99.0" style="-fx-border-color: red;" text="Số 2 (6-9M)">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="304.0" layoutY="15.0" prefHeight="33.0" prefWidth="108.0" style="-fx-border-color: red;" text="Số 3 (10M+)">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Text layoutX="40.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số Lượng:" wrappingWidth="83.73675537109375">
-                           <font>
-                              <Font name="Arial Unicode MS" size="16.0" />
-                           </font>
-                        </Text>
-                        <Label alignment="CENTER" layoutY="126.0" prefHeight="31.0" prefWidth="849.0" style="-fx-background-color: orange;" text="Thêm Vào Giỏ Hàng" textFill="#f4efef">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutY="168.0" prefHeight="31.0" prefWidth="849.0" style="-fx-background-color: red;" text="Mua Ngay" textFill="#f4efef">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Text layoutX="14.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỆ THỐNG CỬA HÀNG SURI TRÊN TOÀN QUỐC" wrappingWidth="434.9366931915283">
-                           <font>
-                              <Font name="Bell MT" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="1.0" layoutY="1643.0" prefHeight="375.0" prefWidth="851.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="31.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="PHƯƠNG THỨC THANH TOÁN" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="127.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="CHÍNH SÁCH GIAO HÀNG &amp; ĐỔI TRẢ" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="80.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="HƯỚNG DẪN MUA HÀNG" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="178.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="HÓA ĐƠN MAY MẮN" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="229.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: PINK;" text="MÔ TẢ SẢN PHẨM" textFill="#962b2b" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="277.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: ORANGE;" text="THÔNG SỐ KÍ THUẬT" textFill="#eadfdf" />
-                        <Label alignment="CENTER" layoutX="35.0" layoutY="329.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: RED;" text="BÌNH LUẬN " textFill="#eadfdf" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="38.0" layoutY="1434.0" prefHeight="228.0" prefWidth="352.0" style="-fx-border-color: pink;">
-                     <children>
-                        <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 1: 285 Đội Cấn - Ba Đình - Hà Nội" wrappingWidth="274.9366683959961">
-                           <font>
-                              <Font name="Berlin Sans FB" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 2: 42B Phan Bội Châu- Hoàn Kiếm - Hà Nội" wrappingWidth="290.13668060302734">
-                           <font>
-                              <Font name="Berlin Sans FB" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 3: 48A Lý Thường Kiệt - Hà Nội" wrappingWidth="274.9366683959961">
-                           <font>
-                              <Font name="Berlin Sans FB" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0123456789" wrappingWidth="274.9366683959961">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="-1.0" layoutY="2026.0" prefHeight="158.0" prefWidth="854.0">
-                     <children>
-                        <Text layoutX="37.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đặc điểm của sản phẩm" wrappingWidth="326.9366931915283">
-                           <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="37.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                        <Text layoutX="37.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                        <Text layoutX="37.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                     </children>
-                  </Pane>
-                  <Pane layoutY="2194.0" prefHeight="158.0" prefWidth="854.0">
-                     <children>
-                        <Text layoutX="37.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn cách sử dụng" wrappingWidth="326.9366931915283">
-                           <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="37.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                        <Text layoutX="37.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                        <Text layoutX="37.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="-2.0" layoutY="2352.0" prefHeight="443.0" prefWidth="855.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="24.0" layoutY="14.0" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: PINK; -fx-background-radius: 3CM;" text="SẢN PHẨM LIÊN QUAN" textFill="#a41b1b">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="34.0" layoutY="66.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
-                           <children>
-                              <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/Screenshot%202023-09-19%20112109.png" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
-                              <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
-                                 <font>
-                                    <Font name="Arial Black" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Button>
-                              <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane layoutX="315.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
-                           <children>
-                              <ImageView fitHeight="209.0" fitWidth="210.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/MIL1.png" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="26.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa INFATRINI" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
-                              <Label alignment="CENTER" layoutX="59.0" layoutY="259.0" prefHeight="34.0" prefWidth="107.0" text="225.000 đ" textFill="#e13636">
-                                 <font>
-                                    <Font name="Arial Black" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="14.0" layoutY="301.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Button>
-                              <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane layoutX="600.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
-                           <children>
-                              <ImageView fitHeight="209.0" fitWidth="208.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/Screenshot%202023-09-19%20112150.png" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="27.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa RESOURCE JUNNIOL" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
-                              <Label alignment="CENTER" layoutX="60.0" layoutY="259.0" prefHeight="34.0" prefWidth="107.0" text="225.000 đ" textFill="#e13636">
-                                 <font>
-                                    <Font name="Arial Black" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Button>
-                              <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="167.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Separator layoutX="38.0" layoutY="2809.0" prefHeight="0.0" prefWidth="787.0" />
-                  <Pane layoutX="9.0" layoutY="2827.0" prefHeight="324.0" prefWidth="847.0">
-                     <children>
-                        <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/117.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/fbb.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/in.jpg" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="460.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CƠ SỞ">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="653.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="LIÊN HỆ">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
-                           </font>
-                        </Label>
-                        <Text layoutX="290.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu" wrappingWidth="106.93670654296875" />
-                        <Text layoutX="290.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả" wrappingWidth="106.93670654296875" />
-                        <Text layoutX="290.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="106.93670654296875" />
-                        <Text layoutX="290.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="106.93670654296875" />
-                        <Text layoutX="291.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="128.5367431640625" />
-                        <Text layoutX="291.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="146.93670654296875" />
-                        <Text layoutX="291.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán " wrappingWidth="159.7366943359375" />
-                        <Text layoutX="468.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 1 : 42B Phan Bội Châu- Hoàn Kiếm- Hà Nội" wrappingWidth="130.13671875" />
-                        <Text layoutX="468.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 2: 285 Đội Cấn-Ba Đình- Hà Nội" wrappingWidth="130.13671875" />
-                        <Text layoutX="468.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt- Hà Nội" wrappingWidth="130.13671875" />
-                        <Text layoutX="677.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec" wrappingWidth="118.9366455078125" />
-                        <Text layoutX="677.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789" wrappingWidth="118.9366455078125" />
-                        <Text layoutX="677.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0987654321" wrappingWidth="118.9366455078125" />
-                        <TextField layoutX="381.0" layoutY="19.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng khí nhận email" style="-fx-border-color: pink;" />
-                        <Button layoutX="720.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
-                     </children>
-                  </Pane>
+                  <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
       </AnchorPane>
-   </content>
-</ScrollPane>
+      <ScrollPane layoutX="-9.0" layoutY="114.0" prefHeight="3116.0" prefWidth="899.0">
+         <content>
+            <AnchorPane prefHeight="3535.0" prefWidth="1315.0">
+               <children>
+                  <Pane layoutX="10.0" layoutY="1.0" prefHeight="3168.0" prefWidth="878.0">
+                     <children>
+                        <Pane layoutX="1.0" layoutY="14.0" prefHeight="48.0" prefWidth="852.0" style="-fx-border-color: pink;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="28.0" prefWidth="112.0" text="Trang Chủ">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <MenuButton alignment="CENTER" layoutX="129.0" layoutY="12.0" mnemonicParsing="false" style="-fx-border-color: yellow;" text="Hàn mới về" textFill="#d73838">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                 </items>
+                              </MenuButton>
+                              <MenuButton layoutX="237.0" layoutY="12.0" mnemonicParsing="false" style="-fx-border-color: yellow;" text="Sữa công thức hữu cơ" textFill="#d14f4f">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                 </items>
+                              </MenuButton>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="3.0" layoutY="69.0" prefHeight="414.0" prefWidth="858.0">
+                           <children>
+                              <ImageView fitHeight="397.0" fitWidth="388.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/milk.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="389.0" fitWidth="399.0" layoutX="439.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/s1.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="7.0" layoutY="499.0" prefHeight="285.0" prefWidth="835.0">
+                           <children>
+                              <ImageView fitHeight="276.0" fitWidth="266.0" layoutX="551.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/s4.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="282.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/s4.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="277.0" fitWidth="266.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/s3.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="3.0" layoutY="784.0" prefHeight="119.0" prefWidth="866.0">
+                           <children>
+                              <Text layoutX="35.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa công thức hữa cơ Let'Co Đan Mạch" wrappingWidth="322.13670539855957">
+                                 <font>
+                                    <Font name="Arial Unicode MS" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="35.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thương hiệu :Xuất xứ: Đan Mạch    Loại: khác" wrappingWidth="284.53672790527344">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="35.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá: " wrappingWidth="34.13671112060547">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Label layoutX="69.0" layoutY="75.0" prefHeight="21.0" prefWidth="92.0" text="890.000 đ" textFill="#dc1d1d">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="8.0" layoutY="903.0" prefHeight="186.0" prefWidth="850.0">
+                           <children>
+                              <Text layoutX="30.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mang theo sứ mệnh “Mang tới cho bé yêu những điều tuyệt vời nhất” chỉ trong vòng 1 năm qua, Suri Store đã mang tiện ích mua sắm mẹ bé hàng đầu đến với Sài Gòn và hàng chục đại lý lớn trên toàn quốc.  Phát triển mạnh mẽ trong 5 năm trở lại đây với 3 cơ sở chính và đội ngũ hơn 80 nhân viên chuyên môn cao và tận tâm với nghề ... chúng tôi đáp ứng các tiêu chuẩn dịch vụ, chăm sóc khách hàng hoàn hảo với sự tư vấn tận tâm nhất. Suri Store tự hào là là điểm đến mà mẹ bỉm có thể mua sắm trọn gói các sản phẩm cao cấp nhất dành cho bé yêu. Đến Suri, mẹ sẽ thấy hội tụ các đủ các thương hiệu lớn với mức giá siêu hợp lí - đảm bảo cạnh tranh nhất thị trường !!!" wrappingWidth="805.3367462158203">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="7.0" layoutY="1102.0" prefHeight="281.0" prefWidth="866.0">
+                           <children>
+                              <Text layoutX="39.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số" wrappingWidth="29.33673095703125">
+                                 <font>
+                                    <Font name="Arial Unicode MS" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Label layoutX="82.0" layoutY="15.0" prefHeight="33.0" prefWidth="99.0" style="-fx-border-color: red;" text="Số 1 (0-6M)">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="192.0" layoutY="15.0" prefHeight="33.0" prefWidth="99.0" style="-fx-border-color: red;" text="Số 2 (6-9M)">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="304.0" layoutY="15.0" prefHeight="33.0" prefWidth="108.0" style="-fx-border-color: red;" text="Số 3 (10M+)">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text layoutX="40.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số Lượng:" wrappingWidth="83.73675537109375">
+                                 <font>
+                                    <Font name="Arial Unicode MS" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Label alignment="CENTER" layoutX="9.0" layoutY="125.0" prefHeight="31.0" prefWidth="849.0" style="-fx-background-color: orange;" text="Thêm Vào Giỏ Hàng" textFill="#f4efef">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="9.0" layoutY="168.0" prefHeight="31.0" prefWidth="849.0" style="-fx-background-color: red;" text="Mua Ngay" textFill="#f4efef">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Text layoutX="14.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HỆ THỐNG CỬA HÀNG SURI TRÊN TOÀN QUỐC" wrappingWidth="434.9366931915283">
+                                 <font>
+                                    <Font name="Bell MT" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="1.0" layoutY="1643.0" prefHeight="375.0" prefWidth="851.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="31.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="PHƯƠNG THỨC THANH TOÁN" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="127.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="CHÍNH SÁCH GIAO HÀNG &amp; ĐỔI TRẢ" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="80.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="HƯỚNG DẪN MUA HÀNG" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="178.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink;" text="HÓA ĐƠN MAY MẮN" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="229.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: PINK;" text="MÔ TẢ SẢN PHẨM" textFill="#962b2b" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="277.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: ORANGE;" text="THÔNG SỐ KÍ THUẬT" textFill="#eadfdf" />
+                              <Label alignment="CENTER" layoutX="35.0" layoutY="329.0" prefHeight="36.0" prefWidth="775.0" style="-fx-border-color: pink; -fx-background-color: RED;" text="BÌNH LUẬN " textFill="#eadfdf" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="38.0" layoutY="1393.0" prefHeight="228.0" prefWidth="352.0" style="-fx-border-color: pink;">
+                           <children>
+                              <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 1: 285 Đội Cấn - Ba Đình - Hà Nội" wrappingWidth="274.9366683959961">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 2: 42B Phan Bội Châu- Hoàn Kiếm - Hà Nội" wrappingWidth="290.13668060302734">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ 3: 48A Lý Thường Kiệt - Hà Nội" wrappingWidth="274.9366683959961">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0123456789" wrappingWidth="274.9366683959961">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="-1.0" layoutY="2026.0" prefHeight="158.0" prefWidth="854.0">
+                           <children>
+                              <Text layoutX="37.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đặc điểm của sản phẩm" wrappingWidth="326.9366931915283">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="37.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                              <Text layoutX="37.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                              <Text layoutX="37.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="2194.0" prefHeight="158.0" prefWidth="854.0">
+                           <children>
+                              <Text layoutX="37.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn cách sử dụng" wrappingWidth="326.9366931915283">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="37.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                              <Text layoutX="37.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                              <Text layoutX="37.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="210.1366958618164" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="-2.0" layoutY="2352.0" prefHeight="443.0" prefWidth="855.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="24.0" layoutY="14.0" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: PINK; -fx-background-radius: 3CM;" text="SẢN PHẨM LIÊN QUAN" textFill="#a41b1b">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutX="34.0" layoutY="66.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                 <children>
+                                    <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/Screenshot%202023-09-19%20112109.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                    <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icon/cart.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="315.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                 <children>
+                                    <ImageView fitHeight="209.0" fitWidth="210.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/MIL1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="26.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa INFATRINI" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                    <Label alignment="CENTER" layoutX="59.0" layoutY="259.0" prefHeight="34.0" prefWidth="107.0" text="225.000 đ" textFill="#e13636">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="301.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icon/cart.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="600.0" layoutY="66.0" prefHeight="356.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                 <children>
+                                    <ImageView fitHeight="209.0" fitWidth="208.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/Screenshot%202023-09-19%20112150.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="27.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa RESOURCE JUNNIOL" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                    <Label alignment="CENTER" layoutX="60.0" layoutY="259.0" prefHeight="34.0" prefWidth="107.0" text="225.000 đ" textFill="#e13636">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="167.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icon/cart.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Separator layoutX="38.0" layoutY="2809.0" prefHeight="0.0" prefWidth="787.0" />
+                        <Pane layoutX="9.0" layoutY="2827.0" prefHeight="324.0" prefWidth="847.0">
+                           <children>
+                              <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/117.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/fbb.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/in.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="460.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CƠ SỞ">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="653.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="LIÊN HỆ">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Text layoutX="290.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu" wrappingWidth="106.93670654296875" />
+                              <Text layoutX="290.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả" wrappingWidth="106.93670654296875" />
+                              <Text layoutX="290.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="106.93670654296875" />
+                              <Text layoutX="290.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="106.93670654296875" />
+                              <Text layoutX="291.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="128.5367431640625" />
+                              <Text layoutX="291.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="146.93670654296875" />
+                              <Text layoutX="291.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán " wrappingWidth="159.7366943359375" />
+                              <Text layoutX="468.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 1 : 42B Phan Bội Châu- Hoàn Kiếm- Hà Nội" wrappingWidth="130.13671875" />
+                              <Text layoutX="468.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 2: 285 Đội Cấn-Ba Đình- Hà Nội" wrappingWidth="130.13671875" />
+                              <Text layoutX="468.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt- Hà Nội" wrappingWidth="130.13671875" />
+                              <Text layoutX="677.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec" wrappingWidth="118.9366455078125" />
+                              <Text layoutX="677.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789" wrappingWidth="118.9366455078125" />
+                              <Text layoutX="677.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0987654321" wrappingWidth="118.9366455078125" />
+                              <TextField layoutX="381.0" layoutY="19.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng khí nhận email" style="-fx-border-color: pink;" />
+                              <Button layoutX="720.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
