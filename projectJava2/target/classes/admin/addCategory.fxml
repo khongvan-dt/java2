@@ -137,9 +137,9 @@
         </AnchorPane>
         <AnchorPane layoutX="186.0" layoutY="79.0" prefHeight="596.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <TableView fx:id="categoryTable" layoutX="97.0" layoutY="167.0" prefHeight="337.0" prefWidth="881.0">
+                <TableView fx:id="categoryTable" layoutX="59.0" layoutY="173.0" prefHeight="337.0" prefWidth="975.0">
                     <columns>
-                        <TableColumn fx:id="categoryNameColumn" prefWidth="866.0" text="Category Name" />
+                        <TableColumn fx:id="categoryNameColumn" prefWidth="967.0" text="Category Name" />
                     </columns>
                 </TableView>
                 <Button layoutX="176.0" layoutY="525.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
