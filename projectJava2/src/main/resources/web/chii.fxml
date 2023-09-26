@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -228,7 +229,83 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane layoutX="14.0" layoutY="1082.0" prefHeight="200.0" prefWidth="200.0" />
+            <Pane layoutX="-2.0" layoutY="1073.0" prefHeight="409.0" prefWidth="854.0">
+               <children>
+                  <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="7.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/117.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="251.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_facebook.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="295.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_instagram.png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="361.0" layoutY="27.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng kí nhận email." style="-fx-border-color: pink;" />
+                  <Button layoutX="703.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
+                  <Text layoutX="285.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÍNH SÁCH" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả." wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="284.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán" wrappingWidth="140.5367431640625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="474.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="474.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 1: 42B Phan Bội Châu-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="474.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="474.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 3: 48A Lý Thường Kiệt-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
+                  <Text layoutX="659.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIÊN HỆ" wrappingWidth="105.990234375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="657.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec." />
+                  <Text layoutX="659.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789." />
+                  <Text layoutX="659.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 098765432." />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </content>
