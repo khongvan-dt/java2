@@ -11,22 +11,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2790.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3564.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="119.0" prefWidth="851.0">
          <children>
             <AnchorPane prefHeight="119.0" prefWidth="851.0">
                <children>
-                  <Pane prefHeight="112.0" prefWidth="843.0" style="-fx-background-color: pink;">
+                  <Pane layoutY="1.0" prefHeight="111.0" prefWidth="851.0" style="-fx-background-color: pink;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/cart.png" />
+                              <Image url="@../icon/ic_search.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../thufx/src/icon/cart.png" />
+                              <Image url="@../icon/cart.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -49,27 +49,27 @@
          <children>
             <ScrollPane layoutY="1.0" prefHeight="3349.0" prefWidth="851.0">
                <content>
-                  <AnchorPane prefHeight="6256.0" prefWidth="865.0">
+                  <AnchorPane prefHeight="6166.0" prefWidth="865.0">
                      <children>
                         <Pane layoutX="-5.0" layoutY="-91.0" prefHeight="3412.0" prefWidth="851.0">
                            <children>
-                              <Pane layoutY="2954.0" prefHeight="438.0" prefWidth="843.0">
+                              <Pane layoutY="2954.0" prefHeight="398.0" prefWidth="843.0">
                                  <children>
                                     <Pane layoutX="-2.0" layoutY="28.0" prefHeight="324.0" prefWidth="847.0">
                                        <children>
                                           <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/117.png" />
+                                                <Image url="@../img/117.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/fbb.jpg" />
+                                                <Image url="@../icon/ic_facebook.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/in.jpg" />
+                                                <Image url="@../icon/ic_instagram.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
@@ -126,7 +126,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/7.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -142,7 +142,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -151,7 +151,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/10.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -167,7 +167,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -176,7 +176,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/10.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -192,7 +192,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -219,7 +219,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/2.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -235,7 +235,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -244,7 +244,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/7.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -260,7 +260,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -269,7 +269,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/10.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -285,7 +285,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -312,7 +312,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/7.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -328,7 +328,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -337,7 +337,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/10.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -353,7 +353,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -362,7 +362,7 @@
                                        <children>
                                           <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                                <Image url="@../img/7.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
@@ -378,7 +378,7 @@
                                           </Button>
                                           <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                                <Image url="@../icon/cart.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -428,7 +428,7 @@
                                     </Pane>
                                     <ImageView fitHeight="322.0" fitWidth="406.0" layoutX="417.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../thufx/src/img/112.png" />
+                                          <Image url="@../img/112.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -471,30 +471,30 @@
                                     </ImageView>
                                  </children>
                               </Pane>
-                           </children>
-                        </Pane>
-                        <Pane layoutX="85.0" layoutY="347.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
-                           <children>
-                              <Label alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Phương Thức Thanh Toán">
-                                 <font>
-                                    <Font name="Arial" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="375.0" layoutY="32.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hướng Dẫn Mua Hàng">
-                                 <font>
-                                    <Font name="Arial Narrow" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="375.0" layoutY="90.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hóa Đơn May Mắn">
-                                 <font>
-                                    <Font name="Arial Narrow" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Chính Sách Giao Hàng &amp; Đổi Trả">
-                                 <font>
-                                    <Font name="Arial Narrow" size="15.0" />
-                                 </font>
-                              </Label>
+                              <Pane layoutX="86.0" layoutY="367.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Phương Thức Thanh Toán">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="375.0" layoutY="32.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hướng Dẫn Mua Hàng">
+                                       <font>
+                                          <Font name="Arial Narrow" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="375.0" layoutY="90.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hóa Đơn May Mắn">
+                                       <font>
+                                          <Font name="Arial Narrow" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Chính Sách Giao Hàng &amp; Đổi Trả">
+                                       <font>
+                                          <Font name="Arial Narrow" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                      </children>
