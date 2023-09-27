@@ -32,7 +32,11 @@ import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 public class productDeliveryController {
 
@@ -184,7 +188,6 @@ public class productDeliveryController {
             productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
             supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
             importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-//            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryNumber"));
             quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             ProductDeliveryTable.setItems(deliveryDataList);
@@ -257,6 +260,50 @@ public class productDeliveryController {
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Error occurred while inserting product delivery.");
+        }
+    }
+
+    // xóa 
+    @FXML
+    private void deleteProductDelivery(ActionEvent event) throws IOException {
+        // Get the selected item from the ProductDeliveryTable
+        DeliveryData selectedProductDelivery = ProductDeliveryTable.getSelectionModel().getSelectedItem();
+
+        if (selectedProductDelivery != null) {
+            // Show a confirmation dialog to confirm the deletion
+            Alert confirmation = new Alert(AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirm Delete");
+            confirmation.setHeaderText("Are you sure you want to delete this product delivery?");
+            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+            if (result == ButtonType.YES) {
+                if (deleteProductDeliveryFromDatabase(selectedProductDelivery.getProductDeliveryID())) {
+                    // Remove the deleted item from the ProductDeliveryTable
+                    ProductDeliveryTable.getItems().remove(selectedProductDelivery);
+                    showSuccessAlert("Product delivery deleted successfully!");
+                } else {
+                    showAlert("Failed to delete product delivery.");
+                }
+            }
+        } else {
+            showAlert("Please select the product delivery you want to delete!");
+        }
+    }
+
+    private boolean deleteProductDeliveryFromDatabase(int productDeliveryID) {
+        // Implement the logic to delete the product delivery from the database
+        String deleteSQL = "DELETE FROM productdelivery WHERE productDeliveryID = ?";
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+            preparedStatement.setInt(1, productDeliveryID);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
