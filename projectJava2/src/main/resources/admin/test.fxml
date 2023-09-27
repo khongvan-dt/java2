@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2790.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="119.0" prefWidth="851.0">
+         <children>
+            <AnchorPane prefHeight="119.0" prefWidth="851.0">
+               <children>
+                  <Pane prefHeight="112.0" prefWidth="843.0" style="-fx-background-color: pink;">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/cart.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../thufx/src/icon/cart.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/shop.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/menu.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Pane layoutY="200.0" prefHeight="2600.0" prefWidth="851.0">
+         <children>
+            <ScrollPane layoutY="1.0" prefHeight="3349.0" prefWidth="851.0">
+               <content>
+                  <AnchorPane prefHeight="6256.0" prefWidth="865.0">
+                     <children>
+                        <Pane layoutX="-5.0" layoutY="-91.0" prefHeight="3412.0" prefWidth="851.0">
+                           <children>
+                              <Pane layoutY="2954.0" prefHeight="438.0" prefWidth="843.0">
+                                 <children>
+                                    <Pane layoutX="-2.0" layoutY="28.0" prefHeight="324.0" prefWidth="847.0">
+                                       <children>
+                                          <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/117.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="257.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/fbb.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="302.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/in.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <Label alignment="CENTER" layoutX="284.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CHÍNH SÁCH ">
+                                             <font>
+                                                <Font name="Arial Black" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="460.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="CƠ SỞ">
+                                             <font>
+                                                <Font name="Arial Black" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="653.0" layoutY="66.0" prefHeight="29.0" prefWidth="119.0" text="LIÊN HỆ">
+                                             <font>
+                                                <Font name="Arial Black" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Text layoutX="290.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu" wrappingWidth="106.93670654296875" />
+                                          <Text layoutX="292.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả" wrappingWidth="144.53668212890625" />
+                                          <Text layoutX="289.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="149.336669921875" />
+                                          <Text layoutX="290.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="130.93670654296875" />
+                                          <Text layoutX="291.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="128.5367431640625" />
+                                          <Text layoutX="291.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="146.93670654296875" />
+                                          <Text layoutX="291.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán " wrappingWidth="159.7366943359375" />
+                                          <Text layoutX="468.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 1 : 42B Phan Bội Châu- Hoàn Kiếm- Hà Nội" wrappingWidth="130.13671875" />
+                                          <Text layoutX="468.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 2: 285 Đội Cấn-Ba Đình- Hà Nội" wrappingWidth="130.13671875" />
+                                          <Text layoutX="468.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ Sở 3: 48A Lý Thường Kiệt- Hà Nội" wrappingWidth="130.13671875" />
+                                          <Text layoutX="677.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook: adnec" wrappingWidth="118.9366455078125" />
+                                          <Text layoutX="677.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zalo: 0123456789" wrappingWidth="118.9366455078125" />
+                                          <Text layoutX="677.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline: 0987654321" wrappingWidth="118.9366455078125" />
+                                          <TextField layoutX="381.0" layoutY="19.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng khí nhận email" style="-fx-border-color: pink;" />
+                                          <Button layoutX="720.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="539.0" prefHeight="85.0" prefWidth="843.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="52.0" layoutY="25.0" prefHeight="35.0" prefWidth="177.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f">
+                                       <font>
+                                          <Font name="Arial" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="643.0" layoutY="21.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
+                                       <font>
+                                          <Font name="Arial Unicode MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-8.0" layoutY="624.0" prefHeight="430.0" prefWidth="843.0">
+                                 <children>
+                                    <Pane layoutX="30.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="309.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="588.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-8.0" layoutY="1063.0" prefHeight="85.0" prefWidth="843.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="52.0" layoutY="25.0" prefHeight="35.0" prefWidth="177.0" text="FLASH SALE" textFill="#cf1f1f">
+                                       <font>
+                                          <Font name="Arial" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="643.0" layoutY="21.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
+                                       <font>
+                                          <Font name="Arial Unicode MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="1148.0" prefHeight="430.0" prefWidth="843.0">
+                                 <children>
+                                    <Pane layoutX="30.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="309.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="588.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-1.0" layoutY="1588.0" prefHeight="85.0" prefWidth="843.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="52.0" layoutY="25.0" prefHeight="35.0" prefWidth="249.0" text="QUẦN ÁO CHO BÉ " textFill="#cf1f1f">
+                                       <font>
+                                          <Font name="Arial" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="643.0" layoutY="21.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
+                                       <font>
+                                          <Font name="Arial Unicode MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-1.0" layoutY="1673.0" prefHeight="430.0" prefWidth="843.0">
+                                 <children>
+                                    <Pane layoutX="30.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="309.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="588.0" layoutY="45.0" prefHeight="357.0" prefWidth="225.0" style="-fx-border-color: PINK;">
+                                       <children>
+                                          <ImageView fitHeight="209.0" fitWidth="206.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/img/Screenshot%202023-09-19%20112109.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="26.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sữa ORGANIC DAIRY" textAlignment="CENTER" wrappingWidth="173.3367462158203" />
+                                          <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" prefHeight="34.0" prefWidth="107.0" text="545.000 đ" textFill="#e13636">
+                                             <font>
+                                                <Font name="Arial Black" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Mua Ngay" textFill="#ac1c1c">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="166.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../thufx/src/icon/cart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-3.0" layoutY="2103.0" prefHeight="382.0" prefWidth="834.0">
+                                 <children>
+                                    <Pane layoutX="14.0" layoutY="14.0" prefHeight="366.0" prefWidth="376.0">
+                                       <children>
+                                          <Text layoutX="39.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lời đầu tiên cho công ty XyZ thương hiệu ABC xin đưicj gửi lời chucs sức khẻ,hạnh phúc và lời cảm ơn sâu sắc tới toàn thể quý kách hàng đang quan tâm ủng hộ và gắn bó tin tưởng thương hiệu ABC  suốt thời gian qua  " wrappingWidth="297.9831027984619">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" layoutX="125.0" layoutY="292.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem ngay" textFill="#7b5050">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="82.0" layoutY="41.0" prefHeight="35.0" prefWidth="177.0" text="VỀ CHÚNG TÔI">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="58.0" layoutY="1554.0" prefHeight="402.0" prefWidth="343.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="12.0" layoutY="17.0" prefHeight="35.0" prefWidth="177.0" text="VỀ CHÚNG TÔI">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="45.0" layoutY="351.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem ngay" textFill="#7b5050">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Text layoutX="22.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lời đầu tiên cho công ty XyZ thương hiệu ABC xin đưicj gửi lời chucs sức khẻ,hạnh phúc và lời cảm ơn sâu sắc tới toàn thể quý kách hàng đang quan tâm ủng hộ và gắn bó tin tưởng thương hiệu ABC  suốt thời gian qua  " wrappingWidth="297.9831027984619">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="22.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="296.3831272125244" />
+                                       </children>
+                                    </Pane>
+                                    <ImageView fitHeight="322.0" fitWidth="406.0" layoutX="417.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../thufx/src/img/112.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="-1.0" layoutY="2499.0" prefHeight="85.0" prefWidth="843.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="52.0" layoutY="25.0" prefHeight="35.0" prefWidth="249.0" text="THƯ VIỆN ẢNH " textFill="#cf1f1f">
+                                       <font>
+                                          <Font name="Arial" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="643.0" layoutY="21.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
+                                       <font>
+                                          <Font name="Arial Unicode MS" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="11.0" layoutY="2584.0" prefHeight="358.0" prefWidth="821.0">
+                                 <children>
+                                    <ImageView fitHeight="349.0" fitWidth="150.0" layoutX="44.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/113.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="349.0" fitWidth="150.0" layoutX="239.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/115.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="349.0" fitWidth="150.0" layoutX="438.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/114.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="349.0" fitWidth="150.0" layoutX="636.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/116.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="85.0" layoutY="347.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Phương Thức Thanh Toán">
+                                 <font>
+                                    <Font name="Arial" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="375.0" layoutY="32.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hướng Dẫn Mua Hàng">
+                                 <font>
+                                    <Font name="Arial Narrow" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="375.0" layoutY="90.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hóa Đơn May Mắn">
+                                 <font>
+                                    <Font name="Arial Narrow" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Chính Sách Giao Hàng &amp; Đổi Trả">
+                                 <font>
+                                    <Font name="Arial Narrow" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

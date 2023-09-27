@@ -183,6 +183,58 @@ public class productDeliveryController {
     @FXML
     private TextField quantity;
 
+//    public void insertProductdelivery() throws IOException {
+//        String shipQuantity = quantity.getText().trim();
+//
+//        // Check if shipQuantity is empty
+//        if (shipQuantity.isEmpty()) {
+//            showAlert("Please enter a quantity.");
+//            return;
+//        }
+//
+//        // Check if shipQuantity is a valid integer
+//        if (!isNumeric(shipQuantity)) {
+//            showAlert("Quantity must be a numeric value.");
+//            return;
+//        }
+//
+//        // Assuming you have selected a row from exportTable, you can get the selected item.
+//        DeliveryData selectedProduct = exportTable.getSelectionModel().getSelectedItem();
+//
+//        if (selectedProduct == null) {
+//            showAlert("Please select a product from the export table.");
+//            return;
+//        }
+//
+//        int supplierId = selectedProduct.getSupplierId();
+//        int productNameId = selectedProduct.getProductNameId();
+//
+//        java.util.Date currentDate = new java.util.Date();
+//        java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+//
+//        String insertSQL = "INSERT INTO productdelivery (supplier_id, ProductNameId, dayShipping, shipmentQuantity) VALUES (?, ?, ?, ?)";
+//
+//        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+//            preparedStatement.setInt(1, supplierId);
+//            preparedStatement.setInt(2, productNameId);
+//            preparedStatement.setDate(3, sqlDate);
+//            preparedStatement.setString(4, shipQuantity);
+//
+//            int rowsAffected = preparedStatement.executeUpdate();
+//
+//            if (rowsAffected > 0) {
+//                showSuccessAlert("Product delivery added successfully.");
+//                quantity.clear();
+//                exportTable.getItems().clear();
+//                getFromProductDelivery();
+//            } else {
+//                showAlert("Failed to insert product delivery.");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            showAlert("Error occurred while inserting product delivery.");
+//        }
+//    }
     public void insertProductdelivery() throws IOException {
         String shipQuantity = quantity.getText().trim();
 
@@ -208,6 +260,14 @@ public class productDeliveryController {
 
         int supplierId = selectedProduct.getSupplierId();
         int productNameId = selectedProduct.getProductNameId();
+        int availableQuantity = selectedProduct.getQuantity(); // Lấy số lượng hiện có từ exportTable
+
+        // Kiểm tra nếu số lượng nhập vào lớn hơn số lượng hiện có
+        int shipmentQuantity = Integer.parseInt(shipQuantity);
+        if (shipmentQuantity > availableQuantity) {
+            showAlert("Shipment quantity cannot exceed available quantity.");
+            return;
+        }
 
         java.util.Date currentDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
@@ -236,56 +296,6 @@ public class productDeliveryController {
         }
     }
 
-// in ra bảng 
-//    @FXML
-//    private TableView<Delivery> ProductDeliveryTable;
-//
-//    @FXML
-//    private TableColumn<Delivery, String> productName;
-//
-//    @FXML
-//    private TableColumn<Delivery, String> supplierName;
-//
-//    @FXML
-//    private TableColumn<Delivery, Date> importDate;
-//
-//    @FXML
-//    private TableColumn<Delivery, Integer> quantityColumn;
-//
-//    public void populateImportTable() {
-//
-//        try (Connection connection = connect.getConnection()) {
-//            String query = "SELECT ProductsName.ProductName,supplier.supplierName,productdelivery.dayShipping,productdelivery.shipmentQuantity "
-//                    + "FROM productdelivery "
-//                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
-//                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
-//
-//            PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//
-//            while (resultSet.next()) {
-//                Delivery productsDelivery = new Delivery(
-//                        resultSet.getString("ProductName"),
-//                        resultSet.getString("supplierName"),
-//                        resultSet.getDate("dayShipping"),
-//                        resultSet.getInt("shipmentQuantity")
-//                );
-//
-//                productList.add(productsDelivery);
-//            }
-//            ObservableList<Delivery> productList = FXCollections.observableArrayList();
-//            productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
-//            supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-//            importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-//            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-//
-//            ProductDeliveryTable.setItems(productList);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
     // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
