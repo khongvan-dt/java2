@@ -270,6 +270,7 @@ public class inventoryController {
             int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
 
             // Trường hợp 1: Check SupplierId và ProductNameId từ cả ProductDeliveryTable và Importgoods
+            // Trường hợp 1
             if (productNameIdFromDelivery == productNameIdFromImport && supplierIdFromDelivery == supplierIdFromImport) {
                 int totalQuantityReceived = getTotalQuantityReceived(productNameIdFromImport, supplierIdFromImport);
                 int shipmentQuantity = selectedDeliveryItem.getQuantity();
@@ -286,25 +287,40 @@ public class inventoryController {
                 } else {
                     showAlert("total_quantity_received must be greater than or equal to shipmentQuantity.");
                 }
-            } // Trường hợp 2: Check SupplierId và ProductNameId từ cả Importgoods và Inventory
-            else if (productNameIdFromImport == productNameIdFromInventory && supplierIdFromImport == supplierIdFromInventory) {
+            } else {
+                System.out.println("Mismatched SupplierId or ProductNameId: ");
+                System.out.println("SupplierId from Importgoods: " + supplierIdFromImport);
+                System.out.println("ProductNameId from Importgoods: " + productNameIdFromImport);
+                System.out.println("SupplierId from ProductDeliveryTable: " + supplierIdFromDelivery);
+                System.out.println("ProductNameId from ProductDeliveryTable: " + productNameIdFromDelivery);
+                showAlert("SupplierId or ProductNameId do not match.");
+            }
+            // Trường hợp 2: Check SupplierId và ProductNameId từ cả Importgoods và Inventory
+            // Trường hợp 2
+            if (productNameIdFromImport == productNameIdFromInventory && supplierIdFromImport == supplierIdFromInventory) {
                 int quantityFromImport = selectedImportItem.getQuantity();
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
 
-                if (quantityFromImport == quantityFromInventory) {
-                    // Thực hiện insert vào bảng inventory với giá trị là quantityFromImport
-                    if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, quantityFromImport)) {
-                        System.out.println("Added successfully!");
-                        showSuccessAlert("Added successfully!");
-                        getFromInventory();
-                    } else {
-                        showAlert("Failed to add.");
-                    }
+                int inventoryNumber = quantityFromImport + quantityFromInventory; // Tổng hợp số lượng từ cả hai bảng
+
+                if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
+                    System.out.println("Added successfully!");
+                    showSuccessAlert("Added successfully!");
+                    getFromInventory();
                 } else {
-                    showAlert("Quantity from Importgoods and Inventory must match.");
+                    showAlert("Failed to add.");
                 }
-            } // Trường hợp 3: Check SupplierId và ProductNameId từ cả Inventory và ProductDeliveryTable
-            else if (productNameIdFromInventory == productNameIdFromDelivery && supplierIdFromInventory == supplierIdFromDelivery) {
+            } else {
+                System.out.println("Mismatched SupplierId or ProductNameId: ");
+                System.out.println("SupplierId from Importgoods: " + supplierIdFromImport);
+                System.out.println("ProductNameId from Importgoods: " + productNameIdFromImport);
+                System.out.println("SupplierId from Inventory: " + supplierIdFromInventory);
+                System.out.println("ProductNameId from Inventory: " + productNameIdFromInventory);
+                showAlert("SupplierId or ProductNameId do not match.");
+            }
+            // Trường hợp 3: Check SupplierId và ProductNameId từ cả Inventory và ProductDeliveryTable
+            // Trường hợp 3
+            if (productNameIdFromInventory == productNameIdFromDelivery && supplierIdFromInventory == supplierIdFromDelivery) {
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
                 int quantityFromDelivery = selectedDeliveryItem.getQuantity();
 
@@ -318,18 +334,18 @@ public class inventoryController {
                         showAlert("Failed to add.");
                     }
                 } else {
-                    showAlert("Quantity from Inventory must be greater than or equal to quantity from ProductDeliveryTable.");
+                    System.out.println("Mismatched SupplierId or ProductNameId: ");
+                    System.out.println("SupplierId from Inventory: " + supplierIdFromInventory);
+                    System.out.println("ProductNameId from Inventory: " + productNameIdFromInventory);
+                    System.out.println("SupplierId from ProductDeliveryTable: " + supplierIdFromDelivery);
+                    System.out.println("ProductNameId from ProductDeliveryTable: " + productNameIdFromDelivery);
+                    showAlert("SupplierId or ProductNameId do not match or quantity mismatch.");
                 }
-            } // Trường hợp không xác định
-            else {
-                showAlert("Invalid combination of selected items.");
             }
-        } else {
-            showAlert("Please select items from all three tables.");
         }
     }
-
     // Phương thức để thực hiện insert vào bảng inventory
+
     private boolean insertInventoryRecord(int productNameId, int supplierId, int inventoryNumber) {
         try (Connection connection = connect.getConnection()) {
             String insertSQL = "INSERT INTO inventory (ProductNameId, supplierId, date, InventoryNumber) VALUES (?, ?, ?, ?)";
