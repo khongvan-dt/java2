@@ -256,35 +256,21 @@ public class inventoryController {
 //insert 
     @FXML
     public void insertInventory() throws IOException {
-        // Lấy dữ liệu từ bảng ProductDeliveryTable
         InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
         InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
-        InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
 
-        // Kiểm tra xem các item đã được chọn
-        if (selectedDeliveryItem != null && selectedImportItem != null && selectedInventoryItem != null) {
+        if (selectedDeliveryItem != null && selectedImportItem != null) {
             int productNameIdFromDelivery = selectedDeliveryItem.getProductNameId();
             int supplierIdFromDelivery = selectedDeliveryItem.getSupplierId();
             int productNameIdFromImport = selectedImportItem.getProductNameId();
             int supplierIdFromImport = selectedImportItem.getSupplierId();
-            int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
-            int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
 
-            // Check if any of the IDs are empty (zero)
-            if (productNameIdFromDelivery == 0 || supplierIdFromDelivery == 0
-                    || productNameIdFromImport == 0 || supplierIdFromImport == 0
-                    || productNameIdFromInventory == 0 || supplierIdFromInventory == 0) {
-                showAlert("SupplierId or ProductNameId cannot be empty (zero).");
-                return; // Exit the method to prevent further processing
-            }
+            if (supplierIdFromDelivery == supplierIdFromImport && productNameIdFromDelivery == productNameIdFromImport) {
+                int quantityFromImport = selectedImportItem.getQuantity();
+                int quantityFromDelivery = selectedDeliveryItem.getQuantity();
 
-            // Trường hợp 1: Check SupplierId và ProductNameId từ cả ProductDeliveryTable và Importgoods
-            if (productNameIdFromDelivery == productNameIdFromImport && supplierIdFromDelivery == supplierIdFromImport) {
-                int totalQuantityReceived = getTotalQuantityReceived(productNameIdFromImport, supplierIdFromImport);
-                int shipmentQuantity = selectedDeliveryItem.getQuantity();
-
-                if (totalQuantityReceived >= shipmentQuantity) {
-                    int inventoryNumber = totalQuantityReceived - shipmentQuantity;
+                if (quantityFromImport >= quantityFromDelivery) {
+                    int inventoryNumber = quantityFromImport - quantityFromDelivery;
                     if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
                         System.out.println("Added successfully!");
                         showSuccessAlert("Added successfully!");
@@ -293,23 +279,32 @@ public class inventoryController {
                         showAlert("Failed to add.");
                     }
                 } else {
-                    showAlert("total_quantity_received must be greater than or equal to shipmentQuantity.");
+                    showAlert("Quantity from Importgoods must be greater than or equal to Quantity from ProductDeliveryTable.");
                 }
             } else {
-                System.out.println("Mismatched SupplierId or ProductNameId: ");
-                System.out.println("SupplierId from Importgoods: " + supplierIdFromImport);
-                System.out.println("ProductNameId from Importgoods: " + productNameIdFromImport);
-                System.out.println("SupplierId from ProductDeliveryTable: " + supplierIdFromDelivery);
-                System.out.println("ProductNameId from ProductDeliveryTable: " + productNameIdFromDelivery);
                 showAlert("SupplierId or ProductNameId do not match.");
             }
+        } else {
+            showAlert("Please select items from the tables.");
+        }
+    }
 
-            // Trường hợp 2: Check SupplierId và ProductNameId từ cả Importgoods và Inventory
-            if (productNameIdFromImport == productNameIdFromInventory && supplierIdFromImport == supplierIdFromInventory) {
+    @FXML
+    public void insertInventoryTH2() throws IOException {
+        InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
+        InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
+
+        if (selectedImportItem != null && selectedInventoryItem != null) {
+            int productNameIdFromImport = selectedImportItem.getProductNameId();
+            int supplierIdFromImport = selectedImportItem.getSupplierId();
+            int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
+            int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
+
+            if (supplierIdFromImport == supplierIdFromInventory && productNameIdFromImport == productNameIdFromInventory) {
                 int quantityFromImport = selectedImportItem.getQuantity();
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
 
-                int inventoryNumber = quantityFromImport + quantityFromInventory; // Tổng hợp số lượng từ cả hai bảng
+                int inventoryNumber = quantityFromImport + quantityFromInventory;
 
                 if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
                     System.out.println("Added successfully!");
@@ -319,16 +314,25 @@ public class inventoryController {
                     showAlert("Failed to add.");
                 }
             } else {
-                System.out.println("Mismatched SupplierId or ProductNameId: ");
-                System.out.println("SupplierId from Importgoods: " + supplierIdFromImport);
-                System.out.println("ProductNameId from Importgoods: " + productNameIdFromImport);
-                System.out.println("SupplierId from Inventory: " + supplierIdFromInventory);
-                System.out.println("ProductNameId from Inventory: " + productNameIdFromInventory);
                 showAlert("SupplierId or ProductNameId do not match.");
             }
+        } else {
+            showAlert("Please select items from the tables.");
+        }
+    }
 
-            // Trường hợp 3: Check SupplierId và ProductNameId từ cả Inventory và ProductDeliveryTable
-            if (productNameIdFromInventory == productNameIdFromDelivery && supplierIdFromInventory == supplierIdFromDelivery) {
+    @FXML
+    public void insertInventoryTH3() throws IOException {
+        InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
+        InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
+
+        if (selectedDeliveryItem != null && selectedInventoryItem != null) {
+            int productNameIdFromDelivery = selectedDeliveryItem.getProductNameId();
+            int supplierIdFromDelivery = selectedDeliveryItem.getSupplierId();
+            int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
+            int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
+
+            if (supplierIdFromDelivery == supplierIdFromInventory && productNameIdFromDelivery == productNameIdFromInventory) {
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
                 int quantityFromDelivery = selectedDeliveryItem.getQuantity();
 
@@ -342,18 +346,17 @@ public class inventoryController {
                         showAlert("Failed to add.");
                     }
                 } else {
-                    System.out.println("Mismatched SupplierId or ProductNameId: ");
-                    System.out.println("SupplierId from Inventory: " + supplierIdFromInventory);
-                    System.out.println("ProductNameId from Inventory: " + productNameIdFromInventory);
-                    System.out.println("SupplierId from ProductDeliveryTable: " + supplierIdFromDelivery);
-                    System.out.println("ProductNameId from ProductDeliveryTable: " + productNameIdFromDelivery);
-                    showAlert("SupplierId or ProductNameId do not match or quantity mismatch.");
+                    showAlert("Quantity from Inventory must be greater than or equal to Quantity from ProductDeliveryTable.");
                 }
+            } else {
+                showAlert("SupplierId or ProductNameId do not match.");
             }
+        } else {
+            showAlert("Please select items from the tables.");
         }
     }
-    // Phương thức để thực hiện insert vào bảng inventory
 
+    // Phương thức để thực hiện insert vào bảng inventory
     private boolean insertInventoryRecord(int productNameId, int supplierId, int inventoryNumber) {
         try (Connection connection = connect.getConnection()) {
             String insertSQL = "INSERT INTO inventory (ProductNameId, supplierId, date, InventoryNumber) VALUES (?, ?, ?, ?)";
@@ -375,27 +378,7 @@ public class inventoryController {
         }
     }
 
-// Phương thức để lấy total_quantity_received từ bảng Importgoods
-    private int getTotalQuantityReceived(int productNameId, int supplierId) {
-        try (Connection connection = connect.getConnection()) {
-            String query = "SELECT total_quantity_received FROM importGoods WHERE ProductNameId = ? AND supplier_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, productNameId);
-            preparedStatement.setInt(2, supplierId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getInt("total_quantity_received");
-            } else {
-                return -1; // Trả về -1 nếu không tìm thấy dữ liệu
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
     // delete 
-
     public void deleteInventoryRecord() {
         // Get the selected item from the TableView
         InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
