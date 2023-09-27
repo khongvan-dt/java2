@@ -53,19 +53,20 @@
                </columns>
             </TableView>
             <Button layoutX="40.0" layoutY="550.0" mnemonicParsing="false" text="Sửa" />
-            <Label layoutX="535.0" layoutY="41.0" text="Import quantity">
+            <Label layoutX="656.0" layoutY="41.0" text="Import quantity">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="quantity" layoutX="634.0" layoutY="35.0" minWidth="50.0" prefHeight="28.0" prefWidth="217.0" />
-            <TableView fx:id="exportTable" layoutX="40.0" layoutY="35.0" prefHeight="200.0" prefWidth="451.0">
+            <TextField fx:id="quantity" layoutX="751.0" layoutY="35.0" minWidth="50.0" prefHeight="28.0" prefWidth="217.0" />
+            <TableView fx:id="exportTable" layoutX="40.0" layoutY="35.0" prefHeight="200.0" prefWidth="558.0">
                <columns>
                   <TableColumn fx:id="supplierNameColumn" prefWidth="98.0" text="Nhà cung cấp" />
-                  <TableColumn fx:id="productNameColumn" prefWidth="349.0" text="Tên sản phẩm" />
+                  <TableColumn fx:id="productNameColumn" prefWidth="360.0" text="Tên sản phẩm" />
+                  <TableColumn fx:id="quantity2" prefWidth="92.0" text="số lượng" />
                </columns>
             </TableView>
-            <Button layoutX="860.0" layoutY="37.0" mnemonicParsing="false" onAction="#insertProductdelivery" text="Add " />
+            <Button layoutX="988.0" layoutY="36.0" mnemonicParsing="false" onAction="#insertProductdelivery" text="Add " />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="11.0" layoutY="80.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">

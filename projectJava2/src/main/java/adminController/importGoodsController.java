@@ -40,6 +40,68 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class importGoodsController {
 
+    public class Import {
+
+        private int importId;
+        private String productId;
+        private String supplierId;
+        private Date importDate;
+        private int quantity;
+        private int exchanged;
+        private int totalReceived;
+        private float price;
+        private float productImportPrice;
+
+        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged,
+                int totalReceived, float price, float productImportPrice) {
+            this.importId = importId;
+            this.productId = productName;
+            this.supplierId = supplierName;
+            this.importDate = importDate;
+            this.quantity = quantity;
+            this.exchanged = exchanged;
+            this.totalReceived = totalReceived;
+            this.price = price;
+            this.productImportPrice = productImportPrice;
+        }
+
+        public int getImportId() {
+            return importId;
+        }
+
+        public String getProductId() {
+            return productId;
+        }
+
+        public String getSupplierId() {
+            return supplierId;
+        }
+
+        public Date getImportDate() {
+            return importDate;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public int getExchanged() {
+            return exchanged;
+        }
+
+        public int getTotalReceived() {
+            return totalReceived;
+        }
+
+        public Float getPrice() {
+            return price;
+        }
+
+        public float getProductImportPrice() {
+            return productImportPrice;
+        }
+    }
+
     @FXML
     private ComboBox<String> SupplierId;
 
@@ -55,12 +117,41 @@ public class importGoodsController {
     @FXML
     private TextField total_quantity_received;
 
-    private Map<String, Integer> supplierIdMap = new HashMap<>();
-    private Map<String, Integer> productNameIdMap = new HashMap<>();
     @FXML
     private TextField fieldViewProductPrice;
+
     @FXML
     private TextField ImportPrice;
+
+    private Map<String, Integer> supplierIdMap = new HashMap<>();
+    private Map<String, Integer> productNameIdMap = new HashMap<>();
+
+    @FXML
+    private TableView<Import> importTable;
+
+    @FXML
+    private TableColumn<Import, String> productNameColumn;
+
+    @FXML
+    private TableColumn<Import, String> supplierNameColumn;
+
+    @FXML
+    private TableColumn<Import, Date> importDateColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> quantityColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> exchangedColumn;
+
+    @FXML
+    private TableColumn<Import, Integer> totalReceivedColumn;
+
+    @FXML
+    private TableColumn<Import, Float> price;
+
+    @FXML
+    private TableColumn<Import, Float> ImportPriceColumn;
 
     @FXML
     private void initialize() {
@@ -170,94 +261,6 @@ public class importGoodsController {
     }
 
 // in ra bảng 
-    public class Import {
-
-        private int importId;
-        private String productId;
-        private String supplierId;
-        private Date importDate;
-        private int quantity;
-        private int exchanged;
-        private int totalReceived;
-        private float price;
-        private float productImportPrice;
-
-        public Import(int importId, String productName, String supplierName, Date importDate, int quantity, int exchanged,
-                int totalReceived, float price, float productImportPrice) {
-            this.importId = importId;
-            this.productId = productName;
-            this.supplierId = supplierName;
-            this.importDate = importDate;
-            this.quantity = quantity;
-            this.exchanged = exchanged;
-            this.totalReceived = totalReceived;
-            this.price = price;
-            this.productImportPrice = productImportPrice;
-        }
-
-        public int getImportId() {
-            return importId;
-        }
-
-        public String getProductId() {
-            return productId;
-        }
-
-        public String getSupplierId() {
-            return supplierId;
-        }
-
-        public Date getImportDate() {
-            return importDate;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public int getExchanged() {
-            return exchanged;
-        }
-
-        public int getTotalReceived() {
-            return totalReceived;
-        }
-
-        public Float getPrice() {
-            return price;
-        }
-
-        public float getProductImportPrice() {
-            return productImportPrice;
-        }
-    }
-    @FXML
-    private TableView<Import> importTable;
-
-    @FXML
-    private TableColumn<Import, String> productNameColumn;
-
-    @FXML
-    private TableColumn<Import, String> supplierNameColumn;
-
-    @FXML
-    private TableColumn<Import, Date> importDateColumn;
-
-    @FXML
-    private TableColumn<Import, Integer> quantityColumn;
-
-    @FXML
-    private TableColumn<Import, Integer> exchangedColumn;
-
-    @FXML
-    private TableColumn<Import, Integer> totalReceivedColumn;
-
-    @FXML
-    private TableColumn<Import, Float> price;
-
-    @FXML
-    private TableColumn<Import, Float> ImportPriceColumn;
-
     private List<Import> fetchDataFromDatabase() {
         List<Import> importDataList = new ArrayList<>();
 

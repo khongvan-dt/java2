@@ -42,16 +42,15 @@ public class productDeliveryController {
         private int supplierId;
         private SimpleStringProperty productName;
         private int productNameId;
-
-        // Additional properties needed for the second table (ProductDeliveryTable)
         private Date importDate;
         private int quantity;
 
-        public DeliveryData(String supplierName, int supplierId, String productName, int productNameId) {
+        public DeliveryData(String supplierName, int supplierId, String productName, int productNameId, int totalQuantityReceived) {
             this.supplierName = new SimpleStringProperty(supplierName);
             this.supplierId = supplierId;
             this.productName = new SimpleStringProperty(productName);
             this.productNameId = productNameId;
+            this.quantity = totalQuantityReceived;
         }
 
         public DeliveryData(String productName, String supplierName, Date importDate, int quantity) {
@@ -93,6 +92,8 @@ public class productDeliveryController {
 
     @FXML
     private TableColumn<DeliveryData, String> supplierNameColumn;
+    @FXML
+    private TableColumn<DeliveryData, Integer> quantity2;
 
     @FXML
     private TableColumn<DeliveryData, String> productNameColumn;
@@ -133,13 +134,14 @@ public class productDeliveryController {
                 int supplierId = resultSet.getInt("supplierId");
                 String supplierName = resultSet.getString("supplierName");
                 String productName = resultSet.getString("ProductName");
+                int totalQuantityReceived = resultSet.getInt("total_total_quantity_received");
 
-                exportData.add(new DeliveryData(supplierName, supplierId, productName, productNameId));
+                exportData.add(new DeliveryData(supplierName, supplierId, productName, productNameId, totalQuantityReceived));
             }
 
             supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
-
+            quantity2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
             exportTable.setItems(exportData);
 
         } catch (SQLException e) {

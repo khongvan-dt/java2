@@ -18,6 +18,7 @@ adminController\importGoodsController.class
 adminController\addCategoryController$Category.class
 adminController\editSupplierController.class
 db\CreateTable.class
+adminController\editImportgood.class
 adminController\moreProductNameController.class
 adminController\addCategoryController.class
 adminController\editProductNameController.class
