@@ -103,7 +103,7 @@ public class importGoodsController {
             return productImportPrice;
         }
 
-        public float getProductTotalImportPrice() {
+        public float getTotalImportPrice() {
             return totalImportPrice;
         }
     }
@@ -193,7 +193,52 @@ public class importGoodsController {
             }
             fieldViewProductName.setItems(productNames);
 
-            printData();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection connection = connect.getConnection()) {
+            ObservableList<Import> imports = FXCollections.observableArrayList();
+
+            // Your database query to retrieve data
+            String query = "SELECT importGoods.import_id, ProductsName.ProductName, "
+                    + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, importGoods.price, importGoods.productImportPrice,"
+                    + " importGoods.totalImportFee,"
+                    + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
+                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int import_id22 = resultSet.getInt("importGoods.import_id");
+                String ProductName22 = resultSet.getString("ProductsName.ProductName");
+                String supplierName22 = resultSet.getString("supplier.supplierName");
+                Date import_date22 = resultSet.getDate("importGoods.import_date");
+                int quantity_imported22 = resultSet.getInt("importGoods.quantity_imported");
+                int quantity_returned22 = resultSet.getInt("importGoods.quantity_returned");
+                int total_quantity_received22 = resultSet.getInt("importGoods.total_quantity_received");
+                Float price22 = resultSet.getFloat("importGoods.price");
+                Float productImportPrice22 = resultSet.getFloat("importGoods.productImportPrice");
+                Float totalImportFee22 = resultSet.getFloat("importGoods.totalImportFee");
+
+                imports.add(new Import(import_id22, ProductName22, supplierName22,
+                        import_date22, quantity_imported22, quantity_returned22,
+                        total_quantity_received22, productImportPrice22, totalImportFee22, price22));
+            }
+            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));
+            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+            importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            exchangedColumn.setCellValueFactory(new PropertyValueFactory<>("exchanged"));
+            totalReceivedColumn.setCellValueFactory(new PropertyValueFactory<>("totalReceived"));
+            ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("productImportPrice"));
+            price.setCellValueFactory(new PropertyValueFactory<>("price"));
+            totalImportFeecolum.setCellValueFactory(new PropertyValueFactory<>("totalImportFee"));
+
+            // Set the data in the TableView
+            importTable.setItems(imports);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -207,53 +252,44 @@ public class importGoodsController {
         String productPrice = fieldViewProductPrice.getText().trim();
         String importPrice = ImportPrice.getText().trim();
 
-        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null || selectedProductName == null) {
+        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null || selectedProductName == null
+                || productPrice.isEmpty() || importPrice.isEmpty()) {
             showAlert("Please fill in all fields and select a supplier and product.");
             return;
         }
 
-        if (!isNumeric(quantity) || !isNumeric(exchange)) {
-            showAlert("Quantity and exchange must be numeric.");
-            return;
-        }
-
-        if (!isNumeric(productPrice) || !isNumeric(importPrice)) {
-            showAlert("Product price and import price must be numeric.");
-            return;
-        }
-
-        if (productPrice.isEmpty() || importPrice.isEmpty()) {
-            showAlert("Please enter both product price and import price.");
+        if (!isNumeric(quantity) || !isNumeric(exchange) || !isNumeric(productPrice) || !isNumeric(importPrice)) {
+            showAlert("Quantity, exchange, product price, and import price must be numeric.");
             return;
         }
 
         int supplierId = supplierIdMap.get(selectedSupplierName);
         int productNameId = productNameIdMap.get(selectedProductName);
 
-        java.util.Date currentDate = new java.util.Date();
-        Date dateNew = new Date(currentDate.getTime());
+        Date currentDate = new Date(System.currentTimeMillis());
 
         int intQuantity = Integer.parseInt(quantity);
         int intExchange = Integer.parseInt(exchange);
-        int IntimportPrice = Integer.parseInt(importPrice);
+        float floatImportPrice = Float.parseFloat(importPrice);
+        float floatProductPrice = Float.parseFloat(productPrice);
 
         int totalQuantity = intQuantity - intExchange;
-        int total = totalQuantity * IntimportPrice;
+        float totalImportFee = totalQuantity * floatImportPrice;
 
         String insertSQL = "INSERT INTO importgoods "
-                + "(ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received, price, productImportPrice,totalImportFee)"
+                + "(ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received, price, productImportPrice, totalImportFee) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             preparedStatement.setInt(1, productNameId);
             preparedStatement.setInt(2, supplierId);
-            preparedStatement.setDate(3, dateNew);
+            preparedStatement.setDate(3, currentDate);
             preparedStatement.setInt(4, intQuantity);
             preparedStatement.setInt(5, intExchange);
             preparedStatement.setInt(6, totalQuantity);
-            preparedStatement.setFloat(7, Float.parseFloat(importPrice));
-            preparedStatement.setDouble(8, Float.parseFloat(productPrice));
-            preparedStatement.setFloat(9, total);
+            preparedStatement.setFloat(7, floatProductPrice);
+            preparedStatement.setFloat(8, floatImportPrice);
+            preparedStatement.setFloat(9, totalImportFee);
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -262,8 +298,8 @@ public class importGoodsController {
                 // Clear input fields and selections here
                 clearInputFields();
                 // Refresh the TableView
-                importTable.getItems().clear();
                 getFromImportGoods();
+
             } else {
                 showAlert("Failed to add.");
             }
@@ -279,59 +315,6 @@ public class importGoodsController {
         fieldViewProductName.getSelectionModel().clearSelection();
         fieldViewProductPrice.clear();
         ImportPrice.clear();
-    }
-
-// in ra bảng 
-    private List<Import> fetchDataFromDatabase() {
-        List<Import> importDataList = new ArrayList<>();
-
-        try (Connection connection = connect.getConnection()) {
-            String query = "SELECT importGoods.import_id, ProductsName.ProductName, "
-                    + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, importGoods.price, importGoods.productImportPrice,"
-                    + " importGoods.totalImportFee,"
-                    + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
-                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                Import importData = new Import(
-                        resultSet.getInt("importGoods.import_id"),
-                        resultSet.getString("ProductsName.ProductName"),
-                        resultSet.getString("supplier.supplierName"),
-                        resultSet.getDate("importGoods.import_date"),
-                        resultSet.getInt("importGoods.quantity_imported"),
-                        resultSet.getInt("importGoods.quantity_returned"),
-                        resultSet.getInt("importGoods.total_quantity_received"),
-                        resultSet.getFloat("importGoods.price"),
-                        resultSet.getFloat("importGoods.productImportPrice"),
-                        resultSet.getFloat("importGoods.totalImportFee")
-                );
-
-                importDataList.add(importData);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return importDataList;
-    }
-
-    public void printData() {
-        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));
-        supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
-        importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        exchangedColumn.setCellValueFactory(new PropertyValueFactory<>("exchanged"));
-        totalReceivedColumn.setCellValueFactory(new PropertyValueFactory<>("totalReceived"));
-        ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("productImportPrice"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        totalImportFeecolum.setCellValueFactory(new PropertyValueFactory<>("totalImportFee"));
-
-        ObservableList<Import> imports = FXCollections.observableArrayList(fetchDataFromDatabase());
-        importTable.setItems(imports);
     }
 
     // Xóa một hóa đơn nhập hàng
