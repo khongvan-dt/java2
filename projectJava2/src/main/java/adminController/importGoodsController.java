@@ -201,27 +201,27 @@ public class importGoodsController {
             ObservableList<Import> imports = FXCollections.observableArrayList();
 
             // Your database query to retrieve data
-            String query = "SELECT importGoods.import_id, ProductsName.ProductName, "
+            String query2 = "SELECT importGoods.import_id, ProductsName.ProductName, "
                     + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, importGoods.price, importGoods.productImportPrice,"
                     + " importGoods.totalImportFee,"
                     + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
                     + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
+            ResultSet resultSet2 = preparedStatement2.executeQuery();
 
-            while (resultSet.next()) {
+            while (resultSet2.next()) {
 
-                int import_id22 = resultSet.getInt("importGoods.import_id");
-                String ProductName22 = resultSet.getString("ProductsName.ProductName");
-                String supplierName22 = resultSet.getString("supplier.supplierName");
-                Date import_date22 = resultSet.getDate("importGoods.import_date");
-                int quantity_imported22 = resultSet.getInt("importGoods.quantity_imported");
-                int quantity_returned22 = resultSet.getInt("importGoods.quantity_returned");
-                int total_quantity_received22 = resultSet.getInt("importGoods.total_quantity_received");
-                Float price22 = resultSet.getFloat("importGoods.price");
-                Float productImportPrice22 = resultSet.getFloat("importGoods.productImportPrice");
-                Float totalImportFee22 = resultSet.getFloat("importGoods.totalImportFee");
+                int import_id22 = resultSet2.getInt("importGoods.import_id");
+                String ProductName22 = resultSet2.getString("ProductsName.ProductName");
+                String supplierName22 = resultSet2.getString("supplier.supplierName");
+                Date import_date22 = resultSet2.getDate("importGoods.import_date");
+                int quantity_imported22 = resultSet2.getInt("importGoods.quantity_imported");
+                int quantity_returned22 = resultSet2.getInt("importGoods.quantity_returned");
+                int total_quantity_received22 = resultSet2.getInt("importGoods.total_quantity_received");
+                Float price22 = resultSet2.getFloat("importGoods.price");
+                Float productImportPrice22 = resultSet2.getFloat("importGoods.productImportPrice");
+                Float totalImportFee22 = resultSet2.getFloat("importGoods.totalImportFee");
 
                 imports.add(new Import(import_id22, ProductName22, supplierName22,
                         import_date22, quantity_imported22, quantity_returned22,
@@ -233,9 +233,9 @@ public class importGoodsController {
             quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
             exchangedColumn.setCellValueFactory(new PropertyValueFactory<>("exchanged"));
             totalReceivedColumn.setCellValueFactory(new PropertyValueFactory<>("totalReceived"));
-            ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("productImportPrice"));
+            ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalImportPrice")); // Đổi tên cột này
             price.setCellValueFactory(new PropertyValueFactory<>("price"));
-            totalImportFeecolum.setCellValueFactory(new PropertyValueFactory<>("totalImportFee"));
+            totalImportFeecolum.setCellValueFactory(new PropertyValueFactory<>("productImportPrice")); // Đổi tên cột này
 
             // Set the data in the TableView
             importTable.setItems(imports);
@@ -274,7 +274,7 @@ public class importGoodsController {
         float floatProductPrice = Float.parseFloat(productPrice);
 
         int totalQuantity = intQuantity - intExchange;
-        float totalImportFee = totalQuantity * floatImportPrice;
+        float totalImportFee = (float) totalQuantity * floatImportPrice;
 
         String insertSQL = "INSERT INTO importgoods "
                 + "(ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received, price, productImportPrice, totalImportFee) "
