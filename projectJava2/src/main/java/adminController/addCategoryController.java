@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,7 +93,9 @@ public class addCategoryController {
             this.categoryName = categoryName;
         }
     }
-
+    private int i = 0;
+    @FXML
+    private TableColumn<Category, Integer> idColumn;
     @FXML
     private TableView<Category> categoryTable;//id bảng
 
@@ -100,6 +103,7 @@ public class addCategoryController {
     private TableColumn<Category, String> categoryNameColumn;//id cột trong bảng 
 
     public void initialize() {
+
         categoryNameColumn.setCellValueFactory(new PropertyValueFactory<>("categoryName"));// tên cột trong db
 
         ObservableList<Category> Categorys = FXCollections.observableArrayList(fetchDataFromDatabase());
@@ -108,6 +112,7 @@ public class addCategoryController {
 
     private List<Category> fetchDataFromDatabase() {
         List<Category> Categorys = new ArrayList<>();
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
 
         try {
             Connection connection = connect.getConnection();

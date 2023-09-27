@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
          <children>
@@ -37,11 +37,11 @@
             </ImageView>
          </children>
       </Pane>
-      <ScrollPane layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="866.0">
+      <ScrollPane layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="854.0" prefWidth="866.0">
          <content>
-            <AnchorPane prefHeight="686.0" prefWidth="857.0">
+            <AnchorPane prefHeight="854.0" prefWidth="857.0">
                <children>
-                  <Pane layoutX="13.0" layoutY="14.0" prefHeight="322.0" prefWidth="832.0" style="-fx-border-color: gray;">
+                  <Pane layoutX="13.0" layoutY="14.0" prefHeight="490.0" prefWidth="832.0" style="-fx-border-color: gray;">
                      <children>
                         <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="391.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +70,7 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Pane layoutY="360.0" prefHeight="308.0" prefWidth="851.0">
+                  <Pane layoutY="502.0" prefHeight="351.0" prefWidth="851.0">
                      <children>
                         <ImageView fitHeight="202.0" fitWidth="200.0" layoutX="7.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -57,7 +57,7 @@ public class addProductController extends Application {
     private TextArea fieldViewProductDescriptions;
 
     private File selectedImageFile;
-
+    
     @FXML
     private void initialize() {
         // Tạo một HashMap để lưu dữ liệu danh mục sản phẩm
