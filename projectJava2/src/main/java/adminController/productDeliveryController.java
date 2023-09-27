@@ -177,7 +177,6 @@ public class productDeliveryController {
                 String supplierName2 = resultSet.getString("supplierName");
                 Date importDate2 = resultSet.getDate("dayShipping");
                 int shipmentQuantity2 = resultSet.getInt("shipmentQuantity");
-
                 // Create a new DeliveryData object and add it to the list
                 deliveryDataList.add(new DeliveryData(productName2, supplierName2, importDate2,
                         shipmentQuantity2, productNameId2, supplierId2, productDeliveryID));
@@ -185,9 +184,14 @@ public class productDeliveryController {
             productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
             supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
             importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("shipmentQuantity"));
+//            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryNumber"));
+            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             ProductDeliveryTable.setItems(deliveryDataList);
+            for (DeliveryData data : deliveryDataList) {
+                System.out.println(data);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
