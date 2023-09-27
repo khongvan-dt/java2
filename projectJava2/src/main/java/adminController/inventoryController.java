@@ -254,6 +254,7 @@ public class inventoryController {
     }
 
 //insert 
+    @FXML
     public void insertInventory() throws IOException {
         // Lấy dữ liệu từ bảng ProductDeliveryTable
         InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
@@ -269,8 +270,15 @@ public class inventoryController {
             int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
             int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
 
+            // Check if any of the IDs are empty (zero)
+            if (productNameIdFromDelivery == 0 || supplierIdFromDelivery == 0
+                    || productNameIdFromImport == 0 || supplierIdFromImport == 0
+                    || productNameIdFromInventory == 0 || supplierIdFromInventory == 0) {
+                showAlert("SupplierId or ProductNameId cannot be empty (zero).");
+                return; // Exit the method to prevent further processing
+            }
+
             // Trường hợp 1: Check SupplierId và ProductNameId từ cả ProductDeliveryTable và Importgoods
-            // Trường hợp 1
             if (productNameIdFromDelivery == productNameIdFromImport && supplierIdFromDelivery == supplierIdFromImport) {
                 int totalQuantityReceived = getTotalQuantityReceived(productNameIdFromImport, supplierIdFromImport);
                 int shipmentQuantity = selectedDeliveryItem.getQuantity();
@@ -295,8 +303,8 @@ public class inventoryController {
                 System.out.println("ProductNameId from ProductDeliveryTable: " + productNameIdFromDelivery);
                 showAlert("SupplierId or ProductNameId do not match.");
             }
+
             // Trường hợp 2: Check SupplierId và ProductNameId từ cả Importgoods và Inventory
-            // Trường hợp 2
             if (productNameIdFromImport == productNameIdFromInventory && supplierIdFromImport == supplierIdFromInventory) {
                 int quantityFromImport = selectedImportItem.getQuantity();
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
@@ -318,8 +326,8 @@ public class inventoryController {
                 System.out.println("ProductNameId from Inventory: " + productNameIdFromInventory);
                 showAlert("SupplierId or ProductNameId do not match.");
             }
+
             // Trường hợp 3: Check SupplierId và ProductNameId từ cả Inventory và ProductDeliveryTable
-            // Trường hợp 3
             if (productNameIdFromInventory == productNameIdFromDelivery && supplierIdFromInventory == supplierIdFromDelivery) {
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
                 int quantityFromDelivery = selectedDeliveryItem.getQuantity();
