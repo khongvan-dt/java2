@@ -254,6 +254,7 @@ public class inventoryController {
     }
 
 //insert 
+    // th1
     @FXML
     public void insertInventory() throws IOException {
         InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
@@ -375,6 +376,29 @@ public class inventoryController {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @FXML
+    public void insertInventoryTH4() throws IOException {
+        // Get the selected item from the Importgoods table
+        InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
+
+        if (selectedImportItem != null) {
+            int productNameIdFromImport = selectedImportItem.getProductNameId();
+            int supplierIdFromImport = selectedImportItem.getSupplierId();
+            int quantityFromImport = selectedImportItem.getQuantity();
+
+            // Insert the selected item into the inventory table
+            if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, quantityFromImport)) {
+                System.out.println("Added successfully!");
+                showSuccessAlert("Added successfully!");
+                getFromInventory();
+            } else {
+                showAlert("Failed to add.");
+            }
+        } else {
+            showAlert("Please select an item from the Importgoods table.");
         }
     }
 

@@ -244,6 +244,7 @@
                 </Button>
             <Button layoutX="78.0" layoutY="550.0" mnemonicParsing="false" onAction="#insertInventory" text="Importgoods-Productdelivery" />
             <Button layoutX="427.0" layoutY="550.0" mnemonicParsing="false" onAction="#insertInventoryTH3" text="Inventory-Productdelivery" />
+            <Button layoutX="599.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH4" text="Importgoods" />
             </children>
         </AnchorPane>
     </children>

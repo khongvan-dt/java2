@@ -56,6 +56,7 @@ public class CreateTable {
                     + "quantity_imported INT NOT NULL,"
                     + "quantity_returned INT NOT NULL,"
                     + "total_quantity_received INT NOT NULL,"
+                    + "totalImportFee float NOT NULL,"
                     + "FOREIGN KEY (ProductNameId) REFERENCES ProductsName(ProductNameId),"
                     + "FOREIGN KEY (supplier_id) REFERENCES supplier(supplierId))";
             statement.executeUpdate(createImportTableSQL);

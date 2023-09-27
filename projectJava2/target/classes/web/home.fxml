@@ -42,9 +42,9 @@
             </Pane>
          </children>
       </AnchorPane>
-      <ScrollPane layoutX="-6.0" layoutY="112.0" prefHeight="2812.0" prefWidth="854.0">
+      <ScrollPane layoutX="-6.0" layoutY="112.0" prefHeight="2812.0" prefWidth="849.0">
          <content>
-            <Pane prefHeight="2834.0" prefWidth="851.0">
+            <Pane prefHeight="4800.0" prefWidth="851.0">
                <children>
                   <Pane layoutX="75.0" layoutY="337.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
                      <children>
