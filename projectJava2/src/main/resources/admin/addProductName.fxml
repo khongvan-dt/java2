@@ -201,7 +201,8 @@
             <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#addProductName" prefHeight="30.0" prefWidth="38.0" text="Add" />
             <TableView fx:id="productNameTable" layoutX="102.0" layoutY="161.0" prefHeight="344.0" prefWidth="873.0">
                <columns>
-                  <TableColumn fx:id="productNameColumn" prefWidth="860.0" text="Product's Name" />
+                  <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
+                  <TableColumn fx:id="productNameColumn" prefWidth="833.0" text="Product's Name" />
                </columns>
             </TableView>
             <Button layoutX="184.0" layoutY="516.0" mnemonicParsing="false" onAction="#DeleteProductName" style="-fx-background-color: white;">

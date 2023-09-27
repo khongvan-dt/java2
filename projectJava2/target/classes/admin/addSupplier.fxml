@@ -49,8 +49,9 @@
             <Label layoutX="220.0" layoutY="77.0" text="Supplier Name" />
             <TextField fx:id="SupplierNameField" layoutX="340.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" />
             <Button layoutX="669.0" layoutY="70.0" mnemonicParsing="false" onAction="#moreSupplier" prefHeight="30.0" prefWidth="38.0" text="Add" />
-            <TableView fx:id="supplierTable" layoutX="64.0" layoutY="192.0" prefHeight="343.0" prefWidth="932.0">
+            <TableView fx:id="supplierTable" layoutX="64.0" layoutY="192.0" prefHeight="343.0" prefWidth="962.0">
                <columns>
+                  <TableColumn fx:id="idColumn" maxWidth="30.0" prefWidth="30.0" text="ID" />
                   <TableColumn fx:id="supplierNameColumn" prefWidth="922.0" text="Supplier Name" />
                </columns>
             </TableView>

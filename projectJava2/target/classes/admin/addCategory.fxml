@@ -46,7 +46,8 @@
             <children>
                 <TableView fx:id="categoryTable" layoutX="59.0" layoutY="173.0" prefHeight="337.0" prefWidth="975.0">
                     <columns>
-                        <TableColumn fx:id="categoryNameColumn" prefWidth="967.0" text="Category Name" />
+                  <TableColumn fx:id="idColumn" maxWidth="49.0" prefWidth="49.0" text="ID" />
+                        <TableColumn fx:id="categoryNameColumn" prefWidth="912.0" text="Category Name" />
                     </columns>
                 </TableView>
                 <Button layoutX="176.0" layoutY="525.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -161,9 +162,14 @@ public class importGoodsController {
 
     @FXML
     private TableColumn<Import, Float> totalImportFeecolum;
+    private int i = 0;
+    @FXML
+    private TableColumn<Import, Integer> idColumn;
 
     @FXML
     private void initialize() {
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
+
         try (Connection connection = connect.getConnection()) {
 
             String selectSupplier = "SELECT supplierId, supplierName FROM supplier";

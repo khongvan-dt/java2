@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -148,9 +149,22 @@ public class inventoryController {
             this.quantity = quantity;
         }
     }
+    private int i = 0;
+    private int y = 0;
+    private int c = 0;
+    @FXML
+    private TableColumn<InventoryItem, Integer> idColumn1;
+    @FXML
+    private TableColumn<InventoryItem, Integer> idColumn2;
+    @FXML
+    private TableColumn<InventoryItem, Integer> idColumn3;
 
     @FXML
     public void initialize() {
+        idColumn1.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
+        idColumn2.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
+        idColumn3.setCellValueFactory(cellData -> new SimpleIntegerProperty(c++).asObject());
+
         // Gọi phương thức populateImportTable() để đổ dữ liệu vào productList
         populateImportTable();
         sqlImportgoods();

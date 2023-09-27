@@ -34,6 +34,7 @@ import javafx.collections.ObservableList;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -123,11 +124,20 @@ public class productDeliveryController {
     @FXML
     private TableColumn<DeliveryData, Integer> quantityColumn;
 
+    private int i = 0;
+    private int y = 0;
+    @FXML
+    private TableColumn<DeliveryData, Integer> idColumn;
+    
+    @FXML
+    private TableColumn<DeliveryData, Integer> id1;
+
     @FXML
     private TextField quantity;
 
     @FXML
     public void initialize() {
+         id1.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName, "
                     + "inventory.date, inventory.InventoryNumber "
@@ -159,6 +169,7 @@ public class productDeliveryController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
 
         try (Connection connection = connect.getConnection()) {
 
@@ -174,6 +185,7 @@ public class productDeliveryController {
             ObservableList<DeliveryData> deliveryDataList = FXCollections.observableArrayList();
 
             while (resultSet.next()) {
+
                 int productDeliveryID = resultSet.getInt("productDeliveryID");
                 int productNameId2 = resultSet.getInt("ProductNameId");
                 int supplierId2 = resultSet.getInt("supplierId");
