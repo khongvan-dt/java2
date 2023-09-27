@@ -44,15 +44,20 @@ public class productDeliveryController {
         private int productNameId;
         private Date inventoryDate;
         private int inventoryNumber;
+        private int productDeliveryID;
 
-        public DeliveryData(String productName, String supplierName, Date importDate, int quantity, int productNameId, int supplierId) {
+        public DeliveryData(String productName, String supplierName, Date importDate, int quantity, int productNameId, int supplierId, int productDeliveryID) {
             this.productName = productName;
             this.supplierName = supplierName;
             this.inventoryDate = importDate;
             this.inventoryNumber = quantity;
             this.productNameId = productNameId;
             this.supplierId = supplierId;
+            this.productDeliveryID = productDeliveryID;
+        }
 
+        public int getProductDeliveryID() {
+            return productDeliveryID;
         }
 
         // Getters for common properties
@@ -100,20 +105,25 @@ public class productDeliveryController {
     private TableColumn<DeliveryData, Integer> quantity2;
 
     @FXML
+    private TableView<DeliveryData> ProductDeliveryTable;
+
+    @FXML
+    private TableColumn<DeliveryData, String> productName;
+
+    @FXML
+    private TableColumn<DeliveryData, String> supplierName;
+
+    @FXML
+    private TableColumn<DeliveryData, Date> importDate;
+
+    @FXML
+    private TableColumn<DeliveryData, Integer> quantityColumn;
+
+    @FXML
     private TextField quantity;
 
     @FXML
     public void initialize() {
-        sqlInventory();
-
-        // Bind columns to properties in the DeliveryData class
-        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
-        supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-        importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-        quantity2.setCellValueFactory(new PropertyValueFactory<>("quantity")); // Make sure this matches the field name in DeliveryData.
-    }
-
-    private void sqlInventory() {
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName, "
                     + "inventory.date, inventory.InventoryNumber "
@@ -132,17 +142,59 @@ public class productDeliveryController {
                 Date importDate = resultSet.getDate("date");
                 int inventoryNumber = resultSet.getInt("InventoryNumber");
 
-                inventoryList.add(new DeliveryData(productName, supplierName, importDate, inventoryNumber, productNameId, supplierId));
+                inventoryList.add(new DeliveryData(productName, supplierName, importDate, inventoryNumber, productNameId, supplierId, 0));
 
             }
+            // Bind columns to properties in the DeliveryData class
+            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+            quantity2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            exportTable.setItems(inventoryList);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        exportTable.setItems(inventoryList);
+
+        try (Connection connection = connect.getConnection()) {
+
+            String query = "SELECT ProductsName.ProductName, supplier.supplierName, ProductsName.ProductNameId, supplier.supplierId,"
+                    + "productdelivery.dayShipping, productdelivery.shipmentQuantity, productdelivery.productDeliveryID "
+                    + "FROM productdelivery "
+                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ObservableList<DeliveryData> deliveryDataList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                int productDeliveryID = resultSet.getInt("productDeliveryID");
+                int productNameId2 = resultSet.getInt("ProductNameId");
+                int supplierId2 = resultSet.getInt("supplierId");
+                String productName2 = resultSet.getString("ProductName");
+                String supplierName2 = resultSet.getString("supplierName");
+                Date importDate2 = resultSet.getDate("dayShipping");
+                int shipmentQuantity2 = resultSet.getInt("shipmentQuantity");
+
+                // Create a new DeliveryData object and add it to the list
+                deliveryDataList.add(new DeliveryData(productName2, supplierName2, importDate2,
+                        shipmentQuantity2, productNameId2, supplierId2, productDeliveryID));
+            }
+            productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+            supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("shipmentQuantity"));
+
+            ProductDeliveryTable.setItems(deliveryDataList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Insert
-    public void insertProductDelivery() {
+    public void insertProductDelivery() throws IOException {
         String shipQuantity = quantity.getText().trim();
 
         // Check if shipQuantity is empty
@@ -194,7 +246,7 @@ public class productDeliveryController {
             if (rowsAffected > 0) {
                 showSuccessAlert("Product delivery added successfully.");
                 quantity.clear();
-                sqlInventory(); // Refresh the exportTable data
+                getFromProductDelivery();
             } else {
                 showAlert("Failed to insert product delivery.");
             }

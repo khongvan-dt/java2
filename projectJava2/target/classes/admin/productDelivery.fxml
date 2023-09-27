@@ -60,7 +60,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="quantity" layoutX="751.0" layoutY="35.0" minWidth="50.0" prefHeight="28.0" prefWidth="217.0" />
-                <Button layoutX="988.0" layoutY="36.0" mnemonicParsing="false" text="Add " />
+                <Button layoutX="988.0" layoutY="36.0" mnemonicParsing="false" onAction="#insertProductDelivery" text="Add " />
                 <TableView fx:id="exportTable" layoutX="40.0" layoutY="6.0" prefHeight="238.0" prefWidth="603.0">
                     <columns>
                         <TableColumn fx:id="productNameColumn" prefWidth="338.0" text="Product Name" />
