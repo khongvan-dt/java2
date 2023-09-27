@@ -39,11 +39,6 @@
                   </Label>
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="48.0" layoutY="608.0" prefHeight="35.0" prefWidth="177.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f">
-               <font>
-                  <Font name="Arial" size="22.0" />
-               </font>
-            </Label>
             <Label alignment="CENTER" layoutX="668.0" layoutY="608.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
                <font>
                   <Font name="Arial Unicode MS" size="16.0" />
@@ -132,7 +127,6 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            
             <Label alignment="CENTER" layoutX="84.0" layoutY="1163.0" prefHeight="25.0" prefWidth="83.0" text="270.000 đ" textFill="#d90a26db">
                <font>
                   <Font name="Arial Black" size="13.0" />
@@ -242,11 +236,6 @@
                   <Image url="@../img/112.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="53.0" layoutY="2019.0" prefHeight="35.0" prefWidth="233.0" text="THƯ VIỆN ẢNH " textFill="#cf1f1f">
-               <font>
-                  <Font name="Arial" size="22.0" />
-               </font>
-            </Label>
             <ImageView fitHeight="338.0" fitWidth="213.0" layoutX="26.0" layoutY="2085.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/113.png" />
@@ -278,7 +267,7 @@
                   <Image url="@../icon/ic_facebook.png" />
                </image>
             </ImageView>
-            <Pane layoutX="-5.0" layoutY="3.0" prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
+            <Pane layoutX="-5.0" layoutY="-3.0" prefHeight="111.0" prefWidth="866.0" style="-fx-background-color: pink;">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -290,7 +279,7 @@
                         <Image url="@../icon/cart.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/shop.png" />
                      </image>
@@ -313,7 +302,7 @@
                </image>
             </ImageView>
             <TextField layoutX="367.0" layoutY="2534.0" prefHeight="29.0" prefWidth="311.0" promptText="Đăng kí gửi email" style="-fx-border-color: pink;" />
-            <Button layoutX="697.0" layoutY="2536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: pink;" text="Sent" />
+            <Button layoutX="691.0" layoutY="2533.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: pink;" text="Sent" />
             <Text layoutX="284.0" layoutY="2603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÍNH SÁCH" wrappingWidth="108.53677368164062">
                <font>
                   <Font name="Arial Black" size="14.0" />
@@ -391,6 +380,16 @@
                   <Font size="13.0" />
                </font>
             </Text>
+            <Label alignment="CENTER" layoutX="63.0" layoutY="614.0" prefHeight="35.0" prefWidth="166.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f9c">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="15.0" layoutY="2016.0" prefHeight="35.0" prefWidth="182.0" text="THƯ VIỆN ẢNH " textFill="#cf1f1f94">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </content>
