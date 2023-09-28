@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import javafx.util.StringConverter;
 import db.connect;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
@@ -55,6 +57,7 @@ public class addProductController extends Application {
         private SimpleStringProperty description;
         private SimpleStringProperty importPrice;
         private SimpleStringProperty price;
+        private SimpleStringProperty imgPath;
 
         public Product(String productName, String img, String supplierName, String description, String importPrice, String price) {
             this.productName = new SimpleStringProperty(productName);
@@ -63,6 +66,12 @@ public class addProductController extends Application {
             this.description = new SimpleStringProperty(description);
             this.importPrice = new SimpleStringProperty(importPrice);
             this.price = new SimpleStringProperty(price);
+            this.imgPath = new SimpleStringProperty(img);
+
+        }
+
+        public String getImgPath() {
+            return imgPath.get();
         }
 
         public String getProductName() {
@@ -177,8 +186,8 @@ public class addProductController extends Application {
             e.printStackTrace();
         }
 
+// Inside your initialize() method
         try (Connection connection = connect.getConnection()) {
-            // Your SQL query to retrieve data from the database
             String query = "SELECT ProductsName.ProductName, product.img, supplier.supplierName,"
                     + " product.Description, importgoods.productImportPrice, importgoods.price "
                     + "FROM product "
@@ -200,13 +209,14 @@ public class addProductController extends Application {
                 Product product = new Product(productName, img, supplierName, description, importPrice, price);
                 productList.add(product);
             }
-            // Ánh xạ các trường của đối tượng Product vào các cột của TableView
+
+            // Set the items of the TableView to the productList
+            importTable.setItems(productList);
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
             supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
             descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
             importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-
             imgColumn.setCellFactory(column -> {
                 return new TableCell<Product, String>() {
                     private final ImageView imageView = new ImageView();
@@ -217,25 +227,29 @@ public class addProductController extends Application {
 
                         if (empty || imagePath == null) {
                             setGraphic(null);
-
                         } else {
-                            // Tìm đường dẫn tương đối đến thư mục uploads
-                            String relativePath = "C:\\java2\\projectJava2\\" + imagePath;
+                            try {
+                                // Print debug information
+                                System.out.println("imagePath: " + imagePath);
 
-                            // Tạo đối tượng Image từ đường dẫn tương đối
-                            Image image = new Image(new File(relativePath).toURI().toString());
-                            imageView.setImage(image);
-                            imageView.setFitWidth(100); // Đặt chiều rộng theo cần thiết
-                            imageView.setPreserveRatio(true);
-                            setGraphic(imageView);
-                            System.out.println("Đường dẫn tương đối đến ảnh: " + relativePath);
+                                // Load the image based on the provided imagePath
+                                String relativePath = "C:\\java2\\projectJava2\\" + imagePath;
+                                System.out.println("relativePath: " + relativePath);
 
+                                Image image = new Image(new FileInputStream(relativePath));
+                                imageView.setImage(image);
+                                imageView.setFitWidth(100);
+                                imageView.setPreserveRatio(true);
+                                setGraphic(imageView);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                                setGraphic(null); // Set to null if image file is not found
+                            }
                         }
                     }
                 };
-            });
-            // Set the items of the TableView to the productList
-            importTable.setItems(productList);
+            }
+            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
