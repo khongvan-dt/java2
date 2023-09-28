@@ -6,6 +6,7 @@ adminController\editCategoryController.class
 adminController\addSupplierController.class
 adminController\loginController.class
 adminController\moreProductNameController$ProductName.class
+adminController\HomeController.class
 adminController\addProductController.class
 adminController\productDeliveryController$ProductDelivery.class
 adminController\importGoodsController$Import.class
@@ -16,5 +17,6 @@ adminController\editSupplierController.class
 db\CreateTable.class
 adminController\moreProductNameController.class
 adminController\productDeliveryController$Delivery.class
+models\Product.class
 adminController\addCategoryController.class
 adminController\editProductNameController.class
