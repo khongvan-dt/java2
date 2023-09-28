@@ -9,7 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -46,49 +45,43 @@
         </AnchorPane>
         <AnchorPane layoutX="186.0" layoutY="82.0" prefHeight="596.0" prefWidth="1083.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <BorderPane layoutX="152.0" layoutY="14.0" prefHeight="306.0" prefWidth="779.0">
-                    <center>
-                        <GridPane fx:id="formViewProductView" alignment="CENTER_RIGHT" prefHeight="332.0" prefWidth="712.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="148.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="208.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="110.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="379.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label text="Product Name" GridPane.rowIndex="1" />
-                                <Label text="Category" />
-                                <ComboBox fx:id="fieldViewProductCategoryId" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
-                                <Label text="Description" GridPane.columnIndex="2" />
-                                <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="3" />
-                                <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="3" />
-                                <ComboBox fx:id="fieldViewProductName" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="supplierId" layoutX="155.0" layoutY="39.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label layoutX="10.0" layoutY="43.0" text="Supplier" GridPane.rowIndex="2" />
-                            </children>
-                        </GridPane>
-                    </center>
-                </BorderPane>
-            <TableView fx:id="importTable" layoutX="96.0" layoutY="364.0" prefHeight="200.0" prefWidth="891.0">
+            <TableView fx:id="importTable" layoutX="39.0" layoutY="261.0" prefHeight="303.0" prefWidth="1021.0">
                <columns>
-                  <TableColumn fx:id="productNameColumn" prefWidth="121.0" text="Product" />
-                  <TableColumn fx:id="supplierNameColumn" prefWidth="114.0" text="Supplier" />
-                  <TableColumn fx:id="importDateColumn" prefWidth="106.0" text="Import Date" />
-                  <TableColumn fx:id="quantityColumn" prefWidth="87.0" text="Quantity" />
-                  <TableColumn fx:id="exchangedColumn" prefWidth="116.0" text="Exchanged" />
-                  <TableColumn fx:id="totalReceivedColumn" prefWidth="124.0" text="Total Received" />
-                  <TableColumn fx:id="ImportPriceColumn" prefWidth="113.0" text="Import Price" />
-                  <TableColumn fx:id="price" prefWidth="103.0" text="Price" />
+                  <TableColumn fx:id="productNameColumn" prefWidth="400.0" text="Product Name" />
+                  <TableColumn fx:id="imgColumn" prefWidth="172.0" text="img" />
+                  <TableColumn fx:id="supplierNameColumn" prefWidth="68.0" text="Supplier" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="204.0" text="Description" />
+                  <TableColumn fx:id="importPriceColumn" prefWidth="88.0" text="Import Price" />
+                  <TableColumn fx:id="priceColumn" prefWidth="83.0" text="Price" />
                </columns>
             </TableView>
+            <GridPane fx:id="formViewProductView" alignment="CENTER_RIGHT" layoutX="39.0" layoutY="14.0" prefHeight="238.0" prefWidth="868.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="197.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="96.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="305.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Product Name" GridPane.rowIndex="1" />
+                  <Label text="Category" />
+                  <ComboBox fx:id="fieldViewProductCategoryId" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <Label text="Description" GridPane.columnIndex="2" />
+                  <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#insertProduct" text="Add Products" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="fieldViewProductName" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="supplierId" layoutX="155.0" layoutY="39.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label layoutX="10.0" layoutY="43.0" text="Supplier" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
             </children>
         </AnchorPane>
       <AnchorPane layoutX="11.0" layoutY="82.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">

@@ -18,7 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +31,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -37,8 +41,55 @@ import javafx.stage.Stage;
 import jdk.jfr.Category;
 import main.Main;
 import static org.apache.commons.lang3.StringUtils.isNumeric;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.TableCell;
 
 public class addProductController extends Application {
+
+    public class Product {
+
+        private SimpleStringProperty productName;
+        private SimpleStringProperty img;
+        private SimpleStringProperty supplierName;
+        private SimpleStringProperty description;
+        private SimpleStringProperty importPrice;
+        private SimpleStringProperty price;
+
+        public Product(String productName, String img, String supplierName, String description, String importPrice, String price) {
+            this.productName = new SimpleStringProperty(productName);
+            this.img = new SimpleStringProperty(img);
+            this.supplierName = new SimpleStringProperty(supplierName);
+            this.description = new SimpleStringProperty(description);
+            this.importPrice = new SimpleStringProperty(importPrice);
+            this.price = new SimpleStringProperty(price);
+        }
+
+        public String getProductName() {
+            return productName.get();
+        }
+
+        public String getImg() {
+            return img.get();
+        }
+
+        public String getSupplierName() {
+            return supplierName.get();
+        }
+
+        public String getDescription() {
+            return description.get();
+        }
+
+        public String getImportPrice() {
+            return importPrice.get();
+        }
+
+        public String getPrice() {
+            return price.get();
+        }
+
+    }
 
     private Map<String, Integer> categoryNameidMap = new HashMap<>();
     private Map<String, Integer> productNameIdMap = new HashMap<>();
@@ -57,7 +108,23 @@ public class addProductController extends Application {
     private TextArea fieldViewProductDescriptions;
 
     private File selectedImageFile;
-    
+
+    private ObservableList<Product> productList = FXCollections.observableArrayList();
+    @FXML
+    private TableView<Product> importTable;
+    @FXML
+    private TableColumn<Product, String> productNameColumn;
+    @FXML
+    private TableColumn<Product, String> imgColumn;
+    @FXML
+    private TableColumn<Product, String> supplierNameColumn;
+    @FXML
+    private TableColumn<Product, String> descriptionColumn;
+    @FXML
+    private TableColumn<Product, String> importPriceColumn;
+    @FXML
+    private TableColumn<Product, String> priceColumn;
+
     @FXML
     private void initialize() {
         // Tạo một HashMap để lưu dữ liệu danh mục sản phẩm
@@ -109,6 +176,91 @@ public class addProductController extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try (Connection connection = connect.getConnection()) {
+            // Your SQL query to retrieve data from the database
+            String query = "SELECT ProductsName.ProductName, product.img, supplier.supplierName,"
+                    + " product.Description, importgoods.productImportPrice, importgoods.price "
+                    + "FROM product "
+                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
+                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String productName = resultSet.getString("ProductName");
+                String img = resultSet.getString("img");
+                String supplierName = resultSet.getString("supplierName");
+                String description = resultSet.getString("Description");
+                String importPrice = resultSet.getString("productImportPrice");
+                String price = resultSet.getString("price");
+
+                Product product = new Product(productName, img, supplierName, description, importPrice, price);
+                productList.add(product);
+            }
+
+            imgColumn.setCellFactory(column -> {
+                return new TableCell<Product, String>() {
+                    private final ImageView imageView = new ImageView();
+
+                    @Override
+                    protected void updateItem(String imagePath, boolean empty) {
+                        super.updateItem(imagePath, empty);
+
+                        if (empty || imagePath == null) {
+                            setGraphic(null);
+                        } else {
+                            // Tìm đường dẫn tương đối đến thư mục uploads
+                            String relativePath = "src/uploads/" + imagePath;
+                            // Tạo đối tượng Image từ đường dẫn tương đối
+                            Image image = new Image(new File(relativePath).toURI().toString());
+                            imageView.setImage(image);
+                            imageView.setFitWidth(100); // Set the width as needed
+                            imageView.setPreserveRatio(true);
+                            setGraphic(imageView);
+                        }
+                    }
+                };
+            });
+            // Ánh xạ các trường của đối tượng Product vào các cột của TableView
+            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+            importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
+            priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+            // Set up custom cell factory for the imgColumn to display images
+            imgColumn.setCellFactory(column -> {
+                return new TableCell<Product, String>() {
+                    private final ImageView imageView = new ImageView();
+
+                    @Override
+                    protected void updateItem(String imagePath, boolean empty) {
+                        super.updateItem(imagePath, empty);
+
+                        if (empty || imagePath == null) {
+                            setGraphic(null);
+                        } else {
+                            // Tìm đường dẫn tương đối đến thư mục uploads
+                            String relativePath = "src/uploads/" + imagePath;
+                            // Tạo đối tượng Image từ đường dẫn tương đối
+                            Image image = new Image(new File(relativePath).toURI().toString());
+                            imageView.setImage(image);
+                            imageView.setFitWidth(100); // Set the width as needed
+                            imageView.setPreserveRatio(true);
+                            setGraphic(imageView);
+                        }
+                    }
+                };
+            });
+            // Set the items of the TableView to the productList
+            importTable.setItems(productList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

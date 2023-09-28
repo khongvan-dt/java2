@@ -12,7 +12,9 @@ adminController\moreProductNameController$ProductName.class
 adminController\addProductController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
+adminController\addProductController$2.class
 adminController\addSupplierController$Supplier.class
+adminController\addProductController$Product.class
 adminController\oderController.class
 adminController\importGoodsController.class
 adminController\addCategoryController$Category.class
@@ -20,5 +22,6 @@ adminController\editSupplierController.class
 db\CreateTable.class
 adminController\editImportgood.class
 adminController\moreProductNameController.class
+adminController\addProductController$1.class
 adminController\addCategoryController.class
 adminController\editProductNameController.class
