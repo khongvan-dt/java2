@@ -46,7 +46,7 @@
             <content>
                 <Pane prefHeight="4800.0" prefWidth="851.0">
                     <children>
-                        <Pane layoutX="75.0" layoutY="337.0" prefHeight="164.0" prefWidth="670.0" style="-fx-background-radius: black;">
+                        <Pane layoutX="75.0" layoutY="337.0" prefHeight="152.0" prefWidth="670.0" style="-fx-background-radius: black;">
                             <children>
                                 <Label alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Phương Thức Thanh Toán">
                                     <font>
@@ -58,150 +58,19 @@
                                         <Font name="Arial Narrow" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="375.0" layoutY="90.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Hóa Đơn May Mắn">
+                                <Label alignment="CENTER" layoutX="375.0" layoutY="90.0" prefHeight="34.0" prefWidth="252.0" style="-fx-border-color: pink;" styleClass="pt" text="Địa Chỉ">
                                     <font>
                                         <Font name="Arial Narrow" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Chính Sách Giao Hàng &amp; Đổi Trả">
+                                <Label alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="34.0" prefWidth="260.0" style="-fx-border-color: pink;" styleClass="pt" text="Giỏ Hàng">
                                     <font>
                                         <Font name="Arial Narrow" size="15.0" />
                                     </font>
                                 </Label>
                             </children>
                         </Pane>
-                        <Label alignment="CENTER" layoutX="37.0" layoutY="507.0" prefHeight="35.0" prefWidth="177.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f">
-                            <font>
-                                <Font name="Arial" size="22.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="669.0" layoutY="508.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
-                            <font>
-                                <Font name="Arial Unicode MS" size="16.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="38.0" layoutY="921.0" prefHeight="35.0" prefWidth="187.0" text="FLASH SALE" textFill="#cf1f1f9c">
-                            <font>
-                                <Font name="Arial" size="22.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="657.0" layoutY="932.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
-                            <font>
-                                <Font name="Arial Unicode MS" size="16.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="63.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/4.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="259.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/5.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="474.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/6.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="667.0" layoutY="1000.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/7.png" />
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="67.0" layoutY="1138.0" prefHeight="25.0" prefWidth="117.0" text="Bỉm Merries Nhật" />
-                        <Label alignment="CENTER" layoutX="263.0" layoutY="1138.0" prefHeight="25.0" prefWidth="117.0" text="Bỉm Moony Nhật" />
-                        <Label alignment="CENTER" layoutX="474.0" layoutY="1138.0" prefHeight="25.0" prefWidth="117.0" text="Bộ ONDO dưỡng da" />
-                        <Label alignment="CENTER" layoutX="672.0" layoutY="1138.0" prefHeight="25.0" prefWidth="117.0" text="Khẩu trang bé tu ti" />
-                        <Label alignment="CENTER" layoutX="495.0" layoutY="1163.0" prefHeight="25.0" prefWidth="83.0" text="500.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="84.0" layoutY="1163.0" prefHeight="25.0" prefWidth="83.0" text="270.000 đ" textFill="#d90a26db">
-                            <font>
-                                <Font name="Arial Black" size="13.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="33.0" layoutY="1237.0" prefHeight="35.0" prefWidth="233.0" text="QUẦN ÁO CHO BÉ " textFill="#cf1f1f94">
-                            <font>
-                                <Font name="Arial" size="22.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="657.0" layoutY="1238.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
-                            <font>
-                                <Font name="Arial Unicode MS" size="16.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="67.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/10.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="259.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/11.png" />
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="280.0" layoutY="1163.0" prefHeight="25.0" prefWidth="83.0" text="275.000 đ" textFill="#d90a26db">
-                            <font>
-                                <Font name="Arial Black" size="13.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="689.0" layoutY="1157.0" prefHeight="25.0" prefWidth="83.0" text="50.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
                         <Label />
-                        <Label alignment="CENTER" layoutX="84.0" layoutY="1188.0" prefHeight="25.0" prefWidth="83.0" text="375.000 đ" textFill="#867a7a">
-                            <font>
-                                <Font name="Arial" size="11.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="278.0" layoutY="1188.0" prefHeight="25.0" prefWidth="83.0" text="380.000 đ" textFill="#867a7a">
-                            <font>
-                                <Font name="Arial" size="11.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="472.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/13.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="125.0" fitWidth="143.0" layoutX="668.0" layoutY="1309.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/12.png" />
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="56.0" layoutY="1443.0" prefHeight="25.0" prefWidth="139.0" text="Váy hoa tay cộc Mijoo cổ bèo" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="1443.0" prefHeight="25.0" prefWidth="139.0" text="Váy 2 dây Mijoo tầng bèo " />
-                        <Label alignment="CENTER" layoutX="467.0" layoutY="1443.0" prefHeight="25.0" prefWidth="139.0" text="Váy bé tay cộc bo chun ">
-                            <graphic>
-                                <Label alignment="CENTER" prefHeight="25.0" prefWidth="139.0" text="Váy bé sát nách Mijoo đuôi cá " />
-                            </graphic>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="84.0" layoutY="1468.0" prefHeight="25.0" prefWidth="83.0" text="219.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="273.0" layoutY="1468.0" prefHeight="25.0" prefWidth="83.0" text="210.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="495.0" layoutY="1468.0" prefHeight="25.0" prefWidth="83.0" text="249.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="690.0" layoutY="1468.0" prefHeight="25.0" prefWidth="83.0" text="239.000 đ">
-                            <font>
-                                <Font name="Arial Black" size="12.0" />
-                            </font>
-                        </Label>
                         <Label />
                         <Pane layoutX="48.0" layoutY="1544.0" prefHeight="402.0" prefWidth="343.0">
                             <children>
@@ -353,11 +222,18 @@
                                 <Font size="13.0" />
                             </font>
                         </Text>
-                        <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="559.0" prefHeight="224.0" prefWidth="787.0">
+                        <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="543.0" prefHeight="224.0" prefWidth="787.0">
                             <content>
                                 <AnchorPane fx:id="bgV" prefHeight="206.0" prefWidth="786.0" />
                             </content>
                         </ScrollPane>
+                  <Button fx:id="categoryId1" layoutX="724.0" layoutY="501.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <Button fx:id="categoryId2" layoutX="726.0" layoutY="816.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <ScrollPane fx:id="scrollPane1" layoutX="29.0" layoutY="861.0" prefHeight="224.0" prefWidth="787.0">
+                     <content>
+                        <AnchorPane fx:id="bgV1" prefHeight="206.0" prefWidth="786.0" />
+                     </content>
+                  </ScrollPane>
 
                     </children>
                 </Pane>
