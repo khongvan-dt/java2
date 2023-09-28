@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,6 +29,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane bgV;
+    @FXML
+    private ScrollPane scrollPane;
 
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("abc");
@@ -46,8 +49,8 @@ public class HomeController implements Initializable {
                     + "FROM product "
                     + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
-                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
-                    + "LIMIT 4 OFFSET 0";
+                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId ";
+//             + "LIMIT 4 OFFSET 0"
             statement = connection.prepareStatement(query);
 
             resultSet = statement.executeQuery();
@@ -108,7 +111,7 @@ public class HomeController implements Initializable {
 
                 // Thêm Pane sản phẩm vào AnchorPane "bgV"
                 bgV.getChildren().add(productPane);
-
+                scrollPane.setContent(bgV);
                 productIndex++; // Tăng chỉ số sản phẩm
             }
 
