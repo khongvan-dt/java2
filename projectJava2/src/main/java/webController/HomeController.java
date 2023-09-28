@@ -1,5 +1,6 @@
 package webController;
 
+import db.connect;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,51 +15,108 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import models.Product;
 
 public class HomeController implements Initializable {
 
     @FXML
-    private ImageView imageView;
-    @FXML
-    private Pane newestProducts;
+    private AnchorPane bgV;
 
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("abc");
         displayNewestProducts();
-     
-
     }
 
     private void displayNewestProducts() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        List<Product> lstProduct = new ArrayList<>();
-        // get db
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project2", "root", "");
 
-            // Truy vấn cơ sở dữ liệu để lấy thông tin tất cả các sản phẩm
-            String query = "SELECT product.*,productsname.ProductName FROM product inner join productsname limit 4 offset 0";
+        try {
+            connection = connect.getConnection();
+
+            String query = "SELECT ProductsName.ProductName, product.img, importgoods.price "
+                    + "FROM product "
+                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
+                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
+                    + "LIMIT 4 OFFSET 0";
             statement = connection.prepareStatement(query);
 
             resultSet = statement.executeQuery();
 
+            int productSpacing = 5; // Khoảng cách giữa các sản phẩm
+            int productWidth = 190; // Chiều rộng của mỗi sản phẩm
+            int productHeight = 205; // Chiều cao của mỗi sản phẩm
+            int startX = 21; // Vị trí ban đầu theo trục X
+            int startY = 4; // Vị trí ban đầu theo trục Y
+
+            int productIndex = 0; // Chỉ số của sản phẩm
+
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("productId");
                 String productName = resultSet.getString("ProductName");
-                Float price = Float.parseFloat("0");
                 String imagePath = resultSet.getString("img");
-                Product prd = new Product(id, productName, imagePath, price);
-                lstProduct.add(prd);
+                Float productPrice = resultSet.getFloat("price");
+
+                // Tạo Pane mới cho sản phẩm
+                Pane productPane = new Pane();
+                productPane.setPrefWidth(productWidth);
+                productPane.setPrefHeight(productHeight);
+
+                // Tính toán vị trí của sản phẩm dựa trên chỉ số và khoảng cách
+                int productX = startX + (productWidth + productSpacing) * productIndex;
+                int productY = startY;
+
+                // Đặt vị trí cho Pane sản phẩm
+                productPane.setLayoutX(productX);
+                productPane.setLayoutY(productY);
+
+                // Tạo ImageView cho sản phẩm
+                ImageView productImageView = new ImageView();
+                productImageView.setFitWidth(140);
+                productImageView.setFitHeight(125);
+                productImageView.setLayoutX(25);
+                productImageView.setLayoutY(13);
+                productImageView.setPreserveRatio(true);
+
+                // Hiển thị ảnh sản phẩm trong ImageView
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setImage(image);
+
+                // Tạo Label cho tên sản phẩm
+                Label productNameLabel = new Label(productName);
+                productNameLabel.setPrefWidth(176);
+                productNameLabel.setPrefHeight(25);
+                productNameLabel.setAlignment(Pos.CENTER);
+                productNameLabel.setLayoutX(8);
+                productNameLabel.setLayoutY(125);
+
+                // Tạo Label cho giá sản phẩm
+                Label productPriceLabel = new Label("Price: " + productPrice);
+                productPriceLabel.setPrefWidth(138);
+                productPriceLabel.setPrefHeight(25);
+                productPriceLabel.setAlignment(Pos.CENTER);
+                productPriceLabel.setLayoutX(27);
+                productPriceLabel.setLayoutY(157);
+
+                // Đưa ImageView và các Label vào Pane sản phẩm
+                productPane.getChildren().addAll(productImageView, productNameLabel, productPriceLabel);
+
+                // Thêm Pane sản phẩm vào AnchorPane "bgV"
+                bgV.getChildren().add(productPane);
+
+                productIndex++; // Tăng chỉ số sản phẩm
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Đóng kết nối và giải phóng tài nguyên
             try {
                 if (resultSet != null) {
                     resultSet.close();
@@ -73,50 +131,6 @@ public class HomeController implements Initializable {
                 e.printStackTrace();
             }
         }
-        Float startX = Float.parseFloat("68");
-        Float startY = Float.parseFloat("809.0");
-        // iterate product to views
-        for (Product prd : lstProduct) {
-            Pane pane = new Pane();
-            pane.setPrefWidth(143);
-            pane.setLayoutX(startX);
-            // Tạo ImageView và Label
-            ImageView imageView = new ImageView();
-            // Tạo đối tượng hình ảnh từ đường dẫn
-            String imageUrl = "file:///C:\\java2\\projectJava2\\" + prd.getImagePath();
-            try {
-                Image image = new Image(imageUrl);
-                imageView.setImage(image);
-                imageView.setFitWidth(200); // Đặt chiều rộng của ImageView (tuỳ chọn)
-                imageView.setPreserveRatio(true); // Giữ tỷ lệ khung hình (tuỳ chọn)
-                Label nameLabel = new Label(prd.getProductName());
-                // tinh width height anh
-                nameLabel.setPrefWidth(143);
-                nameLabel.setPrefHeight(50);
-                // dua anh va label vao pane
-                pane.getChildren().addAll(nameLabel, imageView);
-                // dua pane vao pane fx:id=newestproduct
-                newestProducts.getChildren().add(pane);
-                startX += 143;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-
-        }
     }
 
-    private void displayProduct(String img) {
-        // Đường dẫn gốc đến thư mục chứa ảnh trong ứng dụng của bạn
-        String baseImagePath = "D:/JAVAPJ2/java2/projectJava2/";
-
-        // Nối đường dẫn cơ sở và đường dẫn từ cơ sở dữ liệu
-        String fullImagePath = baseImagePath + img;
-
-        // In đường dẫn ảnh để kiểm tra
-        System.out.printf("Đường dẫn ảnh: %s%n" + fullImagePath);
-
-        // Hiển thị ảnh sản phẩm trong ImageView
-        Image image = new Image("file:///" + fullImagePath); // Sử dụng "file:///" để chỉ ra đường dẫn cục bộ
-        imageView.setImage(image);
-    }
 }

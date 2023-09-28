@@ -1,28 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models;
 
-/**
- *
- * @author thao
- */
 public class Product {
-    Integer id;
-    Integer supplierId;
-    Integer categoryId;
-    String productName;
-    String imagePath;
-    String description;
-    Float price;
-    
-    
-    public Product(){
-        
+    private Integer id;
+    private String productName;
+    private String imagePath;
+    private Float price;
+
+    public Product() {
     }
-    
-    public Product(Integer id, String productName, String imagePath, Float price){
+
+    public Product(Integer id, String productName, String imagePath, Float price) {
         this.id = id;
         this.productName = productName;
         this.imagePath = imagePath;
@@ -35,22 +22,6 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(Integer supplierId) {
-        this.supplierId = supplierId;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getProductName() {
@@ -69,14 +40,6 @@ public class Product {
         this.imagePath = imagePath;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Float getPrice() {
         return price;
     }
@@ -84,5 +47,4 @@ public class Product {
     public void setPrice(Float price) {
         this.price = price;
     }
-    
 }
