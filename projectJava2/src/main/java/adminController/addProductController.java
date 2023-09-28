@@ -200,30 +200,6 @@ public class addProductController extends Application {
                 Product product = new Product(productName, img, supplierName, description, importPrice, price);
                 productList.add(product);
             }
-
-            imgColumn.setCellFactory(column -> {
-                return new TableCell<Product, String>() {
-                    private final ImageView imageView = new ImageView();
-
-                    @Override
-                    protected void updateItem(String imagePath, boolean empty) {
-                        super.updateItem(imagePath, empty);
-
-                        if (empty || imagePath == null) {
-                            setGraphic(null);
-                        } else {
-                            // Tìm đường dẫn tương đối đến thư mục uploads
-                            String relativePath = "src/uploads/" + imagePath;
-                            // Tạo đối tượng Image từ đường dẫn tương đối
-                            Image image = new Image(new File(relativePath).toURI().toString());
-                            imageView.setImage(image);
-                            imageView.setFitWidth(100); // Set the width as needed
-                            imageView.setPreserveRatio(true);
-                            setGraphic(imageView);
-                        }
-                    }
-                };
-            });
             // Ánh xạ các trường của đối tượng Product vào các cột của TableView
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
             supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
@@ -231,7 +207,6 @@ public class addProductController extends Application {
             importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-            // Set up custom cell factory for the imgColumn to display images
             imgColumn.setCellFactory(column -> {
                 return new TableCell<Product, String>() {
                     private final ImageView imageView = new ImageView();
@@ -242,15 +217,19 @@ public class addProductController extends Application {
 
                         if (empty || imagePath == null) {
                             setGraphic(null);
+
                         } else {
                             // Tìm đường dẫn tương đối đến thư mục uploads
-                            String relativePath = "src/uploads/" + imagePath;
+                            String relativePath = "C:\\java2\\projectJava2\\" + imagePath;
+
                             // Tạo đối tượng Image từ đường dẫn tương đối
                             Image image = new Image(new File(relativePath).toURI().toString());
                             imageView.setImage(image);
-                            imageView.setFitWidth(100); // Set the width as needed
+                            imageView.setFitWidth(100); // Đặt chiều rộng theo cần thiết
                             imageView.setPreserveRatio(true);
                             setGraphic(imageView);
+                            System.out.println("Đường dẫn tương đối đến ảnh: " + relativePath);
+
                         }
                     }
                 };

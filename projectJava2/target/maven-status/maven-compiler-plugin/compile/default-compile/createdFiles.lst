@@ -12,7 +12,6 @@ adminController\moreProductNameController$ProductName.class
 adminController\addProductController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
-adminController\addProductController$2.class
 adminController\addSupplierController$Supplier.class
 adminController\addProductController$Product.class
 adminController\oderController.class
