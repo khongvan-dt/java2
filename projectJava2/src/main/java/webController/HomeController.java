@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import models.Product;
 
@@ -51,7 +52,7 @@ public class HomeController implements Initializable {
 
             resultSet = statement.executeQuery();
 
-            int productSpacing = 5; // Khoảng cách giữa các sản phẩm
+            int productSpacing = 1; // Khoảng cách giữa các sản phẩm
             int productWidth = 190; // Chiều rộng của mỗi sản phẩm
             int productHeight = 205; // Chiều cao của mỗi sản phẩm
             int startX = 21; // Vị trí ban đầu theo trục X
@@ -64,8 +65,36 @@ public class HomeController implements Initializable {
                 String imagePath = resultSet.getString("img");
                 Float productPrice = resultSet.getFloat("price");
 
-                // Tạo Pane mới cho sản phẩm
-                Pane productPane = new Pane();
+                // Tạo VBox để chứa các thành phần
+                VBox productBox = new VBox();
+                productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
+                productBox.setAlignment(Pos.CENTER);
+
+                // Tạo ImageView cho sản phẩm
+                ImageView productImageView = new ImageView();
+                productImageView.setFitWidth(140);
+                productImageView.setFitHeight(125);
+                productImageView.setPreserveRatio(true);
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setImage(image);
+
+                // Tạo Label cho tên sản phẩm
+                Label productNameLabel = new Label(productName);
+                productNameLabel.setPrefWidth(150);
+                productNameLabel.setPrefHeight(25);
+                productNameLabel.setAlignment(Pos.CENTER);
+
+                // Tạo Label cho giá sản phẩm
+                Label productPriceLabel = new Label("Price: " + productPrice);
+                productPriceLabel.setPrefWidth(140);
+                productPriceLabel.setPrefHeight(25);
+                productPriceLabel.setAlignment(Pos.CENTER);
+
+                // Đưa ImageView và các Label vào VBox
+                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel);
+
+                // Đặt VBox vào Pane sản phẩm
+                Pane productPane = new Pane(productBox);
                 productPane.setPrefWidth(productWidth);
                 productPane.setPrefHeight(productHeight);
 
@@ -76,36 +105,6 @@ public class HomeController implements Initializable {
                 // Đặt vị trí cho Pane sản phẩm
                 productPane.setLayoutX(productX);
                 productPane.setLayoutY(productY);
-
-                // Tạo ImageView cho sản phẩm
-                ImageView productImageView = new ImageView();
-                productImageView.setFitWidth(140);
-                productImageView.setFitHeight(125);
-                productImageView.setLayoutX(25);
-                productImageView.setLayoutY(13);
-                productImageView.setPreserveRatio(true);
-
-// Tạo Label cho tên sản phẩm
-                Label productNameLabel = new Label(productName);
-                productNameLabel.setPrefWidth(176);
-                productNameLabel.setPrefHeight(25);
-                productNameLabel.setAlignment(Pos.CENTER);
-                productNameLabel.setLayoutX(8);
-                productNameLabel.setLayoutY(138); // Đặt layoutY ở đây để có khoảng cách 2px
-
-// Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
-                productPriceLabel.setPrefWidth(138);
-                productPriceLabel.setPrefHeight(25);
-                productPriceLabel.setAlignment(Pos.CENTER);
-                productPriceLabel.setLayoutX(27);
-                productPriceLabel.setLayoutY(165); // Đặt layoutY ở đây để có khoảng cách 2px
-
-                // Hiển thị ảnh sản phẩm trong ImageView
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
-                productImageView.setImage(image);
-                // Đưa ImageView và các Label vào Pane sản phẩm
-                productPane.getChildren().addAll(productImageView, productNameLabel, productPriceLabel);
 
                 // Thêm Pane sản phẩm vào AnchorPane "bgV"
                 bgV.getChildren().add(productPane);
