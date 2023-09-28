@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -81,12 +82,21 @@ public class HomeController implements Initializable {
                 Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
-                // Tạo Label cho tên sản phẩm
-                Label productNameLabel = new Label(productName);
-                productNameLabel.setPrefWidth(150);
-                productNameLabel.setPrefHeight(25);
-                productNameLabel.setAlignment(Pos.CENTER);
+// Tạo Button thay vì Label cho tên sản phẩm
+                Button productNameButton = new Button(productName);
+                productNameButton.setPrefWidth(150);
+                productNameButton.setPrefHeight(25);
+                productNameButton.setAlignment(Pos.CENTER);
 
+// Đặt lớp CSS cho Button để đặt màu nền thành màu đỏ
+//                productNameButton.getStyleClass().add("button-with-red-background");
+
+// Đặt xử lý sự kiện cho Button (nếu cần)
+                productNameButton.setOnAction(event -> {
+                    // Điều khiển hành động khi Button được nhấp
+                });
+
+// Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
                 Label productPriceLabel = new Label("Price: " + productPrice);
                 productPriceLabel.setPrefWidth(140);
@@ -94,7 +104,7 @@ public class HomeController implements Initializable {
                 productPriceLabel.setAlignment(Pos.CENTER);
 
                 // Đưa ImageView và các Label vào VBox
-                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel);
+                productBox.getChildren().addAll(productImageView, productNameButton, productPriceLabel);
 
                 // Đặt VBox vào Pane sản phẩm
                 Pane productPane = new Pane(productBox);

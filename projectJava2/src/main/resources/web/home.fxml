@@ -70,12 +70,12 @@
                                 </Label>
                             </children>
                         </Pane>
-                        <Label alignment="CENTER" layoutX="48.0" layoutY="608.0" prefHeight="35.0" prefWidth="177.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f">
+                        <Label alignment="CENTER" layoutX="37.0" layoutY="507.0" prefHeight="35.0" prefWidth="177.0" text="HÀNG MỚI VỀ" textFill="#cf1f1f">
                             <font>
                                 <Font name="Arial" size="22.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="668.0" layoutY="608.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
+                        <Label alignment="CENTER" layoutX="669.0" layoutY="508.0" prefHeight="34.0" prefWidth="126.0" style="-fx-background-color: pink; -fx-background-radius: 3cm;" text="Xem Thêm" textFill="#7b5050">
                             <font>
                                 <Font name="Arial Unicode MS" size="16.0" />
                             </font>
@@ -353,7 +353,7 @@
                                 <Font size="13.0" />
                             </font>
                         </Text>
-                        <ScrollPane fx:id="scrollPane" layoutX="35.0" layoutY="675.0" prefHeight="224.0" prefWidth="787.0">
+                        <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="559.0" prefHeight="224.0" prefWidth="787.0">
                             <content>
                                 <AnchorPane fx:id="bgV" prefHeight="206.0" prefWidth="786.0" />
                             </content>
