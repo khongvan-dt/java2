@@ -85,26 +85,25 @@ public class HomeController implements Initializable {
                 productImageView.setLayoutY(13);
                 productImageView.setPreserveRatio(true);
 
-                // Hiển thị ảnh sản phẩm trong ImageView
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
-                productImageView.setImage(image);
-
-                // Tạo Label cho tên sản phẩm
+// Tạo Label cho tên sản phẩm
                 Label productNameLabel = new Label(productName);
                 productNameLabel.setPrefWidth(176);
                 productNameLabel.setPrefHeight(25);
                 productNameLabel.setAlignment(Pos.CENTER);
                 productNameLabel.setLayoutX(8);
-                productNameLabel.setLayoutY(125);
+                productNameLabel.setLayoutY(138); // Đặt layoutY ở đây để có khoảng cách 2px
 
-                // Tạo Label cho giá sản phẩm
+// Tạo Label cho giá sản phẩm
                 Label productPriceLabel = new Label("Price: " + productPrice);
                 productPriceLabel.setPrefWidth(138);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
                 productPriceLabel.setLayoutX(27);
-                productPriceLabel.setLayoutY(157);
+                productPriceLabel.setLayoutY(165); // Đặt layoutY ở đây để có khoảng cách 2px
 
+                // Hiển thị ảnh sản phẩm trong ImageView
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setImage(image);
                 // Đưa ImageView và các Label vào Pane sản phẩm
                 productPane.getChildren().addAll(productImageView, productNameLabel, productPriceLabel);
 
