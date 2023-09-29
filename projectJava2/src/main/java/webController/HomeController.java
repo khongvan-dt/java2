@@ -2,6 +2,7 @@ package webController;
 
 import db.connect;
 import java.awt.Color;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import main.Main;
 import models.Product;
 
 public class HomeController implements Initializable {
@@ -41,6 +43,7 @@ public class HomeController implements Initializable {
     private Button categoryId2;
     @FXML
     private ScrollPane scrollPane1;
+    public int categoryIDetail;
 
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("abc");
@@ -49,12 +52,10 @@ public class HomeController implements Initializable {
 
     }
 
-   
-    Connection connection = null;
-    PreparedStatement statement = null;
-    ResultSet resultSet = null;
-
     private void displayNewestProducts() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
         try {
             connection = connect.getConnection();
@@ -79,17 +80,18 @@ public class HomeController implements Initializable {
 
             int productIndex = 0; // Chỉ số của sản phẩm
             if (resultSet.next()) {
+                categoryIDetail = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("categoryName");
-
-                // Đặt giá trị categoryName cho nút Button
+                System.out.println("categoryIDetail" + categoryIDetail);
                 categoryId1.setText(categoryName);
+
             }
 
             while (resultSet.next()) {
                 String productName = resultSet.getString("ProductName");
                 String imagePath = resultSet.getString("img");
                 Float productPrice = resultSet.getFloat("price");
-
+                System.out.println("webController.HomeController.displayNewestProducts()" + productPrice);
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
@@ -145,25 +147,29 @@ public class HomeController implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     private void displayProducts2() {
+        Connection connection = null;
+        PreparedStatement statement2 = null;
+        ResultSet resultSet2 = null;
 
         try {
             connection = connect.getConnection();
 
-            String query = "SELECT ProductsName.ProductName, product.img, importgoods.price, product.categoryId, category.categoryName "
+            String query2 = "SELECT ProductsName.ProductName, product.img, importgoods.price, product.categoryId, category.categoryName, category.categoryId "
                     + "FROM product "
                     + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
                     + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
                     + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId = 9";
+                    + "WHERE product.categoryId =9";
 
-            statement = connection.prepareStatement(query);
+            statement2 = connection.prepareStatement(query2);
 
-            resultSet = statement.executeQuery();
+            resultSet2 = statement2.executeQuery();
+            System.err.println("resultSet2" + resultSet2);
 
             int productSpacing = 1; // Khoảng cách giữa các sản phẩm
             int productWidth = 190; // Chiều rộng của mỗi sản phẩm
@@ -172,16 +178,18 @@ public class HomeController implements Initializable {
             int startY = 4; // Vị trí ban đầu theo trục Y
 
             int productIndex = 0; // Chỉ số của sản phẩm
-            if (resultSet.next()) {
-                String categoryName = resultSet.getString("categoryName");
+            if (resultSet2.next()) {
+                categoryIDetail = resultSet2.getInt("categoryId");
+                System.out.println("categoryIDetail2:  " + categoryIDetail);
+                String categoryName = resultSet2.getString("categoryName");
                 // Đặt giá trị categoryName cho nút Button
                 categoryId2.setText(categoryName);
-            }
 
-            while (resultSet.next()) {
-                String productName = resultSet.getString("ProductName");
-                String imagePath = resultSet.getString("img");
-                Float productPrice = resultSet.getFloat("price");
+            }
+            while (resultSet2.next()) {
+                String productName = resultSet2.getString("ProductName");
+                String imagePath = resultSet2.getString("img");
+                Float productPrice = resultSet2.getFloat("price");
 
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
@@ -240,11 +248,11 @@ public class HomeController implements Initializable {
             e.printStackTrace();
         } finally {
             try {
-                if (resultSet != null) {
-                    resultSet.close();
+                if (resultSet2 != null) {
+                    resultSet2.close();
                 }
-                if (statement != null) {
-                    statement.close();
+                if (statement2 != null) {
+                    statement2.close();
                 }
                 if (connection != null) {
                     connection.close();
@@ -254,4 +262,17 @@ public class HomeController implements Initializable {
             }
         }
     }
+    // các hàm gọi giao diện
+
+    public void getFromRelatedProducts() throws IOException {
+        // Create an instance of relatedProducts and pass the categoryId
+        relatedProducts relatedProductsInstance = new relatedProducts(categoryIDetail);
+
+        // Call the displayRelatedProducts method
+        relatedProductsInstance.displayRelatedProducts();
+
+        // Navigate to the relatedProducts.fxml
+        Main.setRoot("/web/relatedProducts.fxml");
+    }
+
 }

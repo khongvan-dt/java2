@@ -5,6 +5,7 @@ db\connect.class
 adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\productDeliveryController$DeliveryData.class
+webController\relatedProducts.class
 adminController\addSupplierController.class
 adminController\loginController.class
 adminController\accountcontroller.class
