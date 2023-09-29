@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -98,6 +99,9 @@ public class addSupplierController {
     }
 
     // in ra bảng 
+    private int i = 0;
+    @FXML
+    private TableColumn<Supplier, Integer> idColumn;
     @FXML
     private TableView<Supplier> supplierTable;//id bảng
 
@@ -113,6 +117,7 @@ public class addSupplierController {
 
     private List<Supplier> fetchDataFromDatabase() {
         List<Supplier> suppliers = new ArrayList<>();
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
 
         try {
             Connection connection = connect.getConnection();

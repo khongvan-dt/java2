@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -23,6 +24,20 @@ public class Product {
     }
     
     public Product(Integer id, String productName, String imagePath, Float price){
+=======
+package models;
+
+public class Product {
+    private Integer id;
+    private String productName;
+    private String imagePath;
+    private Float price;
+
+    public Product() {
+    }
+
+    public Product(Integer id, String productName, String imagePath, Float price) {
+>>>>>>> main
         this.id = id;
         this.productName = productName;
         this.imagePath = imagePath;
@@ -37,6 +52,7 @@ public class Product {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public Integer getSupplierId() {
         return supplierId;
     }
@@ -53,6 +69,8 @@ public class Product {
         this.categoryId = categoryId;
     }
 
+=======
+>>>>>>> main
     public String getProductName() {
         return productName;
     }
@@ -69,6 +87,7 @@ public class Product {
         this.imagePath = imagePath;
     }
 
+<<<<<<< HEAD
     public String getDescription() {
         return description;
     }
@@ -77,6 +96,8 @@ public class Product {
         this.description = description;
     }
 
+=======
+>>>>>>> main
     public Float getPrice() {
         return price;
     }
@@ -84,5 +105,8 @@ public class Product {
     public void setPrice(Float price) {
         this.price = price;
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> main
 }

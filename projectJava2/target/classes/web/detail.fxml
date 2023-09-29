@@ -14,13 +14,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <ScrollPane prefHeight="3170.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <AnchorPane prefHeight="3535.0" prefWidth="1315.0">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2924.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="118.0" prefWidth="866.0">
+>>>>>>> main
          <children>
             <Pane prefHeight="3190.0" prefWidth="904.0">
                <children>
+<<<<<<< HEAD
                   <Pane layoutY="-3.0" prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
+=======
+                  <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <ScrollPane layoutX="-9.0" layoutY="114.0" prefHeight="3116.0" prefWidth="895.0">
+         <content>
+            <AnchorPane prefHeight="5450.0" prefWidth="1315.0">
+               <children>
+                  <Pane layoutX="10.0" layoutY="1.0" prefHeight="3169.0" prefWidth="878.0">
+>>>>>>> main
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>

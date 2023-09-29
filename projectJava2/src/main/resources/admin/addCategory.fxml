@@ -139,7 +139,12 @@
             <children>
                 <TableView fx:id="categoryTable" layoutX="97.0" layoutY="167.0" prefHeight="337.0" prefWidth="881.0">
                     <columns>
+<<<<<<< HEAD
                         <TableColumn fx:id="categoryNameColumn" prefWidth="866.0" text="Category Name" />
+=======
+                  <TableColumn fx:id="idColumn" maxWidth="49.0" prefWidth="49.0" text="ID" />
+                        <TableColumn fx:id="categoryNameColumn" prefWidth="912.0" text="Category Name" />
+>>>>>>> main
                     </columns>
                 </TableView>
                 <Button layoutX="176.0" layoutY="525.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">

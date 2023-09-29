@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -143,7 +144,13 @@ public class moreProductNameController {
     @FXML
     private TableColumn<ProductName, String> productNameColumn; //id cột 
 
+    private int i = 0;
+    @FXML
+    private TableColumn<ProductName, Integer> idColumn;
+
     public void initialize() {
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
+
         // Khởi tạo các cột để hiển thị dữ liệu từ lớp ProductName
         productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));// tên cột trong db
 
