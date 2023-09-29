@@ -16,8 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -45,6 +47,7 @@ public class HomeController implements Initializable {
     private ScrollPane scrollPane1;
     public int categoryIDetail;
 
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("abc");
         displayNewestProducts();
@@ -265,14 +268,8 @@ public class HomeController implements Initializable {
     // các hàm gọi giao diện
 
     public void getFromRelatedProducts() throws IOException {
-        // Create an instance of relatedProducts and pass the categoryId
-        relatedProducts relatedProductsInstance = new relatedProducts(categoryIDetail);
-
-        // Call the displayRelatedProducts method
-        relatedProductsInstance.displayRelatedProducts();
-
-        // Navigate to the relatedProducts.fxml
-        Main.setRoot("/web/relatedProducts.fxml");
+        SharedData.setCategoryId(categoryIDetail); // Set the category ID
+        Main.setRoot("/web/relatedProducts.fxml"); // Navigate to relatedProducts.fxml
     }
 
 }

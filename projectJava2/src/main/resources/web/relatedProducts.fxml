@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.relatedProducts">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.relatedProductsController">
     <children>
         <Pane prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
             <children>
@@ -46,12 +45,13 @@
                             <children>
                                 <Pane layoutY="14.0" prefHeight="49.0" prefWidth="837.0" style="-fx-border-color: yellow;">
                                     <children>
-                                        <Button fx:id="categoryId1" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                                        <Button fx:id="categoryId1" layoutX="32.0" layoutY="12.0" prefHeight="25.0" prefWidth="94.0" text="" />
+
                                     </children>
                                 </Pane>
-                                <ScrollPane fx:id="scrollPane" layoutY="118.0" prefHeight="864.0" prefWidth="844.0">
+                                <ScrollPane fx:id="scrollPane" layoutY="168.0" prefHeight="814.0" prefWidth="844.0">
                                     <content>
-                                        <AnchorPane fx:id="bgV" prefHeight="865.0" prefWidth="828.0" />
+                                        <AnchorPane fx:id="bgV" prefHeight="817.0" prefWidth="828.0" />
                                     </content>
                                 </ScrollPane>
                             </children>
@@ -75,8 +75,7 @@
                                 </ImageView>
                                 <TextField layoutX="361.0" layoutY="27.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng kí nhận email." style="-fx-border-color: pink;" />
                             
-                                <Button layoutX="703.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0"
-                                        style="-fx-background-color: pink;" text="Sent" />
+                                <Button layoutX="703.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
                                 <Text layoutX="285.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÍNH SÁCH" wrappingWidth="105.990234375">
                                     <font>
                                         <Font name="Arial Black" size="14.0" />

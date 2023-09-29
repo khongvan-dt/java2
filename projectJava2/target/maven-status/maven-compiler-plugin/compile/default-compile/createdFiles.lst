@@ -1,3 +1,4 @@
+webController\SharedData.class
 adminController\productDeliveryController.class
 main\Main.class
 adminController\inventoryController$InventoryItem.class
@@ -5,7 +6,6 @@ db\connect.class
 adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\productDeliveryController$DeliveryData.class
-webController\relatedProducts.class
 adminController\addSupplierController.class
 adminController\loginController.class
 adminController\accountcontroller.class
@@ -13,6 +13,7 @@ adminController\moreProductNameController$ProductName.class
 adminController\addProductController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
+webController\relatedProductsController.class
 adminController\addSupplierController$Supplier.class
 adminController\addProductController$Product.class
 adminController\oderController.class

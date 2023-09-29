@@ -12,6 +12,10 @@ public class Main extends Application {
 
     private static Scene scene;
 
+    public static Object getPrimaryStage() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void start(Stage primaryStage) {
 

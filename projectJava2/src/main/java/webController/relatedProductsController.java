@@ -18,42 +18,41 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.fxml.Initializable;
 
 /**
  *
  * @author Administrator
  */
-public class relatedProducts {
+public class relatedProductsController implements Initializable {
 
     @FXML
     private AnchorPane bgV;
 
     @FXML
+    private ScrollPane scrollPane;
+    @FXML
     private Button categoryId1;
 
-    @FXML
-    private ScrollPane scrollPane;
-    
     private int categoryId;
 
-    public void setCategoryId(int categoryId) {
+    public relatedProductsController() {
+        // Constructor mặc định không có đối số
+    }
+
+    public relatedProductsController(int categoryId) {
         this.categoryId = categoryId;
     }
 
-    public void setBgV(AnchorPane bgV) {
-        this.bgV = bgV;
-    }
-
-    public relatedProducts(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("abc");
-        displayRelatedProducts(); // Không cần truyền tham số ở đây
+        int categoryId = SharedData.getCategoryId(); // Get the category ID
+        System.out.println("Category ID in relatedProductsController: " + categoryId);
+        displayRelatedProducts(categoryId);
     }
 
-    public void displayRelatedProducts() {
+    public void displayRelatedProducts(int categoryId) {
+
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -83,7 +82,6 @@ public class relatedProducts {
 
             int productIndex = 0; // Chỉ số của sản phẩm
             if (resultSet.next()) {
-
                 String categoryName = resultSet.getString("categoryName");
                 // Đặt giá trị categoryName cho nút Button
                 categoryId1.setText(categoryName);
@@ -93,7 +91,10 @@ public class relatedProducts {
                 String productName = resultSet.getString("ProductName");
                 String imagePath = resultSet.getString("img");
                 Float productPrice = resultSet.getFloat("price");
-                System.out.println("webController.HomeController.displayNewestProducts()" + productPrice);
+                System.out.println("--------------------------------------------------------------------------");
+                System.out.println("price" + productPrice);
+                System.out.println("imagePath:" + imagePath);
+                System.out.println("productName:" + productName);
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
