@@ -74,7 +74,6 @@ public class HomeController implements Initializable {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<Product> lstProduct = new ArrayList<>();
-        // get db
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project2", "thaoit", "It1234!");
 
@@ -132,7 +131,7 @@ public class HomeController implements Initializable {
                 nameLabel.setPrefHeight(50);
                 // dua anh va label vao pane
                 pane.getChildren().addAll(nameLabel, imageView);
-                // dua pane vao pane fx:id=newestproduct
+                // dua pane vao pane fx:idnewestproduct
                 newestProducts.getChildren().add(pane);
                 startX += 143;
             } catch (Exception e) {
