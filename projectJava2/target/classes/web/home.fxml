@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2924.0" prefWidth="843.0" 
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2924.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.HomeController">
     <children>
         <AnchorPane prefHeight="118.0" prefWidth="834.0">
             <children>
@@ -223,16 +222,22 @@
                                 <Font size="13.0" />
                             </font>
                         </Text>
-                        <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="543.0" prefHeight="224.0" prefWidth="787.0">
+                        <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="543.0" prefHeight="240.0" prefWidth="787.0">
                             <content>
-                                <AnchorPane fx:id="bgV" prefHeight="206.0" prefWidth="786.0" />
+                                <AnchorPane fx:id="bgV" prefHeight="222.0" prefWidth="786.0" />
                             </content>
                         </ScrollPane>
-                  <Button fx:id="categoryId1" layoutX="724.0" layoutY="501.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
-                  <Button fx:id="categoryId2" layoutX="726.0" layoutY="816.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
-                  <ScrollPane fx:id="scrollPane1" layoutX="29.0" layoutY="861.0" prefHeight="224.0" prefWidth="787.0">
+                  <Button fx:id="categoryId" layoutX="724.0" layoutY="501.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <Button fx:id="categoryId1" layoutX="724.0" layoutY="848.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <ScrollPane fx:id="scrollPane1" layoutX="29.0" layoutY="905.0" prefHeight="240.0" prefWidth="787.0">
                      <content>
-                        <AnchorPane fx:id="bgV1" prefHeight="206.0" prefWidth="786.0" />
+                        <AnchorPane fx:id="bgV1" prefHeight="222.0" prefWidth="786.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="categoryId2" layoutX="724.0" layoutY="1196.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <ScrollPane fx:id="scrollPane2" layoutX="29.0" layoutY="1251.0" prefHeight="240.0" prefWidth="787.0">
+                     <content>
+                        <AnchorPane fx:id="bgV2" prefHeight="222.0" prefWidth="786.0" />
                      </content>
                   </ScrollPane>
 

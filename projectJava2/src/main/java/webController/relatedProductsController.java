@@ -1,6 +1,7 @@
 package webController;
 
 import db.connect;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.fxml.Initializable;
+import main.Main;
 
 /**
  *
@@ -31,8 +33,9 @@ public class relatedProductsController implements Initializable {
 
     @FXML
     private ScrollPane scrollPane;
+
     @FXML
-    private Button categoryId1;
+    private Label categoryId1;
 
     private int categoryId;
 
@@ -56,7 +59,6 @@ public class relatedProductsController implements Initializable {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        System.out.println("categoryId in relatedProducts: " + categoryId);
 
         try {
             connection = connect.getConnection();
@@ -165,5 +167,10 @@ public class relatedProductsController implements Initializable {
                 e.printStackTrace();
             }
         }
+
+    }
+
+    public void getFromHome() throws IOException {
+        Main.setRoot("/web/home.fxml");
     }
 }

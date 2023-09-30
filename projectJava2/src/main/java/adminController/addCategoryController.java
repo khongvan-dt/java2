@@ -148,7 +148,7 @@ public class addCategoryController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editCategory.fxml"));
             Parent root = loader.load();
 
-            // để trỏ đến controller của editCategoryController giống như liên kết 
+            // để trỏ đến controller của editCategoryController
             editCategoryController editCategory = loader.getController();
 
             // Truyền dữ liệu nhà cung cấp đã chọn cho controller của editCategoryController, initData là hàm trong editCategoryController

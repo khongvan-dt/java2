@@ -25,8 +25,11 @@ public class loginController {
     private PasswordField passwordField;
 
     // Biến toàn cục để theo dõi trạng thái đăng nhập
-    public boolean isLoggedIn = false;
+    private boolean isLoggedIn;
 
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
     // Biến lưu trữ ID và tên người dùng sau khi đăng nhập thành công
     public int loggedInUserId;
     public String loggedInUsername;
@@ -95,11 +98,6 @@ public class loginController {
     }
 
     // Phương thức để kiểm tra trạng thái đăng nhập từ bất kỳ đâu trong ứng dụng
-    public boolean isLoggedIn() {
-        return isLoggedIn;
-    }
-
-    // Phương thức để lấy ID người dùng sau khi đăng nhập
     public int getLoggedInUserId() {
         return loggedInUserId;
     }
@@ -118,4 +116,6 @@ public class loginController {
         // Tải lại màn hình đăng nhập
         Main.setRoot("/admin/login.fxml");
     }
+
+   
 }
