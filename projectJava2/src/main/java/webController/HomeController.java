@@ -177,7 +177,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///C:\\java2\\projectJava2\\src\\uploads" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -211,7 +211,7 @@ public class HomeController implements Initializable {
                 buyButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        if (loginController.getLoggedInUserId()>0) {
+                        if (loginController.getLoggedInUserId() > 0) {
                             // The user is logged in, proceed with adding the product to the cart
                             int userId = loginController.getLoggedInUserId();
                             int productId = (int) buyButton.getUserData();
@@ -250,14 +250,6 @@ public class HomeController implements Initializable {
                             }
                         }
                     }
-//
-//                    private boolean isemty(int loggedInUserId) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
-//
-//                    private boolean isEmty(int loggedInUserId) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
 
                 });
 

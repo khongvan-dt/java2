@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="adminController.importGoodsController">
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.importGoodsController">
     <children>
         <AnchorPane layoutX="11.0" layoutY="6.0" prefHeight="71.0" prefWidth="153.0">
             <children>
@@ -55,8 +54,8 @@
                         <TableColumn fx:id="quantityColumn" prefWidth="64.0" text="Quantity" />
                         <TableColumn fx:id="exchangedColumn" prefWidth="75.0" text="Exchanged" />
                         <TableColumn fx:id="totalReceivedColumn" prefWidth="89.0" text="Total Received" />
-                        <TableColumn fx:id="ImportPriceColumn" prefWidth="87.0" text="Import Price" />
-                        <TableColumn fx:id="price" prefWidth="76.0" text="Price" />
+                        <TableColumn fx:id="price" prefWidth="87.0" text="Import Price" />
+                        <TableColumn fx:id="ImportPriceColumn" prefWidth="76.0" text="Price" />
                         <TableColumn fx:id="totalImportFeecolum" prefWidth="103.0" text="total Import Fee" />
                     </columns>
                 </TableView>
