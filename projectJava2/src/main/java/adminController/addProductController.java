@@ -27,6 +27,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -275,29 +277,8 @@ public class addProductController extends Application {
     }
 
     private String saveImageToUploads(File imageFile) {
-        String uploadsDirectoryPath = "src/uploads"; // Đây là đường dẫn tương đối
-        File uploadsDirectory = new File(uploadsDirectoryPath);
-
-        if (!uploadsDirectory.exists()) {
-            if (uploadsDirectory.mkdirs()) {
-                System.out.println("Created uploads directory");
-            } else {
-                System.out.println("Failed to create uploads directory");
-                return null;
-            }
-        }
-
         String fileName = imageFile.getName();
-        String imagePathInUploads = uploadsDirectoryPath + File.separator + fileName;
-        File destFile = new File(imagePathInUploads);
-
-        try {
-            Files.copy(imageFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            return imagePathInUploads;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null; // Return null in case of an error
-        }
+        return fileName;
     }
 
 // check
@@ -381,6 +362,7 @@ public class addProductController extends Application {
                 fieldViewProductDescriptions.clear();
 
                 selectedImageFile = null;
+                reloadPage();
             } else {
                 showAlert("Failed to add product.");
             }
@@ -458,4 +440,18 @@ public class addProductController extends Application {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
+
+    private void reloadPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/addProduct.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) fieldViewProductCategoryId.getScene().getWindow(); // Lấy ra Stage hiện tại
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
