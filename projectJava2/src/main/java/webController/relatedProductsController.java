@@ -43,6 +43,15 @@ public class relatedProductsController implements Initializable {
         // Constructor mặc định không có đối số
     }
 
+    @FXML
+    private Label categoryLabel;
+
+    private int categoryID;
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
     public relatedProductsController(int categoryId) {
         this.categoryId = categoryId;
     }

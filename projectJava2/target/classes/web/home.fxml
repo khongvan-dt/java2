@@ -12,18 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2924.0"
-            prefWidth="843.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2924.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.HomeController">
     <children>
         <AnchorPane prefHeight="118.0" prefWidth="834.0">
             <children>
                 <Pane prefHeight="111.0" prefWidth="843.0" style="-fx-background-color: pink;">
                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/ic_search.png" />
-                            </image>
-                        </ImageView>
                         <ImageView fx:id="cartImageView" fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icon/cart.png" />
@@ -39,6 +33,15 @@
                                 <Image url="@../icon/menu.png" />
                             </image>
                         </ImageView>
+                  <Button layoutX="617.0" layoutY="41.0" mnemonicParsing="false" onAction="#getAccount" style="-fx-background-color: pink;">
+                     <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../icon/ic_user_black.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </Pane>
             </children>
@@ -229,13 +232,13 @@
                             </content>
                         </ScrollPane>
                   <Button fx:id="categoryId" layoutX="724.0" layoutY="501.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
-                  <Button fx:id="categoryId1" layoutX="724.0" layoutY="848.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <Button fx:id="categoryId1" layoutX="724.0" layoutY="848.0" mnemonicParsing="false" onAction="#getFromRelatedProducts1" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
                   <ScrollPane fx:id="scrollPane1" layoutX="29.0" layoutY="905.0" prefHeight="240.0" prefWidth="787.0">
                      <content>
                         <AnchorPane fx:id="bgV1" prefHeight="222.0" prefWidth="786.0" />
                      </content>
                   </ScrollPane>
-                  <Button fx:id="categoryId2" layoutX="724.0" layoutY="1196.0" mnemonicParsing="false" onAction="#getFromRelatedProducts" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
+                  <Button fx:id="categoryId2" layoutX="724.0" layoutY="1196.0" mnemonicParsing="false" onAction="#getFromRelatedProducts2" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: pink; -fx-background-radius: 20;" />
                   <ScrollPane fx:id="scrollPane2" layoutX="29.0" layoutY="1251.0" prefHeight="240.0" prefWidth="787.0">
                      <content>
                         <AnchorPane fx:id="bgV2" prefHeight="222.0" prefWidth="786.0" />
