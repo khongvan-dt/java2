@@ -517,7 +517,7 @@ public class HomeController implements Initializable {
     }
 
     public void getFromRelatedProducts2() throws IOException {
-        SharedData.setCategoryId(categoryIDetail2); // Set the category ID
+        SharedData.setCategoryId(categoryIDetail2); // Set the category IDs
         Main.setRoot("/web/relatedProducts.fxml"); // Navigate to relatedProducts.fxml
     }
 
