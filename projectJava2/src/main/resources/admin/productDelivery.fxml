@@ -70,20 +70,11 @@
                         <TableColumn fx:id="quantity2" prefWidth="112.0" text="Inventory Number" />
                     </columns>
                 </TableView>
-                <Button layoutX="84.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteProductDelivery" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
+                <Button layoutX="14.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteProductDelivery" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icon/untitled%20(1).png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button layoutX="31.0" layoutY="544.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
-                    <graphic>
-                        <ImageView fx:id="iconSupplier2" fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/edit1.png" />
                             </image>
                         </ImageView>
                     </graphic>
