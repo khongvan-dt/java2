@@ -1,27 +1,20 @@
 package adminController;
 
-import com.mysql.cj.conf.IntegerProperty;
-import com.mysql.cj.conf.StringProperty;
+import adminController.addProductController.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javafx.util.StringConverter;
 import db.connect;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,25 +24,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.jfr.Category;
 import main.Main;
-import static org.apache.commons.lang3.StringUtils.isNumeric;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TableCell;
+import webController.HomeController;
 
 public class addProductController extends Application {
+
+    private HomeController.Product Product;
 
     public class Product {
 
@@ -99,7 +90,12 @@ public class addProductController extends Application {
         public String getPrice() {
             return price.get();
         }
+        String category;
 
+        public String getCategory() {
+
+            return category;
+        }
     }
 
     private Map<String, Integer> categoryNameidMap = new HashMap<>();
@@ -380,6 +376,32 @@ public class addProductController extends Application {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+// edit
+
+    @FXML
+    public void showEdit(ActionEvent event) throws IOException {
+        // Get the selected product from the TableView
+        Product selected = importTable.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            // Load the Edit Product view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editProduct.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for the Edit Product view
+            editProductController editController = loader.getController();
+
+            // Pass the selected product to the Edit Product controller
+            editController.initialize();
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            showAlert("Please select the product you want to edit!");
         }
     }
 
