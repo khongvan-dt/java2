@@ -410,13 +410,34 @@ public class importGoodsController {
             return false; // Xử lý ngoại lệ và trả về false        }
         }
     }
+    //edit Supplier
 
     @FXML
-    private void edit(ActionEvent event) throws IOException {
+    private void showEdit(ActionEvent event) throws IOException {
+        // Lấy hóa đơn nhập hàng được chọn từ TableView
+        Import selectedImport = importTable.getSelectionModel().getSelectedItem();
 
+        if (selectedImport != null) {
+            // Tải giao diện "Edit Import Goods" và truyền thông tin của hóa đơn đã chọn
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/editImportGoods.fxml"));
+            Parent root = loader.load();
+
+            // Để trỏ đến controller của EditImportgood
+            editImportgood editController = loader.getController();
+
+            // Truyền thông tin hóa đơn đã chọn cho controller của EditImportgood
+            editController.initData(selectedImport);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            showAlert("Please select the import you want to edit!");
+        }
     }
-    // các hàm gọi giao diện
 
+    // các hàm gọi giao diện
     public void getFromAddcategory() throws IOException {
         Main.setRoot("/admin/addCategory.fxml");
 

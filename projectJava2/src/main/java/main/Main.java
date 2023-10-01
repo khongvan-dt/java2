@@ -12,12 +12,16 @@ public class Main extends Application {
 
     private static Scene scene;
 
+    public static Object getPrimaryStage() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void start(Stage primaryStage) {
 
         try {
             // Lấy đường dẫn tới file FXML
-            URL fxmlUrl = getClass().getResource("/web/home.fxml");
+            URL fxmlUrl = getClass().getResource("/admin/login.fxml");
             if (fxmlUrl != null) {
                 String fxmlPath = fxmlUrl.toExternalForm();
 
