@@ -276,11 +276,6 @@ public class addProductController extends Application {
         System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
     }
 
-    private String saveImageToUploads(File imageFile) {
-        String fileName = imageFile.getName();
-        return fileName;
-    }
-
 // check
     private boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
         String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ? AND ProductNameId = ?";
@@ -298,8 +293,24 @@ public class addProductController extends Application {
     }
 //insert 
 
+    private String saveImageToUploads(File imageFile) {
+        try {
+            // Define the source and destination paths
+            String sourcePath = imageFile.getAbsolutePath();
+            String destinationPath = "src/uploads/" + imageFile.getName();
+
+            // Copy the image file to the destination directory
+            Files.copy(new FileInputStream(sourcePath), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            return destinationPath;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @FXML
-    public void insertProduct() {
+    public void insertProduct() throws IOException {
 
         String selectedCategory = fieldViewProductCategoryId.getValue();
         String selectedProductName = fieldViewProductName.getValue();
@@ -362,7 +373,8 @@ public class addProductController extends Application {
                 fieldViewProductDescriptions.clear();
 
                 selectedImageFile = null;
-                reloadPage();
+
+                getFromAddProduct();
             } else {
                 showAlert("Failed to add product.");
             }
@@ -439,19 +451,6 @@ public class addProductController extends Application {
         // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
-    }
-
-    private void reloadPage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/addProduct.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) fieldViewProductCategoryId.getScene().getWindow(); // Lấy ra Stage hiện tại
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }

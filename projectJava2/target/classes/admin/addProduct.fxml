@@ -104,7 +104,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btnCategory" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: white;" text="Add Category" GridPane.columnIndex="1">
+                  <Button fx:id="btnCategory" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: white;" text="Add Category" textFill="#81d4fa" GridPane.columnIndex="1">
                      <font>
                         <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                      </font>
@@ -113,7 +113,7 @@
                      <graphic>
                         <ImageView fx:id="iconAddCategory" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/choiseBlack.png" />
+                              <Image url="@../icon/choiseBlue.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -188,7 +188,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: white;" text="Products" textFill="#81d4fa" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: white;" text="Products" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                      </font>
@@ -197,7 +197,7 @@
                      <graphic>
                         <ImageView fx:id="iconAddProduct" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/choiseBlue.png" />
+                              <Image url="@../icon/choiseBlack.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -261,7 +261,6 @@ public class addSupplierController {
 
     public void getFromAddProduct() throws IOException {
         Main.setRoot("/admin/addProduct.fxml");
-
     }
 
     public void getFromfromAddSupplier() throws IOException {

@@ -40,7 +40,6 @@ import javafx.stage.Stage;
 import javax.servlet.ServletContext;
 import main.Main;
 import models.Product;
-
 import javax.servlet.http.HttpSession;
 
 public class HomeController implements Initializable {
@@ -48,11 +47,13 @@ public class HomeController implements Initializable {
     private loginController loginController;
 
     @FXML
-    private AnchorPane bgV1;
-    @FXML
     private Button categoryId1;
+
     @FXML
     private ScrollPane scrollPane1;
+
+    @FXML
+    private AnchorPane bgV1;
 
     public int categoryIDetail;
     private List<Product> selectedProducts = new ArrayList<>();
@@ -140,7 +141,7 @@ public class HomeController implements Initializable {
                     + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
                     + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
                     + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId =10";
+                    + "WHERE product.categoryId = 9";
 
             statement2 = connection.prepareStatement(query2);
 
@@ -163,6 +164,7 @@ public class HomeController implements Initializable {
 
             }
             while (resultSet2.next()) {
+
                 String productName = resultSet2.getString("ProductName");
                 String imagePath = resultSet2.getString("img");
                 Float productPrice = resultSet2.getFloat("price");
@@ -177,8 +179,10 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:\\java2\\projectJava2\\src\\uploads" + imagePath);
+                Image image = new Image("file:///C:\\java2\\projectJava2\\src\\uploads\\" + imagePath);
                 productImageView.setImage(image);
+
+                System.out.println("image2222:  " + image);
 
 //// Tạo Label cho tên sản phẩm
                 Label productNameLabel = new Label(productName);
@@ -275,9 +279,10 @@ public class HomeController implements Initializable {
                 productPane.setLayoutY(productY);
 
                 // Thêm Pane sản phẩm vào AnchorPane "bgV"
-                bgV1.getChildren()
-                        .add(productPane);
+                bgV1.getChildren().add(productPane);
+
                 scrollPane1.setContent(bgV1);
+
                 productIndex++; // Tăng chỉ số sản phẩm
             }
 
