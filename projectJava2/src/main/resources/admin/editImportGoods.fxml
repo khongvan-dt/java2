@@ -13,11 +13,7 @@
 
 <AnchorPane fx:id="ProductImportPrice" prefHeight="403.0" prefWidth="940.0" style="-fx-background-color: white; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.editImportgood">
    <children>
-<<<<<<< HEAD
-      <Button layoutX="874.0" layoutY="315.0" mnemonicParsing="false" onAction="#updateImport" style="-fx-background-color: blue;" text="save" />
-=======
       <Button layoutX="874.0" layoutY="315.0" fx:id="saveButton" mnemonicParsing="false" onAction="#updateImport" style="-fx-background-color: blue;" text="save" />
->>>>>>> mainBranch
       <GridPane fx:id="formViewProductView" alignment="CENTER_RIGHT" layoutX="124.0" layoutY="117.0" prefHeight="177.0" prefWidth="750.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="168.0" />

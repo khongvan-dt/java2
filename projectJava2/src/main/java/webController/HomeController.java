@@ -211,11 +211,7 @@ public class HomeController implements Initializable {
                 buyButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-<<<<<<< HEAD
-                        if (loginController.getLoggedInUserId()>0) {
-=======
                         if (loginController.getLoggedInUserId() > 0) {
->>>>>>> mainBranch
                             // The user is logged in, proceed with adding the product to the cart
                             int userId = loginController.getLoggedInUserId();
                             int productId = (int) buyButton.getUserData();
@@ -254,17 +250,6 @@ public class HomeController implements Initializable {
                             }
                         }
                     }
-<<<<<<< HEAD
-//
-//                    private boolean isemty(int loggedInUserId) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
-//
-//                    private boolean isEmty(int loggedInUserId) {
-//                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//                    }
-=======
->>>>>>> mainBranch
 
                 });
 
