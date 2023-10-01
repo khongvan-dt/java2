@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.ProductDetailsController">
+    <children>
+        <ImageView fx:id="productImageView" fitWidth="140" fitHeight="125" preserveRatio="true" />
+        <Label fx:id="descriptionLabel" wrapText="true" />
+    </children>
+</VBox>

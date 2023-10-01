@@ -179,7 +179,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:\\java2\\projectJava2\\" + imagePath);
+                Image image = new Image("file:D:/JAVAPJ2/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
                 System.out.println("image2222:  " + image);
@@ -191,9 +191,24 @@ public class HomeController implements Initializable {
                 productNameLabel.setAlignment(Pos.CENTER);
 
                 // Đặt xử lý sự kiện cho Label 
-                productNameLabel.setOnMouseClicked(event -> {
-                    // Xử lý khi Label được nhấp chuột
-                });
+         productNameLabel.setOnMouseClicked(event -> {
+    try {
+        String productName2 = productNameLabel.getText();
+
+        // Tạo FXMLLoader để tải trang mới
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/web/product_details.fxml"));
+        Parent root = loader.load();
+        ProductDetailsController productDetailsController = loader.getController();
+        productDetailsController.setProductName(productName2);
+
+        // Tạo Stage mới và hiển thị trang mới
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+});
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
