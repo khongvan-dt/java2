@@ -7,6 +7,7 @@ adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\productDeliveryController$DeliveryData.class
 models\UserSession.class
+models\productQuantity.class
 adminController\addSupplierController.class
 adminController\loginController.class
 adminController\accountcontroller.class
