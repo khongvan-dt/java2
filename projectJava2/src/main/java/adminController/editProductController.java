@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import adminController.addProductController.Product;
+import javafx.scene.control.Alert;
 
 public class editProductController {
 
@@ -95,5 +96,59 @@ public class editProductController {
         fieldViewProductName.setValue(selectedProduct.getProductName());
         supplierId.setValue(selectedProduct.getSupplierName());
         fieldViewProductDescriptions.setText(selectedProduct.getDescription());
+    }
+
+    @FXML
+    public void updateProduct() {
+        // Get the selected product's ID
+        String productId = selectedProduct.getId();
+        int id = Integer.parseInt(productId);
+        // Get the updated values from the fields
+        String selectedCategory = fieldViewProductCategoryId.getValue();
+        String selectedProductName = fieldViewProductName.getValue();
+        String description = fieldViewProductDescriptions.getText().trim();
+        String selectedSupplierid = supplierId.getValue();
+
+        // Update the product in the database using an SQL UPDATE statement
+        try (Connection connection = connect.getConnection()) {
+            String updateSQL = "UPDATE product SET categoryId=?, ProductNameId=?, Description=?, supplier_id=? WHERE productId=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateSQL);
+
+            // Set parameters for the SQL statement
+            preparedStatement.setInt(1, categoryNameidMap.get(selectedCategory));
+            preparedStatement.setInt(2, productNameIdMap.get(selectedProductName));
+            preparedStatement.setString(3, description);
+            preparedStatement.setInt(4, supplierNamesMap.get(selectedSupplierid));
+            preparedStatement.setInt(5, id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                showSuccessAlert("Product updated successfully!");
+            } else {
+                showAlert("Failed to update product.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error occurred while updating product.");
+        }
+    }
+    // Hiển thị thông báo thành công
+
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thành công");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Hiển thị thông báo lỗi
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Lỗi");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

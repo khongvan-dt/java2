@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
@@ -40,17 +41,19 @@ import webController.HomeController;
 
 public class addProductController extends Application {
 
-    private HomeController.Product Product;
+    public HomeController.Product Product;
 
     public class Product {
 
-        private SimpleStringProperty productName;
-        private SimpleStringProperty img;
-        private SimpleStringProperty supplierName;
-        private SimpleStringProperty description;
-        private SimpleStringProperty importPrice;
-        private SimpleStringProperty price;
-        private SimpleStringProperty imgPath;
+        public SimpleStringProperty productName;
+        public SimpleStringProperty img;
+        public SimpleStringProperty supplierName;
+        public SimpleStringProperty description;
+        public SimpleStringProperty importPrice;
+        public SimpleStringProperty price;
+        public SimpleStringProperty imgPath;
+        public SimpleStringProperty id;
+        public SimpleStringProperty category;
 
         public Product(String productName, String img, String supplierName, String description, String importPrice, String price) {
             this.productName = new SimpleStringProperty(productName);
@@ -90,52 +93,65 @@ public class addProductController extends Application {
         public String getPrice() {
             return price.get();
         }
-        String category;
 
         public String getCategory() {
 
-            return category;
+            return category.get();
+        }
+
+        public String getId() {
+            return id.get();
         }
     }
 
-    private Map<String, Integer> categoryNameidMap = new HashMap<>();
-    private Map<String, Integer> productNameIdMap = new HashMap<>();
-    private Map<String, Integer> supplierNamesMap = new HashMap<>();
+    public Map<String, Integer> categoryNameidMap = new HashMap<>();
+    public Map<String, Integer> productNameIdMap = new HashMap<>();
+    public Map<String, Integer> supplierNamesMap = new HashMap<>();
 
     @FXML
-    private ComboBox<String> fieldViewProductCategoryId;
+    public ComboBox<String> fieldViewProductCategoryId;
 
     @FXML
-    private ComboBox<String> fieldViewProductName;
+    public ComboBox<String> fieldViewProductName;
 
     @FXML
-    private ComboBox<String> supplierId;
+    public ComboBox<String> supplierId;
 
     @FXML
-    private TextArea fieldViewProductDescriptions;
+    public TextArea fieldViewProductDescriptions;
 
-    private File selectedImageFile;
+    public File selectedImageFile;
 
-    private ObservableList<Product> productList = FXCollections.observableArrayList();
-    @FXML
-    private TableView<Product> importTable;
-    @FXML
-    private TableColumn<Product, String> productNameColumn;
-    @FXML
-    private TableColumn<Product, String> imgColumn;
-    @FXML
-    private TableColumn<Product, String> supplierNameColumn;
-    @FXML
-    private TableColumn<Product, String> descriptionColumn;
-    @FXML
-    private TableColumn<Product, String> importPriceColumn;
-    @FXML
-    private TableColumn<Product, String> priceColumn;
+    public ObservableList<Product> productList = FXCollections.observableArrayList();
 
     @FXML
-    private void initialize() {
-        // Tạo một HashMap để lưu dữ liệu danh mục sản phẩm
+    public TableView<Product> produtTable;
 
+    @FXML
+    public TableColumn<Product, String> productNameColumn;
+
+    @FXML
+    public TableColumn<Product, String> imgColumn;
+
+    @FXML
+    public TableColumn<Product, String> supplierNameColumn;
+
+    @FXML
+    public TableColumn<Product, String> descriptionColumn;
+
+    @FXML
+    public TableColumn<Product, String> importPriceColumn;
+
+    @FXML
+    public TableColumn<Product, String> priceColumn;
+
+    @FXML
+    public void initialize() {
+        tableProduct();
+        dataCombox();
+    }
+
+    public void dataCombox() {
         try (Connection connection = connect.getConnection()) {
             // Tạo một truy vấn SQL để lấy dữ liệu danh mục sản phẩm từ cơ sở dữ liệu
             String selectCategory = "SELECT categoryId,categoryName FROM category ";
@@ -183,8 +199,9 @@ public class addProductController extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
-// Inside your initialize() method
+    public void tableProduct() {
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT ProductsName.ProductName, product.img, supplier.supplierName,"
                     + " product.Description, importgoods.productImportPrice, importgoods.price "
@@ -208,50 +225,52 @@ public class addProductController extends Application {
                 productList.add(product);
             }
 
-            // Set the items of the TableView to the productList
-            importTable.setItems(productList);
-            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
-            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-            importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
-            priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            imgColumn.setCellFactory(column -> {
-                return new TableCell<Product, String>() {
-                    private final ImageView imageView = new ImageView();
-
-                    @Override
-                    protected void updateItem(String imagePath, boolean empty) {
-                        super.updateItem(imagePath, empty);
-
-                        if (empty || imagePath == null) {
-                            setGraphic(null);
-                        } else {
-                            try {
-                                // Print debug information
-                                System.out.println("imagePath: " + imagePath);
-
-                                // Load the image based on the provided imagePath
-                                String relativePath = "C:\\java2\\projectJava2\\" + imagePath;
-                                System.out.println("relativePath: " + relativePath);
-
-                                Image image = new Image(new FileInputStream(relativePath));
-                                imageView.setImage(image);
-                                imageView.setFitWidth(100);
-                                imageView.setPreserveRatio(true);
-                                setGraphic(imageView);
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                                setGraphic(null); // Set to null if image file is not found
-                            }
-                        }
-                    }
-                };
-            }
-            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // Set the items of the TableView to the productList
+        produtTable.setItems(productList);
+                                System.out.println("==========" + produtTable);
 
+        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        imgColumn.setCellFactory(column -> {
+            return new TableCell<Product, String>() {
+                private final ImageView imageView = new ImageView();
+
+                @Override
+                protected void updateItem(String imagePath, boolean empty) {
+                    super.updateItem(imagePath, empty);
+
+                    if (empty || imagePath == null) {
+                        setGraphic(null);
+                    } else {
+                        try {
+                            // Print debug information
+                            System.out.println("imagePath: " + imagePath);
+
+                            // Load the image based on the provided imagePath
+                            String relativePath = "C:\\java2\\projectJava2\\" + imagePath;
+                            System.out.println("relativePath: " + relativePath);
+
+                            Image image = new Image(new FileInputStream(relativePath));
+                            imageView.setImage(image);
+                            imageView.setFitWidth(100);
+                            imageView.setPreserveRatio(true);
+                            setGraphic(imageView);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                            setGraphic(null);
+                        }
+                    }
+                }
+            };
+        }
+        );
     }
 
     @FXML
@@ -273,7 +292,7 @@ public class addProductController extends Application {
     }
 
 // check
-    private boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
+    public boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
         String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ? AND ProductNameId = ?";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(selectSQL)) {
@@ -289,7 +308,7 @@ public class addProductController extends Application {
     }
 //insert 
 
-    private String saveImageToUploads(File imageFile) {
+    public String saveImageToUploads(File imageFile) {
         try {
             // Define the source and destination paths
             String sourcePath = imageFile.getAbsolutePath();
@@ -383,7 +402,7 @@ public class addProductController extends Application {
     @FXML
     public void showEdit(ActionEvent event) throws IOException {
         // Get the selected product from the TableView
-        Product selected = importTable.getSelectionModel().getSelectedItem();
+        Product selected = produtTable.getSelectionModel().getSelectedItem();
 
         if (selected != null) {
             // Load the Edit Product view
@@ -394,7 +413,7 @@ public class addProductController extends Application {
             editProductController editController = loader.getController();
 
             // Pass the selected product to the Edit Product controller
-            editController.initialize();
+            editController.setSelectedProduct(selected);
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);
@@ -406,7 +425,7 @@ public class addProductController extends Application {
     }
 
     // Hiển thị thông báo thành công
-    private void showSuccessAlert(String message) {
+    public void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Thành công");
         alert.setHeaderText(null);
@@ -415,7 +434,7 @@ public class addProductController extends Application {
     }
 
     // Hiển thị thông báo lỗi
-    private void showAlert(String message) {
+    public void showAlert(String message) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Lỗi");
         alert.setHeaderText(null);
