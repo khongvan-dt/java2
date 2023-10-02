@@ -15,6 +15,7 @@ import db.connect;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import main.Main;
+import models.UserSession;
 
 public class loginController {
 
@@ -62,6 +63,8 @@ public class loginController {
                     loggedInUserId = userId;
                     loggedInUsername = userName;
                     System.out.println(loggedInUserId);
+                    UserSession.getInstance().setUserId(userId);
+
                     // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
                     if ("user".equals(role)) {
                         Main.setRoot("/web/home.fxml");
@@ -117,5 +120,4 @@ public class loginController {
         Main.setRoot("/admin/login.fxml");
     }
 
-   
 }
