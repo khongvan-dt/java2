@@ -62,8 +62,12 @@ public class cartController implements Initializable {
             for (HomeController.Product product : selectedProducts) {
 
                 int productId = product.getProductId();
-                int quantity = productQuantityMap.get(productId);
-
+//                int quantity = productQuantityMap.get(productId);
+                Integer quantity = productQuantityMap.get(productId);
+                if (quantity == null) {
+                    // If the quantity is not in the map, set a default value (e.g., 1)
+                    quantity = 1;
+                }
                 // Tạo Pane để hiển thị thông tin sản phẩm
                 Pane productPane = new Pane();
                 productPane.setPrefHeight(140);
