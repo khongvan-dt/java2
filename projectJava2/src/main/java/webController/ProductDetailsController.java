@@ -48,9 +48,7 @@ public class ProductDetailsController {
         }
     }
 
-    void setProductName(String productName2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 
    
 }
