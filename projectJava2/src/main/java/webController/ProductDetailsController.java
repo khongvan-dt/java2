@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import java.sql.*;
 
 public class ProductDetailsController {
- 
+
     @FXML
     private ImageView productImageView;
     @FXML
@@ -18,6 +18,12 @@ public class ProductDetailsController {
 
     public void setProductId(int productId) {
         this.productId = productId;
+        loadProductDetails();
+    }
+    private String ProductName;
+
+    public void setProductName(String productId) {
+        this.ProductName = ProductName;
         loadProductDetails();
     }
 
@@ -34,11 +40,10 @@ public class ProductDetailsController {
                 // Thực thi câu lệnh SELECT
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
-                 
+
                         String description = resultSet.getString("ProductName");
 
                         // Hiển thị thông tin sản phẩm lên giao diện
-                
                         descriptionLabel.setText(description);
                     }
                 }
@@ -48,7 +53,4 @@ public class ProductDetailsController {
         }
     }
 
- 
-
-   
 }
