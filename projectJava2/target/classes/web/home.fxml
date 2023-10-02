@@ -28,7 +28,7 @@
                                 <Image url="@../icon/menu.png" />
                             </image>
                         </ImageView>
-                  <Button layoutX="617.0" layoutY="41.0" mnemonicParsing="false" onAction="#getAccount" style="-fx-background-color: pink;">
+                  <Button layoutX="617.0" layoutY="41.0" mnemonicParsing="false" onAction="#redirectToLogin" style="-fx-background-color: pink;">
                      <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                   <image>

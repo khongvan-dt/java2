@@ -21,7 +21,7 @@ public class Main extends Application {
 
         try {
             // Lấy đường dẫn tới file FXML
-            URL fxmlUrl = getClass().getResource("/admin/login.fxml");
+            URL fxmlUrl = getClass().getResource("/web/home.fxml");
             if (fxmlUrl != null) {
                 String fxmlPath = fxmlUrl.toExternalForm();
 

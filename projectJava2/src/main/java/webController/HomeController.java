@@ -226,14 +226,32 @@ public class HomeController implements Initializable {
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
                     int productId = (int) buyButton.getUserData();
-
-                    // Tạo một đối tượng Product để lưu thông tin sản phẩm đã chọn
-                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
-
-                    // Thêm sản phẩm đã chọn vào danh sách
-                    selectedProducts.add(selectedProduct);
-                    showAlert("Product added to cart successfully!");
-                    productCart.getInstance().setSelectedProducts(selectedProducts);
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("Product added to cart successfully!");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
+//                    int productId = (int) buyButton.getUserData();
+//
+//                    // Tạo một đối tượng Product để lưu thông tin sản phẩm đã chọn
+//                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
+//
+//                    // Thêm sản phẩm đã chọn vào danh sách
+//                    selectedProducts.add(selectedProduct);
+//thông báo khi add thành công
+//                    showAlert("Product added to cart successfully!");
+//để lấy danh sách sản phẩm đã chọn ra và sử dụng
+//                    productCart.getInstance().setSelectedProducts(selectedProducts);
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
@@ -348,13 +366,23 @@ public class HomeController implements Initializable {
 
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
-                    int productId = (int) buyButton.getUserData();
-                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
 
-                    // Thêm sản phẩm đã chọn vào danh sách
-                    selectedProducts.add(selectedProduct);
-                    showAlert("Product added to cart successfully!");
-                    productCart.getInstance().setSelectedProducts(selectedProducts);
+                    int productId = (int) buyButton.getUserData();
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("Product added to cart successfully!");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
@@ -483,14 +511,21 @@ public class HomeController implements Initializable {
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
                     int productId = (int) buyButton.getUserData();
-                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
-                    // Thêm sản phẩm đã chọn vào danh sách
-                    // After adding products to selectedProducts list
-                    selectedProducts.add(selectedProduct);
-                    showAlert("Product added to cart successfully!");
-//                    displaySelectedProducts();
-// Set the selectedProducts list in cartController
-                    productCart.getInstance().setSelectedProducts(selectedProducts);
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("Product added to cart successfully!");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
 
                 });
 
@@ -547,7 +582,6 @@ public class HomeController implements Initializable {
 //            System.out.println("------------------------------");
 //        }
 //    }
-
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -578,7 +612,7 @@ public class HomeController implements Initializable {
         Main.setRoot("/web/cart.fxml"); // Chuyển đến trang giỏ hàng
     }
 
-    public void getAccount() throws IOException {
+    public void redirectToLogin() throws IOException {
         Main.setRoot("/admin/login.fxml");
     }
 
