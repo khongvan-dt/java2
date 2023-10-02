@@ -82,7 +82,7 @@ public class HomeController implements Initializable {
         public String imagePath;
         public float productPrice;
 
-        private Product(int userId, int productId, String productName, Float productPrice) {
+        private Product(int userId, int productId, String productName, Float productPrice, String imagePath) {
             this.userId = userId;
             this.productId = productId;
             this.productName = productName;
@@ -236,7 +236,7 @@ public class HomeController implements Initializable {
                         }
                     } else {
                         // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice, imagePath);
                         selectedProducts.add(selectedProduct);
                         showAlert("Product added to cart successfully!");
                         productCart.getInstance().setSelectedProducts(selectedProducts);
@@ -378,7 +378,7 @@ public class HomeController implements Initializable {
                         }
                     } else {
                         // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
                         selectedProducts.add(selectedProduct);
                         showAlert("Product added to cart successfully!");
                         productCart.getInstance().setSelectedProducts(selectedProducts);
@@ -521,7 +521,7 @@ public class HomeController implements Initializable {
                         }
                     } else {
                         // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
                         selectedProducts.add(selectedProduct);
                         showAlert("Product added to cart successfully!");
                         productCart.getInstance().setSelectedProducts(selectedProducts);

@@ -28,15 +28,15 @@
                         <Image url="@../icon/cart.png" />
                     </image>
                 </ImageView>
-            <Button layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#getHome" prefHeight="38.0" prefWidth="30.0" style="-fx-background-color: pink;">
-               <graphic>
-                      <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../icon/home.png" />
-                          </image>
-                      </ImageView>
-               </graphic>
-            </Button>
+                <Button layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#getHome" prefHeight="38.0" prefWidth="30.0" style="-fx-background-color: pink;">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icon/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
             </children>
         </Pane>
         <ScrollPane layoutY="100.0" prefHeight="1241.0" prefWidth="866.0">
@@ -184,16 +184,16 @@
                                 <Text layoutX="698.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotline:098765432" wrappingWidth="110.9366455078125" />
                             </children>
                         </Pane>
-                  <ScrollPane fx:id="big" layoutX="-4.0" layoutY="57.0" prefHeight="351.0" prefWidth="852.0">
-                     <content>
-                        <VBox fx:id="small" prefHeight="425.0" prefWidth="834.0" />
-                     </content>
-                  </ScrollPane>
-                  <Label layoutX="382.0" layoutY="19.0" prefHeight="25.0" prefWidth="115.0" text="Your Cart">
-                     <font>
-                        <Font name="AdobeHeitiStd-Regular" size="25.0" />
-                     </font>
-                  </Label>
+                        <ScrollPane fx:id="big" layoutX="-4.0" layoutY="57.0" prefHeight="351.0" prefWidth="852.0">
+                            <content>
+                                <VBox fx:id="small" prefHeight="953.0" prefWidth="835.0" />
+                            </content>
+                        </ScrollPane>
+                        <Label layoutX="382.0" layoutY="19.0" prefHeight="25.0" prefWidth="115.0" text="Your Cart">
+                            <font>
+                                <Font name="AdobeHeitiStd-Regular" size="25.0" />
+                            </font>
+                        </Label>
                     </children>
                 </AnchorPane>
             </content>
