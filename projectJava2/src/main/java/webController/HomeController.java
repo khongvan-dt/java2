@@ -36,8 +36,12 @@ import main.Main;
 import models.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 
 import javax.servlet.http.HttpSession;
+import models.Product;
+import models.UserSession;
+import org.apache.hadoop.shaded.org.checkerframework.checker.units.qual.s;
 
 public class HomeController implements Initializable {
 
@@ -66,15 +70,25 @@ public class HomeController implements Initializable {
     public static int categoryIDetail1;
     public static int categoryIDetail2;
 
-    private List<Product> selectedProducts = new ArrayList<>();
+    public static List<Product> selectedProducts = new ArrayList<>();
+    int userId = UserSession.getInstance().getUserId();
 
     // Constructor để truyền vào đối tượng HttpServletRequest
     public class Product {
 
+        public int userId;
         public int productId;
         public String productName;
         public String imagePath;
         public float productPrice;
+
+        private Product(int userId, int productId, String productName, Float productPrice) {
+            this.userId = userId;
+            this.productId = productId;
+            this.productName = productName;
+            this.imagePath = imagePath;
+            this.productPrice = productPrice;
+        }
 
         public int getProductId() {
             return productId;
@@ -203,8 +217,15 @@ public class HomeController implements Initializable {
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
                     int productId = (int) buyButton.getUserData();
-                    // Bây giờ bạn có thể sử dụng productId cho các hoạt động sau này, như thêm vào giỏ hàng hoặc xử lý mua hàng.
-                    System.out.println("Product ID to buy: " + productId);
+
+                    // Tạo một đối tượng Product để lưu thông tin sản phẩm đã chọn
+                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
+
+                    // Thêm sản phẩm đã chọn vào danh sách
+                    selectedProducts.add(selectedProduct);
+                    showAlert("Product added to cart successfully!");
+
+//                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
 
 // Đưa Button và các thành phần khác vào VBox
@@ -318,21 +339,13 @@ public class HomeController implements Initializable {
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
                     int productId = (int) buyButton.getUserData();
+                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
 
-                    Product selectedProduct = new Product();
-                    selectedProduct.setProductId(productId);
-                    selectedProduct.setProductName(productName);
-                    selectedProduct.setImagePath(imagePath);
-                    selectedProduct.setProductPrice(productPrice);
-
-// Thêm sản phẩm vào danh sách
+                    // Thêm sản phẩm đã chọn vào danh sách
                     selectedProducts.add(selectedProduct);
+                    showAlert("Product added to cart successfully!");
 
-                    try {
-                        redirectToCart();
-                    } catch (IOException ex) {
-                        Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+//                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
 
 // Đưa Button và các thành phần khác vào VBox
@@ -459,8 +472,12 @@ public class HomeController implements Initializable {
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
                     int productId = (int) buyButton.getUserData();
-                    // Bây giờ bạn có thể sử dụng productId cho các hoạt động sau này, như thêm vào giỏ hàng hoặc xử lý mua hàng.
-                    System.out.println("Product ID to buy: " + productId);
+                    Product selectedProduct = new Product(userId, productId, productName, productPrice);
+                    // Thêm sản phẩm đã chọn vào danh sách
+                    selectedProducts.add(selectedProduct);
+//                    displaySelectedProducts();
+                    showAlert("Product added to cart successfully!");
+
                 });
 
 // Đưa Button và các thành phần khác vào VBox
@@ -504,6 +521,23 @@ public class HomeController implements Initializable {
         }
     }
     // Phương thức để lấy đối tượng HttpSession từ ServletContext
+
+//    public void displaySelectedProducts() {
+//        for (Product product : selectedProducts) {
+//            System.out.println("Product ID: " + product.getProductId());
+//            System.out.println("Product Name: " + product.getProductName());
+//            System.out.println("Product Price: " + product.getProductPrice());
+//            System.out.println("Image Path: " + product.getImagePath());
+//            System.out.println("------------------------------");
+//        }
+//    }
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     // các hàm gọi giao diện
     public void getFromRelatedProducts() throws IOException {
