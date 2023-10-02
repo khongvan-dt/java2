@@ -62,8 +62,10 @@ public class loginController {
                     isLoggedIn = true;
                     loggedInUserId = userId;
                     loggedInUsername = userName;
-                    System.out.println(loggedInUserId);
                     UserSession.getInstance().setUserId(userId);
+//                    int userId = UserSession.getInstance().getUserId(); 
+//controller nào khác mà bạn muốn truy cập userId, bạn chỉ cần sử dụng UserSession
+
 
                     // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
                     if ("user".equals(role)) {
