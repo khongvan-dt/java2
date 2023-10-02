@@ -18,11 +18,6 @@
             <children>
                 <Pane prefHeight="111.0" prefWidth="843.0" style="-fx-background-color: pink;">
                     <children>
-                        <ImageView fx:id="cartImageView" fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/cart.png" />
-                            </image>
-                        </ImageView>
                         <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../img/shop.png" />
@@ -40,6 +35,15 @@
                                       <Image url="@../icon/ic_user_black.png" />
                                   </image>
                               </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="714.0" layoutY="41.0" minWidth="53.0" mnemonicParsing="false" onAction="#redirectToCart" prefHeight="39.0" prefWidth="53.0" style="-fx-background-color: pink;">
+                     <graphic>
+                        <ImageView fx:id="cartImageView" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/cart.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                     </children>

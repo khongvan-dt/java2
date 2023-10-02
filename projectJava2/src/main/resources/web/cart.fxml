@@ -18,19 +18,9 @@
     <children>
         <Pane prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
             <children>
-                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/menu.png" />
-                    </image>
-                </ImageView>
                 <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../img/shop.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/ic_search.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
@@ -38,13 +28,21 @@
                         <Image url="@../icon/cart.png" />
                     </image>
                 </ImageView>
+            <Button layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#getHome" prefHeight="38.0" prefWidth="30.0" style="-fx-background-color: pink;">
+               <graphic>
+                      <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../icon/home.png" />
+                          </image>
+                      </ImageView>
+               </graphic>
+            </Button>
             </children>
         </Pane>
         <ScrollPane layoutY="100.0" prefHeight="1241.0" prefWidth="866.0">
             <content>
                 <AnchorPane prefHeight="1600.0" prefWidth="890.0">
                     <children>
-                        <ImageView fitHeight="62.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                         <Pane layoutX="14.0" layoutY="381.0" prefHeight="106.0" prefWidth="850.0">
                             <children>
                                 <Label alignment="CENTER" layoutX="219.0" layoutY="24.0" prefHeight="32.0" prefWidth="412.0" text="PHÍ SHIP ĐƯỢC THANH TOÁN KHI NHẬN ĐƠN HÀNG" textFill="#c41919">

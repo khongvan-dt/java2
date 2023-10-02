@@ -39,7 +39,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 
 import javax.servlet.http.HttpSession;
-import models.Product;
+import models.productCart;
 import models.UserSession;
 import org.apache.hadoop.shaded.org.checkerframework.checker.units.qual.s;
 
@@ -94,6 +94,10 @@ public class HomeController implements Initializable {
             return productId;
         }
 
+        public int getUserId() {
+            return userId;
+        }
+
         public void setProductId(int productId) {
             this.productId = productId;
         }
@@ -121,6 +125,11 @@ public class HomeController implements Initializable {
         public void setProductPrice(float productPrice) {
             this.productPrice = productPrice;
         }
+    }
+    private cartController cartControllerInstance;
+
+    public void setCartController(cartController cartControllerInstance) {
+        this.cartControllerInstance = cartControllerInstance;
     }
 
     @Override
@@ -224,6 +233,7 @@ public class HomeController implements Initializable {
                     // Thêm sản phẩm đã chọn vào danh sách
                     selectedProducts.add(selectedProduct);
                     showAlert("Product added to cart successfully!");
+                    productCart.getInstance().setSelectedProducts(selectedProducts);
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
@@ -344,6 +354,7 @@ public class HomeController implements Initializable {
                     // Thêm sản phẩm đã chọn vào danh sách
                     selectedProducts.add(selectedProduct);
                     showAlert("Product added to cart successfully!");
+                    productCart.getInstance().setSelectedProducts(selectedProducts);
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
@@ -474,9 +485,12 @@ public class HomeController implements Initializable {
                     int productId = (int) buyButton.getUserData();
                     Product selectedProduct = new Product(userId, productId, productName, productPrice);
                     // Thêm sản phẩm đã chọn vào danh sách
+                    // After adding products to selectedProducts list
                     selectedProducts.add(selectedProduct);
-//                    displaySelectedProducts();
                     showAlert("Product added to cart successfully!");
+//                    displaySelectedProducts();
+// Set the selectedProducts list in cartController
+                    productCart.getInstance().setSelectedProducts(selectedProducts);
 
                 });
 
@@ -528,9 +542,12 @@ public class HomeController implements Initializable {
 //            System.out.println("Product Name: " + product.getProductName());
 //            System.out.println("Product Price: " + product.getProductPrice());
 //            System.out.println("Image Path: " + product.getImagePath());
+//            System.out.println("userID: " + product.getUserId());
+//
 //            System.out.println("------------------------------");
 //        }
 //    }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -557,7 +574,7 @@ public class HomeController implements Initializable {
 
     public void redirectToCart() throws IOException {
         // Thay đổi categoryIDetail thành selectedProducts
-        SharedData.setSelectedProducts(selectedProducts); // Truyền danh sách sản phẩm đã chọn
+//        SharedData.setSelectedProducts(selectedProducts); // Truyền danh sách sản phẩm đã chọn
         Main.setRoot("/web/cart.fxml"); // Chuyển đến trang giỏ hàng
     }
 
