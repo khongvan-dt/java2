@@ -273,9 +273,9 @@ public class addProductController extends Application {
         primaryStage.close();
         System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
     }
-    String uploadsDirectoryPath = "src/uploads/"; // Đây là đường dẫn tương đối
 
     private String saveImageToUploads(File imageFile) {
+        String uploadsDirectoryPath = "src/uploads/";
 
         File uploadsDirectory = new File(uploadsDirectoryPath);
 
@@ -331,6 +331,7 @@ public class addProductController extends Application {
             showAlert("Please select product photo.");
             return;
         }
+        String uploadsDirectoryPath = "src/uploads/";
 
         // Lấy tên tệp ảnh từ đường dẫn đầy đủ
         String imageName = selectedImageFile.getName();
@@ -381,8 +382,16 @@ public class addProductController extends Application {
 
                 fieldViewProductDescriptions.clear();
 
-                selectedImageFile = null;
-                getFromAddProduct();
+                // Sao chép tệp ảnh vào thư mục uploads
+                String uploadedImagePath = saveImageToUploads(selectedImageFile);
+
+                if (uploadedImagePath != null) {
+                    System.out.println("Image copied to: " + uploadedImagePath);
+                    selectedImageFile = null;
+                    getFromAddProduct();
+                } else {
+                    showAlert("Failed to copy image to uploads directory.");
+                }
             } else {
                 showAlert("Failed to add product.");
             }
