@@ -24,7 +24,6 @@ adminController\addSupplierController$Supplier.class
 adminController\addProductController$Product.class
 adminController\oderController.class
 webController\HomeController$Product.class
-adminController\editProductController.class
 adminController\importGoodsController.class
 webController\HomeController.class
 adminController\addCategoryController$Category.class
