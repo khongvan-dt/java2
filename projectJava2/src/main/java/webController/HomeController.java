@@ -183,7 +183,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///D:/testProject/" + imagePath);
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -309,7 +309,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///D:/testProject/" + imagePath);
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -445,7 +445,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///D:/testProject/" + imagePath);
+                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
