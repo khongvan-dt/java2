@@ -31,7 +31,7 @@ public class ProductDetailsController {
         // Kết nối đến cơ sở dữ liệu
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project2", "thaoit", "It1234!")) {
             // Tạo câu lệnh SQL SELECT để lấy thông tin sản phẩm từ bảng product
-            String sql = "SELECT ProductName FROM product WHERE ProductName = ?";
+            String sql = "SELECT ProductName FROM product WHERE productsname = ?";
 
             // Chuẩn bị câu lệnh SQL
             try (PreparedStatement statement = connection.prepareStatement(sql)) {

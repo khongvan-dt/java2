@@ -193,7 +193,7 @@ public class HomeController implements Initializable {
                 // Đặt xử lý sự kiện cho Label 
          productNameLabel.setOnMouseClicked(event -> {
     try {
-        String productName2 = productNameLabel.getText();
+                String productName2 = productNameLabel.getText();
 
         // Tạo FXMLLoader để tải trang mới
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/web/product_details.fxml"));
