@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="471.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.addProductController">
+   <children>
+      <GridPane fx:id="formViewProductView" alignment="CENTER_RIGHT" layoutX="74.0" layoutY="140.0" prefHeight="238.0" prefWidth="868.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="148.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="197.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="96.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="305.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Product Name" GridPane.rowIndex="1" />
+            <Label text="Category" />
+            <ComboBox fx:id="fieldViewProductCategoryId" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
+            <Label text="Description" GridPane.columnIndex="2" />
+            <TextArea fx:id="fieldViewProductDescriptions" prefHeight="200.0" prefWidth="522.0" GridPane.columnIndex="3" />
+            <Button mnemonicParsing="false" onAction="#insertProduct" text="Save" GridPane.rowIndex="3" />
+            <ComboBox fx:id="fieldViewProductName" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="126.0" text="Product img" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#eventImg" prefHeight="25.0" prefWidth="182.0" text="Add img" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="supplierId" layoutX="155.0" layoutY="39.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label layoutX="10.0" layoutY="43.0" text="Supplier" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Label layoutX="408.0" layoutY="34.0" prefHeight="34.0" prefWidth="195.0" text="Edit Import Goods">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutX="324.0" layoutY="77.0" prefHeight="0.0" prefWidth="362.0" />
+   </children>
+</AnchorPane>

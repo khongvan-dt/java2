@@ -15,6 +15,7 @@ import db.connect;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import main.Main;
+import models.UserSession;
 
 public class loginController {
 
@@ -61,7 +62,10 @@ public class loginController {
                     isLoggedIn = true;
                     loggedInUserId = userId;
                     loggedInUsername = userName;
-                    System.out.println(loggedInUserId);
+                    UserSession.getInstance().setUserId(userId);
+//                    int userId = UserSession.getInstance().getUserId(); 
+//controller nào khác mà bạn muốn truy cập userId, bạn chỉ cần sử dụng UserSession
+
                     // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
                     if ("user".equals(role)) {
                         Main.setRoot("/web/home.fxml");
@@ -117,5 +121,4 @@ public class loginController {
         Main.setRoot("/admin/login.fxml");
     }
 
-   
 }

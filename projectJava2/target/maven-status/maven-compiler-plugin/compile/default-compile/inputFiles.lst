@@ -9,11 +9,14 @@ D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\addCategoryControlle
 D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\ProductDetailsController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\inventoryController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\productDeliveryController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\models\UserSession.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editCategoryController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\ShoppingCart.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\addProductController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editProductController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\db\connect.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\importGoodsController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\models\productCart.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\cartController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editProductNameController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\main\Main.java
@@ -21,5 +24,7 @@ D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\SharedData.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\models\Product.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\editSupplierController.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\relatedProductsController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\models\productQuantity.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\webController\HomeController.java
+D:\JAVAPJ2\java2\projectJava2\src\main\java\ulitiJav\DataHolder.java
 D:\JAVAPJ2\java2\projectJava2\src\main\java\adminController\moreProductNameController.java
