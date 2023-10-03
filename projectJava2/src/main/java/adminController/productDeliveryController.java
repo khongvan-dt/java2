@@ -128,7 +128,7 @@ public class productDeliveryController {
     private int y = 0;
     @FXML
     private TableColumn<DeliveryData, Integer> idColumn;
-    
+
     @FXML
     private TableColumn<DeliveryData, Integer> id1;
 
@@ -137,19 +137,19 @@ public class productDeliveryController {
 
     @FXML
     public void initialize() {
-         id1.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
+        id1.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName, "
-                    + "inventory.date, inventory.InventoryNumber "
+            String query = "SELECT inventory.importProductNameId, importGoods.productName, supplier.supplierId, supplier.supplierName,"
+                    + " inventory.date, inventory.InventoryNumber "
                     + "FROM inventory "
-                    + "INNER JOIN ProductsName ON inventory.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
                     + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int productNameId = resultSet.getInt("ProductNameId");
+                int productNameId = resultSet.getInt("importProductNameId");
                 int supplierId = resultSet.getInt("supplierId");
                 String productName = resultSet.getString("ProductName");
                 String supplierName = resultSet.getString("supplierName");
@@ -173,10 +173,11 @@ public class productDeliveryController {
 
         try (Connection connection = connect.getConnection()) {
 
-            String query = "SELECT ProductsName.ProductName, supplier.supplierName, ProductsName.ProductNameId, supplier.supplierId,"
-                    + "productdelivery.dayShipping, productdelivery.shipmentQuantity, productdelivery.productDeliveryID "
+            String query = "SELECT productdelivery.productDeliveryID, productdelivery.importProductNameId,importgoods.import_id,"
+                    + " importgoods.productName, supplier.supplierId,"
+                    + " supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
                     + "FROM productdelivery "
-                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
                     + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -187,7 +188,7 @@ public class productDeliveryController {
             while (resultSet.next()) {
 
                 int productDeliveryID = resultSet.getInt("productDeliveryID");
-                int productNameId2 = resultSet.getInt("ProductNameId");
+                int productNameId2 = resultSet.getInt("importProductNameId");
                 int supplierId2 = resultSet.getInt("supplierId");
                 String productName2 = resultSet.getString("ProductName");
                 String supplierName2 = resultSet.getString("supplierName");
@@ -252,7 +253,7 @@ public class productDeliveryController {
         java.util.Date currentDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
 
-        String insertSQL = "INSERT INTO productDelivery (ProductNameId, supplier_id, dayShipping, shipmentQuantity) VALUES (?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO productDelivery (importProductNameId, supplier_id, dayShipping, shipmentQuantity) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             preparedStatement.setInt(1, productNameId);

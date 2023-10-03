@@ -16,6 +16,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import main.Main;
 import models.UserSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class loginController {
 
@@ -45,34 +46,36 @@ public class loginController {
         if (connection != null) {
             try {
                 // Truy vấn kiểm tra tên người dùng và mật khẩu
-                String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+                String sql = "SELECT * FROM users WHERE username = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, userName);
-                preparedStatement.setString(2, password);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 if (resultSet.next()) {
-                    int userId = resultSet.getInt("userId");
-                    String role = resultSet.getString("role");
-                    // Đăng nhập thành công
-                    System.out.println("Đăng nhập thành công với : " + role);
+                    String hashedPasswordFromDB = resultSet.getString("password"); // Trích xuất mật khẩu đã mã hóa từ DB
+                    if (BCrypt.checkpw(password, hashedPasswordFromDB)) {
+                        int userId = resultSet.getInt("userId");
+                        String role = resultSet.getString("role");
+                        // Đăng nhập thành công
+                        System.out.println("Đăng nhập thành công với : " + role);
 
-                    // Lưu trạng thái đăng nhập, ID và tên người dùng
-                    isLoggedIn = true;
-                    loggedInUserId = userId;
-                    loggedInUsername = userName;
-                    UserSession.getInstance().setUserId(userId);
-//                    int userId = UserSession.getInstance().getUserId(); 
-//controller nào khác mà bạn muốn truy cập userId, bạn chỉ cần sử dụng UserSession
+                        // Lưu trạng thái đăng nhập, ID và tên người dùng
+                        isLoggedIn = true;
+                        loggedInUserId = userId;
+                        loggedInUsername = userName;
+                        UserSession.getInstance().setUserId(userId);
 
-                    // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
-                    if ("user".equals(role)) {
-                        Main.setRoot("/web/home.fxml");
-
-                    } else if ("admin".equals(role)) {
-                        Main.setRoot("/admin/addCategory.fxml");
-
+                        // Sau khi hiển thị thông báo thành công, mở trang home.fxml hoặc
+                        if ("user".equals(role)) {
+                            Main.setRoot("/web/home.fxml");
+                        } else if ("admin".equals(role)) {
+                            Main.setRoot("/admin/addCategory.fxml");
+                        }
+                    } else {
+                        // Mật khẩu sai
+                        System.out.println("Login failed");
+                        showAlert("Login failed");
                     }
                 } else {
                     // Đăng nhập thất bại
@@ -99,6 +102,11 @@ public class loginController {
     @FXML
     private void getRegistration() throws IOException {
         Main.setRoot("/admin/createAccount.fxml");
+    }
+
+    @FXML
+    private void formHome() throws IOException {
+        Main.setRoot("/web/home.fxml");
     }
 
     // Phương thức để kiểm tra trạng thái đăng nhập từ bất kỳ đâu trong ứng dụng

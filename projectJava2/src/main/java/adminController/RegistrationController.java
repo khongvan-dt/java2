@@ -7,21 +7,17 @@ import java.sql.SQLException;
 import java.util.regex.Pattern;
 import db.connect;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javafx.stage.Stage;
 import main.Main;
 
-public class RegistrationController  {
+public class RegistrationController {
 
-   
     @FXML
     private TextField usernameField;
 
@@ -46,23 +42,26 @@ public class RegistrationController  {
             return;
         }
 
-        // Kiểm tra xem tên tài khoản đã tồn tại hay chưa
+        // Kiểm tra xem tên tài khoản đã tồn tại hay không
         if (isUsernameExists(username)) {
             showAlert("Username already exists.");
-            return; // Khi đã tồn tại, không tiếp tục đăng ký
+            return;
         }
 
-        // Kiểm tra xem email đã tồn tại hay chưa
+        // Kiểm tra xem email đã tồn tại hay không
         if (isEmailExists(email)) {
             showAlert("Email already exists.");
-            return; // Khi đã tồn tại, không tiếp tục đăng ký
+            return;
         }
+
+        // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         String insertSQL = "INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, 'user')";
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, hashedPassword); // Lưu mật khẩu đã được mã hóa
             preparedStatement.setString(3, email);
 
             preparedStatement.executeUpdate();
@@ -71,23 +70,22 @@ public class RegistrationController  {
 
             Stage currentStage = (Stage) usernameField.getScene().getWindow();
             currentStage.close();
-
+            getLogin();
             // Hiển thị thông báo thành công
             showSuccess("User registered successfully!");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
     private void getLogin() throws IOException {
-       Main.setRoot("/admin/login.fxml");
+        Main.setRoot("/admin/login.fxml");
     }
 
     private void showRegistrationForm() throws IOException {
-       Main.setRoot("/admin/createAccount.fxml");
+        Main.setRoot("/admin/createAccount.fxml");
     }
 
     // Kiểm tra xem tên tài khoản đã tồn tại hay chưa
@@ -150,5 +148,6 @@ public class RegistrationController  {
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
+    // Phương thức để lấy tên người dùng sau khi đăng nhập
 
 }

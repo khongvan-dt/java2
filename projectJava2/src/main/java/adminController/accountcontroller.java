@@ -6,6 +6,7 @@ package adminController;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import main.Main;
 
@@ -52,6 +53,11 @@ public class accountcontroller {
     public void getFromfromMoreProductName() throws IOException {
         Main.setRoot("/admin/addProductName.fxml");
 
+    }
+
+    @FXML
+    private void formHome() throws IOException {
+        Main.setRoot("/web/home.fxml");
     }
 
     public void getFromImportGoods() throws IOException {

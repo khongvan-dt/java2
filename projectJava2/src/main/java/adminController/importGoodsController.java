@@ -107,16 +107,20 @@ public class importGoodsController {
         public float getTotalImportPrice() {
             return totalImportPrice;
         }
+
+        public String getProductName() {
+
+            return productId;
+        }
     }
 
     @FXML
     private ComboBox<String> SupplierId;
-
-    @FXML
-    private ComboBox<String> fieldViewProductName;
-
     @FXML
     private TextField importQuantity;
+
+    @FXML
+    private TextField ProductNameText;
 
     @FXML
     private TextField exchangeNumber;
@@ -131,7 +135,6 @@ public class importGoodsController {
     private TextField ImportPrice;
 
     private Map<String, Integer> supplierIdMap = new HashMap<>();
-    private Map<String, Integer> productNameIdMap = new HashMap<>();
 
     @FXML
     private TableView<Import> importTable;
@@ -186,19 +189,6 @@ public class importGoodsController {
 
             SupplierId.setItems(suppliers);
 
-            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-            ResultSet resultSet2 = preparedStatement2.executeQuery();
-            ObservableList<String> productNames = FXCollections.observableArrayList();
-
-            while (resultSet2.next()) {
-                int productNameId = resultSet2.getInt("ProductNameId");
-                String productsName = resultSet2.getString("ProductName");
-                productNames.add(productsName);
-                productNameIdMap.put(productsName, productNameId);
-            }
-            fieldViewProductName.setItems(productNames);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -207,11 +197,10 @@ public class importGoodsController {
             ObservableList<Import> imports = FXCollections.observableArrayList();
 
             // Your database query to retrieve data
-            String query2 = "SELECT importGoods.import_id, ProductsName.ProductName, "
+            String query2 = "SELECT importGoods.import_id, importGoods.productName, "
                     + "supplier.supplierName, importGoods.import_date, importGoods.quantity_imported, importGoods.price, importGoods.productImportPrice,"
                     + " importGoods.totalImportFee,"
                     + "importGoods.quantity_returned, importGoods.total_quantity_received FROM importGoods "
-                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
             PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
@@ -219,7 +208,7 @@ public class importGoodsController {
             while (resultSet2.next()) {
 
                 int import_id22 = resultSet2.getInt("importGoods.import_id");
-                String ProductName22 = resultSet2.getString("ProductsName.ProductName");
+                String ProductName22 = resultSet2.getString("importGoods.productName");
                 String supplierName22 = resultSet2.getString("supplier.supplierName");
                 Date import_date22 = resultSet2.getDate("importGoods.import_date");
                 int quantity_imported22 = resultSet2.getInt("importGoods.quantity_imported");
@@ -254,11 +243,11 @@ public class importGoodsController {
         String quantity = importQuantity.getText().trim();
         String exchange = exchangeNumber.getText().trim();
         String selectedSupplierName = SupplierId.getValue();
-        String selectedProductName = fieldViewProductName.getValue();
         String productPrice = fieldViewProductPrice.getText().trim();
         String importPrice = ImportPrice.getText().trim();
+        String ProductNameT = ProductNameText.getText().trim();
 
-        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null || selectedProductName == null
+        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null
                 || productPrice.isEmpty() || importPrice.isEmpty()) {
             showAlert("Please fill in all fields and select a supplier and product.");
             return;
@@ -268,9 +257,7 @@ public class importGoodsController {
             showAlert("Quantity, exchange, product price, and import price must be numeric.");
             return;
         }
-
         int supplierId = supplierIdMap.get(selectedSupplierName);
-        int productNameId = productNameIdMap.get(selectedProductName);
 
         Date currentDate = new Date(System.currentTimeMillis());
 
@@ -283,11 +270,11 @@ public class importGoodsController {
         float totalImportFee = (float) totalQuantity * floatImportPrice;
 
         String insertSQL = "INSERT INTO importgoods "
-                + "(ProductNameId, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received, price, productImportPrice, totalImportFee) "
+                + "(productName, supplier_id, import_date, quantity_imported, quantity_returned, total_quantity_received, price, productImportPrice, totalImportFee) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-            preparedStatement.setInt(1, productNameId);
+            preparedStatement.setString(1, ProductNameT);
             preparedStatement.setInt(2, supplierId);
             preparedStatement.setDate(3, currentDate);
             preparedStatement.setInt(4, intQuantity);
@@ -318,7 +305,7 @@ public class importGoodsController {
         importQuantity.clear();
         exchangeNumber.clear();
         SupplierId.getSelectionModel().clearSelection();
-        fieldViewProductName.getSelectionModel().clearSelection();
+        ProductNameText.clear();
         fieldViewProductPrice.clear();
         ImportPrice.clear();
     }

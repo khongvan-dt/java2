@@ -138,6 +138,7 @@ public class HomeController implements Initializable {
         displayNewestProducts();
         displayProducts2();
         displayProducts3();
+        categoryName();
 
     }
 
@@ -148,14 +149,12 @@ public class HomeController implements Initializable {
 
         try {
             connection = connect.getConnection();
-
-            String query = "SELECT ProductsName.ProductName,product.productId , product.img, importgoods.price, product.categoryId, category.categoryName "
-                    + "FROM product "
-                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
-                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
-                    + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId = 9";
+            String query = "SELECT importGoods.productName,product.img,product.categoryId,product.productId,"
+                    + " product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
+                    + " WHERE product.categoryId =1";
 
             statement = connection.prepareStatement(query);
 
@@ -168,13 +167,6 @@ public class HomeController implements Initializable {
             int startY = 4; // Vị trí ban đầu theo trục Y
 
             int productIndex = 0; // Chỉ số của sản phẩm
-            if (resultSet.next()) {
-                categoryIDetail = resultSet.getInt("categoryId");
-                String categoryName = resultSet.getString("categoryName");
-                System.out.println("categoryIDetail" + categoryIDetail);
-                categoryId.setText(categoryName);
-
-            }
 
             while (resultSet.next()) {
                 String productName = resultSet.getString("ProductName");
@@ -191,7 +183,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/testProject/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -278,18 +270,17 @@ public class HomeController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            String query2 = "SELECT product.productId , ProductsName.ProductName, product.img, importgoods.price, product.categoryId, category.categoryName, category.categoryId "
-                    + "FROM product "
-                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
-                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
-                    + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId =11";
+            String query2 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
+                    + " WHERE product.categoryId = 2";
 
             statement2 = connection.prepareStatement(query2);
 
             resultSet2 = statement2.executeQuery();
-            System.err.println("resultSet2" + resultSet2);
+
+            System.out.println("resultSet2" + resultSet2);
 
             int productSpacing = 1; // Khoảng cách giữa các sản phẩm
             int productWidth = 190; // Chiều rộng của mỗi sản phẩm
@@ -298,19 +289,16 @@ public class HomeController implements Initializable {
             int startY = 4; // Vị trí ban đầu theo trục Y
 
             int productIndex = 0; // Chỉ số của sản phẩm
-            if (resultSet2.next()) {
-                categoryIDetail1 = resultSet2.getInt("categoryId");
-                System.out.println("categoryIDetail2:  " + categoryIDetail1);
-                String categoryName = resultSet2.getString("categoryName");
-                // Đặt giá trị categoryName cho nút Button
-                categoryId1.setText(categoryName);
 
-            }
             while (resultSet2.next()) {
                 String productName = resultSet2.getString("ProductName");
                 String imagePath = resultSet2.getString("img");
                 Float productPrice = resultSet2.getFloat("price");
-
+                System.out.println("------------------------------");
+                System.out.println("Product ID: " + productName);
+                System.out.println("Product Name: " + imagePath);
+                System.out.println("Product Price: " + productPrice);
+                System.out.println("------------------------------");
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
@@ -321,7 +309,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/testProject/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -423,15 +411,13 @@ public class HomeController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            String query2 = "SELECT product.productId , ProductsName.ProductName, product.img, importgoods.price, product.categoryId, category.categoryName, category.categoryId "
-                    + "FROM product "
-                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
-                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
-                    + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId =9";
+            String query3 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
+                    + " WHERE product.categoryId = 3";
 
-            statement3 = connection.prepareStatement(query2);
+            statement3 = connection.prepareStatement(query3);
 
             resultSet3 = statement3.executeQuery();
             System.err.println("resultSet3" + resultSet3);
@@ -443,14 +429,7 @@ public class HomeController implements Initializable {
             int startY = 4; // Vị trí ban đầu theo trục Y
 
             int productIndex = 0; // Chỉ số của sản phẩm
-            if (resultSet3.next()) {
-                categoryIDetail2 = resultSet3.getInt("categoryId");
-                System.out.println("categoryIDetail2:  " + categoryIDetail2);
-                String categoryName = resultSet3.getString("categoryName");
-                // Đặt giá trị categoryName cho nút Button
-                categoryId2.setText(categoryName);
 
-            }
             while (resultSet3.next()) {
                 String productName = resultSet3.getString("ProductName");
                 String imagePath = resultSet3.getString("img");
@@ -466,7 +445,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/testProject/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -569,6 +548,68 @@ public class HomeController implements Initializable {
 //            System.out.println("------------------------------");
 //        }
 //    }
+    public void categoryName() {
+
+        try (Connection connection = connect.getConnection();) {
+
+            String query2 = "SELECT  product.categoryId,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " WHERE product.categoryId = 2";
+            PreparedStatement statement2 = connection.prepareStatement(query2);
+
+            ResultSet resultSet2 = statement2.executeQuery();
+            if (resultSet2.next()) {
+                categoryIDetail1 = resultSet2.getInt("categoryId");
+                System.out.println("categoryIDetail2:  " + categoryIDetail1);
+                String categoryName = resultSet2.getString("categoryName");
+                // Đặt giá trị categoryName cho nút Button
+                categoryId1.setText(categoryName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try (Connection connection = connect.getConnection();) {
+
+            String query = "SELECT  product.categoryId,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " WHERE product.categoryId = 1";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                categoryIDetail = resultSet.getInt("categoryId");
+                String categoryName = resultSet.getString("categoryName");
+                System.out.println("categoryIDetail:  " + categoryIDetail);
+                categoryId.setText(categoryName);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try (Connection connection = connect.getConnection();) {
+
+            String query3 = "SELECT  product.categoryId,category.categoryName"
+                    + " FROM product "
+                    + " INNER JOIN category ON product.categoryId = category.categoryId"
+                    + " WHERE product.categoryId = 3";
+            PreparedStatement statement3 = connection.prepareStatement(query3);
+
+            ResultSet resultSet3 = statement3.executeQuery();
+            if (resultSet3.next()) {
+                categoryIDetail2 = resultSet3.getInt("categoryId");
+                System.out.println("categoryIDetail2:  " + categoryIDetail2);
+                String categoryName = resultSet3.getString("categoryName");
+                // Đặt giá trị categoryName cho nút Button
+                categoryId2.setText(categoryName);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
