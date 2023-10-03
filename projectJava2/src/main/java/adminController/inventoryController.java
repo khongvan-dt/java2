@@ -11,14 +11,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -193,18 +190,18 @@ public class inventoryController {
 // Phương thức này sẽ điền dữ liệu vào productList từ cơ sở dữ liệu
     private void populateImportTable() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
                     + "FROM productdelivery "
-                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
                     + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int productNameId = resultSet.getInt("ProductNameId");
+                int productNameId = resultSet.getInt("import_id");
                 int supplierId = resultSet.getInt("supplierId");
-                String productName = resultSet.getString("ProductName");
+                String productName = resultSet.getString("importgoods.productName");
                 String supplierName = resultSet.getString("supplierName");
                 Date dayShipping = resultSet.getDate("dayShipping");
                 int shipmentQuantity = resultSet.getInt("shipmentQuantity");
@@ -218,16 +215,15 @@ public class inventoryController {
 
     private void sqlImportgoods() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName, importGoods.import_date, importGoods.total_quantity_received "
+            String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName, importGoods.import_date, importGoods.total_quantity_received "
                     + "FROM importGoods "
-                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
                     + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int productNameId = resultSet.getInt("ProductNameId");
+                int productNameId = resultSet.getInt("import_id");
                 int supplierId = resultSet.getInt("supplierId");
                 String productName = resultSet.getString("ProductName");
                 String supplierName = resultSet.getString("supplierName");
@@ -243,17 +239,17 @@ public class inventoryController {
 
     private void sqlInventory() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, ProductsName.ProductName, supplier.supplierName,"
+            String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName,"
                     + " inventory.date, inventory.InventoryNumber "
                     + "FROM inventory "
-                    + "INNER JOIN ProductsName ON inventory.ProductNameId = ProductsName.ProductNameId "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
                     + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int productNameId = resultSet.getInt("ProductNameId");
+                int productNameId = resultSet.getInt("import_id");
                 int supplierId = resultSet.getInt("supplierId");
                 String productName = resultSet.getString("ProductName");
                 String supplierName = resultSet.getString("supplierName");
@@ -374,7 +370,7 @@ public class inventoryController {
     // Phương thức để thực hiện insert vào bảng inventory
     private boolean insertInventoryRecord(int productNameId, int supplierId, int inventoryNumber) {
         try (Connection connection = connect.getConnection()) {
-            String insertSQL = "INSERT INTO inventory (ProductNameId, supplierId, date, InventoryNumber) VALUES (?, ?, ?, ?)";
+            String insertSQL = "INSERT INTO inventory (importProductNameId, supplierId, date, inventoryNumber) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
             preparedStatement.setInt(1, productNameId);
             preparedStatement.setInt(2, supplierId);
@@ -395,7 +391,6 @@ public class inventoryController {
 
     @FXML
     public void insertInventoryTH4() throws IOException {
-        // Get the selected item from the Importgoods table
         InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
 
         if (selectedImportItem != null) {

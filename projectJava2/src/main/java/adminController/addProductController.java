@@ -11,38 +11,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.jfr.Category;
 import main.Main;
-import static org.apache.commons.lang3.StringUtils.isNumeric;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TableCell;
@@ -58,8 +48,9 @@ public class addProductController extends Application {
         private SimpleStringProperty importPrice;
         private SimpleStringProperty price;
         private SimpleStringProperty imgPath;
+        private SimpleStringProperty categoryName;
 
-        public Product(String productName, String img, String supplierName, String description, String importPrice, String price) {
+        public Product(String categoryName, String productName, String img, String supplierName, String description, String importPrice, String price) {
             this.productName = new SimpleStringProperty(productName);
             this.img = new SimpleStringProperty(img);
             this.supplierName = new SimpleStringProperty(supplierName);
@@ -67,6 +58,7 @@ public class addProductController extends Application {
             this.importPrice = new SimpleStringProperty(importPrice);
             this.price = new SimpleStringProperty(price);
             this.imgPath = new SimpleStringProperty(img);
+            this.categoryName = new SimpleStringProperty(categoryName);
 
         }
 
@@ -96,6 +88,10 @@ public class addProductController extends Application {
 
         public String getPrice() {
             return price.get();
+        }
+
+        public String getCategoryName() {
+            return categoryName.get();
         }
 
     }
@@ -128,6 +124,8 @@ public class addProductController extends Application {
     @FXML
     private TableColumn<Product, String> supplierNameColumn;
     @FXML
+    private TableColumn<Product, String> CategoryColum;
+    @FXML
     private TableColumn<Product, String> descriptionColumn;
     @FXML
     private TableColumn<Product, String> importPriceColumn;
@@ -154,15 +152,13 @@ public class addProductController extends Application {
             }
             fieldViewProductCategoryId.setItems(category);
 
-            String selectProduct = "SELECT importGoods.ProductNameId, ProductsName.ProductName FROM importGoods "
-                    + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId "
-                    + "GROUP BY importGoods.supplier_id, importGoods.ProductNameId";
+            String selectProduct = "SELECT * FROM importGoods ";
             PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
             ObservableList<String> productNames = FXCollections.observableArrayList();
             while (resultSet2.next()) {
-                int productNameId = resultSet2.getInt("importGoods.ProductNameId");
-                String productsName = resultSet2.getString("ProductsName.ProductName");
+                int productNameId = resultSet2.getInt("importGoods.import_id");
+                String productsName = resultSet2.getString("importGoods.productName");
                 productNames.add(productsName);
                 productNameIdMap.put(productsName, productNameId);
             }
@@ -188,17 +184,18 @@ public class addProductController extends Application {
 
 // Inside your initialize() method
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductName, product.img, supplier.supplierName,"
-                    + " product.Description, importgoods.productImportPrice, importgoods.price "
+           String query = "SELECT importGoods.productName, product.img, supplier.supplierName,"
+                    + " product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName "
                     + "FROM product "
-                    + "INNER JOIN ProductsName ON product.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
-                    + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId";
+                    + "INNER JOIN category ON product.categoryId = category.categoryId  "
+                    + "INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId "
+                    + "INNER JOIN supplier ON product.idSupplier = supplier.supplierId ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+                String categoryName = resultSet.getString("categoryName");
                 String productName = resultSet.getString("ProductName");
                 String img = resultSet.getString("img");
                 String supplierName = resultSet.getString("supplierName");
@@ -206,50 +203,20 @@ public class addProductController extends Application {
                 String importPrice = resultSet.getString("productImportPrice");
                 String price = resultSet.getString("price");
 
-                Product product = new Product(productName, img, supplierName, description, importPrice, price);
+                Product product = new Product(categoryName, productName, img, supplierName, description, importPrice, price);
                 productList.add(product);
             }
 
             // Set the items of the TableView to the productList
             importTable.setItems(productList);
+            CategoryColum.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
             supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
             descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
             importPriceColumn.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            imgColumn.setCellFactory(column -> {
-                return new TableCell<Product, String>() {
-                    private final ImageView imageView = new ImageView();
+            imgColumn.setCellValueFactory(new PropertyValueFactory<>("img"));
 
-                    @Override
-                    protected void updateItem(String imagePath, boolean empty) {
-                        super.updateItem(imagePath, empty);
-
-                        if (empty || imagePath == null) {
-                            setGraphic(null);
-                        } else {
-                            try {
-                                // Print debug information
-                                System.out.println("imagePath: " + imagePath);
-
-                                // Load the image based on the provided imagePath
-                                String relativePath = "C:/java2/projectJava2/" + imagePath;
-                                System.out.println("relativePath: " + relativePath);
-
-                                Image image = new Image(new FileInputStream(relativePath));
-                                imageView.setImage(image);
-                                imageView.setFitWidth(100);
-                                imageView.setPreserveRatio(true);
-                                setGraphic(imageView);
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                                setGraphic(null); // Set to null if image file is not found
-                            }
-                        }
-                    }
-                };
-            }
-            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -273,9 +240,9 @@ public class addProductController extends Application {
         primaryStage.close();
         System.out.println("Đường dẫn ảnh đã chọn: " + selectedImageFile);
     }
-    String uploadsDirectoryPath = "src/uploads/"; // Đây là đường dẫn tương đối
 
     private String saveImageToUploads(File imageFile) {
+        String uploadsDirectoryPath = "src/uploads/";
 
         File uploadsDirectory = new File(uploadsDirectoryPath);
 
@@ -302,12 +269,11 @@ public class addProductController extends Application {
     }
 
 // check
-    private boolean isCombinationExistsInImportGoods(int supplierId, int productNameId) {
-        String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ? AND ProductNameId = ?";
+    private boolean isCombinationExistsInImportGoods(int supplierId) {
+        String selectSQL = "SELECT * FROM importGoods WHERE supplier_id = ?";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(selectSQL)) {
             preparedStatement.setInt(1, supplierId);
-            preparedStatement.setInt(2, productNameId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next(); // If a row is found, the combination exists
@@ -331,6 +297,7 @@ public class addProductController extends Application {
             showAlert("Please select product photo.");
             return;
         }
+        String uploadsDirectoryPath = "src/uploads/";
 
         // Lấy tên tệp ảnh từ đường dẫn đầy đủ
         String imageName = selectedImageFile.getName();
@@ -342,7 +309,7 @@ public class addProductController extends Application {
             showAlert("Please enter complete product description.");
             return;
         }
-        if (description.length() > 1000) {
+        if (description.length() > 2000) {
             showAlert("Product descriptions cannot be longer than 1000 characters.");
             return;
         }
@@ -358,12 +325,12 @@ public class addProductController extends Application {
         }
 
         // Kiểm tra xem sự kết hợp của supplier_id và ProductNameId có tồn tại trong importGoods không
-        if (!isCombinationExistsInImportGoods(supplierNameId, productNameId)) {
-            showAlert("Supplier and Product combination does not exist in importGoods.");
+        if (!isCombinationExistsInImportGoods(supplierNameId)) {
+            showAlert("Supplier combination does not exist in importGoods.");
             return;
         }
 
-        String insertSQL = "INSERT INTO product (categoryId, ProductNameId, img, Description, supplier_id) VALUES (?,?,?,?,?)";
+        String insertSQL = "INSERT INTO product (categoryId, importProductNameId, img, Description, idSupplier) VALUES (?,?,?,?,?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             // Thiết lập tham số cho câu lệnh SQL
@@ -381,8 +348,16 @@ public class addProductController extends Application {
 
                 fieldViewProductDescriptions.clear();
 
-                selectedImageFile = null;
-                getFromAddProduct();
+                // Sao chép tệp ảnh vào thư mục uploads
+                String uploadedImagePath = saveImageToUploads(selectedImageFile);
+
+                if (uploadedImagePath != null) {
+                    System.out.println("Image copied to: " + uploadedImagePath);
+                    selectedImageFile = null;
+                    getFromAddProduct();
+                } else {
+                    showAlert("Failed to copy image to uploads directory.");
+                }
             } else {
                 showAlert("Failed to add product.");
             }
