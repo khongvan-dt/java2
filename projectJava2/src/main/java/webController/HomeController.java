@@ -82,6 +82,16 @@ public class HomeController implements Initializable {
         public String productName;
         public String imagePath;
         public float productPrice;
+        private int quantity; // Thêm trường này để lưu số lượng sản phẩm
+
+        // Các getter và setter cho trường quantity
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
 
         private Product(int userId, int productId, String productName, Float productPrice, String imagePath) {
             this.userId = userId;

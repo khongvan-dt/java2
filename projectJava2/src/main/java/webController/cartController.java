@@ -59,16 +59,27 @@ public class cartController implements Initializable {
                 // Tạo Pane để hiển thị thông tin sản phẩm
 
             }
-            int i = 0;
-            for (HomeController.Product product : selectedProducts) {
+            Map<Integer, HomeController.Product> productMap = new HashMap<>();
 
+            for (HomeController.Product product : selectedProducts) {
                 int productId = product.getProductId();
-//                int quantity = productQuantityMap.get(productId);
-                Integer quantity = productQuantityMap.get(productId);
-                if (quantity == null) {
-                    // If the quantity is not in the map, set a default value (e.g., 1)
-                    quantity = 1;
+                // Kiểm tra xem sản phẩm đã có trong Map chưa
+                if (productMap.containsKey(productId)) {
+                    // Nếu đã có, tăng số lượng của sản phẩm
+                    HomeController.Product existingProduct = productMap.get(productId);
+                    existingProduct.setQuantity(existingProduct.getQuantity() + 1);
+                } else {
+                    // Nếu chưa có, thêm sản phẩm vào Map với số lượng ban đầu là 1
+
+                    product.setQuantity(1);
+                    productMap.put(productId, product);
                 }
+            }
+
+            int i = 0;
+            for (HomeController.Product product : productMap.values()) {
+                // Sử dụng product.getQuantity() để lấy số lượng sản phẩm
+                int quantity = product.getQuantity();
                 // Tạo Pane để hiển thị thông tin sản phẩm
                 Pane productPane = new Pane();
                 productPane.setPrefHeight(140);
