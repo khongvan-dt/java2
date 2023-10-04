@@ -2,6 +2,7 @@ package webController;
 
 import db.connect;
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -81,6 +83,24 @@ public class HomeController implements Initializable {
         public String productName;
         public String imagePath;
         public float productPrice;
+        private int quantity;
+        private float totalPrice;
+
+        public float getTotalPrice() {
+            return totalPrice;
+        }
+
+        public void setTotalPrice(float totalPrice) {
+            this.totalPrice = totalPrice;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
 
         private Product(int userId, int productId, String productName, Float productPrice, String imagePath) {
             this.userId = userId;
@@ -139,7 +159,6 @@ public class HomeController implements Initializable {
         displayProducts2();
         displayProducts3();
         categoryName();
-
     }
 
     private void displayNewestProducts() {
@@ -172,7 +191,6 @@ public class HomeController implements Initializable {
                 String productName = resultSet.getString("ProductName");
                 String imagePath = resultSet.getString("img");
                 Float productPrice = resultSet.getFloat("price");
-                System.out.println("webController.HomeController.displayNewestProducts()" + productPrice);
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
@@ -180,10 +198,14 @@ public class HomeController implements Initializable {
 
                 // Tạo ImageView cho sản phẩm
                 ImageView productImageView = new ImageView();
-                productImageView.setFitWidth(140);
-                productImageView.setFitHeight(125);
-                productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setFitWidth(130);
+                productImageView.setFitHeight(120);
+                productImageView.setPreserveRatio(false);
+                // Sử dụng đường dẫn tuyệt đối đến tệp hình ảnh
+                File imageFile = new File(imagePath);
+                String absoluteImagePath = imageFile.toURI().toString();
+                Image image = new Image(absoluteImagePath);
+                System.out.println("đường dẫn ảnh ____________" + absoluteImagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -199,7 +221,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
@@ -280,8 +304,6 @@ public class HomeController implements Initializable {
 
             resultSet2 = statement2.executeQuery();
 
-            System.out.println("resultSet2" + resultSet2);
-
             int productSpacing = 1; // Khoảng cách giữa các sản phẩm
             int productWidth = 190; // Chiều rộng của mỗi sản phẩm
             int productHeight = 205; // Chiều cao của mỗi sản phẩm
@@ -294,11 +316,11 @@ public class HomeController implements Initializable {
                 String productName = resultSet2.getString("ProductName");
                 String imagePath = resultSet2.getString("img");
                 Float productPrice = resultSet2.getFloat("price");
-                System.out.println("------------------------------");
-                System.out.println("Product ID: " + productName);
-                System.out.println("Product Name: " + imagePath);
-                System.out.println("Product Price: " + productPrice);
-                System.out.println("------------------------------");
+//                System.out.println("------------------------------");
+//                System.out.println("Product ID: " + productName);
+//                System.out.println("Product Name: " + imagePath);
+//                System.out.println("Product Price: " + productPrice);
+//                System.out.println("------------------------------");
                 // Tạo VBox để chứa các thành phần
                 VBox productBox = new VBox();
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
@@ -306,10 +328,14 @@ public class HomeController implements Initializable {
 
                 // Tạo ImageView cho sản phẩm
                 ImageView productImageView = new ImageView();
-                productImageView.setFitWidth(140);
-                productImageView.setFitHeight(125);
-                productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setFitWidth(130);
+                productImageView.setFitHeight(120); // Đặt chiều cao cố định
+                productImageView.setPreserveRatio(false);
+                // Sử dụng đường dẫn tuyệt đối đến tệp hình ảnh
+                File imageFile = new File(imagePath);
+                String absoluteImagePath = imageFile.toURI().toString();
+                Image image = new Image(absoluteImagePath);
+                System.out.println("đường dẫn ảnh ____________" + absoluteImagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -325,7 +351,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
@@ -359,7 +387,6 @@ public class HomeController implements Initializable {
                         productCart.getInstance().setSelectedProducts(selectedProducts);
                     }
 
-//                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
 
 // Đưa Button và các thành phần khác vào VBox
@@ -420,7 +447,6 @@ public class HomeController implements Initializable {
             statement3 = connection.prepareStatement(query3);
 
             resultSet3 = statement3.executeQuery();
-            System.err.println("resultSet3" + resultSet3);
 
             int productSpacing = 1; // Khoảng cách giữa các sản phẩm
             int productWidth = 190; // Chiều rộng của mỗi sản phẩm
@@ -440,12 +466,15 @@ public class HomeController implements Initializable {
                 productBox.setSpacing(2); // Đặt khoảng cách giữa các thành phần là 2px
                 productBox.setAlignment(Pos.CENTER);
 
-                // Tạo ImageView cho sản phẩm
                 ImageView productImageView = new ImageView();
-                productImageView.setFitWidth(140);
-                productImageView.setFitHeight(125);
-                productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                productImageView.setFitWidth(130);
+                productImageView.setFitHeight(120); // Đặt chiều cao cố định
+                productImageView.setPreserveRatio(false);
+                // Sử dụng đường dẫn tuyệt đối đến tệp hình ảnh
+                File imageFile = new File(imagePath);
+                String absoluteImagePath = imageFile.toURI().toString();
+                Image image = new Image(absoluteImagePath);
+                System.out.println("đường dẫn ảnh ____________" + absoluteImagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -461,7 +490,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
@@ -561,7 +592,6 @@ public class HomeController implements Initializable {
             ResultSet resultSet2 = statement2.executeQuery();
             if (resultSet2.next()) {
                 categoryIDetail1 = resultSet2.getInt("categoryId");
-                System.out.println("categoryIDetail2:  " + categoryIDetail1);
                 String categoryName = resultSet2.getString("categoryName");
                 // Đặt giá trị categoryName cho nút Button
                 categoryId1.setText(categoryName);
@@ -581,7 +611,6 @@ public class HomeController implements Initializable {
             if (resultSet.next()) {
                 categoryIDetail = resultSet.getInt("categoryId");
                 String categoryName = resultSet.getString("categoryName");
-                System.out.println("categoryIDetail:  " + categoryIDetail);
                 categoryId.setText(categoryName);
 
             }
@@ -599,7 +628,6 @@ public class HomeController implements Initializable {
             ResultSet resultSet3 = statement3.executeQuery();
             if (resultSet3.next()) {
                 categoryIDetail2 = resultSet3.getInt("categoryId");
-                System.out.println("categoryIDetail2:  " + categoryIDetail2);
                 String categoryName = resultSet3.getString("categoryName");
                 // Đặt giá trị categoryName cho nút Button
                 categoryId2.setText(categoryName);

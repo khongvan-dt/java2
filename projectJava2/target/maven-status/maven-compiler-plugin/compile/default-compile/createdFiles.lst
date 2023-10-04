@@ -3,6 +3,7 @@ adminController\productDeliveryController.class
 main\Main.class
 adminController\inventoryController$InventoryItem.class
 db\connect.class
+adminController\accountController$Account.class
 adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\productDeliveryController$DeliveryData.class
@@ -10,10 +11,10 @@ models\UserSession.class
 models\productQuantity.class
 adminController\addSupplierController.class
 adminController\loginController.class
-adminController\accountcontroller.class
 webController\cartController.class
 ulitiJav\DataHolder.class
 adminController\addProductController.class
+adminController\accountController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
 models\productCart.class

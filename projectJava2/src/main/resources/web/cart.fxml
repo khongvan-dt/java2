@@ -50,11 +50,6 @@
                                         <Font name="Arial Black" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="14.0" layoutY="65.0" prefHeight="38.0" prefWidth="105.0" text="Tổng tiền ">
-                                    <font>
-                                        <Font size="16.0" />
-                                    </font>
-                                </Label>
                                 <Label fx:id="sum" alignment="CENTER" layoutX="657.0" layoutY="71.0" prefHeight="27.0" prefWidth="133.0">
                                     <font>
                                         <Font size="15.0" />
@@ -186,7 +181,7 @@
                         </Pane>
                         <ScrollPane fx:id="big" layoutX="-4.0" layoutY="57.0" prefHeight="351.0" prefWidth="852.0">
                             <content>
-                                <VBox fx:id="small" prefHeight="953.0" prefWidth="835.0" />
+                                <VBox fx:id="small" prefHeight="930.0" prefWidth="835.0" />
                             </content>
                         </ScrollPane>
                         <Label layoutX="382.0" layoutY="19.0" prefHeight="25.0" prefWidth="115.0" text="Your Cart">
@@ -194,6 +189,7 @@
                                 <Font name="AdobeHeitiStd-Regular" size="25.0" />
                             </font>
                         </Label>
+                  <Label fx:id="sumPrice" layoutX="621.0" layoutY="457.0" prefHeight="30.0" prefWidth="152.0" />
                     </children>
                 </AnchorPane>
             </content>

@@ -1,5 +1,4 @@
 C:\java2\projectJava2\src\main\java\models\productQuantity.java
-C:\java2\projectJava2\src\main\java\webController\ShoppingCart.java
 C:\java2\projectJava2\src\main\java\adminController\oderController.java
 C:\java2\projectJava2\src\main\java\adminController\editImportgood.java
 C:\java2\projectJava2\src\main\java\adminController\editProductController.java
@@ -23,5 +22,5 @@ C:\java2\projectJava2\src\main\java\adminController\productDeliveryController.ja
 C:\java2\projectJava2\src\main\java\adminController\loginController.java
 C:\java2\projectJava2\src\main\java\models\productCart.java
 C:\java2\projectJava2\src\main\java\db\CreateTable.java
-C:\java2\projectJava2\src\main\java\adminController\accountcontroller.java
+C:\java2\projectJava2\src\main\java\adminController\accountController.java
 C:\java2\projectJava2\src\main\java\webController\HomeController.java
