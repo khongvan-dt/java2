@@ -31,7 +31,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <Button fx:id="btnCategory" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddcategory" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: white;" text="Add Category" GridPane.columnIndex="1">
@@ -48,26 +47,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
-                            <graphic>
-                                <ImageView fx:id="iconAddProductName" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../icon/choiseBlack.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromMoreProductName" prefHeight="21.0" prefWidth="130.0" style="-fx-background-color: white;" text="Add Product Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="btnOrders" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: white;" text="Add Supplier" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnOrders" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: white;" text="Add Supplier" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
-                            </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
+                        <Button mnemonicParsing="false" onAction="#getFromfromAddSupplier" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
                             <graphic>
                                 <ImageView fx:id="iconSupplier" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -76,12 +61,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnImportGoods" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: WHILE;" text="Import Goods" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="btnImportGoods" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromImportGoods" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: WHILE;" text="Import Goods" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="3">
+                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
                             <graphic>
                                 <ImageView fx:id="iconImportGoods" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -90,12 +75,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnProductDelivery" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromProductDelivery" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: white;" text="Product Delivery" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Button fx:id="btnProductDelivery" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromProductDelivery" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: white;" text="Product Delivery" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="4">
+                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="3">
                             <graphic>
                                 <ImageView fx:id="iconProductDelivery" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -104,12 +89,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnProductDelivery1" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromInventory" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: white;" text="Inventory" textFill="#81d4fa" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Button fx:id="btnProductDelivery1" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromInventory" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: white;" text="Inventory" textFill="#81d4fa" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromInventory" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="5">
+                        <Button mnemonicParsing="false" onAction="#getFromInventory" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: white;" GridPane.rowIndex="4">
                             <graphic>
                                 <ImageView fx:id="iconProductDelivery1" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -118,12 +103,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: white;" text="Products" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Button fx:id="btnProduct" contentDisplay="TOP" mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: white;" text="Products" GridPane.columnIndex="1" GridPane.rowIndex="5">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="6">
+                        <Button mnemonicParsing="false" onAction="#getFromAddProduct" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="5">
                             <graphic>
                                 <ImageView fx:id="iconAddProduct" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -132,12 +117,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnProduct1" contentDisplay="TOP" layoutX="41.0" layoutY="164.0" mnemonicParsing="false" onAction="#getAccount" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: white;" text="Account" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Button fx:id="btnProduct1" contentDisplay="TOP" layoutX="41.0" layoutY="164.0" mnemonicParsing="false" onAction="#getAccount" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: white;" text="Account" GridPane.columnIndex="1" GridPane.rowIndex="6">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="163.0" mnemonicParsing="false" onAction="#getAccount" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="7">
+                        <Button layoutX="10.0" layoutY="163.0" mnemonicParsing="false" onAction="#getAccount" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="6">
                             <graphic>
                                 <ImageView fx:id="iconAddProduct1" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -146,7 +131,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onAction="#getOder" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="8">
+                        <Button layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onAction="#getOder" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="7">
                             <graphic>
                                 <ImageView fx:id="iconAddProduct11" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -155,7 +140,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="btnProduct11" contentDisplay="TOP" layoutX="41.0" layoutY="190.0" mnemonicParsing="false" onAction="#getOder" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: white;" text="Oder" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Button fx:id="btnProduct11" contentDisplay="TOP" layoutX="41.0" layoutY="190.0" mnemonicParsing="false" onAction="#getOder" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: white;" text="Oder" GridPane.columnIndex="1" GridPane.rowIndex="7">
                             <font>
                                 <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
                             </font>
@@ -211,7 +196,7 @@
                         <TableColumn fx:id="quantityColumn1" prefWidth="72.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="101.0" text="Importgoods">
+                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="79.0" text="Inventory">
                     <font>
                         <Font name="AdobeGothicStd-Bold" size="15.0" />
                     </font>

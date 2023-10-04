@@ -8,41 +8,34 @@ package adminController;
  *
  * @author Administrator
  */
-import adminController.addSupplierController.Supplier;
 import adminController.importGoodsController.Import;
 import db.connect;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Main;
 
 public class editImportgood {
 
     private Map<String, Integer> supplierIdMap = new HashMap<>();
-    private Map<String, Integer> productNameIdMap = new HashMap<>();
 
     @FXML
     private ComboBox<String> SupplierId;
 
     @FXML
-    private ComboBox<String> fieldViewProductName;
+    private TextField ProductNameText;
 
     @FXML
     private TextField importQuantity;
@@ -68,6 +61,8 @@ public class editImportgood {
         exchangeNumber.setText(String.valueOf(selectedImport.getExchanged())); // Đặt giá trị cho TextField exchangeNumber
         fieldViewProductPrice.setText(String.valueOf(selectedImport.getProductImportPrice())); // Đặt giá trị cho TextField fieldViewProductPrice
         ImportPrice.setText(String.valueOf(selectedImport.getPrice())); // Đặt giá trị cho TextField ImportPrice
+        ProductNameText.setText(String.valueOf(selectedImport.getProductId())); // Đặt giá trị cho TextField ImportPrice
+
     }
 
     private void loadData() {
@@ -87,19 +82,6 @@ public class editImportgood {
 
             SupplierId.setItems(suppliers);
 
-            String selectProduct = "SELECT ProductNameId, ProductName FROM ProductsName";
-            PreparedStatement preparedStatement2 = connection.prepareStatement(selectProduct);
-            ResultSet resultSet2 = preparedStatement2.executeQuery();
-            ObservableList<String> productNames = FXCollections.observableArrayList();
-
-            while (resultSet2.next()) {
-                int productNameId = resultSet2.getInt("ProductNameId");
-                String productsName = resultSet2.getString("ProductName");
-                productNames.add(productsName);
-                productNameIdMap.put(productsName, productNameId);
-            }
-            fieldViewProductName.setItems(productNames);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -110,7 +92,7 @@ public class editImportgood {
         try (Connection connection = connect.getConnection()) {
             // Lấy thông tin đã chỉnh sửa từ các trường trong giao diện
             String selectedSupplierName = SupplierId.getValue();
-            String selectedProductName = fieldViewProductName.getValue();
+            String selectedProductName = ProductNameText.getText();
             String quantityText = importQuantity.getText().trim();
             String exchangeText = exchangeNumber.getText().trim();
             String productPriceText = fieldViewProductPrice.getText().trim();
@@ -128,16 +110,15 @@ public class editImportgood {
 
             // Kiểm tra xem tên nhà cung cấp và tên sản phẩm có tồn tại trong Map không
             Integer selectedSupplierId = supplierIdMap.get(selectedSupplierName);
-            Integer selectedProductId = productNameIdMap.get(selectedProductName);
 
-            if (selectedSupplierId != null && selectedProductId != null) {
+            if (selectedSupplierId != null) {
                 // Thực hiện cập nhật thông tin hóa đơn nhập hàng vào cơ sở dữ liệu
-                String updateSQL = "UPDATE importgoods SET supplier_id=?, ProductNameId=?, quantity_imported=?, quantity_returned=?, "
+                String updateSQL = "UPDATE importgoods SET supplier_id=?, productName=?, quantity_imported=?, quantity_returned=?, "
                         + "price=?, productImportPrice=?, total_quantity_received=?, totalImportFee=? WHERE import_id=?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(updateSQL);
                 preparedStatement.setInt(1, selectedSupplierId);
-                preparedStatement.setInt(2, selectedProductId);
+                preparedStatement.setString(2, selectedProductName);
                 preparedStatement.setInt(3, quantity);
                 preparedStatement.setInt(4, exchange);
                 preparedStatement.setFloat(5, productPrice);
