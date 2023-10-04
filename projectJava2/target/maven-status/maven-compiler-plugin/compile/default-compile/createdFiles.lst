@@ -14,6 +14,7 @@ adminController\accountcontroller.class
 webController\cartController.class
 ulitiJav\DataHolder.class
 adminController\addProductController.class
+adminController\accountcontroller$Account.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
 models\productCart.class
