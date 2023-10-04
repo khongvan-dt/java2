@@ -33,7 +33,7 @@ public class cartController implements Initializable {
 
     @FXML
     private VBox small;
-    File imageFile = new File("C:/java2/projectJava2/src/uploads/image.jpg");
+//    File imageFile = new File("C:/java2/projectJava2/src/uploads/image.jpg");
 
     List<HomeController.Product> selectedProducts = productCart.getInstance().getSelectedProducts();
 
@@ -59,6 +59,7 @@ public class cartController implements Initializable {
                 // Tạo Pane để hiển thị thông tin sản phẩm
 
             }
+            int i = 0;
             for (HomeController.Product product : selectedProducts) {
 
                 int productId = product.getProductId();
@@ -73,24 +74,17 @@ public class cartController implements Initializable {
                 productPane.setPrefHeight(140);
                 productPane.setPrefWidth(834);
 
-                // Create an ImageView for the product image
+                // Tạo ImageView cho sản phẩm
                 ImageView productImage = new ImageView();
-                productImage.setFitHeight(123);
-                productImage.setFitWidth(148);
-                productImage.setLayoutX(14);
-                productImage.setLayoutY(9);
-
-                // Load the product image from the file path
-                File imageFile = new File("C:/java2/projectJava2/" + product.getImagePath());
-                if (imageFile.exists()) {
-                    try {
-                        URL imageURL = imageFile.toURI().toURL();
-                        Image image = new Image(imageURL.toString());
-                        productImage.setImage(image);
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                }
+                productImage.setFitWidth(130);
+                productImage.setFitHeight(120);
+                productImage.setPreserveRatio(false);
+                // Sử dụng đường dẫn tuyệt đối đến tệp hình ảnh
+                File imageFile = new File(product.getImagePath());
+                String absoluteImagePath = imageFile.toURI().toString();
+                Image image = new Image(absoluteImagePath);
+                System.out.println("đường dẫn ảnh ____________" + absoluteImagePath);
+                productImage.setImage(image);
 
                 // Create Labels for the product name and price
                 Label productNameLabel = new Label(product.getProductName());
@@ -136,7 +130,7 @@ public class cartController implements Initializable {
 
                 // Add the productPane to the VBox
                 small.getChildren().add(productPane);
-
+                i++;
             }
         } else {
             System.out.println("No products selected.");
