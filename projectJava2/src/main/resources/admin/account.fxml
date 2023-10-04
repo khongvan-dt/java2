@@ -52,6 +52,15 @@
                     </columns>
                 </TableView>
                 <ComboBox fx:id="choice" layoutX="505.0" layoutY="23.0" prefHeight="25.0" prefWidth="115.0" promptText="Choice" />
+            <Button layoutX="438.0" layoutY="320.0" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="21.0" prefWidth="35.0">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/untitled%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <AnchorPane layoutX="11.0" layoutY="80.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: white; -fx-background-radius: 20;">

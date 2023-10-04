@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +35,8 @@ public class accountController {
 
     @FXML
     private ComboBox<String> choice;
-
+    @FXML
+//    private TableColumn<Account, Integer> id; // Change the type to Integer
     private int selectedUserId = -1;
 
     public class Account {
@@ -108,7 +110,42 @@ public class accountController {
         }
     }
 
+    @FXML
+    private void deleteAccount(ActionEvent event) {
+        if (selectedUserId != -1) {
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText(null);
+            confirmationAlert.setContentText("Are you sure you want to delete this account?");
+
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try (Connection connection = connect.getConnection()) {
+                        String query = "DELETE FROM users WHERE userId = ?";
+                        PreparedStatement preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setInt(1, selectedUserId);
+
+                        int rowsDeleted = preparedStatement.executeUpdate();
+                        if (rowsDeleted > 0) {
+                            showSuccessAlert("Account deleted successfully!");
+                            // Refresh the table or update your data source
+                            // For example, you can call initialize() to reload data
+                            initialize();
+                        } else {
+                            showAlert("Account deletion failed!");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            showAlert("Please select an account to delete.");
+        }
+    }
+
     public void initialize() {
+        int idCounter = 1; // Initialize the id counter
         try (Connection connection = connect.getConnection()) {
             ObservableList<Account> accounts = FXCollections.observableArrayList();
             String query = "SELECT * FROM users";
@@ -121,8 +158,10 @@ public class accountController {
                 int userId = resultSet.getInt("userId");
 
                 accounts.add(new Account(accountName, role, userId));
-            }
+//                idCounter++; // Increment idCounter
 
+            }
+//            id.setCellValueFactory(new PropertyValueFactory<>("id"));
             accountNameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
             roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
             roleColumn.setCellFactory(ComboBoxTableCell.forTableColumn("User", "Admin"));
