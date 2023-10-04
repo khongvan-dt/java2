@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import javafx.fxml.FXML;
 import models.Product;
@@ -30,6 +31,9 @@ public class cartController implements Initializable {
 
     @FXML
     private ScrollPane big;
+
+    @FXML
+    private Label sumPrice;
 
     @FXML
     private VBox small;
@@ -75,6 +79,22 @@ public class cartController implements Initializable {
                     productMap.put(productId, product);
                 }
             }
+// Tính tổng giá trị đơn hàng
+            float totalPrice = 0;
+            for (HomeController.Product product : productMap.values()) {
+                int quantity = product.getQuantity();
+                float productPrice = product.getProductPrice();
+                float productTotalPrice = quantity * productPrice;
+                totalPrice += productTotalPrice;
+                product.setTotalPrice(productTotalPrice);
+            }
+
+// Định dạng giá trị tổng đơn hàng với dấu , ở hàng nghìn
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+            String formattedTotalPrice = decimalFormat.format(totalPrice);
+
+// Hiển thị tổng giá trị đơn hàng với dấu , ở hàng nghìn lên Label sumPrice
+            sumPrice.setText("Total Price: " + formattedTotalPrice);
 
             int i = 0;
             for (HomeController.Product product : productMap.values()) {
@@ -104,7 +124,9 @@ public class cartController implements Initializable {
                 productNameLabel.setPrefHeight(25);
                 productNameLabel.setPrefWidth(326);
 
-                Label productPriceLabel = new Label("Price: " + product.getProductPrice());
+                float productPrice = product.getProductPrice();
+                String formattedProductPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedProductPrice);
                 productPriceLabel.setLayoutX(535);
                 productPriceLabel.setLayoutY(58);
                 productPriceLabel.setPrefHeight(25);

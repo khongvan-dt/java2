@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -82,9 +83,17 @@ public class HomeController implements Initializable {
         public String productName;
         public String imagePath;
         public float productPrice;
-        private int quantity; // Thêm trường này để lưu số lượng sản phẩm
+        private int quantity;
+        private float totalPrice;
 
-        // Các getter và setter cho trường quantity
+        public float getTotalPrice() {
+            return totalPrice;
+        }
+
+        public void setTotalPrice(float totalPrice) {
+            this.totalPrice = totalPrice;
+        }
+
         public int getQuantity() {
             return quantity;
         }
@@ -212,7 +221,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
@@ -340,7 +351,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
@@ -477,7 +490,9 @@ public class HomeController implements Initializable {
 
 // Đưa Button và các thành phần khác vào VBox
                 // Tạo Label cho giá sản phẩm
-                Label productPriceLabel = new Label("Price: " + productPrice);
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+                String formattedTotalPrice = decimalFormat.format(productPrice);
+                Label productPriceLabel = new Label("Price: " + formattedTotalPrice);
                 productPriceLabel.setPrefWidth(140);
                 productPriceLabel.setPrefHeight(25);
                 productPriceLabel.setAlignment(Pos.CENTER);
