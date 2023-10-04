@@ -191,7 +191,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/JAVAPJ2/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -217,9 +217,20 @@ public class HomeController implements Initializable {
                 buyButton.setPrefWidth(140);
                 buyButton.setPrefHeight(25);
                 buyButton.setAlignment(Pos.CENTER);
+//nút mô tả
+                Button describeButton = new Button("Describe");
+                describeButton.setPrefWidth(140);
+                describeButton.setPrefHeight(25);
+                describeButton.setAlignment(Pos.CENTER);
+                
+// Đặt CSS cho nút "Describe"  
+                describeButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
+
 // Đặt CSS cho nút "Buy"
                 buyButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
-
+                
+// Lưu giá trị product.productId vào nút "Describe"
+                describeButton.setUserData(resultSet.getInt("productId"));
 // Lưu giá trị product.productId vào nút "Buy"
                 buyButton.setUserData(resultSet.getInt("productId"));
 
@@ -255,7 +266,26 @@ public class HomeController implements Initializable {
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
-
+              
+// Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
+                describeButton.setOnAction(event -> {
+                    int productId = (int) describeButton.getUserData();
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice, imagePath);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("Product added to cart successfully!");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
+                });
 // Đưa Button và các thành phần khác vào VBox
                 productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
 
@@ -334,7 +364,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/JAVAPJ2/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -360,10 +390,19 @@ public class HomeController implements Initializable {
                 buyButton.setPrefHeight(25);
                 buyButton.setAlignment(Pos.CENTER);
                 buyButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
+                
+                Button describeButton = new Button("Describe");
+                describeButton.setPrefWidth(140);
+                describeButton.setPrefHeight(25);
+                describeButton.setAlignment(Pos.CENTER);
+                describeButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
 
 // Lưu giá trị product.productId vào nút "Buy"
                 buyButton.setUserData(resultSet2.getInt("productId"));
-
+                
+// Lưu giá trị product.productId vào nút "Describe"
+                describeButton.setUserData(resultSet2.getInt("productId"));
+                
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
 
@@ -386,6 +425,26 @@ public class HomeController implements Initializable {
 
 //                    System.out.println("Product ID to buy: " + selectedProducts);
                 });
+// Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
+                describeButton.setOnAction(event -> {
+
+                    int productId = (int) describeButton.getUserData();
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("A successful product description appears");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
+                });                
 
 // Đưa Button và các thành phần khác vào VBox
                 productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
@@ -442,7 +501,7 @@ public class HomeController implements Initializable {
                     + "INNER JOIN importgoods ON importgoods.ProductNameId = product.ProductNameId "
                     + "INNER JOIN supplier ON product.supplier_id = supplier.supplierId "
                     + "INNER JOIN category ON product.categoryId = category.categoryId "
-                    + "WHERE product.categoryId =9";
+                    + "WHERE product.categoryId =10";
 
             statement3 = connection.prepareStatement(query2);
 
@@ -479,7 +538,7 @@ public class HomeController implements Initializable {
                 productImageView.setFitWidth(140);
                 productImageView.setFitHeight(125);
                 productImageView.setPreserveRatio(true);
-                Image image = new Image("file:///C:/java2/projectJava2/" + imagePath);
+                Image image = new Image("file:///D:/JAVAPJ2/java2/projectJava2/" + imagePath);
                 productImageView.setImage(image);
 
 //// Tạo Label cho tên sản phẩm
@@ -504,9 +563,19 @@ public class HomeController implements Initializable {
                 buyButton.setPrefHeight(25);
                 buyButton.setAlignment(Pos.CENTER);
                 buyButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
+                
+                Button describeButton = new Button("Describe");
+                describeButton.setPrefWidth(140);
+                describeButton.setPrefHeight(25);
+                describeButton.setAlignment(Pos.CENTER);
+                describeButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
+                
 
-// Lưu giá trị product.productId vào nút "Buy"
-                buyButton.setUserData(resultSet3.getInt("productId"));
+// Lưu giá trị product.productId vào nút "Describe"
+                describeButton.setUserData(resultSet3.getInt("productId"));
+                
+ // Lưu giá trị product.productId vào nút "Buy"
+                buyButton.setUserData(resultSet3.getInt("productId"));               
 
 // Thêm sự kiện cho nút "Buy" để xử lý khi được nhấp
                 buyButton.setOnAction(event -> {
@@ -528,7 +597,28 @@ public class HomeController implements Initializable {
                     }
 
                 });
+                
+// Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
+                describeButton.setOnAction(event -> {
+                    int productId = (int) describeButton.getUserData();
+                    if (userId == 0) {
+                        try {
+                            // Nếu userId không tồn tại
+                            // Chuyển hướng đến trang đăng nhập
+                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+                        } catch (IOException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        // Ngược lại, thêm sản phẩm vào giỏ hàng
+                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
+                        selectedProducts.add(selectedProduct);
+                        showAlert("A successful product description appears");
+                        productCart.getInstance().setSelectedProducts(selectedProducts);
+                    }
 
+                });
+                
 // Đưa Button và các thành phần khác vào VBox
                 productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
 

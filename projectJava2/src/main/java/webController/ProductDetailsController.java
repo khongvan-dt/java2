@@ -44,6 +44,7 @@ public class ProductDetailsController {
                         String description = resultSet.getString("ProductName");
 
                         // Hiển thị thông tin sản phẩm lên giao diện
+                        
                         descriptionLabel.setText(description);
                     }
                 }
