@@ -60,8 +60,9 @@ public class cartController implements Initializable {
                 System.out.println("Product Name: " + product.getProductName());
                 System.out.println("Product Img: " + product.getImagePath());
                 System.out.println("Product Price: " + product.getProductPrice());
-                // Tạo Pane để hiển thị thông tin sản phẩm
+                
 
+                // Tạo Pane để hiển thị thông tin sản phẩm
             }
             Map<Integer, HomeController.Product> productMap = new HashMap<>();
 
