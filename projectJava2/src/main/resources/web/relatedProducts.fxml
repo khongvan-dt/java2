@@ -14,30 +14,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webController.relatedProductsController">
     <children>
-        <Pane prefHeight="100.0" prefWidth="866.0" style="-fx-background-color: pink;">
-            <children>
-                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="26.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/menu.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="85.0" fitWidth="400.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/shop.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="678.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/ic_search.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="740.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icon/cart.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
         <ScrollPane layoutX="-4.0" layoutY="104.0" prefHeight="1406.0" prefWidth="866.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1900.0" prefWidth="870.0">
@@ -46,7 +22,7 @@
                             <children>
                                 <Pane layoutY="14.0" prefHeight="49.0" prefWidth="837.0" style="-fx-border-color: yellow;">
                            <children>
-                              <Label fx:id="categoryId1" layoutX="14.0" layoutY="5.0" prefHeight="39.0" prefWidth="180.0" />
+                              <Label fx:id="categoryId1" layoutX="14.0" layoutY="5.0" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #FCE4EC; -fx-background-radius: 15;" />
                               <Button layoutX="791.0" layoutY="7.0" mnemonicParsing="false" onAction="#getFromHome" prefHeight="30.0" prefWidth="30.0">
                                  <graphic>
                                     <ImageView fitHeight="17.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -148,5 +124,41 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
+      <Pane layoutX="-2.0" prefHeight="101.0" prefWidth="866.0" style="-fx-background-color: pink;">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="308.0" layoutX="279.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/shop.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="617.0" layoutY="41.0" mnemonicParsing="false" onAction="#redirectToLogin" style="-fx-background-color: pink;">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/ic_user_black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="714.0" layoutY="41.0" minWidth="53.0" mnemonicParsing="false" onAction="#redirectToCart" prefHeight="39.0" prefWidth="53.0" style="-fx-background-color: pink;">
+               <graphic>
+                  <ImageView fx:id="cartImageView" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/cart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="27.0" layoutY="37.0" mnemonicParsing="false" onAction="#getHome" prefHeight="38.0" prefWidth="30.0" style="-fx-background-color: pink;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
