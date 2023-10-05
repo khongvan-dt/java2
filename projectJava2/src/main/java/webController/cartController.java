@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import main.Main;
 import models.productCart;
+import models.productQuantity;
 import static scala.collection.immutable.Nil.product;
 import webController.HomeController;
 
@@ -38,7 +39,7 @@ public class cartController implements Initializable {
     @FXML
     private VBox small;
 //    File imageFile = new File("C:/java2/projectJava2/src/uploads/image.jpg");
-
+    private int quantity; // Khai báo biến quantity ở mức độ lớn hơn
     List<HomeController.Product> selectedProducts = productCart.getInstance().getSelectedProducts();
 
     public void setSelectedProducts(List<HomeController.Product> selectedProducts) {
@@ -60,7 +61,6 @@ public class cartController implements Initializable {
                 System.out.println("Product Name: " + product.getProductName());
                 System.out.println("Product Img: " + product.getImagePath());
                 System.out.println("Product Price: " + product.getProductPrice());
-                // Tạo Pane để hiển thị thông tin sản phẩm
 
             }
             Map<Integer, HomeController.Product> productMap = new HashMap<>();
@@ -143,11 +143,13 @@ public class cartController implements Initializable {
 
                 // Initial quantity
                 int[] productQuantity = {quantity};
+                quantity = productQuantity[0]; // Gán giá trị ban đầu
 
                 // Increase quantity
                 increaseButton.setOnAction(event -> {
                     productQuantity[0]++;
                     quantityLabel.setText("Quantity: " + productQuantity[0]);
+
                 });
 
                 // Decrease quantity (minimum 1)
@@ -157,7 +159,11 @@ public class cartController implements Initializable {
                         quantityLabel.setText("Quantity: " + productQuantity[0]);
                     }
                 });
+                                System.out.println("Quantity: " + quantity); // In ra console
 
+                // Initial quantity
+
+// Increase quantity
                 // Add the image and labels to the productPane
                 productPane.getChildren().addAll(productImage, productNameLabel, productPriceLabel, quantityControls);
 
