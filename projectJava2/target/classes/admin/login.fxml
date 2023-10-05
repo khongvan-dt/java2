@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -10,12 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="811.0" style="-fx-background-radius: 30;"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="adminController.loginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="811.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.loginController">
    <children>
-      <AnchorPane layoutX="410.0" layoutY="31.0" prefHeight="598.0" prefWidth="384.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+      <AnchorPane layoutX="410.0" layoutY="1.0" prefHeight="598.0" prefWidth="384.0" style="-fx-background-color: white; -fx-background-radius: 30;">
          <children>
             <Label layoutX="83.0" layoutY="68.0" text="Login Account" textFill="#368db2">
                <font>
@@ -24,17 +20,24 @@ fx:controller="adminController.loginController">
             </Label>
             <TextField fx:id="userNameField" layoutX="40.0" layoutY="208.0" prefHeight="47.0" prefWidth="300.0" promptText="User Name" styleClass="user" stylesheets="@loginCss.css" />
             <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="302.0" prefHeight="50.0" prefWidth="300.0" promptText="Password" styleClass="password" stylesheets="@loginCss.css" />
-            <Button layoutX="52.0" layoutY="497.0" mnemonicParsing="false" onAction="#sqlLogin" prefHeight="40.0" prefWidth="300.0" styleClass="login" stylesheets="@loginCss.css" text="Login">
+            <Button layoutX="40.0" layoutY="390.0" mnemonicParsing="false" onAction="#sqlLogin" prefHeight="44.0" prefWidth="194.0" styleClass="login" stylesheets="@loginCss.css" text="Login">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
             <Label layoutX="40.0" layoutY="260.0" />
-            <Hyperlink layoutX="52.0" layoutY="433.0" prefHeight="41.0" prefWidth="204.0" text="Forgot password?">
+            <Button layoutX="241.0" layoutY="390.0" mnemonicParsing="false" onAction="#formHome" prefHeight="44.0" prefWidth="101.0" styleClass="login" stylesheets="@loginCss.css" text="Home Page">
                <font>
-                  <Font size="20.0" />
+                  <Font name="AdobeMyungjoStd-Medium" size="10.0" />
                </font>
-            </Hyperlink>
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="2.0" prefHeight="598.0" prefWidth="410.0" style="-fx-background-radius: 30;" styleClass="myLays" stylesheets="@loginCss.css">

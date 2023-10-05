@@ -7,15 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="276.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="adminController.editCategoryController">
+<AnchorPane prefHeight="276.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.editCategoryController">
     <children>
-        <Label layoutX="131.0" layoutY="14.0" prefHeight="59.0" prefWidth="129.0" text="Edit Category">
+        <Label layoutX="160.0" layoutY="14.0" prefHeight="59.0" prefWidth="129.0" text="Edit Category">
             <font>
                 <Font name="Bodoni MT Poster Compressed" size="39.0" />
             </font>
         </Label>
-        <Button fx:id="saveButton" layoutX="250.0" layoutY="212.0" onAction="#UpdateCategory" prefHeight="48.0" prefWidth="103.0" style="-fx-background-color: #039BE5;" text="Save" textFill="#070707">
+        <Button fx:id="saveButton" layoutX="320.0" layoutY="212.0" onAction="#UpdateCategory" prefHeight="48.0" prefWidth="103.0" style="-fx-background-color: #039BE5;" text="Save" textFill="#070707">
             <font>
                 <Font name="Bodoni MT Poster Compressed" size="27.0" />
             </font>
@@ -25,7 +24,7 @@
                 <Font name="Bell MT" size="16.0" />
             </font>
         </Label>
-        <TextField fx:id="CategoryNameField" layoutX="76.0" layoutY="112.0" prefHeight="29.0" prefWidth="259.0" />
-        <Separator layoutX="95.0" layoutY="60.0" prefHeight="1.0" prefWidth="200.0" />
+        <TextField fx:id="CategoryNameField" layoutX="76.0" layoutY="112.0" prefHeight="29.0" prefWidth="347.0" />
+        <Separator layoutX="124.0" layoutY="62.0" prefHeight="1.0" prefWidth="200.0" />
     </children>
 </AnchorPane>

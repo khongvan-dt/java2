@@ -10,11 +10,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.RegistrationController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="789.0" 
+           xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminController.RegistrationController">
     <children>
         <AnchorPane prefHeight="676.0" prefWidth="790.0">
             <children>
-                <AnchorPane layoutY="19.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-radius: 30;" styleClass="myLays" stylesheets="@loginCss.css">
+                <AnchorPane layoutY="5.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-radius: 30;" styleClass="myLays" stylesheets="@loginCss.css">
                     <children>
                         <Button layoutX="68.0" layoutY="474.0" mnemonicParsing="false" onAction="#getLogin" prefHeight="45.0" prefWidth="265.0" styleClass="Lays" text="You want to login?">
                             <font>
@@ -38,7 +39,7 @@
                         </ImageView>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="createAccountPane" layoutX="400.0" layoutY="76.0" prefHeight="600.0" prefWidth="387.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                <AnchorPane fx:id="createAccountPane" layoutX="400.0" layoutY="5.0" prefHeight="600.0" prefWidth="387.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                     <children>
                         <Label layoutX="83.0" layoutY="66.0" prefHeight="45.0" prefWidth="234.0" text="Register Account" textFill="#368db2">
                             <font>
@@ -48,11 +49,23 @@
                         <TextField fx:id="usernameField" layoutX="34.0" layoutY="150.0" prefHeight="53.0" prefWidth="319.0" promptText="User Name" styleClass="user" stylesheets="@loginCss.css" />
                         <PasswordField fx:id="passwordField" layoutX="33.0" layoutY="316.0" prefHeight="53.0" prefWidth="319.0" promptText="Password" styleClass="password" stylesheets="@loginCss.css" />
                         <TextField fx:id="emailField" layoutX="33.0" layoutY="230.0" prefHeight="53.0" prefWidth="319.0" promptText="Email" styleClass="user" stylesheets="@loginCss.css" />
-                        <Button fx:id="SignUp" layoutX="34.0" layoutY="444.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="53.0" prefWidth="319.0" styleClass="login" stylesheets="@loginCss.css" text="Sign Up">
+                        <Button fx:id="SignUp" layoutX="34.0" layoutY="453.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="44.0" prefWidth="194.0" styleClass="login" stylesheets="@loginCss.css" text="Sign Up">
                             <font>
                                 <Font size="15.0" />
                             </font>
                         </Button>
+                  <Button layoutX="242.0" layoutY="453.0" mnemonicParsing="false" onAction="#formHome" prefHeight="44.0" prefWidth="101.0" styleClass="login" stylesheets="@loginCss.css" text="Home Page">
+                     <font>
+                        <Font name="AdobeMyungjoStd-Medium" size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </AnchorPane>
             </children>

@@ -32,30 +32,46 @@ import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 public class productDeliveryController {
 
-    public class ProductDelivery {
+    public class DeliveryData {
 
-        private SimpleStringProperty supplierName;
+        private String supplierName;
         private int supplierId;
-        private SimpleStringProperty productName;
+        private String productName;
         private int productNameId;
+        private Date inventoryDate;
+        private int inventoryNumber;
+        private int productDeliveryID;
 
-        public ProductDelivery(String supplierName, int supplierId, String productName, int productNameId) {
-            this.supplierName = new SimpleStringProperty(supplierName);
-            this.supplierId = supplierId;
-            this.productName = new SimpleStringProperty(productName);
+        public DeliveryData(String productName, String supplierName, Date importDate, int quantity, int productNameId, int supplierId, int productDeliveryID) {
+            this.productName = productName;
+            this.supplierName = supplierName;
+            this.inventoryDate = importDate;
+            this.inventoryNumber = quantity;
             this.productNameId = productNameId;
+            this.supplierId = supplierId;
+            this.productDeliveryID = productDeliveryID;
         }
 
+        public int getProductDeliveryID() {
+            return productDeliveryID;
+        }
+
+        // Getters for common properties
         public String getSupplierName() {
-            return supplierName.get();
+            return supplierName;
         }
 
         public String getProductName() {
-            return productName.get();
+            return productName;
         }
 
         public int getSupplierId() {
@@ -65,59 +81,140 @@ public class productDeliveryController {
         public int getProductNameId() {
             return productNameId;
         }
+
+        // Getters for additional properties needed for ProductDeliveryTable
+        public Date getImportDate() {
+            return inventoryDate;
+        }
+
+        public int getQuantity() {
+            return inventoryNumber;
+        }
+
     }
+    private ObservableList<DeliveryData> inventoryList = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<ProductDelivery> exportTable;
+    private TableView<DeliveryData> exportTable;
 
     @FXML
-    private TableColumn<ProductDelivery, String> supplierNameColumn;
+    private TableColumn<DeliveryData, String> productNameColumn;
 
     @FXML
-    private TableColumn<ProductDelivery, String> productNameColumn;
+    private TableColumn<DeliveryData, String> supplierNameColumn;
 
+    @FXML
+    private TableColumn<DeliveryData, Date> importDateColumn;
+
+    @FXML
+    private TableColumn<DeliveryData, Integer> quantity2;
+
+    @FXML
+    private TableView<DeliveryData> ProductDeliveryTable;
+
+    @FXML
+    private TableColumn<DeliveryData, String> productName;
+
+    @FXML
+    private TableColumn<DeliveryData, String> supplierName;
+
+    @FXML
+    private TableColumn<DeliveryData, Date> importDate;
+
+    @FXML
+    private TableColumn<DeliveryData, Integer> quantityColumn;
+
+    private int i = 0;
+    private int y = 0;
+    @FXML
+    private TableColumn<DeliveryData, Integer> idColumn;
+
+    @FXML
+    private TableColumn<DeliveryData, Integer> id1;
+
+    @FXML
+    private TextField quantity;
+
+    @FXML
     public void initialize() {
-        String query = "SELECT ProductsName.ProductNameId, supplier.supplierId, \n"
-                + "       MAX(supplier.supplierName) as supplierName,\n"
-                + "       MAX(ProductsName.ProductName) as ProductName,\n"
-                + "       SUM(quantity_imported) as total_quantity_imported,\n"
-                + "       SUM(quantity_returned) as total_quantity_returned,\n"
-                + "       SUM(total_quantity_received) as total_total_quantity_received\n"
-                + "FROM importGoods \n"
-                + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId \n"
-                + "INNER JOIN ProductsName ON importGoods.ProductNameId = ProductsName.ProductNameId \n"
-                + "GROUP BY ProductsName.ProductNameId, supplier.supplierId;";
+        id1.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
+        try (Connection connection = connect.getConnection()) {
+            String query = "SELECT inventory.importProductNameId, importGoods.productName, supplier.supplierId, supplier.supplierName,"
+                    + " inventory.date, inventory.InventoryNumber "
+                    + "FROM inventory "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
+                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
 
-        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            ObservableList<ProductDelivery> productDeliveries = FXCollections.observableArrayList();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int productNameId = resultSet.getInt("ProductNameId");
+                int productNameId = resultSet.getInt("importProductNameId");
                 int supplierId = resultSet.getInt("supplierId");
-                String supplierName = resultSet.getString("supplierName");
                 String productName = resultSet.getString("ProductName");
+                String supplierName = resultSet.getString("supplierName");
+                Date importDate = resultSet.getDate("date");
+                int inventoryNumber = resultSet.getInt("InventoryNumber");
 
-                // Tạo một đối tượng ProductDelivery và thêm vào danh sách
-                productDeliveries.add(new ProductDelivery(supplierName, supplierId, productName, productNameId));
+                inventoryList.add(new DeliveryData(productName, supplierName, importDate, inventoryNumber, productNameId, supplierId, 0));
+
+            }
+            // Bind columns to properties in the DeliveryData class
+            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            importDateColumn.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+            quantity2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            exportTable.setItems(inventoryList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
+
+        try (Connection connection = connect.getConnection()) {
+
+            String query = "SELECT productdelivery.productDeliveryID, productdelivery.importProductNameId,importgoods.import_id,"
+                    + " importgoods.productName, supplier.supplierId,"
+                    + " supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+                    + "FROM productdelivery "
+                    + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ObservableList<DeliveryData> deliveryDataList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+
+                int productDeliveryID = resultSet.getInt("productDeliveryID");
+                int productNameId2 = resultSet.getInt("importProductNameId");
+                int supplierId2 = resultSet.getInt("supplierId");
+                String productName2 = resultSet.getString("ProductName");
+                String supplierName2 = resultSet.getString("supplierName");
+                Date importDate2 = resultSet.getDate("dayShipping");
+                int shipmentQuantity2 = resultSet.getInt("shipmentQuantity");
+                // Create a new DeliveryData object and add it to the list
+                deliveryDataList.add(new DeliveryData(productName2, supplierName2, importDate2,
+                        shipmentQuantity2, productNameId2, supplierId2, productDeliveryID));
+            }
+            productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+            supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
+            importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
+            quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+            ProductDeliveryTable.setItems(deliveryDataList);
+            for (DeliveryData data : deliveryDataList) {
+                System.out.println(data);
             }
 
-            // Đặt cột dữ liệu cho exportTable
-            supplierNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-            productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
-
-            // Đưa danh sách vào exportTable
-            exportTable.setItems(productDeliveries);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // insert
-    @FXML
-    private TextField quantity;
-
-    public void insertProductdelivery() throws IOException {
+    // Insert
+    public void insertProductDelivery() throws IOException {
         String shipQuantity = quantity.getText().trim();
 
         // Check if shipQuantity is empty
@@ -133,33 +230,43 @@ public class productDeliveryController {
         }
 
         // Assuming you have selected a row from exportTable, you can get the selected item.
-        ProductDelivery selectedProduct = exportTable.getSelectionModel().getSelectedItem();
+        DeliveryData selectedProduct = exportTable.getSelectionModel().getSelectedItem();
 
         if (selectedProduct == null) {
             showAlert("Please select a product from the export table.");
             return;
         }
 
-        int supplierId = selectedProduct.getSupplierId();
         int productNameId = selectedProduct.getProductNameId();
+        int availableQuantity = selectedProduct.getQuantity();
+
+        // Kiểm tra nếu số lượng nhập vào lớn hơn số lượng hiện có
+        int shipmentQuantity = Integer.parseInt(shipQuantity);
+        if (shipmentQuantity > availableQuantity) {
+            showAlert("Shipment quantity cannot exceed available quantity.");
+            return;
+        }
+
+        // Get the supplierId
+        int supplierId = selectedProduct.getSupplierId();
 
         java.util.Date currentDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
 
-        String insertSQL = "INSERT INTO productdelivery (supplier_id, ProductNameId, dayShipping, shipmentQuantity) VALUES (?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO productDelivery (importProductNameId, supplier_id, dayShipping, shipmentQuantity) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-            preparedStatement.setInt(1, supplierId);
-            preparedStatement.setInt(2, productNameId);
+            preparedStatement.setInt(1, productNameId);
+            preparedStatement.setInt(2, supplierId);
             preparedStatement.setDate(3, sqlDate);
-            preparedStatement.setString(4, shipQuantity);
+            preparedStatement.setInt(4, shipmentQuantity);
 
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
                 showSuccessAlert("Product delivery added successfully.");
                 quantity.clear();
-                exportTable.getItems().clear();
+                getFromProductDelivery();
             } else {
                 showAlert("Failed to insert product delivery.");
             }
@@ -169,112 +276,48 @@ public class productDeliveryController {
         }
     }
 
-// in ra bảng 
-    public class Delivery {
+    // xóa 
+    @FXML
+    private void deleteProductDelivery(ActionEvent event) throws IOException {
+        // Get the selected item from the ProductDeliveryTable
+        DeliveryData selectedProductDelivery = ProductDeliveryTable.getSelectionModel().getSelectedItem();
 
-        private String productName;
-        private String supplierName;
-        private Date importDate;
-        private int quantity;
+        if (selectedProductDelivery != null) {
+            // Show a confirmation dialog to confirm the deletion
+            Alert confirmation = new Alert(AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirm Delete");
+            confirmation.setHeaderText("Are you sure you want to delete this product delivery?");
+            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
 
-        public Delivery(String productName, String supplierName, Date importDate, int quantity) {
-            this.productName = productName;
-            this.supplierName = supplierName;
-            this.importDate = importDate;
-            this.quantity = quantity;
-        }
+            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
 
-        // Getter và setter cho productName
-        public String getProductName() {
-            return productName;
-        }
-
-        public void setProductName(String productName) {
-            this.productName = productName;
-        }
-
-        // Getter và setter cho supplierName
-        public String getSupplierName() {
-            return supplierName;
-        }
-
-        public void setSupplierName(String supplierName) {
-            this.supplierName = supplierName;
-        }
-
-        // Getter và setter cho importDate
-        public Date getImportDate() {
-            return importDate;
-        }
-
-        public void setImportDate(Date importDate) {
-            this.importDate = importDate;
-        }
-
-        // Getter và setter cho quantity
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
+            if (result == ButtonType.YES) {
+                if (deleteProductDeliveryFromDatabase(selectedProductDelivery.getProductDeliveryID())) {
+                    // Remove the deleted item from the ProductDeliveryTable
+                    ProductDeliveryTable.getItems().remove(selectedProductDelivery);
+                    showSuccessAlert("Product delivery deleted successfully!");
+                } else {
+                    showAlert("Failed to delete product delivery.");
+                }
+            }
+        } else {
+            showAlert("Please select the product delivery you want to delete!");
         }
     }
-    @FXML
-    private TableView<Delivery> ProductDeliveryTable;
 
-    @FXML
-    private TableColumn<Delivery, String> productName;
+    private boolean deleteProductDeliveryFromDatabase(int productDeliveryID) {
+        // Implement the logic to delete the product delivery from the database
+        String deleteSQL = "DELETE FROM productdelivery WHERE productDeliveryID = ?";
 
-    @FXML
-    private TableColumn<Delivery, String> supplierName;
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+            preparedStatement.setInt(1, productDeliveryID);
+            int rowsAffected = preparedStatement.executeUpdate();
 
-    @FXML
-    private TableColumn<Delivery, Date> importDate;
-
-    @FXML
-    private TableColumn<Delivery, Integer> quantityColumn;
-
-    // Tạo danh sách sản phẩm
-    private ObservableList<Delivery> productList = FXCollections.observableArrayList();
-
-    public List<Delivery> populateImportTable() {
-        try (Connection connection = connect.getConnection()) {
-            String query = "SELECT ProductsName.ProductName,supplier.supplierName,productdelivery.dayShipping,productdelivery.shipmentQuantity "
-                    + "FROM productdelivery "
-                    + "INNER JOIN ProductsName ON productdelivery.ProductNameId = ProductsName.ProductNameId "
-                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                Delivery productsDelivery = new Delivery(
-                        resultSet.getString("ProductName"),
-                        resultSet.getString("supplierName"),
-                        resultSet.getDate("dayShipping"),
-                        resultSet.getInt("shipmentQuantity")
-                );
-
-                productList.add(productsDelivery);
-            }
-
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        // Trả về danh sách sản phẩm
-        return productList;
-    }
-
-    public void printData() {
-        // Lấy danh sách sản phẩm bằng cách gọi phương thức populateImportTable()
-        productList = FXCollections.observableArrayList(populateImportTable());
-        productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
-        supplierName.setCellValueFactory(new PropertyValueFactory<>("supplierName"));
-        importDate.setCellValueFactory(new PropertyValueFactory<>("importDate"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-
-        ProductDeliveryTable.setItems(productList);
     }
 
     // các hàm gọi giao diện
@@ -308,6 +351,14 @@ public class productDeliveryController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {

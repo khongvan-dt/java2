@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class addSupplierController {
             showAlert("Please fill in all fields.");
             return;
         }
-         if (SupplierName.length()
+        if (SupplierName.length()
                 > 100) {
             showAlert(" CategoryName cannot be longer than 100 characters.");
             return;
@@ -71,7 +72,6 @@ public class addSupplierController {
 
     }
 
-
     //in dữ liệu ra bảng 
     public class Supplier {
 
@@ -98,6 +98,9 @@ public class addSupplierController {
     }
 
     // in ra bảng 
+    private int i = 0;
+    @FXML
+    private TableColumn<Supplier, Integer> idColumn;
     @FXML
     private TableView<Supplier> supplierTable;//id bảng
 
@@ -113,6 +116,7 @@ public class addSupplierController {
 
     private List<Supplier> fetchDataFromDatabase() {
         List<Supplier> suppliers = new ArrayList<>();
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(i++).asObject());
 
         try {
             Connection connection = connect.getConnection();
@@ -257,7 +261,6 @@ public class addSupplierController {
 
     public void getFromAddProduct() throws IOException {
         Main.setRoot("/admin/addProduct.fxml");
-
     }
 
     public void getFromfromAddSupplier() throws IOException {
@@ -280,6 +283,14 @@ public class addSupplierController {
 
     public void getFromInventory() throws IOException {
         Main.setRoot("/admin/inventory.fxml");
+    }
+
+    public void getOder() throws IOException {
+        Main.setRoot("/admin/oder.fxml");
+    }
+
+    public void getAccount() throws IOException {
+        Main.setRoot("/admin/account.fxml");
     }
 
     public void handleLogout(ActionEvent event) throws IOException {
