@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adminController;
-
 import db.connect;
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,11 +24,13 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.Main;
 
+
 /**
  *
  * @author Administrator
  */
-public class accountController {
+public class listAccounts {
+    
 
     @FXML
     private TableView<Account> accountTable;
@@ -99,7 +100,7 @@ public class accountController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (IOException ex) {
-                    Logger.getLogger(accountController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(listAccounts.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -262,5 +263,6 @@ public class accountController {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
+
 
 }
