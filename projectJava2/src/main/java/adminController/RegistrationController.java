@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 import db.connect;
+import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -68,8 +69,6 @@ public class RegistrationController {
 
             System.out.println("User registered successfully!");
 
-            Stage currentStage = (Stage) usernameField.getScene().getWindow();
-            currentStage.close();
             getLogin();
             // Hiển thị thông báo thành công
             showSuccess("User registered successfully!");
@@ -84,6 +83,12 @@ public class RegistrationController {
         Main.setRoot("/admin/login.fxml");
     }
 
+    @FXML
+    private void formHome() throws IOException {
+        Main.setRoot("/web/home.fxml");
+    }
+
+    @FXML
     private void showRegistrationForm() throws IOException {
         Main.setRoot("/admin/createAccount.fxml");
     }
@@ -140,7 +145,6 @@ public class RegistrationController {
         alert.setContentText(message);
         alert.showAndWait();
 
-        Main.setRoot("login.fxml");
     }
 
     private boolean isValidEmail(String email) {
