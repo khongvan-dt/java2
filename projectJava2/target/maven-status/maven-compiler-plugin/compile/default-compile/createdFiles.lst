@@ -3,7 +3,7 @@ adminController\productDeliveryController.class
 main\Main.class
 adminController\inventoryController$InventoryItem.class
 db\connect.class
-adminController\accountController$Account.class
+adminController\listAccounts$Account.class
 adminController\RegistrationController.class
 adminController\editCategoryController.class
 adminController\productDeliveryController$DeliveryData.class
@@ -14,7 +14,6 @@ adminController\loginController.class
 webController\cartController.class
 ulitiJav\DataHolder.class
 adminController\addProductController.class
-adminController\accountController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
 models\productCart.class
@@ -31,3 +30,4 @@ db\CreateTable.class
 adminController\editImportgood.class
 models\Product.class
 adminController\addCategoryController.class
+adminController\listAccounts.class
