@@ -13,7 +13,6 @@ adminController\addSupplierController.class
 adminController\loginController.class
 webController\cartController.class
 ulitiJav\DataHolder.class
-webController\ProductDetailsController.class
 adminController\addProductController.class
 adminController\accountController.class
 adminController\inventoryController.class
