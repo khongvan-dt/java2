@@ -10,8 +10,8 @@ public class connect {
 
 		try {
 			String url = "jdbc:mysql://localhost:3306/projectjava2";
-			String username = "root";
-			String password = "";
+			String username = "thaoit";
+			String password = "It1234!";
 			c = DriverManager.getConnection(url, username, password);
 
 		} catch (SQLException e) {

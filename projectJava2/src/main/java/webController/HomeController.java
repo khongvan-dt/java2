@@ -271,26 +271,56 @@ public class HomeController implements Initializable {
                 });
               
 // Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
-                describeButton.setOnAction(event -> {
-                    int productId = (int) describeButton.getUserData();
-                    if (userId == 0) {
-                        try {
-                            // Nếu userId không tồn tại
-                            // Chuyển hướng đến trang đăng nhập
-                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
-                        } catch (IOException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } else {
-                        // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice, imagePath);
-                        selectedProducts.add(selectedProduct);
-                        showAlert("Product added to cart successfully!");
-                        productCart.getInstance().setSelectedProducts(selectedProducts);
-                    }
-                });
+           describeButton.setOnAction(event -> {
+    int productId = (int) describeButton.getUserData();
+
+    // Sử dụng lại kết nối cơ sở dữ liệu đã thiết lập trước đó
+    Connection connection2 = null;     // Truy vấn SQL với INNER JOIN
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet4 = null;
+
+    try {
+            connection2 = connect.getConnection();
+        
+        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                + " FROM product"
+                + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
+                + " WHERE product.productId = ?";
+
+        preparedStatement = connection2.prepareStatement(query2);
+        preparedStatement.setInt(1, productId);
+
+        resultSet4 = preparedStatement.executeQuery();
+
+        if (resultSet4.next()) {
+            String description = resultSet4.getString("description");
+            String productName4 = resultSet4.getString("productName");
+            int categoryId = resultSet4.getInt("categoryId");
+            int idSupplier = resultSet4.getInt("idSupplier");
+
+            // Hiển thị thông tin sản phẩm trong cửa sổ thông báo hoặc bất kỳ cách nào bạn muốn.
+            // Ví dụ:
+            showAlert("Product Information\nProduct Name: " + productName4 + "\nID Supplier: " + idSupplier + "\nCategory ID: " + categoryId + "\nImport Product Name ID: " + "\nDescription: " + description);
+        } else {
+            // Sản phẩm không tồn tại
+            showAlert("Product not found.");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Xử lý lỗi kết nối hoặc truy vấn
+    } finally {
+        // Đóng tài nguyên liên quan
+        try {
+            if (resultSet4 != null) resultSet4.close();
+            if (preparedStatement != null) preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+});
+
 // Đưa Button và các thành phần khác vào VBox
-                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
+                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton,describeButton);
 
                 // Đặt VBox vào Pane sản phẩm
                 Pane productPane = new Pane(productBox);
@@ -324,13 +354,13 @@ public class HomeController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            String query2 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+            String query3 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
                     + " FROM product "
                     + " INNER JOIN category ON product.categoryId = category.categoryId"
                     + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
                     + " WHERE product.categoryId = 2";
 
-            statement2 = connection.prepareStatement(query2);
+            statement2 = connection.prepareStatement(query3);
 
             resultSet2 = statement2.executeQuery();
 
@@ -428,28 +458,57 @@ public class HomeController implements Initializable {
 
                 });
 // Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
-                describeButton.setOnAction(event -> {
+           describeButton.setOnAction(event -> {
+    int productId = (int) describeButton.getUserData();
 
-                    int productId = (int) describeButton.getUserData();
-                    if (userId == 0) {
-                        try {
-                            // Nếu userId không tồn tại
-                            // Chuyển hướng đến trang đăng nhập
-                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
-                        } catch (IOException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } else {
-                        // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
-                        selectedProducts.add(selectedProduct);
-                        showAlert("A successful product description appears");
-                        productCart.getInstance().setSelectedProducts(selectedProducts);
-                    }
-                });                
+    // Sử dụng lại kết nối cơ sở dữ liệu đã thiết lập trước đó
+    Connection connection3 = null;     // Truy vấn SQL với INNER JOIN
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet4 = null;
+
+    try {
+            connection3 = connect.getConnection();
+        
+        String query4 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                + " FROM product"
+                + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
+                + " WHERE product.productId = ?";
+
+        preparedStatement = connection3.prepareStatement(query4);
+        preparedStatement.setInt(1, productId);
+
+        resultSet4 = preparedStatement.executeQuery();
+
+        if (resultSet4.next()) {
+            String description = resultSet4.getString("description");
+            String productName4 = resultSet4.getString("productName");
+            int categoryId = resultSet4.getInt("categoryId");
+            int idSupplier = resultSet4.getInt("idSupplier");
+
+            // Hiển thị thông tin sản phẩm trong cửa sổ thông báo hoặc bất kỳ cách nào bạn muốn.
+            // Ví dụ:
+            showAlert("Product Information\nProduct Name: " + productName4 + "\nID Supplier: " + idSupplier + "\nCategory ID: " + categoryId + "\nImport Product Name ID: " + "\nDescription: " + description);
+        } else {
+            // Sản phẩm không tồn tại
+            showAlert("Product not found.");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Xử lý lỗi kết nối hoặc truy vấn
+    } finally {
+        // Đóng tài nguyên liên quan
+        try {
+            if (resultSet4 != null) resultSet4.close();
+            if (preparedStatement != null) preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+});
+             
 
 // Đưa Button và các thành phần khác vào VBox
-                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
+                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton,describeButton);
 
                 // Đặt VBox vào Pane sản phẩm
                 Pane productPane = new Pane(productBox);
@@ -497,13 +556,13 @@ public class HomeController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            String query3 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+            String query4 = "SELECT importGoods.productName, product.img, product.categoryId,product.productId, product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
                     + " FROM product "
                     + " INNER JOIN category ON product.categoryId = category.categoryId"
                     + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
                     + " WHERE product.categoryId = 3";
 
-            statement3 = connection.prepareStatement(query3);
+            statement3 = connection.prepareStatement(query4);
 
             resultSet3 = statement3.executeQuery();
 
@@ -566,11 +625,8 @@ public class HomeController implements Initializable {
                 describeButton.setPrefHeight(25);
                 describeButton.setAlignment(Pos.CENTER);
                 describeButton.setStyle("-fx-background-radius: 20; -fx-background-color: #FCE4EC;");
-                
 
-// Lưu giá trị product.productId vào nút "Describe"
                 describeButton.setUserData(resultSet3.getInt("productId"));
-                
  // Lưu giá trị product.productId vào nút "Buy"
                 buyButton.setUserData(resultSet3.getInt("productId"));               
 
@@ -594,30 +650,58 @@ public class HomeController implements Initializable {
                     }
 
                 });
-                
 // Thêm sự kiện cho nút "Describe" để xử lý khi được nhấp
-                describeButton.setOnAction(event -> {
-                    int productId = (int) describeButton.getUserData();
-                    if (userId == 0) {
-                        try {
-                            // Nếu userId không tồn tại
-                            // Chuyển hướng đến trang đăng nhập
-                            redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
-                        } catch (IOException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } else {
-                        // Ngược lại, thêm sản phẩm vào giỏ hàng
-                        Product selectedProduct = new Product(userId, productId, productName, productPrice,imagePath);
-                        selectedProducts.add(selectedProduct);
-                        showAlert("A successful product description appears");
-                        productCart.getInstance().setSelectedProducts(selectedProducts);
-                    }
+           describeButton.setOnAction(event -> {
+    int productId = (int) describeButton.getUserData();
 
-                });
+    // Sử dụng lại kết nối cơ sở dữ liệu đã thiết lập trước đó
+    Connection connection4 = null;     // Truy vấn SQL với INNER JOIN
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet4 = null;
+
+    try {
+            connection4 = connect.getConnection();
+        
+        String query5 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                + " FROM product"
+                + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
+                + " WHERE product.productId = ?";
+
+        preparedStatement = connection4.prepareStatement(query5);
+        preparedStatement.setInt(1, productId);
+
+        resultSet4 = preparedStatement.executeQuery();
+
+        if (resultSet4.next()) {
+            String description = resultSet4.getString("description");
+            String productName4 = resultSet4.getString("productName");
+            int categoryId = resultSet4.getInt("categoryId");
+            int idSupplier = resultSet4.getInt("idSupplier");
+
+            // Hiển thị thông tin sản phẩm trong cửa sổ thông báo hoặc bất kỳ cách nào bạn muốn.
+            // Ví dụ:
+            showAlert("Product Information\nProduct Name: " + productName4 + "\nID Supplier: " + idSupplier + "\nCategory ID: " + categoryId + "\nImport Product Name ID: " + "\nDescription: " + description);
+        } else {
+            // Sản phẩm không tồn tại
+            showAlert("Product not found.");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Xử lý lỗi kết nối hoặc truy vấn
+    } finally {
+        // Đóng tài nguyên liên quan
+        try {
+            if (resultSet4 != null) resultSet4.close();
+            if (preparedStatement != null) preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+});
+
                 
 // Đưa Button và các thành phần khác vào VBox
-                productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton);
+                 productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton, describeButton);
 
                 // Đặt VBox vào Pane sản phẩm
                 Pane productPane = new Pane(productBox);
