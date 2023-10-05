@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -39,6 +40,10 @@ import models.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 import javax.servlet.http.HttpSession;
 import models.productCart;
@@ -67,6 +72,11 @@ public class HomeController implements Initializable {
     private Button categoryId2;
     @FXML
     private ScrollPane scrollPane2;
+
+    @FXML
+    private Label Cart;
+    @FXML
+    private Label Address;
 
     public static int categoryIDetail;
     public static int categoryIDetail1;
@@ -159,6 +169,26 @@ public class HomeController implements Initializable {
         displayProducts2();
         displayProducts3();
         categoryName();
+        Cart.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    redirectToCart();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Address.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    FromAddress();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void displayNewestProducts() {
@@ -169,7 +199,7 @@ public class HomeController implements Initializable {
         try {
             connection = connect.getConnection();
             String query = "SELECT importGoods.productName,product.img,product.categoryId,product.productId,"
-                    + " product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName"
+                    + " product.Description, importgoods.price ,category.categoryName"
                     + " FROM product "
                     + " INNER JOIN category ON product.categoryId = category.categoryId"
                     + " INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId"
@@ -282,7 +312,7 @@ public class HomeController implements Initializable {
                     try {
                         connection2 = connect.getConnection();
 
-                        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, importgoods.price, product.description, product.img, importgoods.productName"
                                 + " FROM product"
                                 + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
                                 + " WHERE product.productId = ?";
@@ -295,25 +325,19 @@ public class HomeController implements Initializable {
                         if (resultSet4.next()) {
                             String description = resultSet4.getString("description");
                             String productName4 = resultSet4.getString("productName");
+                            Float productPrice4 = resultSet4.getFloat("price");
+                            String imagePath4 = resultSet4.getString("img");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Product Information");
-                            alert.setHeaderText(null); // Xóa tiêu đề phụ (header)
-                            alert.setContentText("Product Name: " + productName4 + "\nDescription: " + description);
+                            // Format productPrice4 with commas
+                            DecimalFormat decimalFormat2 = new DecimalFormat("#,##0");
+                            String formattedProductPrice2 = decimalFormat2.format(productPrice4);
 
-// Chỉnh CSS trực tiếp bằng phong cách inline
-                            alert.getDialogPane().setStyle(
-                                    "-fx-alignment: center; "
-                                    + // Căn giữa hộp thoại
-                                    "-fx-text-alignment: center;" // Căn giữa nội dung văn bản
-                            );
-
-                            alert.showAndWait();
-
+                            showAlertWithProductInfo(productName4, formattedProductPrice2, description, imagePath4);
                         } else {
-                            // Sản phẩm không tồn tại
+                            // Product not found
                             showAlert("Product not found.");
                         }
+
                     } catch (SQLException e) {
                         e.printStackTrace();
                         // Xử lý lỗi kết nối hoặc truy vấn
@@ -330,7 +354,8 @@ public class HomeController implements Initializable {
                             e.printStackTrace();
                         }
                     }
-                });
+                }
+                );
 
 // Đưa Button và các thành phần khác vào VBox
                 productBox.getChildren().addAll(productImageView, productNameLabel, productPriceLabel, buyButton, describeButton);
@@ -458,8 +483,10 @@ public class HomeController implements Initializable {
                             // Nếu userId không tồn tại
                             // Chuyển hướng đến trang đăng nhập
                             redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+
                         } catch (IOException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(HomeController.class
+                                    .getName()).log(Level.SEVERE, null, ex);
                         }
                     } else {
                         // Ngược lại, thêm sản phẩm vào giỏ hàng
@@ -482,12 +509,12 @@ public class HomeController implements Initializable {
                     try {
                         connection3 = connect.getConnection();
 
-                        String query4 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, importgoods.price, product.description, product.img, importgoods.productName"
                                 + " FROM product"
                                 + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
                                 + " WHERE product.productId = ?";
 
-                        preparedStatement = connection3.prepareStatement(query4);
+                        preparedStatement = connection3.prepareStatement(query2);
                         preparedStatement.setInt(1, productId);
 
                         resultSet4 = preparedStatement.executeQuery();
@@ -495,25 +522,16 @@ public class HomeController implements Initializable {
                         if (resultSet4.next()) {
                             String description = resultSet4.getString("description");
                             String productName4 = resultSet4.getString("productName");
-                            int categoryId = resultSet4.getInt("categoryId");
-                            int idSupplier = resultSet4.getInt("idSupplier");
+                            Float productPrice4 = resultSet4.getFloat("price");
+                            String imagePath4 = resultSet4.getString("img");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Product Information");
-                            alert.setHeaderText(null); // Xóa tiêu đề phụ (header)
-                            alert.setContentText("Product Name: " + productName4 + "\nDescription: " + description);
+                            // Format productPrice4 with commas
+                            DecimalFormat decimalFormat2 = new DecimalFormat("#,##0");
+                            String formattedProductPrice2 = decimalFormat2.format(productPrice4);
 
-// Chỉnh CSS trực tiếp bằng phong cách inline
-                            alert.getDialogPane().setStyle(
-                                    "-fx-alignment: center; "
-                                    + // Căn giữa hộp thoại
-                                    "-fx-text-alignment: center;" // Căn giữa nội dung văn bản
-                            );
-
-                            alert.showAndWait();
-
+                            showAlertWithProductInfo(productName4, formattedProductPrice2, description, imagePath4);
                         } else {
-                            // Sản phẩm không tồn tại
+                            // Product not found
                             showAlert("Product not found.");
                         }
                     } catch (SQLException e) {
@@ -665,8 +683,10 @@ public class HomeController implements Initializable {
                             // Nếu userId không tồn tại
                             // Chuyển hướng đến trang đăng nhập
                             redirectToLogin(); // Định nghĩa phương thức redirectToLogin() để thực hiện việc này
+
                         } catch (IOException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(HomeController.class
+                                    .getName()).log(Level.SEVERE, null, ex);
                         }
                     } else {
                         // Ngược lại, thêm sản phẩm vào giỏ hàng
@@ -689,12 +709,12 @@ public class HomeController implements Initializable {
                     try {
                         connection4 = connect.getConnection();
 
-                        String query5 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, importgoods.price, product.description, product.img, importgoods.productName"
                                 + " FROM product"
                                 + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
                                 + " WHERE product.productId = ?";
 
-                        preparedStatement = connection4.prepareStatement(query5);
+                        preparedStatement = connection4.prepareStatement(query2);
                         preparedStatement.setInt(1, productId);
 
                         resultSet4 = preparedStatement.executeQuery();
@@ -702,26 +722,19 @@ public class HomeController implements Initializable {
                         if (resultSet4.next()) {
                             String description = resultSet4.getString("description");
                             String productName4 = resultSet4.getString("productName");
-//            int categoryId = resultSet4.getInt("categoryId");
-//            int idSupplier = resultSet4.getInt("idSupplier");
+                            Float productPrice4 = resultSet4.getFloat("price");
+                            String imagePath4 = resultSet4.getString("img");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Product Information");
-                            alert.setHeaderText(null); // Xóa tiêu đề phụ (header)
-                            alert.setContentText("Product Name: " + productName4 + "\nDescription: " + description);
+                            // Format productPrice4 with commas
+                            DecimalFormat decimalFormat2 = new DecimalFormat("#,##0");
+                            String formattedProductPrice2 = decimalFormat2.format(productPrice4);
 
-// Chỉnh CSS trực tiếp bằng phong cách inline
-                            alert.getDialogPane().setStyle(
-                                    "-fx-alignment: center; "
-                                    + // Căn giữa hộp thoại
-                                    "-fx-text-alignment: center;" // Căn giữa nội dung văn bản
-                            );
-
-                            alert.showAndWait();
+                            showAlertWithProductInfo(productName4, formattedProductPrice2, description, imagePath4);
                         } else {
-                            // Sản phẩm không tồn tại
+                            // Product not found
                             showAlert("Product not found.");
                         }
+
                     } catch (SQLException e) {
                         e.printStackTrace();
                         // Xử lý lỗi kết nối hoặc truy vấn
@@ -860,6 +873,44 @@ public class HomeController implements Initializable {
         alert.showAndWait();
     }
 
+    private void showAlertWithProductInfo(String productName, String formattedProductPrice, String description, String imagePath) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Product Information");
+        alert.setHeaderText(null); // Remove the header
+
+        // Create an ImageView for the product and set its properties
+        ImageView productImageView = new ImageView();
+        productImageView.setFitWidth(130);
+        productImageView.setFitHeight(120);
+        productImageView.setPreserveRatio(false);
+
+        // Use the absolute image path
+        File imageFile = new File(imagePath);
+        String absoluteImagePath = imageFile.toURI().toString();
+        Image image = new Image(absoluteImagePath);
+        productImageView.setImage(image);
+
+        // Create a VBox to contain ImageView and product information
+        VBox vbox = new VBox(10); // 10 is the spacing between ImageView and text
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(productImageView, new Text("Product Name: " + productName), new Text("Price: $" + formattedProductPrice), new Text("Description: " + description));
+
+        // Set the content of the dialog
+        alert.getDialogPane().setContent(vbox);
+
+        // Add an OK button
+        alert.getButtonTypes().setAll(ButtonType.OK);
+
+        // Apply CSS styles directly using inline styles
+        alert.getDialogPane().setStyle(
+                "-fx-alignment: center; "
+                + "-fx-text-alignment: center;"
+        );
+
+        // ShowAndWait and wait for the OK button to be clicked
+        alert.showAndWait();
+    }
+
     // các hàm gọi giao diện
     public void getFromRelatedProducts() throws IOException {
         SharedData.setCategoryId(categoryIDetail); // Set the category ID
@@ -890,6 +941,10 @@ public class HomeController implements Initializable {
 
     public void redirectToLogin() throws IOException {
         Main.setRoot("/admin/login.fxml");
+    }
+
+    public void FromAddress() throws IOException {
+        Main.setRoot("/web/contact.fxml");
     }
 
 }

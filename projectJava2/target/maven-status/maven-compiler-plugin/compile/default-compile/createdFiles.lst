@@ -17,8 +17,10 @@ adminController\addProductController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
 models\productCart.class
+webController\HomeController$1.class
 webController\relatedProductsController.class
 adminController\addSupplierController$Supplier.class
+webController\HomeController$2.class
 adminController\addProductController$Product.class
 adminController\oderController.class
 webController\HomeController$Product.class

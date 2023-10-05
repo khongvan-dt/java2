@@ -25,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import main.Main;
 import models.UserSession;
 import models.productCart;
@@ -197,7 +198,7 @@ public class relatedProductsController implements Initializable {
                     try {
                         connection2 = connect.getConnection();
 
-                        String query2 = "SELECT product.productId, product.idSupplier, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
+                        String query2 = "SELECT product.productId, product.idSupplier,importgoods.price, product.categoryId, product.importProductNameId, product.description, product.img, importgoods.productName"
                                 + " FROM product"
                                 + " INNER JOIN importgoods ON product.importProductNameId = importgoods.import_id"
                                 + " WHERE product.productId = ?";
@@ -210,23 +211,16 @@ public class relatedProductsController implements Initializable {
                         if (resultSet4.next()) {
                             String description = resultSet4.getString("description");
                             String productName4 = resultSet4.getString("productName");
+                            Float productPrice4 = resultSet4.getFloat("price");
+                            String imagePath4 = resultSet4.getString("img");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Product Information");
-                            alert.setHeaderText(null); // Xóa tiêu đề phụ (header)
-                            alert.setContentText("Product Name: " + productName4 + "\nDescription: " + description);
+                            // Format productPrice4 with commas
+                            DecimalFormat decimalFormat2 = new DecimalFormat("#,##0");
+                            String formattedProductPrice2 = decimalFormat2.format(productPrice4);
 
-// Chỉnh CSS trực tiếp bằng phong cách inline
-                            alert.getDialogPane().setStyle(
-                                    "-fx-alignment: center; "
-                                    + // Căn giữa hộp thoại
-                                    "-fx-text-alignment: center;" // Căn giữa nội dung văn bản
-                            );
-
-                            alert.showAndWait();
-
+                            showAlertWithProductInfo(productName4, formattedProductPrice2, description, imagePath4);
                         } else {
-                            // Sản phẩm không tồn tại
+                            // Product not found
                             showAlert("Product not found.");
                         }
                     } catch (SQLException e) {
@@ -309,6 +303,44 @@ public class relatedProductsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlertWithProductInfo(String productName, String formattedProductPrice, String description, String imagePath) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Product Information");
+        alert.setHeaderText(null); // Remove the header
+
+        // Create an ImageView for the product and set its properties
+        ImageView productImageView = new ImageView();
+        productImageView.setFitWidth(130);
+        productImageView.setFitHeight(120);
+        productImageView.setPreserveRatio(false);
+
+        // Use the absolute image path
+        File imageFile = new File(imagePath);
+        String absoluteImagePath = imageFile.toURI().toString();
+        Image image = new Image(absoluteImagePath);
+        productImageView.setImage(image);
+
+        // Create a VBox to contain ImageView and product information
+        VBox vbox = new VBox(10); // 10 is the spacing between ImageView and text
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(productImageView, new Text("Product Name: " + productName), new Text("Price: $" + formattedProductPrice), new Text("Description: " + description));
+
+        // Set the content of the dialog
+        alert.getDialogPane().setContent(vbox);
+
+        // Add an OK button
+        alert.getButtonTypes().setAll(ButtonType.OK);
+
+        // Apply CSS styles directly using inline styles
+        alert.getDialogPane().setStyle(
+                "-fx-alignment: center; "
+                + "-fx-text-alignment: center;"
+        );
+
+        // ShowAndWait and wait for the OK button to be clicked
+        alert.showAndWait();
     }
 
     public void redirectToLogin() throws IOException {
