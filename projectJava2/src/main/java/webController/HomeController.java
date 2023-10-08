@@ -1,5 +1,6 @@
 package webController;
 
+import adminController.loginController;
 import db.connect;
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -941,4 +943,9 @@ public class HomeController implements Initializable {
         Main.setRoot("/web/home.fxml");
     }
 
+    public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
+    }
 }

@@ -1,5 +1,6 @@
 package webController;
 
+import adminController.loginController;
 import db.connect;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -370,5 +372,9 @@ public class relatedProductsController implements Initializable {
             redirectToLogin();
         }
     }
-
+ public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
+    }
 }

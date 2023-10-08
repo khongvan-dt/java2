@@ -4,7 +4,9 @@
  */
 package webController;
 
+import adminController.loginController;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import main.Main;
 import models.UserSession;
 
@@ -36,5 +38,10 @@ public class contacController {
             // Nếu userId bằng 0 (hoặc giá trị mặc định), gọi hàm redirectToLogin()
             redirectToLogin();
         }
+    }
+     public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
     }
 }

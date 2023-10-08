@@ -74,57 +74,51 @@
                               <Image url="@../icon/ic_instagram.png" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="361.0" layoutY="27.0" prefHeight="25.0" prefWidth="331.0" promptText="Đăng kí nhận email." style="-fx-border-color: pink;" />
+                        <TextField layoutX="361.0" layoutY="27.0" prefHeight="25.0" prefWidth="331.0" promptText="Sign up to receive emails." style="-fx-border-color: pink;" />
                         <Button layoutX="703.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: pink;" text="Sent" />
-                        <Text layoutX="285.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÍNH SÁCH" wrappingWidth="105.990234375">
+                        <Text layoutX="284.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POLICY" wrappingWidth="77.990234375">
                            <font>
                               <Font name="Arial Black" size="14.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới thiệu">
+                        <Text layoutX="287.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce" wrappingWidth="71.173828125">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách đổi trả." wrappingWidth="140.5367431640625">
+                        <Text layoutX="284.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return policy." wrappingWidth="140.5367431640625">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách bảo mật" wrappingWidth="140.5367431640625">
+                        <Text layoutX="284.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Privacy Policy" wrappingWidth="140.5367431640625">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điều khoản dịch vụ" wrappingWidth="140.5367431640625">
+                        <Text layoutX="284.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms of service" wrappingWidth="140.5367431640625">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hướng dẫn mua hàng" wrappingWidth="140.5367431640625">
+                        <Text layoutX="284.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shopping guide" wrappingWidth="140.5367431640625">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chính sách giao hàng" wrappingWidth="140.5367431640625">
+                        <Text layoutX="284.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery policy" wrappingWidth="140.5367431640625">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text layoutX="284.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phương thức thanh toán" wrappingWidth="140.5367431640625">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="474.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CƠ SỞ" wrappingWidth="105.990234375">
+                        <Text layoutX="474.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BASIS" wrappingWidth="105.990234375">
                            <font>
                               <Font name="Arial Black" size="14.0" />
                            </font>
                         </Text>
-                        <Text layoutX="474.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 1: 42B Phan Bội Châu-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
-                        <Text layoutX="474.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 2: 285 Đội Cấn-Ba Đình-Hà Nội." wrappingWidth="128.5367431640625" />
-                        <Text layoutX="474.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cơ sở 3: 48A Lý Thường Kiệt-Hoàn Kiếm-Hà Nội." wrappingWidth="128.5367431640625" />
-                        <Text layoutX="659.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIÊN HỆ" wrappingWidth="105.990234375">
+                        <Text layoutX="474.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facility 1: 42B Phan Boi Chau - Hoan Kiem - Hanoi." wrappingWidth="128.5367431640625" />
+                        <Text layoutX="474.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facility 2: 285 Doi Can - Ba Dinh - Hanoi." wrappingWidth="128.5367431640625" />
+                        <Text layoutX="659.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTACT" wrappingWidth="105.990234375">
                            <font>
                               <Font name="Arial Black" size="14.0" />
                            </font>
@@ -168,6 +162,15 @@
                   <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icon/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="796.0" layoutY="40.0" minWidth="39.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: pink;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/out.png" />
                      </image>
                   </ImageView>
                </graphic>

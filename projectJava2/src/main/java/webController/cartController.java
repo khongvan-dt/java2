@@ -1,5 +1,6 @@
 package webController;
 
+import adminController.loginController;
 import db.connect;
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,7 @@ import main.Main;
 import models.productCart;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import models.UserSession;
@@ -86,7 +88,7 @@ public class cartController implements Initializable {
 
 // Trong phương thức initialize:
         if (selectedProducts.isEmpty()) {
-            noProductsLabel.setText("Không có sản phẩm nào.");
+            noProductsLabel.setText("No products.");
         }
         // Check if there are selected products
         if (!selectedProducts.isEmpty()) {
@@ -224,7 +226,7 @@ public class cartController implements Initializable {
         Matcher matcher = pattern.matcher(phoneNumber);
 
         if (!matcher.matches()) {
-            showAlert("Số điện thoại không hợp lệ");
+            showAlert("Invalid phone number");
             return;
         }
 
@@ -366,6 +368,11 @@ public class cartController implements Initializable {
 
     private void getSuccessCart() throws IOException {
         Main.setRoot("/web/dathangthanhcong.fxml");
+    }
+     public void handleLogout(ActionEvent event) throws IOException {
+        // Tạo một thể hiện của lớp logOut và thiết lập tham chiếu đến loginController
+        loginController logoutHandler = new loginController();
+        logoutHandler.handleLogout();
     }
 
 }
