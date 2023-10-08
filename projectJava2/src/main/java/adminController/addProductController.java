@@ -184,12 +184,13 @@ public class addProductController extends Application {
 
 // Inside your initialize() method
         try (Connection connection = connect.getConnection()) {
-           String query = "SELECT importGoods.productName, product.img, supplier.supplierName,"
-                    + " product.Description, importgoods.productImportPrice, importgoods.price ,category.categoryName "
-                    + "FROM product "
-                    + "INNER JOIN category ON product.categoryId = category.categoryId  "
-                    + "INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId "
-                    + "INNER JOIN supplier ON product.idSupplier = supplier.supplierId ";
+             String query = "SELECT importGoods.productName, product.img, supplier.supplierName,"
+            + " product.Description, importgoods.productImportPrice, product.productId, importgoods.price, category.categoryName "
+            + "FROM product "
+            + "INNER JOIN category ON product.categoryId = category.categoryId  "
+            + "INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId "
+            + "INNER JOIN supplier ON product.idSupplier = supplier.supplierId "
+            + "ORDER BY product.productId DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
