@@ -196,7 +196,7 @@
                         <TableColumn fx:id="quantityColumn1" prefWidth="72.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="79.0" text="Inventory">
+                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="100.0" text="Importgoods">
                     <font>
                         <Font name="AdobeGothicStd-Bold" size="15.0" />
                     </font>

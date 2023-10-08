@@ -190,10 +190,12 @@ public class inventoryController {
 // Phương thức này sẽ điền dữ liệu vào productList từ cơ sở dữ liệu
     private void populateImportTable() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+
+            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity, productdelivery.productDeliveryID "
                     + "FROM productdelivery "
                     + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
-                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId "
+                    + "ORDER BY productdelivery.productDeliveryID DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -215,10 +217,11 @@ public class inventoryController {
 
     private void sqlImportgoods() {
         try (Connection connection = connect.getConnection()) {
+
             String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName, importGoods.import_date, importGoods.total_quantity_received "
                     + "FROM importGoods "
-                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
-
+                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
+                    + "ORDER BY importgoods.import_id DESC"; // Sắp xếp theo import_id giảm dần
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -240,11 +243,11 @@ public class inventoryController {
     private void sqlInventory() {
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName,"
-                    + " inventory.date, inventory.InventoryNumber "
+                    + " inventory.date, inventory.inventory_id AS InventoryNumber "
                     + "FROM inventory "
                     + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
-                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
-
+                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId "
+                    + "ORDER BY inventory.inventory_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 

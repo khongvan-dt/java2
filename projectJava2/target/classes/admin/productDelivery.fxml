@@ -79,7 +79,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="107.0" text="Importgoods">
+            <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="107.0" text="Inventory">
                <font>
                   <Font name="AdobeGothicStd-Bold" size="15.0" />
                </font>

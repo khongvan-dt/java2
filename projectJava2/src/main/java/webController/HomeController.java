@@ -1,7 +1,6 @@
 package webController;
 
 import db.connect;
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,35 +18,24 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javax.servlet.ServletContext;
 import main.Main;
-import models.Product;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import javax.servlet.http.HttpSession;
 import models.productCart;
 import models.UserSession;
-import org.apache.hadoop.shaded.org.checkerframework.checker.units.qual.s;
 
 public class HomeController implements Initializable {
 
@@ -77,6 +64,8 @@ public class HomeController implements Initializable {
     private Label Cart;
     @FXML
     private Label Address;
+    @FXML
+    private Label listOder;
 
     public static int categoryIDetail;
     public static int categoryIDetail1;
@@ -189,6 +178,7 @@ public class HomeController implements Initializable {
                 }
             }
         });
+
     }
 
     private void displayNewestProducts() {
@@ -945,6 +935,10 @@ public class HomeController implements Initializable {
 
     public void FromAddress() throws IOException {
         Main.setRoot("/web/contact.fxml");
+    }
+
+    public void getHome() throws IOException {
+        Main.setRoot("/web/home.fxml");
     }
 
 }

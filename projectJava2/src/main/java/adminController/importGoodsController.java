@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -231,9 +232,12 @@ public class importGoodsController {
             ImportPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalImportPrice")); // Đổi tên cột này
             price.setCellValueFactory(new PropertyValueFactory<>("price"));
             totalImportFeecolum.setCellValueFactory(new PropertyValueFactory<>("productImportPrice")); // Đổi tên cột này
+            // Đoạn mã dưới đây sẽ sắp xếp danh sách imports theo import_id giảm dần.
+            imports.sort(Comparator.comparing(Import::getImportId).reversed());
 
-            // Set the data in the TableView
+            // Cập nhật importTable với danh sách đã sắp xếp.
             importTable.setItems(imports);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

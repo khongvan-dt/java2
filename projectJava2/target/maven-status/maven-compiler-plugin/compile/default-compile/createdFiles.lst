@@ -10,6 +10,7 @@ adminController\productDeliveryController$DeliveryData.class
 models\UserSession.class
 models\productQuantity.class
 adminController\addSupplierController.class
+webController\contacController.class
 adminController\loginController.class
 webController\cartController.class
 ulitiJav\DataHolder.class
@@ -17,6 +18,7 @@ adminController\addProductController.class
 adminController\inventoryController.class
 adminController\importGoodsController$Import.class
 models\productCart.class
+webController\cartController$oder.class
 webController\HomeController$1.class
 webController\relatedProductsController.class
 adminController\addSupplierController$Supplier.class
