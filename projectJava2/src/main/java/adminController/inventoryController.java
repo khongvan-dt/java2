@@ -215,7 +215,7 @@ public class inventoryController {
                 Date dayShipping = resultSet.getDate("dayShipping");
                 int shipmentQuantity = resultSet.getInt("shipmentQuantity");
 
-                productList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, dayShipping, shipmentQuantity,0));
+                productList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, dayShipping, shipmentQuantity, 0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -267,7 +267,7 @@ public class inventoryController {
                 int inventoryNumber = resultSet.getInt("inventoryNumber"); // Update this to match the actual column name
                 int inventoryId = resultSet.getInt("inventory_id"); // Update this to match the actual column name
 
-                InventoryList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, inventoryNumber,inventoryId));
+                InventoryList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, inventoryNumber, inventoryId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -275,57 +275,22 @@ public class inventoryController {
     }
 
 //insert 
-    // th1
-    @FXML
-    public void insertInventory() throws IOException {
-        InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
-        InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
-
-        if (selectedDeliveryItem != null && selectedImportItem != null) {
-            int productNameIdFromDelivery = selectedDeliveryItem.getProductNameId();
-            int supplierIdFromDelivery = selectedDeliveryItem.getSupplierId();
-            int productNameIdFromImport = selectedImportItem.getProductNameId();
-            int supplierIdFromImport = selectedImportItem.getSupplierId();
-
-            if (supplierIdFromDelivery == supplierIdFromImport && productNameIdFromDelivery == productNameIdFromImport) {
-                int quantityFromImport = selectedImportItem.getQuantity();
-                int quantityFromDelivery = selectedDeliveryItem.getQuantity();
-
-                if (quantityFromImport >= quantityFromDelivery) {
-                    int inventoryNumber = quantityFromImport - quantityFromDelivery;
-                    if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
-                        System.out.println("Added successfully!");
-                        showSuccessAlert("Added successfully!");
-                        getFromInventory();
-                    } else {
-                        showAlert("Failed to add.");
-                    }
-                } else {
-                    showAlert("Quantity from Importgoods must be greater than or equal to Quantity from ProductDeliveryTable.");
-                }
-            } else {
-                showAlert("SupplierId or ProductNameId do not match.");
-            }
-        } else {
-            showAlert("Please select items from the tables.");
-        }
-    }
-
     @FXML
     public void insertInventoryTH2() throws IOException {
         InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
         InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
 
         if (selectedImportItem != null && selectedInventoryItem != null) {
-            int productNameIdFromImport = selectedImportItem.getProductNameId();
+            String productNameFromImport = selectedImportItem.getProductName();
             int supplierIdFromImport = selectedImportItem.getSupplierId();
-            int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
+            String productNameFromInventory = selectedInventoryItem.getProductName();
             int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
 
-            if (supplierIdFromImport == supplierIdFromInventory && productNameIdFromImport == productNameIdFromInventory) {
+            // Sử dụng equals hoặc equalsIgnoreCase để so sánh chuỗi
+            if (supplierIdFromImport == supplierIdFromInventory && productNameFromImport.equals(productNameFromInventory)) {
                 int quantityFromImport = selectedImportItem.getQuantity();
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
-
+                int productNameIdFromImport = selectedImportItem.getProductNameId();
                 int inventoryNumber = quantityFromImport + quantityFromInventory;
 
                 if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
@@ -336,7 +301,7 @@ public class inventoryController {
                     showAlert("Failed to add.");
                 }
             } else {
-                showAlert("SupplierId or ProductNameId do not match.");
+                showAlert("SupplierId or ProductName do not match.");
             }
         } else {
             showAlert("Please select items from the tables.");
@@ -422,47 +387,6 @@ public class inventoryController {
         }
     }
 
-    // delete 
-//    public void deleteInventoryRecord() {
-//        // Get the selected item from the TableView
-//        InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
-//
-//        if (selectedInventoryItem != null) {
-//            // Create a confirmation dialog
-//            Alert confirmDialog = new Alert(AlertType.CONFIRMATION);
-//            confirmDialog.setTitle("Confirmation");
-//            confirmDialog.setHeaderText("Delete Inventory Record");
-//            confirmDialog.setContentText("Are you sure you want to delete this inventory record?");
-//
-//            // Show the confirmation dialog and wait for user input
-//            ButtonType result = confirmDialog.showAndWait().orElse(ButtonType.CANCEL);
-//
-//            if (result == ButtonType.OK) {
-//                int inventory_id = selectedInventoryItem.getInventoryid();
-////                int supplierId = selectedInventoryItem.getSupplierId();
-//
-//                try (Connection connection = connect.getConnection()) {
-//                    String deleteSQL = "DELETE FROM inventory WHERE inventory_id=?";
-//                    PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-//                    preparedStatement.setInt(1, inventory_id);
-////                    preparedStatement.setInt(2, supplierId);
-//
-//                    int rowsAffected = preparedStatement.executeUpdate();
-//                    if (rowsAffected > 0) {
-//                        System.out.println("Inventory record deleted successfully.");
-//                        showSuccessAlert("Inventory record deleted successfully.");
-//                        // Remove the item from the ObservableList as well
-//                        InventoryList.remove(selectedInventoryItem);
-//                    } else {
-//                        showAlert("Failed to delete inventory record.");
-//                    }
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                    showAlert("An error occurred while deleting inventory record.");
-//                }
-//            }
-//        } else {
-//            showAlert("No item selected in Inventory.");
 //        }
 //    }
     @FXML
@@ -474,8 +398,8 @@ public class inventoryController {
             // Tạo một hộp thoại xác nhận
             Alert confirmDialog = new Alert(AlertType.CONFIRMATION);
             confirmDialog.setTitle("Xác nhận");
-            confirmDialog.setHeaderText("Xóa bản ghi kho hàng");
-            confirmDialog.setContentText("Bạn có chắc chắn muốn xóa bản ghi kho hàng này?");
+            confirmDialog.setHeaderText("Delete inventory record");
+            confirmDialog.setContentText("Are you sure you want to delete this inventory record?");
 
             // Hiển thị hộp thoại xác nhận và chờ người dùng nhập liệu
             ButtonType result = confirmDialog.showAndWait().orElse(ButtonType.CANCEL);
@@ -490,20 +414,20 @@ public class inventoryController {
 
                     int rowsAffected = preparedStatement.executeUpdate();
                     if (rowsAffected > 0) {
-                        System.out.println("Bản ghi kho hàng đã được xóa thành công.");
-                        showSuccessAlert("Bản ghi kho hàng đã được xóa thành công.");
+                        System.out.println("The inventory record has been successfully deleted.");
+                        showSuccessAlert("The inventory record has been successfully deleted.");
                         // Loại bỏ mục khỏi ObservableList cũng
                         InventoryList.remove(selectedInventoryItem);
                     } else {
-                        showAlert("Không thể xóa bản ghi kho hàng.");
+                        showAlert("There are no items selected in the inventory.");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    showAlert("Có lỗi xảy ra khi xóa bản ghi kho hàng.");
+                    showAlert("An error occurred while deleting the inventory record.");
                 }
             }
         } else {
-            showAlert("Không có mục nào được chọn trong kho hàng.");
+            showAlert("There are no items selected in the inventory.");
         }
     }
 

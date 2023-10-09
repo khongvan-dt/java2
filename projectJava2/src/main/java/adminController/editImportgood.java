@@ -130,24 +130,24 @@ public class editImportgood {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    showSuccessAlert("Hóa đơn nhập hàng đã được cập nhật thành công!");
+                    showSuccessAlert("The import invoice has been successfully updated!");
                     // Đóng giao diện "Edit Import Goods"
                     Stage stage = (Stage) saveButton.getScene().getWindow();
                     stage.close();
                     getFromImportGoods();
                     // Gọi phương thức để nạp lại trang cũ ở đây
                 } else {
-                    showAlert("Cập nhật hóa đơn nhập hàng thất bại.");
+                    showAlert("Updating import invoice failed.");
                 }
             } else {
-                showAlert("Tên nhà cung cấp hoặc tên sản phẩm không hợp lệ.");
+                showAlert("Invalid supplier name or product name.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Lỗi SQL khi cập nhật hóa đơn nhập hàng: " + e.getMessage());
+            showAlert("SQL error when updating goods receipt: " + e.getMessage());
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            showAlert("Lỗi: Định dạng số không hợp lệ.");
+            showAlert("Error: Invalid number format.");
         }
     }
 
