@@ -250,15 +250,38 @@ public class importGoodsController {
         String productPrice = fieldViewProductPrice.getText().trim();
         String importPrice = ImportPrice.getText().trim();
         String ProductNameT = ProductNameText.getText().trim();
+        // Kiểm tra xem mô tả có trống không hoặc quá dài không
 
-        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null
+        if (ProductNameT.length() > 500) {
+            showAlert("Product Product Name cannot be longer than 5000 characters.");
+            ProductNameText.clear();
+            return;
+        }
+        if (quantity.isEmpty() || exchange.isEmpty() || selectedSupplierName == null || ProductNameT.isEmpty()
                 || productPrice.isEmpty() || importPrice.isEmpty()) {
-            showAlert("Please fill in all fields and select a supplier and product.");
+            showAlert("Please fill in all missing information fields.");
             return;
         }
 
-        if (!isNumeric(quantity) || !isNumeric(exchange) || !isNumeric(productPrice) || !isNumeric(importPrice)) {
+        if (!isNumeric(quantity)) {
             showAlert("Quantity, exchange, product price, and import price must be numeric.");
+            importQuantity.clear();
+            return;
+        }
+        if (!isNumeric(exchange)) {
+            showAlert("Quantity, exchange, product price, and import price must be numeric.");
+            exchangeNumber.clear();
+            return;
+        }
+
+        if (!isNumeric(productPrice)) {
+            showAlert("Quantity, exchange, product price, and import price must be numeric.");
+            fieldViewProductPrice.clear();
+            return;
+        }
+        if (!isNumeric(importPrice)) {
+            showAlert("Quantity, exchange, product price, and import price must be numeric.");
+            ImportPrice.clear();
             return;
         }
         int supplierId = supplierIdMap.get(selectedSupplierName);

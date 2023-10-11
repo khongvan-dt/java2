@@ -83,7 +83,7 @@
                   <Label layoutX="10.0" layoutY="43.0" text="Supplier" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Button layoutX="20.0" layoutY="554.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
+            <Button layoutX="20.0" layoutY="554.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
                <graphic>
                   <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>

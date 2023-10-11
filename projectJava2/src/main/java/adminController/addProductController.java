@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -49,8 +51,9 @@ public class addProductController extends Application {
         private SimpleStringProperty price;
         private SimpleStringProperty imgPath;
         private SimpleStringProperty categoryName;
+        private SimpleIntegerProperty productId;
 
-        public Product(String categoryName, String productName, String img, String supplierName, String description, String importPrice, String price) {
+        public Product(String categoryName, String productName, String img, String supplierName, String description, String importPrice, String price, Integer productId) {
             this.productName = new SimpleStringProperty(productName);
             this.img = new SimpleStringProperty(img);
             this.supplierName = new SimpleStringProperty(supplierName);
@@ -59,7 +62,7 @@ public class addProductController extends Application {
             this.price = new SimpleStringProperty(price);
             this.imgPath = new SimpleStringProperty(img);
             this.categoryName = new SimpleStringProperty(categoryName);
-
+            this.productId = new SimpleIntegerProperty(productId);
         }
 
         public String getImgPath() {
@@ -92,6 +95,10 @@ public class addProductController extends Application {
 
         public String getCategoryName() {
             return categoryName.get();
+        }
+
+        public Integer getProductId() {
+            return productId.get();
         }
 
     }
@@ -184,13 +191,12 @@ public class addProductController extends Application {
 
 // Inside your initialize() method
         try (Connection connection = connect.getConnection()) {
-             String query = "SELECT importGoods.productName, product.img, supplier.supplierName,"
-            + " product.Description, importgoods.productImportPrice, product.productId, importgoods.price, category.categoryName "
-            + "FROM product "
-            + "INNER JOIN category ON product.categoryId = category.categoryId  "
-            + "INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId "
-            + "INNER JOIN supplier ON product.idSupplier = supplier.supplierId "
-            + "ORDER BY product.productId DESC";
+            String query = "SELECT importGoods.productName, product.img, supplier.supplierName, product.Description, importgoods.productImportPrice, product.productId, importgoods.price, category.categoryName "
+                    + "FROM product "
+                    + "INNER JOIN category ON product.categoryId = category.categoryId "
+                    + "INNER JOIN importgoods ON importgoods.import_id = product.importProductNameId "
+                    + "INNER JOIN supplier ON product.idSupplier = supplier.supplierId "
+                    + "ORDER BY product.productId DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -203,8 +209,9 @@ public class addProductController extends Application {
                 String description = resultSet.getString("Description");
                 String importPrice = resultSet.getString("productImportPrice");
                 String price = resultSet.getString("price");
+                Integer productId2 = resultSet.getInt("productId");
 
-                Product product = new Product(categoryName, productName, img, supplierName, description, importPrice, price);
+                Product product = new Product(categoryName, productName, img, supplierName, description, importPrice, price, productId2);
                 productList.add(product);
             }
 
@@ -311,7 +318,7 @@ public class addProductController extends Application {
             return;
         }
         if (description.length() > 2000) {
-            showAlert("Product descriptions cannot be longer than 1000 characters.");
+            showAlert("Product descriptions cannot be longer than 2000 characters.");
             return;
         }
 
@@ -364,6 +371,51 @@ public class addProductController extends Application {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void deleteCategory(ActionEvent event) throws IOException {
+        // Get the selected category from the TableView
+        Product selectedCategory = importTable.getSelectionModel().getSelectedItem();
+
+        if (selectedCategory != null) {
+            // Show a confirmation dialog to confirm the deletion
+            Alert confirmation = new Alert(AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirm Delete");
+            confirmation.setHeaderText("Are you sure you want to delete this category?");
+            confirmation.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+            ButtonType result = confirmation.showAndWait().orElse(ButtonType.NO);
+
+            if (result == ButtonType.YES) {
+                if (deleteCategoryFromDatabase(selectedCategory.getProductId())) {
+                    // Remove the deleted category from the TableView
+                    importTable.getItems().remove(selectedCategory);
+                    showSuccessAlert("Category deleted successfully!");
+                } else {
+                    showAlert("Failed to delete category.");
+                }
+            }
+        } else {
+            showAlert("Please select the category you want to delete!");
+        }
+    }
+
+    private boolean deleteCategoryFromDatabase(int productId) {
+        // Implement the logic to delete the category from the database
+        String deleteSQL = "DELETE FROM product WHERE productId  = ?";
+        //PreparedStatement dùng để truy vấn đến csdl bằng 1 câu lệnh sql
+
+        try (Connection connection = connect.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+
+            preparedStatement.setInt(1, productId);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

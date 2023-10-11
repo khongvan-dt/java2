@@ -98,7 +98,7 @@
                         <Label text="Supplier" />
                         <ComboBox fx:id="SupplierId" GridPane.columnIndex="1" />
                         <Label text="Exchange number" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Products" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Import Goods" GridPane.rowIndex="3" />
                         <TextField fx:id="exchangeNumber" layoutX="565.0" layoutY="134.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                         <TextField fx:id="ImportPrice" layoutX="565.0" layoutY="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label layoutX="395.0" layoutY="42.0" text="Import Price" GridPane.rowIndex="2" />

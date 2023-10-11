@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adminController;
+
 import db.connect;
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,13 +25,11 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.Main;
 
-
 /**
  *
  * @author Administrator
  */
 public class listAccounts {
-    
 
     @FXML
     private TableView<Account> accountTable;
@@ -121,32 +120,37 @@ public class listAccounts {
     @FXML
     private void deleteAccount(ActionEvent event) {
         if (selectedUserId != -1) {
-            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationAlert.setTitle("Confirmation");
-            confirmationAlert.setHeaderText(null);
-            confirmationAlert.setContentText("Are you sure you want to delete this account?");
+            // Kiểm tra xem tài khoản có dữ liệu tham chiếu trong bảng "orders" không
+            if (isAccountReferencedInOrders(selectedUserId)) {
+                showAlert("The account is in use on the order and cannot be deleted.");
+            } else {
+                Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmationAlert.setTitle("Confirmation");
+                confirmationAlert.setHeaderText(null);
+                confirmationAlert.setContentText("Are you sure you want to delete this account?");
 
-            confirmationAlert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    try (Connection connection = connect.getConnection()) {
-                        String query = "DELETE FROM users WHERE userId = ?";
-                        PreparedStatement preparedStatement = connection.prepareStatement(query);
-                        preparedStatement.setInt(1, selectedUserId);
+                confirmationAlert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        try (Connection connection = connect.getConnection()) {
+                            String query = "DELETE FROM users WHERE userId = ?";
+                            PreparedStatement preparedStatement = connection.prepareStatement(query);
+                            preparedStatement.setInt(1, selectedUserId);
 
-                        int rowsDeleted = preparedStatement.executeUpdate();
-                        if (rowsDeleted > 0) {
-                            showSuccessAlert("Account deleted successfully!");
-                            // Refresh the table or update your data source
-                            // For example, you can call initialize() to reload data
-                            initialize();
-                        } else {
-                            showAlert("Account deletion failed!");
+                            int rowsDeleted = preparedStatement.executeUpdate();
+                            if (rowsDeleted > 0) {
+                                showSuccessAlert("Account deleted successfully!");
+                                // Refresh the table or update your data source
+                                // For example, you can call initialize() to reload data
+                                initialize();
+                            } else {
+                                showAlert("Account deletion failed!");
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
                         }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
                     }
-                }
-            });
+                });
+            }
         } else {
             showAlert("Please select an account to delete.");
         }
@@ -200,6 +204,24 @@ public class listAccounts {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // Phương thức kiểm tra xem tài khoản có dữ liệu tham chiếu trong bảng "orders" hay không
+    private boolean isAccountReferencedInOrders(int userId) {
+        try (Connection connection = connect.getConnection()) {
+            String query = "SELECT COUNT(*) FROM orders WHERE userId = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int orderCount = resultSet.getInt(1);
+                return orderCount > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private void showSuccessAlert(String message) {
@@ -263,6 +285,5 @@ public class listAccounts {
         loginController logoutHandler = new loginController();
         logoutHandler.handleLogout();
     }
-
 
 }
