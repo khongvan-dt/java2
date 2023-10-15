@@ -155,7 +155,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("abc");
+        System.out.println("userId"+userId);
         displayNewestProducts();
         displayProducts2();
         displayProducts3();
