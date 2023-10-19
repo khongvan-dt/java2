@@ -131,20 +131,6 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onAction="#getOder" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="7">
-                            <graphic>
-                                <ImageView fx:id="iconAddProduct11" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../icon/choiseBlack.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="btnProduct11" contentDisplay="TOP" layoutX="41.0" layoutY="190.0" mnemonicParsing="false" onAction="#getOder" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: white;" text="Oder" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                            <font>
-                                <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
-                            </font>
-                        </Button>
                     </children>
                 </GridPane>
             </children>
@@ -196,7 +182,7 @@
                         <TableColumn fx:id="quantityColumn1" prefWidth="72.0" text="Quantity" />
                     </columns>
                 </TableView>
-                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="79.0" text="Inventory">
+                <Label layoutX="19.0" layoutY="6.0" prefHeight="17.0" prefWidth="100.0" text="Importgoods">
                     <font>
                         <Font name="AdobeGothicStd-Bold" size="15.0" />
                     </font>
@@ -220,7 +206,7 @@
                         <Font name="AdobeGothicStd-Bold" size="15.0" />
                     </font>
                 </Label>
-                <Button layoutX="265.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH2" text="Importgoods+Inventory" />
+                <Button layoutX="216.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH2" text="Importgoods+Inventory" />
                 <Button layoutX="14.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteInventoryRecord" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: white;">
                     <graphic>
                         <ImageView fx:id="iconAddCategory1" fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -230,9 +216,8 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Button layoutX="78.0" layoutY="550.0" mnemonicParsing="false" onAction="#insertInventory" text="Importgoods-Productdelivery" />
-            <Button layoutX="427.0" layoutY="550.0" mnemonicParsing="false" onAction="#insertInventoryTH3" text="Inventory-Productdelivery" />
-            <Button layoutX="599.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH4" text="Importgoods" />
+            <Button layoutX="394.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH3" text="Inventory-Productdelivery" />
+            <Button layoutX="89.0" layoutY="551.0" mnemonicParsing="false" onAction="#insertInventoryTH4" text="Importgoods" />
             </children>
         </AnchorPane>
     </children>

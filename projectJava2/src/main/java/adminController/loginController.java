@@ -120,10 +120,12 @@ public class loginController {
     }
 
     public void handleLogout() throws IOException {
-        // Đặt lại trạng thái đăng nhập (đặt biến isLoggedIn thành false và xóa thông tin đăng nhập nếu cần)
         isLoggedIn = false;
         loggedInUserId = -1;
         loggedInUsername = null;
+
+        // Xóa thông tin đăng nhập trong phiên làm việc của người dùng (nếu bạn đang sử dụng phiên làm việc)
+        UserSession.getInstance().setUserId(-1);
 
         // Tải lại màn hình đăng nhập
         Main.setRoot("/admin/login.fxml");

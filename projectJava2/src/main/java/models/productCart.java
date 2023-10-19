@@ -34,4 +34,9 @@ public class productCart {
     public void setSelectedProducts(List<HomeController.Product> selectedProducts) {
         this.selectedProducts = selectedProducts;
     }
+    // Định nghĩa phương thức để xóa danh sách sản phẩm đã chọn
+
+    public void clearSelectedProducts() {
+        selectedProducts.clear();
+    }
 }

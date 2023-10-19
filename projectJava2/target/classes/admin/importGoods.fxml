@@ -98,7 +98,7 @@
                         <Label text="Supplier" />
                         <ComboBox fx:id="SupplierId" GridPane.columnIndex="1" />
                         <Label text="Exchange number" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Products" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#insertImportgoods" text="Add Import Goods" GridPane.rowIndex="3" />
                         <TextField fx:id="exchangeNumber" layoutX="565.0" layoutY="134.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                         <TextField fx:id="ImportPrice" layoutX="565.0" layoutY="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label layoutX="395.0" layoutY="42.0" text="Import Price" GridPane.rowIndex="2" />
@@ -225,20 +225,6 @@
                                     </image>
                                 </ImageView>
                             </graphic>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onAction="#getOder" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: white;" GridPane.rowIndex="7">
-                            <graphic>
-                                <ImageView fx:id="iconAddProduct11" fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../icon/choiseBlack.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="btnProduct11" contentDisplay="TOP" layoutX="41.0" layoutY="190.0" mnemonicParsing="false" onAction="#getOder" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: white;" text="Oder" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                            <font>
-                                <Font name="AdobeFanHeitiStd-Bold" size="12.0" />
-                            </font>
                         </Button>
                     </children>
                 </GridPane>

@@ -18,7 +18,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         try {
             // Lấy đường dẫn tới file FXML
             URL fxmlUrl = getClass().getResource("/web/home.fxml");
@@ -27,11 +26,11 @@ public class Main extends Application {
 
                 // Kiểm tra xem đường dẫn có chứa "/admin/" không
                 if (fxmlPath.contains("/admin/")) {
-                    primaryStage.setWidth(1300);
-                    primaryStage.setHeight(730);
+                    primaryStage.setWidth(900); // Đặt chiều rộng là 900
+                    primaryStage.setHeight(800); // Đặt chiều cao là 800
                 } else if (fxmlPath.contains("/web/")) {
-                    primaryStage.setWidth(766);
-                    primaryStage.setHeight(300);
+                    primaryStage.setWidth(700); // Đặt chiều rộng là 700
+                    primaryStage.setHeight(600); // Đặt chiều cao là 600
                 }
 
                 FXMLLoader loader = new FXMLLoader(fxmlUrl);

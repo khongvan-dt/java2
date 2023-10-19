@@ -88,18 +88,25 @@ public class inventoryController {
         private String supplierName;
         private Date date;
         private int quantity;
+        private int inventoryId;
 
-        public InventoryItem(int productNameId, int supplierId, String productName, String supplierName, Date date, int quantity) {
+        public InventoryItem(int productNameId, int supplierId, String productName, String supplierName, Date date, int quantity, int inventoryId) {
             this.productNameId = productNameId;
             this.supplierId = supplierId;
             this.productName = productName;
             this.supplierName = supplierName;
             this.date = date;
             this.quantity = quantity;
+            this.inventoryId = inventoryId;
+
         }
 
         public int getProductNameId() {
             return productNameId;
+        }
+
+        public int getInventoryid() {
+            return inventoryId;
         }
 
         public void setProductNameId(int productNameId) {
@@ -190,10 +197,12 @@ public class inventoryController {
 // Phương thức này sẽ điền dữ liệu vào productList từ cơ sở dữ liệu
     private void populateImportTable() {
         try (Connection connection = connect.getConnection()) {
-            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+
+            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity, productdelivery.productDeliveryID "
                     + "FROM productdelivery "
                     + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
-                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId "
+                    + "ORDER BY productdelivery.productDeliveryID DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -206,7 +215,7 @@ public class inventoryController {
                 Date dayShipping = resultSet.getDate("dayShipping");
                 int shipmentQuantity = resultSet.getInt("shipmentQuantity");
 
-                productList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, dayShipping, shipmentQuantity));
+                productList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, dayShipping, shipmentQuantity, 0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -215,10 +224,11 @@ public class inventoryController {
 
     private void sqlImportgoods() {
         try (Connection connection = connect.getConnection()) {
+
             String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName, importGoods.import_date, importGoods.total_quantity_received "
                     + "FROM importGoods "
-                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId";
-
+                    + "INNER JOIN supplier ON importGoods.supplier_id = supplier.supplierId "
+                    + "ORDER BY importgoods.import_id DESC"; // Sắp xếp theo import_id giảm dần
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -230,7 +240,7 @@ public class inventoryController {
                 Date importDate = resultSet.getDate("import_date");
                 int totalQuantityReceived = resultSet.getInt("total_quantity_received");
 
-                importDataList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, totalQuantityReceived));
+                importDataList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, totalQuantityReceived, 0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -240,11 +250,11 @@ public class inventoryController {
     private void sqlInventory() {
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT importgoods.import_id, importGoods.productName, supplier.supplierId, supplier.supplierName,"
-                    + " inventory.date, inventory.InventoryNumber "
+                    + " inventory.date, inventory.inventory_id , inventory.inventoryNumber "
                     + "FROM inventory "
                     + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
-                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
-
+                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId "
+                    + "ORDER BY inventory.inventory_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -254,9 +264,10 @@ public class inventoryController {
                 String productName = resultSet.getString("ProductName");
                 String supplierName = resultSet.getString("supplierName");
                 Date importDate = resultSet.getDate("date"); // Update this to match the actual column name
-                int inventoryNumber = resultSet.getInt("InventoryNumber"); // Update this to match the actual column name
+                int inventoryNumber = resultSet.getInt("inventoryNumber"); // Update this to match the actual column name
+                int inventoryId = resultSet.getInt("inventory_id"); // Update this to match the actual column name
 
-                InventoryList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, inventoryNumber));
+                InventoryList.add(new InventoryItem(productNameId, supplierId, productName, supplierName, importDate, inventoryNumber, inventoryId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -264,57 +275,22 @@ public class inventoryController {
     }
 
 //insert 
-    // th1
-    @FXML
-    public void insertInventory() throws IOException {
-        InventoryItem selectedDeliveryItem = ProductDeliveryTable.getSelectionModel().getSelectedItem();
-        InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
-
-        if (selectedDeliveryItem != null && selectedImportItem != null) {
-            int productNameIdFromDelivery = selectedDeliveryItem.getProductNameId();
-            int supplierIdFromDelivery = selectedDeliveryItem.getSupplierId();
-            int productNameIdFromImport = selectedImportItem.getProductNameId();
-            int supplierIdFromImport = selectedImportItem.getSupplierId();
-
-            if (supplierIdFromDelivery == supplierIdFromImport && productNameIdFromDelivery == productNameIdFromImport) {
-                int quantityFromImport = selectedImportItem.getQuantity();
-                int quantityFromDelivery = selectedDeliveryItem.getQuantity();
-
-                if (quantityFromImport >= quantityFromDelivery) {
-                    int inventoryNumber = quantityFromImport - quantityFromDelivery;
-                    if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
-                        System.out.println("Added successfully!");
-                        showSuccessAlert("Added successfully!");
-                        getFromInventory();
-                    } else {
-                        showAlert("Failed to add.");
-                    }
-                } else {
-                    showAlert("Quantity from Importgoods must be greater than or equal to Quantity from ProductDeliveryTable.");
-                }
-            } else {
-                showAlert("SupplierId or ProductNameId do not match.");
-            }
-        } else {
-            showAlert("Please select items from the tables.");
-        }
-    }
-
     @FXML
     public void insertInventoryTH2() throws IOException {
         InventoryItem selectedImportItem = Importgoods.getSelectionModel().getSelectedItem();
         InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
 
         if (selectedImportItem != null && selectedInventoryItem != null) {
-            int productNameIdFromImport = selectedImportItem.getProductNameId();
+            String productNameFromImport = selectedImportItem.getProductName();
             int supplierIdFromImport = selectedImportItem.getSupplierId();
-            int productNameIdFromInventory = selectedInventoryItem.getProductNameId();
+            String productNameFromInventory = selectedInventoryItem.getProductName();
             int supplierIdFromInventory = selectedInventoryItem.getSupplierId();
 
-            if (supplierIdFromImport == supplierIdFromInventory && productNameIdFromImport == productNameIdFromInventory) {
+            // Sử dụng equals hoặc equalsIgnoreCase để so sánh chuỗi
+            if (supplierIdFromImport == supplierIdFromInventory && productNameFromImport.equals(productNameFromInventory)) {
                 int quantityFromImport = selectedImportItem.getQuantity();
                 int quantityFromInventory = selectedInventoryItem.getQuantity();
-
+                int productNameIdFromImport = selectedImportItem.getProductNameId();
                 int inventoryNumber = quantityFromImport + quantityFromInventory;
 
                 if (insertInventoryRecord(productNameIdFromImport, supplierIdFromImport, inventoryNumber)) {
@@ -325,7 +301,7 @@ public class inventoryController {
                     showAlert("Failed to add.");
                 }
             } else {
-                showAlert("SupplierId or ProductNameId do not match.");
+                showAlert("SupplierId or ProductName do not match.");
             }
         } else {
             showAlert("Please select items from the tables.");
@@ -411,51 +387,51 @@ public class inventoryController {
         }
     }
 
-    // delete 
+//        }
+//    }
+    @FXML
     public void deleteInventoryRecord() {
-        // Get the selected item from the TableView
+        // Lấy dòng được chọn từ TableView
         InventoryItem selectedInventoryItem = Inventory.getSelectionModel().getSelectedItem();
 
         if (selectedInventoryItem != null) {
-            // Create a confirmation dialog
+            // Tạo một hộp thoại xác nhận
             Alert confirmDialog = new Alert(AlertType.CONFIRMATION);
-            confirmDialog.setTitle("Confirmation");
-            confirmDialog.setHeaderText("Delete Inventory Record");
+            confirmDialog.setTitle("Xác nhận");
+            confirmDialog.setHeaderText("Delete inventory record");
             confirmDialog.setContentText("Are you sure you want to delete this inventory record?");
 
-            // Show the confirmation dialog and wait for user input
+            // Hiển thị hộp thoại xác nhận và chờ người dùng nhập liệu
             ButtonType result = confirmDialog.showAndWait().orElse(ButtonType.CANCEL);
 
             if (result == ButtonType.OK) {
-                int productNameId = selectedInventoryItem.getProductNameId();
-                int supplierId = selectedInventoryItem.getSupplierId();
+                int inventoryId = selectedInventoryItem.getInventoryid();
 
                 try (Connection connection = connect.getConnection()) {
-                    String deleteSQL = "DELETE FROM inventory WHERE ProductNameId = ? AND supplierId = ?";
+                    String deleteSQL = "DELETE FROM inventory WHERE inventory_id=?";
                     PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-                    preparedStatement.setInt(1, productNameId);
-                    preparedStatement.setInt(2, supplierId);
+                    preparedStatement.setInt(1, inventoryId);
 
                     int rowsAffected = preparedStatement.executeUpdate();
                     if (rowsAffected > 0) {
-                        System.out.println("Inventory record deleted successfully.");
-                        showSuccessAlert("Inventory record deleted successfully.");
-                        // Remove the item from the ObservableList as well
+                        System.out.println("The inventory record has been successfully deleted.");
+                        showSuccessAlert("The inventory record has been successfully deleted.");
+                        // Loại bỏ mục khỏi ObservableList cũng
                         InventoryList.remove(selectedInventoryItem);
                     } else {
-                        showAlert("Failed to delete inventory record.");
+                        showAlert("There are no items selected in the inventory.");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    showAlert("An error occurred while deleting inventory record.");
+                    showAlert("An error occurred while deleting the inventory record.");
                 }
             }
         } else {
-            showAlert("No item selected in Inventory.");
+            showAlert("There are no items selected in the inventory.");
         }
     }
-// insert thành công sẽ hiện
 
+// insert thành công sẽ hiện
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

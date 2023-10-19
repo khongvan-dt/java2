@@ -164,7 +164,6 @@ public class addCategoryController {
             showAlert("Please select the information you want to edit!");
         }
     }
-//insert thành công sẽ hiện 
 
     @FXML
 

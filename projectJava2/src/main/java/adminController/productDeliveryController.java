@@ -140,11 +140,11 @@ public class productDeliveryController {
         id1.setCellValueFactory(cellData -> new SimpleIntegerProperty(y++).asObject());
         try (Connection connection = connect.getConnection()) {
             String query = "SELECT inventory.importProductNameId, importGoods.productName, supplier.supplierId, supplier.supplierName,"
-                    + " inventory.date, inventory.InventoryNumber "
-                    + "FROM inventory "
-                    + "INNER JOIN importgoods ON importgoods.import_id  = inventory.importProductNameId "
-                    + "INNER JOIN supplier ON inventory.supplierId = supplier.supplierId";
-
+                    + " inventory.date, inventory.InventoryNumber, inventory.inventory_id"
+                    + " FROM inventory "
+                    + " INNER JOIN importgoods ON importgoods.import_id = inventory.importProductNameId "
+                    + " INNER JOIN supplier ON inventory.supplierId = supplier.supplierId"
+                    + " ORDER BY inventory.inventory_id DESC";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -173,12 +173,11 @@ public class productDeliveryController {
 
         try (Connection connection = connect.getConnection()) {
 
-            String query = "SELECT productdelivery.productDeliveryID, productdelivery.importProductNameId,importgoods.import_id,"
-                    + " importgoods.productName, supplier.supplierId,"
-                    + " supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity "
+            String query = "SELECT productdelivery.importProductNameId,importgoods.import_id, importgoods.productName, supplier.supplierId, supplier.supplierName, productdelivery.dayShipping, productdelivery.shipmentQuantity, productdelivery.productDeliveryID "
                     + "FROM productdelivery "
                     + "INNER JOIN importgoods ON importgoods.import_id  = productdelivery.importProductNameId  "
-                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId";
+                    + "INNER JOIN supplier ON productdelivery.supplier_id = supplier.supplierId "
+                    + "ORDER BY productdelivery.productDeliveryID DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
